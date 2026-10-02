@@ -1,139 +1,193 @@
 // ===================================================
-// EFECTO DE SONIDO KAWAII INTERACTIVO (Web Audio API)
+// NAVEGACIÓN Y PESTAÑAS
 // ===================================================
-function playClickSound() {
-  try {
-    const ctx = new (window.AudioContext || window.webkitAudioContext)();
-    const osc = ctx.createOscillator();
-    const gain = ctx.createGain();
+document.querySelectorAll('.nav-tab').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.nav-tab').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
     
-    osc.type = 'sine';
-    osc.frequency.setValueAtTime(600, ctx.currentTime);
-    osc.frequency.exponentialRampToValueAtTime(900, ctx.currentTime + 0.1);
-    
-    gain.gain.setValueAtTime(0.08, ctx.currentTime);
-    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.1);
-    
-    osc.connect(gain);
-    gain.connect(ctx.destination);
-    
-    osc.start();
-    osc.stop(ctx.currentTime + 0.1);
-  } catch(e) {
-    console.log("Audio API ready");
-  }
-}
-
-// ===================================================
-// NAVEGACIÓN ENTRE PESTAÑAS
-// ===================================================
-document.querySelectorAll('.nav-tab').forEach(button => {
-  button.addEventListener('click', (e) => {
-    playClickSound();
-    
-    document.querySelectorAll('.nav-tab').forEach(btn => btn.classList.remove('active'));
-    document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
-
-    button.classList.add('active');
-    const tabId = button.getAttribute('data-tab');
-    document.getElementById(tabId).classList.add('active');
+    btn.classList.add('active');
+    document.getElementById(btn.getAttribute('data-tab')).classList.add('active');
   });
 });
 
 // ===================================================
-// BASE DE DATOS DE PERSONAJES (POP-UP)
+// MODAL GENERAL Y VISOR
 // ===================================================
-const charData = {
-  sonic: { emoji: "💙", name: "Sonic the Hedgehog", rel: "Mejores Amigos", thought: "Amato admira su libertad y optimismo. Le enseñó a volver a divertirse.", quote: "“¡Sonic es increíble! Nunca te aburres a su lado.”" },
-  tails: { emoji: "🧡", name: "Miles 'Tails' Prower", rel: "Compañeros de Ciencia", thought: "Conversan por horas sobre el funcionamiento de las Chaos Emeralds.", quote: "“Tails entiende la ciencia detrás de la energía.”" },
-  amy: { emoji: "🌸", name: "Amy Rose", rel: "Apoyo Emocional", thought: "Amy siempre nota cuando Amato finge estar bien detrás de su sonrisa.", quote: "“Amy siempre tiene el mejor abrazo listo.”" },
-  knuckles: { emoji: "🔥", name: "Knuckles the Echidna", rel: "Rivalidad Amistosa", thought: "Amato adora molestarlo por lo fácil que se enoja.", quote: "“Se enoja rápido pero daría la vida por sus amigos.”" },
-  cream: { emoji: "🩷", name: "Cream the Rabbit", rel: "Vínculo Protector", thought: "Amato la cuida como a una hermanita menor.", quote: "“Cream es demasiado tierna, la protegeré siempre.”" },
-  shadow: { emoji: "🖤", name: "Shadow the Hedgehog", rel: "Enamorados (Shamato ❤️)", thought: "Se entienden profundamente a través del dolor y la soledad que ambos vivieron.", quote: "“Shadow solo necesita a alguien que decida quedarse.”" },
-  eggman: { emoji: "🥚", name: "Dr. Eggman", rel: "Rival / Enemigo", thought: "No soporta que use las Chaos Emeralds para lastimar a los demás.", quote: "“Es listo, pero no tengo por qué soportarlo.”" },
-  maria: { emoji: "🌹", name: "Maria Robotnik", rel: "Respeto Profundo", thought: "La respeta por lo extremadamente importante que fue para Shadow.", quote: "“Entiendo perfectamente por qué Shadow la quería tanto.”" }
-};
+function showModal(title, text, emoji = "💗", sub = "Detalle") {
+  document.getElementById('modalEmoji').innerText = emoji;
+  document.getElementById('modalTitle').innerText = title;
+  document.getElementById('modalSub').innerText = sub;
+  document.getElementById('modalBodyText').innerText = text;
+  document.getElementById('modalQuoteText').innerText = `"${title}"`;
+  document.getElementById('generalModal').style.display = 'flex';
+}
 
-const modal = document.getElementById('charModal');
-const closeModalBtn = document.getElementById('closeModalBtn');
+function closeModal(id) {
+  document.getElementById(id).style.display = 'none';
+}
+
+// ===================================================
+// LÍNEA TEMPORAL TOGGLE
+// ===================================================
+function toggleTl(el) {
+  el.classList.toggle('open');
+}
+
+// ===================================================
+// DATOS Y PERSONAJES
+// ===================================================
+const charactersData = {
+  sonic: { emoji: "💙", title: "Sonic the Hedgehog", sub: "Mejores Amigos", text: "Amato admira su libertad. Sonic le enseñó a divertirse otra vez." },
+  tails: { emoji: "🧡", title: "Miles 'Tails' Prower", sub: "Compañeros de Ciencia", text: "Conversan horas sobre el funcionamiento de las Chaos Emeralds." },
+  amy: { emoji: "🌸", title: "Amy Rose", sub: "Apoyo Emocional", text: "Sabe cuándo Amato finge estar bien detrás de su sonrisa." },
+  knuckles: { emoji: "🔥", title: "Knuckles", sub: "Rivalidad Amistosa", text: "Amato disfruta molestarlo por lo fácil que se enoja." },
+  cream: { emoji: "🩷", title: "Cream", sub: "Vínculo Protector", text: "Amato la protege con mucho cariño." },
+  shadow: { emoji: "🖤", title: "Shadow", sub: "Enamorados (Shamato ❤️)", text: "Comenzó con Chaos Control y terminó en una unión profunda." },
+  eggman: { emoji: "🥚", title: "Dr. Eggman", sub: "Enemigo", text: "No tolera que use las esmeraldas para hacer daño." },
+  maria: { emoji: "🌹", title: "Maria Robotnik", sub: "Respeto Profundo", text: "La respeta por lo mucho que significó para Shadow." }
+};
 
 document.querySelectorAll('.char-card').forEach(card => {
   card.addEventListener('click', () => {
-    playClickSound();
     const key = card.getAttribute('data-char');
-    const data = charData[key];
-
-    if (data) {
-      document.getElementById('modalEmoji').innerText = data.emoji;
-      document.getElementById('modalName').innerText = data.name;
-      document.getElementById('modalRel').innerText = data.rel;
-      document.getElementById('modalThought').innerText = data.thought;
-      document.getElementById('modalQuote').innerText = data.quote;
-      modal.style.display = 'flex';
-    }
+    const d = charactersData[key];
+    if(d) showModal(d.title, d.text, d.emoji, d.sub);
   });
 });
 
-closeModalBtn.addEventListener('click', () => {
-  playClickSound();
-  modal.style.display = 'none';
-});
+// ===================================================
+// PALETA Y COPIAR COLOR
+// ===================================================
+function copyColor(hex, desc) {
+  navigator.clipboard.writeText(hex);
+  const toast = document.getElementById('colorToast');
+  toast.innerText = `¡Copiado ${hex}! ${desc}`;
+}
 
-window.addEventListener('click', (e) => {
-  if (e.target === modal) {
-    modal.style.display = 'none';
-  }
+// ===================================================
+// PERSONALIDAD TAGS
+// ===================================================
+document.querySelectorAll('.p-tag').forEach(tag => {
+  tag.addEventListener('click', () => {
+    showModal(tag.innerText, tag.getAttribute('data-desc'), '🧠', 'Personalidad');
+  });
 });
 
 // ===================================================
-// BASE DE DATOS DE PLAYLISTS / JUKEBOX
+// ENERGÍA SHAMATO
 // ===================================================
-const songData = {
-  amato: [
-    { name: "I'm Not a Good Person", artist: "The Reasons", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" },
-    { name: "Sweet But Psycho", artist: "Ava Max", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" }
-  ],
-  shamato: [
-    { name: "Risk It All", artist: "Bruno Mars", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" }
-  ],
-  friends: [
-    { name: "Live & Learn", artist: "Crush 40", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3" }
-  ]
-};
+let heartsCount = 10;
+document.getElementById('shamatoEnergyBar').addEventListener('click', () => {
+  heartsCount += 2;
+  let str = "";
+  for(let i=0; i<heartsCount; i++) str += "💖 ";
+  document.getElementById('shamatoEnergyBar').innerText = str;
+  document.getElementById('shamatoCounter').innerText = `Nivel de Amor: ${100 + (heartsCount-10)*10}%!`;
+});
 
-function loadPlaylist(key) {
-  const list = songData[key];
-  const container = document.getElementById('songList');
-  container.innerHTML = "";
-  
-  list.forEach(song => {
-    const li = document.createElement('li');
-    li.className = 'song-item';
-    li.innerHTML = `<span>🎵 ${song.name}</span> <small>${song.artist}</small>`;
-    
-    li.onclick = () => {
-      playClickSound();
-      document.getElementById('songTitle').innerText = song.name;
-      document.getElementById('songArtist').innerText = song.artist;
-      const player = document.getElementById('audioPlayer');
-      player.src = song.url;
-      player.play();
-    };
-    
-    container.appendChild(li);
+// ===================================================
+// CARTAS SECRETAS
+// ===================================================
+function openLetter(from, text) {
+  showModal(`Carta de ${from}`, text, "✉️", "Sobre Secreto");
+}
+
+// ===================================================
+// GALERÍA Y FILTROS
+// ===================================================
+function filterGallery(cat) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+
+  document.querySelectorAll('.g-item').forEach(item => {
+    if(cat === 'all' || item.classList.contains(cat)) {
+      item.style.display = 'block';
+    } else {
+      item.style.display = 'none';
+    }
   });
 }
 
-document.querySelectorAll('.playlist-btn').forEach(btn => {
-  btn.addEventListener('click', (e) => {
-    playClickSound();
-    document.querySelectorAll('.playlist-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    
-    const vibe = btn.getAttribute('data-vibe');
-    loadPlaylist(vibe);
-  });
+function openViewer(title, desc) {
+  document.getElementById('viewerTitle').innerText = title;
+  document.getElementById('viewerDesc').innerText = desc;
+  document.getElementById('viewerModal').style.display = 'flex';
+}
+
+let zoomLevel = 1;
+function zoomViewer(factor) {
+  zoomLevel *= factor;
+  document.getElementById('viewerBox').style.transform = `scale(${zoomLevel})`;
+}
+
+// ===================================================
+// GENERADOR DE FRASES Y DATOS RANDOM
+// ===================================================
+const quotes = {
+  amato: ["¡Mira esta Chaos Emerald!", "Si consigo que sonrían, todo estará bien.", "¿Shadow, me enseñas Chaos Control?"],
+  shadow: ["No te metas en problemas.", "...Está bien.", "Quédate detrás de mí."],
+  shamato: ["Amato habla; Shadow protege.", "Dos personas que aprendieron a no cargar todo solas."]
+};
+
+function genQuote(type) {
+  const arr = quotes[type];
+  const rand = arr[Math.floor(Math.random() * arr.length)];
+  document.getElementById('quoteResult').innerText = rand;
+}
+
+const facts = [
+  "Amato es ambidiestro.",
+  "Su diseño está inspirado en el helado napolitano.",
+  "Está obsesionado con las Chaos Emeralds.",
+  "Habla demasiado cuando está nervioso.",
+  "Shadow finge que esto no le molesta."
+];
+
+function genFact() {
+  const rand = facts[Math.floor(Math.random() * facts.length)];
+  document.getElementById('factResult').innerText = rand;
+}
+
+// ===================================================
+// EASTER EGGS (CHAOS EMERALD & REPETICIONES)
+// ===================================================
+let emeraldTouches = 0;
+document.getElementById('chaosEmeraldBtn').addEventListener('click', () => {
+  emeraldTouches++;
+  document.getElementById('emeraldStatus').innerText = `Toques: ${emeraldTouches} / 7`;
+  if(emeraldTouches >= 7) {
+    alert("✨ ¡CHAOS CONTROL! ✨");
+    document.body.style.background = "#503024";
+    setTimeout(() => { document.body.style.background = ""; }, 3000);
+    emeraldTouches = 0;
+  }
 });
 
-// Cargar la primera playlist por defecto
-loadPlaylist('amato');
+let amatoTouches = 0;
+document.getElementById('amatoAvatar').addEventListener('click', () => {
+  amatoTouches++;
+  if(amatoTouches === 2) alert("¿Por qué me estás tocando?");
+  if(amatoTouches === 4) alert("En serio...");
+  if(amatoTouches === 6) alert("¡Oye!");
+  if(amatoTouches >= 8) { alert("Está bien, ganaste. 🍨"); amatoTouches = 0; }
+});
+
+let shadowTouches = 0;
+document.getElementById('shadowAvatar').addEventListener('click', () => {
+  shadowTouches++;
+  if(shadowTouches === 2) alert("...");
+  if(shadowTouches === 4) alert("...¿Qué?");
+  if(shadowTouches === 6) alert("¿Por qué sigues haciendo eso?");
+  if(shadowTouches >= 8) { alert("Deja de molestar. 🖤"); shadowTouches = 0; }
+});
+
+// BGM CONTROL
+const bgmAudio = document.getElementById('bgmAudio');
+const bgmBtn = document.getElementById('bgmToggleBtn');
+let isBgm = false;
+bgmBtn.addEventListener('click', () => {
+  if(isBgm) { bgmAudio.pause(); bgmBtn.innerText = "🎵 Música: OFF"; }
+  else { bgmAudio.play(); bgmBtn.innerText = "🎵 Música: ON 🎶"; }
+  isBgm = !isBgm;
+});
