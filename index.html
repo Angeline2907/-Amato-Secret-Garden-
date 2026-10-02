@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🍨 Amato & Shamato Sanctuary 🦔</title>
+  <title>🍨 Amato's Pages — Neapolitan Haven 🦔</title>
   
-  <!-- Fuentes Google Super Lindas -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&family=Fredoka:wght@400;600;700&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
@@ -14,15 +13,22 @@
 </head>
 <body>
 
-  <!-- Sparkles FX Layer -->
-  <div id="sparkle-container"></div>
+  <!-- REPRODUCTOR DE MÚSICA DE FONDO (BGM) -->
+  <audio id="bgmAudio" loop preload="auto">
+    <!-- Reemplaza "audio/bg-soft.mp3" con tu archivo de música suave -->
+    <source src="audio/bg-soft.mp3" type="audio/mpeg">
+  </audio>
 
-  <!-- MAIN WINDOW LAYOUT -->
+  <!-- BOTÓN FLOTANTE PARA MÚSICA DE FONDO -->
+  <button id="bgmToggleBtn" class="bgm-float-btn">
+    🎵 <span id="bgmStatus">Música: OFF</span>
+  </button>
+
+  <!-- VENTANA PRINCIPAL WEBCORE -->
   <div class="webcore-window">
     
-    <!-- WINDOW TITLEBAR (ESTILO Y2K / MYSPACE) -->
     <div class="window-bar">
-      <div class="bar-title">🎀 Amato_World_v2.0.exe — Napolitano Hub</div>
+      <div class="bar-title">🎀 Neapolitan_Haven_v3.0.exe</div>
       <div class="bar-buttons">
         <span class="win-btn">_</span>
         <span class="win-btn">□</span>
@@ -30,14 +36,12 @@
       </div>
     </div>
 
-    <!-- MARQUESINA / BANNER CORREDIZO -->
     <div class="marquee-box">
       <marquee behavior="scroll" direction="left" scrollamount="6">
         🍨 Welcome to Amato's Personal Page! ✨ Chocolate × Fresa × Vainilla 🍓 Shadow's #1 Fan 🖤 Chaos Emerald Enthusiast ⭐ "No soy feliz, solo aprendí a hacer felices a los demás" 💖
       </marquee>
     </div>
 
-    <!-- HEADER DECORADO CON LACE / ENCAJE -->
     <header class="lace-header">
       <div class="header-content">
         <div class="profile-pic-frame">
@@ -57,22 +61,21 @@
       </div>
     </header>
 
-    <!-- BARRA DE NAVEGACIÓN -->
+    <!-- NAVEGACIÓN -->
     <nav class="kawaii-nav">
       <button class="nav-tab active" data-tab="profile">🍨 Profile & Lore</button>
-      <button class="nav-tab" data-tab="characters">👥 Characters (Interactive!)</button>
+      <button class="nav-tab" data-tab="characters">👥 Characters</button>
       <button class="nav-tab" data-tab="shamato">🖤🍓 Shamato Archive</button>
-      <button class="nav-tab" data-tab="animatic">🎬 Animatic & Music</button>
+      <button class="nav-tab" data-tab="gallery">🖼️ Art Gallery</button>
+      <button class="nav-tab" data-tab="music">🎶 Jukebox & Playlists</button>
     </nav>
 
-    <!-- CONTENIDO DE LAS PESTAÑAS -->
+    <!-- CONTENIDO -->
     <main class="content-area">
 
-      <!-- PESTAÑA 1: PROFILE & LORE -->
+      <!-- PESTAÑA 1: PROFILE -->
       <section id="profile" class="tab-content active">
         <div class="layout-grid">
-          
-          <!-- TARJETA FICHA -->
           <div class="coquette-card">
             <div class="card-header">✦ CHARACTER PROFILE</div>
             <div class="card-body">
@@ -89,7 +92,6 @@
             </div>
           </div>
 
-          <!-- TARJETA ESTÉTICA -->
           <div class="coquette-card">
             <div class="card-header">🍓🍫🍦 ESTÉTICA & CONCEPTO</div>
             <div class="card-body">
@@ -100,10 +102,8 @@
               </div>
             </div>
           </div>
-
         </div>
 
-        <!-- HISTORIA LARGA -->
         <div class="coquette-card full-width">
           <div class="card-header">🌙 LORE & LA MÁSCARA (AMATO CORE)</div>
           <div class="card-body">
@@ -121,48 +121,17 @@
         <div class="coquette-card full-width">
           <div class="card-header">👥 ¿QUÉ OPINA AMATO DE CADA PERSONAJE?</div>
           <div class="card-body">
-            <p class="instruction">✨ Toca o haz clic sobre la foto de cualquier personaje para abrir su tarjeta interactiva y leer todo lo que Amato piensa de ellos:</p>
+            <p class="instruction">✨ Toca o haz clic sobre la foto de cualquier personaje para leer todo lo que Amato piensa de ellos:</p>
             
             <div class="character-grid">
-              <div class="char-card" data-char="sonic">
-                <div class="char-avatar-ring">💙</div>
-                <div class="char-btn-label">Sonic</div>
-              </div>
-
-              <div class="char-card" data-char="tails">
-                <div class="char-avatar-ring">🧡</div>
-                <div class="char-btn-label">Tails</div>
-              </div>
-
-              <div class="char-card" data-char="amy">
-                <div class="char-avatar-ring">🌸</div>
-                <div class="char-btn-label">Amy</div>
-              </div>
-
-              <div class="char-card" data-char="knuckles">
-                <div class="char-avatar-ring">🔥</div>
-                <div class="char-btn-label">Knuckles</div>
-              </div>
-
-              <div class="char-card" data-char="cream">
-                <div class="char-avatar-ring">🩷</div>
-                <div class="char-btn-label">Cream</div>
-              </div>
-
-              <div class="char-card" data-char="shadow">
-                <div class="char-avatar-ring">🖤</div>
-                <div class="char-btn-label">Shadow</div>
-              </div>
-
-              <div class="char-card" data-char="eggman">
-                <div class="char-avatar-ring">🥚</div>
-                <div class="char-btn-label">Dr. Eggman</div>
-              </div>
-
-              <div class="char-card" data-char="maria">
-                <div class="char-avatar-ring">🌹</div>
-                <div class="char-btn-label">Maria</div>
-              </div>
+              <div class="char-card" data-char="sonic"><div class="char-avatar-ring">💙</div><div class="char-btn-label">Sonic</div></div>
+              <div class="char-card" data-char="tails"><div class="char-avatar-ring">🧡</div><div class="char-btn-label">Tails</div></div>
+              <div class="char-card" data-char="amy"><div class="char-avatar-ring">🌸</div><div class="char-btn-label">Amy</div></div>
+              <div class="char-card" data-char="knuckles"><div class="char-avatar-ring">🔥</div><div class="char-btn-label">Knuckles</div></div>
+              <div class="char-card" data-char="cream"><div class="char-avatar-ring">🩷</div><div class="char-btn-label">Cream</div></div>
+              <div class="char-card" data-char="shadow"><div class="char-avatar-ring">🖤</div><div class="char-btn-label">Shadow</div></div>
+              <div class="char-card" data-char="eggman"><div class="char-avatar-ring">🥚</div><div class="char-btn-label">Dr. Eggman</div></div>
+              <div class="char-card" data-char="maria"><div class="char-avatar-ring">🌹</div><div class="char-btn-label">Maria</div></div>
             </div>
           </div>
         </div>
@@ -185,60 +154,108 @@
             </div>
 
             <div class="quote-box">
-              Amato expresa el cariño hablando. Shadow lo expresa protegiéndolo. Amato dice "Te quiero". Shadow dice "Quédate detrás de mí".
+              Amato expresa el cariño hablando. Shadow lo expresa protegiéndolo. Amato dice "Tequiero". Shadow dice "Quédate detrás de mí".
             </div>
           </div>
         </div>
       </section>
 
-      <!-- PESTAÑA 4: ANIMATIC & PLAYLIST -->
-      <section id="animatic" class="tab-content">
-        <div class="layout-grid">
-          
-          <div class="coquette-card">
-            <div class="card-header">🎬 ANIMATIC: "RISK IT ALL"</div>
-            <div class="card-body">
-              <p><strong>Canción:</strong> Risk It All — Bruno Mars</p>
-              <p>Un animatic contado únicamente a través de miradas, recuerdos, escenarios y lenguaje corporal sin diálogos hablados.</p>
-              <ol class="story-list">
-                <li>🌿 Tarde pacífica en el campo.</li>
-                <li>🌙 Transición vocal de Shadow y Amato.</li>
-                <li>🌌 Chaos Control transforma la atmósfera.</li>
-                <li>🏔️ Recorrido por paisajes y momentos de peligro.</li>
-                <li>⭐ Final: Bajo las estrellas, Amato se duerme y Shadow le da un beso en la frente.</li>
-              </ol>
+      <!-- PESTAÑA 4: NUEVA GALERÍA DE DIBUJOS (MARCOS ROSADOS) -->
+      <section id="gallery" class="tab-content">
+        <div class="coquette-card full-width">
+          <div class="card-header">🖼️ AMATO's ART GALLERY</div>
+          <div class="card-body">
+            <p class="instruction">🎀 Ilustraciones, diseños y momentos de Amato en marcos especiales:</p>
+            
+            <div class="gallery-grid">
+              
+              <!-- Foto 1 -->
+              <div class="art-frame">
+                <div class="frame-inner">
+                  <!-- Reemplaza img/dibujo1.png con la ruta de tu imagen -->
+                  <img src="img/dibujo1.png" alt="Amato Concept Art" onerror="this.src='https://via.placeholder.com/300x300/ffb3c6/503024?text=Amato+Art+1'">
+                </div>
+                <div class="frame-caption">🍨 Amato Napolitano (Concept)</div>
+              </div>
+
+              <!-- Foto 2 -->
+              <div class="art-frame">
+                <div class="frame-inner">
+                  <img src="img/dibujo2.png" alt="Shamato Moment" onerror="this.src='https://via.placeholder.com/300x300/ff758f/ffffff?text=Shamato+Drawing'">
+                </div>
+                <div class="frame-caption">🖤🍓 Shamato Moments</div>
+              </div>
+
+              <!-- Foto 3 -->
+              <div class="art-frame">
+                <div class="frame-inner">
+                  <img src="img/dibujo3.png" alt="Chaos Energy" onerror="this.src='https://via.placeholder.com/300x300/ffcad4/503024?text=Chaos+Energy+Amato'">
+                </div>
+                <div class="frame-caption">⚡ Chaos Energy Practice</div>
+              </div>
+
+              <!-- Foto 4 -->
+              <div class="art-frame">
+                <div class="frame-inner">
+                  <img src="img/dibujo4.png" alt="Amato & Friends" onerror="this.src='https://via.placeholder.com/300x300/ffe5ec/ff758f?text=Amato+%26+Friends'">
+                </div>
+                <div class="frame-caption">🌸 Emerald Hill Memories</div>
+              </div>
+
             </div>
           </div>
+        </div>
+      </section>
 
-          <div class="coquette-card">
-            <div class="card-header">🎶 MUSIC PLAYER</div>
-            <div class="card-body text-center">
-              <div class="music-player-ui">
-                <div class="disc-spin">💿</div>
-                <div class="song-info">
-                  <div id="song-title">Risk It All — Bruno Mars</div>
-                  <div id="song-sub">Shamato Main Theme</div>
-                </div>
-                <div class="player-controls">
-                  <button class="play-btn" id="musicToggleBtn">▶ PLAY SOUNDS</button>
-                </div>
+      <!-- PESTAÑA 5: JUKEBOX & PLAYLISTS CATEGORIZADAS -->
+      <section id="music" class="tab-content">
+        <div class="coquette-card full-width">
+          <div class="card-header">🎶 JUKEBOX & CATEGORIZED PLAYLISTS</div>
+          <div class="card-body">
+            <p class="instruction">🎧 Elige la vibra que quieres escuchar:</p>
+
+            <!-- SELECTOR DE VIBE/PLAYLIST -->
+            <div class="playlist-selector">
+              <button class="playlist-btn active" data-vibe="amato">🍨 Amato Core Vibes</button>
+              <button class="playlist-btn" data-vibe="shamato">🖤🍓 Shamato Romance</button>
+              <button class="playlist-btn" data-vibe="friends">🌸 Friendship & Adventures</button>
+            </div>
+
+            <!-- REPRODUCTOR ACTIVO DE PLAYLIST -->
+            <div class="jukebox-player">
+              <div class="disc-spin" id="jukeboxDisc">💿</div>
+              <div class="jukebox-details">
+                <h3 id="currentSongTitle">I'm Not a Good Person</h3>
+                <p id="currentSongArtist">The Reasons • Amato Core</p>
+                
+                <audio id="playlistAudio" controls class="custom-audio-controls">
+                  <source id="playlistSource" src="audio/amato-song.mp3" type="audio/mpeg">
+                  Tu navegador no soporta el reproductor.
+                </audio>
               </div>
             </div>
-          </div>
 
+            <!-- LISTA DE CANCIONES MOSTRADAS -->
+            <div class="song-list-container">
+              <h4 id="playlistTitleHeader">🍨 Playlist: Amato Core</h4>
+              <ul class="song-list" id="songListUI">
+                <!-- Se llena dinámicamente desde JS -->
+              </ul>
+            </div>
+
+          </div>
         </div>
       </section>
 
     </main>
 
-    <!-- FOOTER ESTILO BANNER KAWAII -->
     <footer class="kawaii-footer">
       <p>🎀 Created for Amato's World • Made with Chocolate, Strawberry & Vanilla Magic 🍨</p>
     </footer>
 
   </div>
 
-  <!-- POP-UP MODAL PARA INFORMACIÓN DE LOS PERSONAJES -->
+  <!-- POP-UP MODAL PARA PERSONAJES -->
   <div class="modal-backdrop" id="charModal">
     <div class="modal-window">
       <button class="modal-close-btn" id="closeModalBtn">✕</button>
