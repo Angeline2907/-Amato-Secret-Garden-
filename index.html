@@ -3,24 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🍨 Amato's Pages — Neapolitan Haven 🦔</title>
+  <title>🍨 Amato's Pages — Neapolitan Haven & Shamato Archive 🦔</title>
   
-  <!-- FUENTES KAWAII DE GOOGLE -->
+  <!-- Fuentes Kawaii Google -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&family=Fredoka:wght@400;600;700&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
-
-  <!-- VÍNCULO A ESTILOS EXTERNOS -->
+  
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- VENTANA PRINCIPAL WEBCORE -->
+  <!-- PARTÍCULAS / BRILLOS FLOTANTES -->
+  <div id="particle-container"></div>
+
+  <!-- REPRODUCTOR DE MÚSICA DE FONDO -->
+  <audio id="bgmAudio" loop preload="auto">
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- BOTÓN FLOTANTE BGM -->
+  <button id="bgmToggleBtn" class="bgm-float-btn">
+    🎵 <span id="bgmStatus">Música: OFF</span>
+  </button>
+
+  <!-- VENTANA PRINCIPAL -->
   <div class="webcore-window">
     
-    <!-- BARRA SUPERIOR Y2K -->
+    <!-- BARRA Y2K -->
     <div class="window-bar">
-      <div class="bar-title">🎀 Neapolitan_Haven_v3.0.exe — Amato & Shamato Archive</div>
+      <div class="bar-title">🎀 Neapolitan_Haven_v4.0_FINAL.exe — Amato & Shamato</div>
       <div class="bar-buttons">
         <span class="win-btn">_</span>
         <span class="win-btn">□</span>
@@ -28,17 +40,17 @@
       </div>
     </div>
 
-    <!-- MARQUESINA CORREDIZA -->
+    <!-- MARQUESINA -->
     <div class="marquee-box">
       <marquee behavior="scroll" direction="left" scrollamount="6">
-        🍨 Welcome to Amato's Personal Page! ✨ Chocolate × Fresa × Vainilla 🍓 Shadow's #1 Fan 🖤 Chaos Emerald Enthusiast ⭐ "No soy feliz, solo aprendí a hacer felices a los demás" 💖
+        🍨 Welcome to Amato's Personal Haven! ✨ Chocolate × Fresa × Vainilla 🍓 Shadow's #1 Fan 🖤 Chaos Emerald Enthusiast ⭐ "No soy feliz, solo aprendí a hacer felices a los demás" 💖
       </marquee>
     </div>
 
-    <!-- HEADER CON ENCAJE (LACE) -->
+    <!-- HEADER CON ENCAJE Y EASTER EGGS DE PERSONAJE -->
     <header class="lace-header">
       <div class="header-content">
-        <div class="profile-avatar">🍨</div>
+        <div class="profile-avatar" id="amatoAvatar" title="¡Haz clic en Amato!">🍨</div>
         <div class="header-text">
           <h1>Welcome To... Amato's Pages 🎀</h1>
           <p class="subtitle">The Napolitano Hedgehog • Personal OC & Shamato Hub</p>
@@ -52,23 +64,26 @@
       </div>
     </header>
 
-    <!-- NAVEGACIÓN POR PESTAÑAS -->
+    <!-- NAVEGACIÓN COMPLETA -->
     <nav class="kawaii-nav">
-      <button class="nav-tab active" data-tab="profile">🍨 Profile & Lore</button>
-      <button class="nav-tab" data-tab="characters">👥 Characters (Click!)</button>
-      <button class="nav-tab" data-tab="shamato">🖤🍓 Shamato Archive</button>
-      <button class="nav-tab" data-tab="gallery">🖼️ Art Gallery</button>
-      <button class="nav-tab" data-tab="music">🎶 Jukebox & Playlists</button>
+      <button class="nav-tab active" data-tab="profile">🍨 Perfil & Paleta</button>
+      <button class="nav-tab" data-tab="lore">🌙 Lore & Línea Temporal</button>
+      <button class="nav-tab" data-tab="characters">👥 Personajes (Click!)</button>
+      <button class="nav-tab" data-tab="shamato">🖤🍓 Dinámica Shamato</button>
+      <button class="nav-tab" data-tab="scrapbook">📓 Scrapbook</button>
+      <button class="nav-tab" data-tab="letters">💌 Cartas Secretas</button>
+      <button class="nav-tab" data-tab="gallery">🖼️ Galería Categorizada</button>
+      <button class="nav-tab" data-tab="fun">🎲 Frases & Random</button>
     </nav>
 
-    <!-- CONTENIDO PRINCIPAL DE PESTAÑAS -->
     <main class="content-area">
 
-      <!-- PESTAÑA 1: PROFILE & LORE -->
+      <!-- ================= PESTAÑA 1: PERFIL & PALETA ================= -->
       <section id="profile" class="tab-content active">
         <div class="layout-grid">
+          
           <div class="coquette-card">
-            <div class="card-header">✦ CHARACTER PROFILE</div>
+            <div class="card-header">✦ FICHA TÉCNICA</div>
             <div class="card-body">
               <ul class="info-list">
                 <li><span>Nombre:</span> Amato (Apodo: Napolitano)</li>
@@ -83,43 +98,128 @@
           </div>
 
           <div class="coquette-card">
-            <div class="card-header">🍓🍫🍦 ESTÉTICA & CONCEPTO</div>
+            <div class="card-header">🧠 PERSONALIDAD & MEDIDORES</div>
             <div class="card-body">
-              <p>Estilo <strong>Coquette + Y2K + Sonic Clásico</strong>. Basado visualmente en el helado napolitano.</p>
-              <p>Su apariencia dulce, esponjosa e inofensiva contrasta directamente con su trasfondo melancólico y culpa no resuelta.</p>
-              <div class="quote-box">
-                "Dulce por fuera, lleno de culpa por dentro."
+              <p>Haz clic en las palabras de personalidad para ver su descripción:</p>
+              <div class="personality-tags">
+                <span class="p-tag" data-desc="Siempre preguntándose sobre las Chaos Emeralds y el mundo.">Curioso</span>
+                <span class="p-tag" data-desc="Habla rápido, se emociona fácil y nunca se queda quieto.">Energético</span>
+                <span class="p-tag" data-desc="Demuestra cariño abiertamente y busca abrazar a sus amigos.">Cariñoso</span>
+                <span class="p-tag" data-desc="Actúa antes de pensar, especialmente con las Esmeraldas.">Impulsivo</span>
+                <span class="p-tag" data-desc="Incapaz de abandonar a alguien que le importa.">Leal</span>
+                <span class="p-tag" data-desc="Le encanta hacer bromas suaves para romper la tensión.">Juguetón</span>
+                <span class="p-tag" data-desc="Siente las cosas con mucha intensidad aunque lo disimule.">Emocional</span>
+                <span class="p-tag" data-desc="Protegerá a Cream y a sus seres queridos a toda costa.">Protector</span>
+              </div>
+
+              <!-- Medidores Ficticios -->
+              <div class="stat-meters">
+                <div class="meter-row"><span>Curiosidad:</span> <div class="bar"><div class="fill" style="width: 100%;"></div></div></div>
+                <div class="meter-row"><span>Energía:</span> <div class="bar"><div class="fill" style="width: 90%;"></div></div></div>
+                <div class="meter-row"><span>Cariño:</span> <div class="bar"><div class="fill" style="width: 100%;"></div></div></div>
+                <div class="meter-row"><span>Caos:</span> <div class="bar"><div class="fill" style="width: 70%;"></div></div></div>
+                <div class="meter-row"><span>Paciencia:</span> <div class="bar"><div class="fill" style="width: 20%;"></div></div></div>
+                <div class="meter-row"><span>Impulsividad:</span> <div class="bar"><div class="fill" style="width: 90%;"></div></div></div>
               </div>
             </div>
           </div>
+
         </div>
 
+        <!-- SECCIÓN PALETA DE COLORES -->
         <div class="coquette-card full-width">
-          <div class="card-header">🌙 LORE & LA MÁSCARA (AMATO CORE)</div>
+          <div class="card-header">🍨 PALETA DE COLORES (Haz clic para copiar HEX)</div>
           <div class="card-body">
-            <p>A los 12 años, tras perder a su padre y sufrir una relación difícil con su madre, Amato deseó impulsivamente a las estrellas que la pesadilla terminara. Poco después, su madre falleció.</p>
-            <p>Amato creció creyendo internamente que su deseo causó la tragedia. Con el tiempo idealizó a su madre y convirtió su alegría en una máscara: sonríe, hace bromas y ayuda a todos para que nadie sufra lo mismo.</p>
-            <div class="quote-box highlight">
-              "No soy feliz. Solo aprendí a hacer felices a los demás." — Amato Core 🥀
+            <div class="color-palette-grid">
+              
+              <div class="color-box strawberry" onclick="copyColor('#FF9EBB', 'Fresa — Representa el lado dulce, cariñoso y energético de Amato.')">
+                <div class="color-preview"></div>
+                <div class="color-info"><strong>Rosa Fresa</strong><br><code>#FF9EBB</code></div>
+              </div>
+
+              <div class="color-box chocolate" onclick="copyColor('#503024', 'Chocolate — Representa su lado más oscuro y las partes de su historia que intenta esconder.')">
+                <div class="color-preview"></div>
+                <div class="color-info"><strong>Marrón Chocolate</strong><br><code>#503024</code></div>
+              </div>
+
+              <div class="color-box vanilla" onclick="copyColor('#FFFEF2', 'Vainilla — Representa su inocencia y la parte de sí mismo que todavía conserva.')">
+                <div class="color-preview"></div>
+                <div class="color-info"><strong>Blanco Vainilla</strong><br><code>#FFFEF2</code></div>
+              </div>
+
             </div>
+            <p id="colorToast" class="color-toast"></p>
           </div>
         </div>
       </section>
 
-      <!-- PESTAÑA 2: PERSONAJES INTERACTIVOS -->
+      <!-- ================= PESTAÑA 2: LORE & LÍNEA TEMPORAL ================= -->
+      <section id="lore" class="tab-content">
+        <div class="coquette-card full-width">
+          <div class="card-header">🌙 LA HISTORIA DE AMATO (LÍNEA TEMPORAL INTERACTIVA)</div>
+          <div class="card-body">
+            <p class="instruction">Haz clic en cada etapa para desplegar su historia:</p>
+            
+            <div class="timeline">
+              <div class="tl-item" onclick="toggleTl(this)">
+                <div class="tl-title">👦 [INFANCIA]</div>
+                <div class="tl-content">
+                  Amato creció en Emerald Hill con una perspectiva alegre y curiosa. Su vida temprana estuvo marcada por el cariño hacia su padre y una imaginación desbordante sobre el mundo.
+                </div>
+              </div>
+
+              <div class="tl-item" onclick="toggleTl(this)">
+                <div class="tl-title">🌙 [12 AÑOS]</div>
+                <div class="tl-content">
+                  A los 12 años, su padre falleció. Devastado y con una relación complicada con su madre, en medio de la desesperación deseó a las estrellas que todo terminara. Poco después su madre murió. Creció creyendo que su deseo causó todo, desarrollando una enorme culpa no resuelta e idealizando a su madre.
+                </div>
+              </div>
+
+              <div class="tl-item" onclick="toggleTl(this)">
+                <div class="tl-title">⭐ [LA CHAOS EMERALD]</div>
+                <div class="tl-content">
+                  Encontró una Chaos Emerald escondida que reaccionó con él. Desde entonces investiga sus secretos: ¿Pueden conceder deseos? ¿Se puede cambiar el destino? Su búsqueda es tanto científica como emocional.
+                </div>
+              </div>
+
+              <div class="tl-item" onclick="toggleTl(this)">
+                <div class="tl-title">🌎 [SONIC ADVENTURE 2]</div>
+                <div class="tl-content">
+                  Se involucró durante la crisis espacial de SA2. Ayudó al grupo a salvar el mundo y conoció a Shadow por primera vez.
+                  <div class="sa2-subbuttons">
+                    <button onclick="event.stopPropagation(); showModal('Sonic SA2', 'Sonic lo acogió rápidamente como un gran amigo de aventuras.')">Conoció a Sonic</button>
+                    <button onclick="event.stopPropagation(); showModal('Tails SA2', 'Tails y Amato hablaron horas sobre la energía de la ARK y las esmeraldas.')">Conoció a Tails</button>
+                    <button onclick="event.stopPropagation(); showModal('Amy SA2', 'Amy notó de inmediato la calidez y el dolor oculto de Amato.')">Conoció a Amy</button>
+                    <button onclick="event.stopPropagation(); showModal('Knuckles SA2', 'Discutieron amistosamente sobre la Master Emerald.')">Conoció a Knuckles</button>
+                    <button onclick="event.stopPropagation(); showModal('Shadow SA2', 'Shadow lo vio como un chico molesto al inicio, pero terminó protegiéndolo.')">Conoció a Shadow</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tl-item" onclick="toggleTl(this)">
+                <div class="tl-title">🌟 [ACTUALIDAD]</div>
+                <div class="tl-content">
+                  Integrado al grupo como familia elegida. Su vínculo con Shadow evolucionó de compañeros/rivales a una relación romántica llena de protección y refugio.
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= PESTAÑA 3: PERSONAJES ================= -->
       <section id="characters" class="tab-content">
         <div class="coquette-card full-width">
           <div class="card-header">👥 ¿QUÉ OPINA AMATO DE CADA PERSONAJE?</div>
           <div class="card-body">
-            <p class="instruction">✨ Haz clic o toca el icono de cualquier personaje para ver sus pensamientos detallados:</p>
-            
             <div class="character-grid">
               <div class="char-card" data-char="sonic"><div class="char-avatar-ring">💙</div><div class="char-btn-label">Sonic</div></div>
               <div class="char-card" data-char="tails"><div class="char-avatar-ring">🧡</div><div class="char-btn-label">Tails</div></div>
               <div class="char-card" data-char="amy"><div class="char-avatar-ring">🌸</div><div class="char-btn-label">Amy</div></div>
               <div class="char-card" data-char="knuckles"><div class="char-avatar-ring">🔥</div><div class="char-btn-label">Knuckles</div></div>
               <div class="char-card" data-char="cream"><div class="char-avatar-ring">🩷</div><div class="char-btn-label">Cream</div></div>
-              <div class="char-card" data-char="shadow"><div class="char-avatar-ring">🖤</div><div class="char-btn-label">Shadow</div></div>
+              <div class="char-card" data-char="shadow" id="shadowAvatar"><div class="char-avatar-ring">🖤</div><div class="char-btn-label">Shadow</div></div>
               <div class="char-card" data-char="eggman"><div class="char-avatar-ring">🥚</div><div class="char-btn-label">Dr. Eggman</div></div>
               <div class="char-card" data-char="maria"><div class="char-avatar-ring">🌹</div><div class="char-btn-label">Maria</div></div>
             </div>
@@ -127,109 +227,242 @@
         </div>
       </section>
 
-      <!-- PESTAÑA 3: SHAMATO ARCHIVE -->
+      <!-- ================= PESTAÑA 4: SHAMATO ================= -->
       <section id="shamato" class="tab-content">
-        <div class="coquette-card full-width special-shamato">
-          <div class="card-header">🖤🍓 SHAMATO (Shadow × Amato)</div>
+        <!-- BARRA DE ENERGÍA SHAMATO -->
+        <div class="coquette-card full-width text-center">
+          <div class="card-header">💗 ENERGÍA SHAMATO (¡Haz clic para aumentar los corazones!)</div>
           <div class="card-body">
-            <p><strong>Tropes:</strong> Grumpy × Sunshine | Tsundere × Affectionate | Chaos Emerald Partners | Opposites Attract</p>
-            <br>
-            <p>Se conocieron durante los acontecimientos de <em>Sonic Adventure 2</em>. Inicialmente Amato perseguía a Shadow fascinado por su uso del Chaos Control. Con el tiempo, ambos formaron un vínculo profundo basado en entender el dolor y la soledad del otro.</p>
-
-            <div class="dialogue-box">
-              <div class="line"><strong>Shadow:</strong> "Aléjate."</div>
-              <div class="line"><strong>Amato:</strong> "No."</div>
-              <div class="line"><strong>Shadow:</strong> "..."</div>
-              <div class="line"><strong>Amato:</strong> ":D"</div>
+            <div class="heart-energy-bar" id="shamatoEnergyBar">
+              💖 💖 💖 💖 💖 💖 💖 💖 💖 💖
             </div>
+            <p id="shamatoCounter" style="font-weight: bold; color: var(--dark-pink); margin-top: 8px;">Nivel de Amor: 100%</p>
+          </div>
+        </div>
 
-            <div class="quote-box">
-              Amato expresa el cariño hablando. Shadow lo expresa protegiéndolo. Amato dice "Te quiero". Shadow dice "Quédate detrás de mí".
+        <!-- TARJETAS DINÁMICA SHAMATO -->
+        <div class="coquette-card full-width">
+          <div class="card-header">💞 DINÁMICA DE RELACIÓN (Haz clic en cada tarjeta)</div>
+          <div class="card-body grid-layout">
+            <div class="shamato-card" onclick="showModal('Gruñón × Rayito de Sol', 'Shadow siempre serio y reservado; Amato súper hiperactivo y parlanchín.')">🌑 Gruñón × ☀️ Rayito de Sol</div>
+            <div class="shamato-card" onclick="showModal('Tsundere × Cariñoso', 'Shadow pretende que no le importa, pero Amato sabe que está cuidándolo.')">🖤 Tsundere × 💗 Cariñoso</div>
+            <div class="shamato-card" onclick="showModal('Los Opuestos se Atraen', 'Personalidades contrarias que se complementan perfectamente.')">🍓 Opuestos se Atraen</div>
+            <div class="shamato-card" onclick="showModal('Compañeros de Chaos', 'Ambos comparten una conexión íntima con las Chaos Emeralds.')">⭐ Compañeros de Chaos</div>
+            <div class="shamato-card" onclick="showModal('Familia Encontrada', 'Se convirtieron en el hogar del otro tras sus pérdidas.')">🫂 Familia Encontrada</div>
+            <div class="shamato-card" onclick="showModal('Sanar Juntos', 'Se ayudan a sanar la culpa y los recuerdos dolorosos sin juzgarse.')">🥀 Sanar Juntos</div>
+          </div>
+        </div>
+
+        <!-- LO QUE SHADOW NO DICE vs LO QUE AMATO YA SABE -->
+        <div class="layout-grid">
+          <div class="coquette-card">
+            <div class="card-header">🖤 LO QUE SHADOW NO DICE</div>
+            <div class="card-body">
+              <ul class="clickable-list">
+                <li onclick="showModal('Escena', 'Shadow camina lentamente unos pasos detrás de Amato para vigilar que nadie lo moleste.')">"Se queda cerca."</li>
+                <li onclick="showModal('Escena', 'Bloquea un ataque de un robot antes de que Amato siquiera se dé cuenta.')">"Protege a Amato."</li>
+                <li onclick="showModal('Escena', 'Le ofrece su Chaos Emerald a Amato en silencio cuando ve que tiene la mirada perdida.')">"Se da cuenta cuando Amato está triste."</li>
+                <li onclick="showModal('Escena', 'Gira los ojos cuando Amato habla, pero jamás se va.')">"Finge que no le importa."</li>
+                <li onclick="showModal('Escena', 'Incluso si se marcha enfadado, vuelve antes del anochecer.')">"Siempre vuelve."</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="coquette-card">
+            <div class="card-header">💗 LO QUE AMATO YA SABE</div>
+            <div class="card-body">
+              <ul class="info-list">
+                <li>"Sabe que Shadow se preocupa."</li>
+                <li>"Sabe que Shadow está solo."</li>
+                <li>"Sabe que Shadow nunca lo dirá con palabras."</li>
+                <li>"Y aun así decide quedarse a su lado."</li>
+              </ul>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- PESTAÑA 4: GALERÍA DE DIBUJOS CON MARCOS ROSADOS -->
+      <!-- ================= PESTAÑA 5: SCRAPBOOK ================= -->
+      <section id="scrapbook" class="tab-content">
+        <div class="coquette-card full-width">
+          <div class="card-header">📓 MI CUADERNO PERSONAL / SCRAPBOOK</div>
+          <div class="card-body">
+            <div class="scrapbook-board">
+              
+              <div class="sticky-note note1">
+                📌 "Amato definitivamente le preguntó a Shadow sobre Chaos Control 47 veces."
+              </div>
+
+              <div class="sticky-note note2">
+                📌 "Shadow dice que no le molesta."
+              </div>
+
+              <div class="sticky-note note3">
+                📌 "Shadow claramente está molesto. 💀"
+              </div>
+
+              <div class="sticky-note note4">
+                📌 "Amato encontró otra Chaos Emerald. Alguien debería detenerlo."
+              </div>
+
+              <div class="sticker-photo">
+                <div class="tape"></div>
+                🍨 🖤
+                <p>Nuestra primera foto juntos en el campo ~</p>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= PESTAÑA 6: CARTAS SECRETAS ================= -->
+      <section id="letters" class="tab-content">
+        <div class="coquette-card full-width">
+          <div class="card-header">💌 CARTAS SECRETAS (Toca un sobre para abrir)</div>
+          <div class="card-body">
+            <div class="envelope-grid">
+              
+              <div class="envelope-card" onclick="openLetter('Sonic', '¡Hola Amato! Amigo, ¿vamos a correr por Emerald Hill hoy? ¡Trae tus preguntas de las esmeraldas! — Sonic 💙')">
+                ✉️ Sobre de Sonic
+              </div>
+
+              <div class="envelope-card" onclick="openLetter('Tails', 'Amato, terminé de analizar las lecturas de tu Chaos Emerald. Pásate por el taller cuando quieras. — Tails 🧡')">
+                ✉️ Sobre de Tails
+              </div>
+
+              <div class="envelope-card" onclick="openLetter('Amy', '¡Hola dulce Amato! Te dejé unos pastelillos. Recuerda que no tienes que fingir que todo está bien siempre, ¿sí? Te quiero. — Amy 🌸')">
+                ✉️ Sobre de Amy
+              </div>
+
+              <div class="envelope-card shadow-envelope" onclick="openLetter('Shadow', 'No te metas en problemas.<br><br>— Shadow 🖤')">
+                ✉️ Sobre de Shadow
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= PESTAÑA 7: GALERÍA CATEGORIZADA ================= -->
       <section id="gallery" class="tab-content">
         <div class="coquette-card full-width">
-          <div class="card-header">🖼️ AMATO's ART GALLERY</div>
+          <div class="card-header">🖼️ GALERÍA DE ARTE CATEGORIZADA</div>
           <div class="card-body">
-            <div class="gallery-grid">
-              
-              <div class="art-frame">
-                <div class="frame-inner">🍨</div>
-                <div class="frame-caption">Amato Concept</div>
-              </div>
-
-              <div class="art-frame">
-                <div class="frame-inner">🖤🍓</div>
-                <div class="frame-caption">Shamato Moments</div>
-              </div>
-
-              <div class="art-frame">
-                <div class="frame-inner">⚡</div>
-                <div class="frame-caption">Chaos Control Practice</div>
-              </div>
-
-              <div class="art-frame">
-                <div class="frame-inner">🌸</div>
-                <div class="frame-caption">Emerald Hill Days</div>
-              </div>
-
+            
+            <!-- FILTROS DE GALERÍA -->
+            <div class="gallery-filters">
+              <button class="filter-btn active" onclick="filterGallery('all')">TODO</button>
+              <button class="filter-btn" onclick="filterGallery('amato')">AMATO</button>
+              <button class="filter-btn" onclick="filterGallery('shadow')">SHADOW</button>
+              <button class="filter-btn" onclick="filterGallery('shamato')">SHAMATO</button>
+              <button class="filter-btn" onclick="filterGallery('bocetos')">BOCETOS</button>
+              <button class="filter-btn" onclick="filterGallery('animatics')">ANIMATICS</button>
+              <button class="filter-btn" onclick="filterGallery('moodboards')">MOODBOARDS</button>
+              <button class="filter-btn" onclick="filterGallery('disenos')">DISEÑOS</button>
             </div>
+
+            <!-- GRID DE DIBUJOS -->
+            <div class="gallery-grid" id="galleryGrid">
+              <div class="art-frame g-item amato disenos" onclick="openViewer('🍨 Concepto de Amato', 'Diseño principal con colores del helado napolitano y vibra coquette.')">
+                <div class="frame-inner">🍨</div>
+                <div class="frame-caption">Amato Design</div>
+              </div>
+
+              <div class="art-frame g-item shamato moodboards" onclick="openViewer('🖤🍓 Momentos Shamato', 'Atardecer en el campo durante la grabación de Risk It All.')">
+                <div class="frame-inner">🖤🍓</div>
+                <div class="frame-caption">Shamato Moodboard</div>
+              </div>
+
+              <div class="art-frame g-item shadow" onclick="openViewer('⚡ Shadow Chaos Control', 'Práctica de energía Chaos en el espacio.')">
+                <div class="frame-inner">⚡</div>
+                <div class="frame-caption">Shadow Chaos</div>
+              </div>
+
+              <div class="art-frame g-item bocetos animatics" onclick="openViewer('🎬 Storyboard Risk It All', 'Boceto de la escena bajo las estrellas.')">
+                <div class="frame-inner">✏️</div>
+                <div class="frame-caption">Boceto Animatic</div>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
 
-      <!-- PESTAÑA 5: JUKEBOX & PLAYLISTS INTERACTIVAS -->
-      <section id="music" class="tab-content">
-        <div class="coquette-card full-width">
-          <div class="card-header">🎶 JUKEBOX & PLAYLISTS CATEGORIZADAS</div>
+      <!-- ================= PESTAÑA 8: FRASES & DATOS RANDOM ================= -->
+      <section id="fun" class="tab-content">
+        <div class="layout-grid">
+          
+          <div class="coquette-card">
+            <div class="card-header">📖 GENERADOR DE FRASES</div>
+            <div class="card-body text-center">
+              <button class="action-btn" onclick="genQuote('amato')">Dame una frase de Amato</button>
+              <button class="action-btn" onclick="genQuote('shadow')">Dame una frase de Shadow</button>
+              <button class="action-btn" onclick="genQuote('shamato')">Dame una frase de Shamato</button>
+              <div class="quote-box" id="quoteResult" style="margin-top:15px;">Presiona un botón...</div>
+            </div>
+          </div>
+
+          <div class="coquette-card">
+            <div class="card-header">🎲 DATO ALEATORIO</div>
+            <div class="card-body text-center">
+              <button class="action-btn highlight" onclick="genFact()">DATO RANDOM DE AMATO</button>
+              <div class="quote-box" id="factResult" style="margin-top:15px;">Haz clic para descubrir un dato...</div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- EASTER EGG SECRET CHAOS EMERALD -->
+        <div class="coquette-card full-width text-center">
+          <div class="card-header">⭐ SECRET CHAOS EMERALD (¿Tocar 7 veces?)</div>
           <div class="card-body">
-            <div class="playlist-selector">
-              <button class="playlist-btn active" data-vibe="amato">🍨 Amato Core</button>
-              <button class="playlist-btn" data-vibe="shamato">🖤🍓 Shamato</button>
-              <button class="playlist-btn" data-vibe="friends">🌸 Amigos</button>
-            </div>
-
-            <div class="jukebox-player">
-              <h3 id="songTitle">I'm Not a Good Person</h3>
-              <p id="songArtist">The Reasons • Amato Core</p>
-              <audio id="audioPlayer" controls style="width:100%; margin-top:10px;"></audio>
-            </div>
-
-            <ul id="songList" style="list-style:none;"></ul>
+            <div class="chaos-emerald-btn" id="chaosEmeraldBtn">💎</div>
+            <p id="emeraldStatus" style="font-weight:bold; color:var(--dark-pink); margin-top:8px;">Toques: 0 / 7</p>
           </div>
         </div>
       </section>
 
     </main>
 
-    <!-- FOOTER -->
     <footer class="kawaii-footer">
       <p>🎀 Created for Amato's World • Made with Chocolate, Strawberry & Vanilla Magic 🍨</p>
     </footer>
 
   </div>
 
-  <!-- POP-UP MODAL PARA PERSONAJES -->
-  <div class="modal-backdrop" id="charModal">
+  <!-- POP-UP MODAL GENERAL -->
+  <div class="modal-backdrop" id="generalModal">
     <div class="modal-window">
-      <button class="modal-close-btn" id="closeModalBtn">✕</button>
+      <button class="modal-close-btn" onclick="closeModal('generalModal')">✕</button>
       <div class="modal-top">
         <div class="modal-emoji-frame" id="modalEmoji">💙</div>
         <div>
-          <h2 id="modalName">Nombre</h2>
-          <span class="modal-tag" id="modalRel">Relación</span>
+          <h2 id="modalTitle">Título</h2>
+          <span class="modal-tag" id="modalSub">Detalle</span>
         </div>
       </div>
-      <p id="modalThought" style="margin-bottom:10px;"></p>
-      <div class="quote-box" id="modalQuote"></div>
+      <p id="modalBodyText" style="margin-bottom:10px;"></p>
+      <div class="quote-box" id="modalQuoteText"></div>
     </div>
   </div>
 
-  <!-- VÍNCULO AL CÓDIGO JAVASCRIPT EXTERNO -->
+  <!-- VISOR DE ARTE/GALERÍA -->
+  <div class="modal-backdrop" id="viewerModal">
+    <div class="modal-window text-center">
+      <button class="modal-close-btn" onclick="closeModal('viewerModal')">✕</button>
+      <h2 id="viewerTitle">Título del Dibujo</h2>
+      <div class="viewer-box" id="viewerBox">🖼️</div>
+      <p id="viewerDesc" style="margin: 10px 0;"></p>
+      <div class="viewer-controls">
+        <button onclick="zoomViewer(1.2)">🔍 Ampliar</button>
+        <button onclick="zoomViewer(0.8)">🔍 Reducir</button>
+        <button onclick="alert('Imagen anterior')">◀ Anterior</button>
+        <button onclick="alert('Siguiente imagen')">Siguiente ▶</button>
+      </div>
+    </div>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>
