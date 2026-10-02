@@ -5,485 +5,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>🍨 Amato's Pages — Neapolitan Haven 🦔</title>
   
+  <!-- FUENTES KAWAII DE GOOGLE -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&family=Fredoka:wght@400;600;700&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
 
-  <style>
-    /* ===================================================
-       ESTILOS COQUETTE / WEBCORE / PASTEL
-       =================================================== */
-    :root {
-      --bg-pattern: #fdeaf2;
-      --main-pink: #ffb3c6;
-      --dark-pink: #ff758f;
-      --bright-pink: #ff4d6d;
-      --chocolate: #503024;
-      --vainilla: #fffef2;
-      --soft-lace: #ffe5ec;
-      --border-pink: #ffa2b6;
-      --shadow-pink: rgba(255, 117, 143, 0.25);
-      --font-title: 'Cherry Bomb One', cursive;
-      --font-subtitle: 'Fredoka', sans-serif;
-      --font-body: 'Quicksand', sans-serif;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      background-color: var(--bg-pattern);
-      background-image: 
-        radial-gradient(#ffa2b6 15%, transparent 16%),
-        radial-gradient(#ffa2b6 15%, transparent 16%);
-      background-size: 28px 28px;
-      background-position: 0 0, 14px 14px;
-      color: var(--chocolate);
-      font-family: var(--font-body);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      padding: 20px 10px;
-    }
-
-    .webcore-window {
-      width: 100%;
-      max-width: 920px;
-      background: var(--vainilla);
-      border: 4px solid var(--dark-pink);
-      border-radius: 20px;
-      box-shadow: 0 12px 35px var(--shadow-pink);
-      overflow: hidden;
-      position: relative;
-    }
-
-    .window-bar {
-      background: linear-gradient(90deg, var(--dark-pink), var(--main-pink));
-      padding: 8px 15px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      color: white;
-      font-family: var(--font-subtitle);
-      font-weight: bold;
-    }
-
-    .win-btn {
-      background: white;
-      color: var(--dark-pink);
-      width: 22px;
-      height: 22px;
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 50%;
-      font-size: 0.8rem;
-      margin-left: 4px;
-    }
-
-    .marquee-box {
-      background: var(--chocolate);
-      color: var(--vainilla);
-      font-family: var(--font-subtitle);
-      padding: 6px 0;
-      font-size: 0.9rem;
-      border-bottom: 2px dashed var(--main-pink);
-    }
-
-    .lace-header {
-      background: linear-gradient(135deg, #ffcad4, #ffe5ec);
-      padding: 25px;
-      border-bottom: 4px dashed var(--border-pink);
-    }
-
-    .header-content {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    .profile-avatar {
-      width: 85px;
-      height: 85px;
-      background: var(--vainilla);
-      border: 4px solid var(--dark-pink);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 3rem;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-
-    .header-text h1 {
-      font-family: var(--font-title);
-      color: var(--chocolate);
-      font-size: 2.3rem;
-      text-shadow: 2px 2px 0px white;
-    }
-
-    .subtitle {
-      font-family: var(--font-subtitle);
-      color: var(--dark-pink);
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
-
-    .tag-badges {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .tag {
-      background: white;
-      border: 2px solid var(--main-pink);
-      color: var(--chocolate);
-      padding: 3px 10px;
-      border-radius: 12px;
-      font-size: 0.8rem;
-      font-weight: 700;
-    }
-
-    .kawaii-nav {
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-      padding: 15px;
-      background: #fff5f8;
-      border-bottom: 2px solid var(--border-pink);
-      flex-wrap: wrap;
-    }
-
-    .nav-tab {
-      background: white;
-      border: 3px solid var(--main-pink);
-      color: var(--chocolate);
-      font-family: var(--font-subtitle);
-      font-size: 0.95rem;
-      font-weight: 700;
-      padding: 8px 16px;
-      border-radius: 20px;
-      cursor: pointer;
-      box-shadow: 0 4px 0px var(--main-pink);
-      transition: all 0.2s ease;
-    }
-
-    .nav-tab:hover, .nav-tab.active {
-      background: var(--dark-pink);
-      color: white;
-      border-color: var(--dark-pink);
-      transform: translateY(2px);
-      box-shadow: 0 2px 0px var(--chocolate);
-    }
-
-    .content-area {
-      padding: 20px;
-    }
-
-    .tab-content {
-      display: none;
-    }
-
-    .tab-content.active {
-      display: block;
-      animation: fadeIn 0.3s ease;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(8px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .layout-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-      margin-bottom: 20px;
-    }
-
-    .coquette-card {
-      background: white;
-      border: 3px solid var(--main-pink);
-      border-radius: 18px;
-      overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.03);
-      margin-bottom: 20px;
-    }
-
-    .card-header {
-      background: var(--soft-lace);
-      border-bottom: 2px dashed var(--main-pink);
-      padding: 10px 15px;
-      font-family: var(--font-subtitle);
-      font-weight: 700;
-      color: var(--dark-pink);
-    }
-
-    .card-body {
-      padding: 18px;
-      line-height: 1.6;
-    }
-
-    .info-list {
-      list-style: none;
-    }
-
-    .info-list li {
-      margin-bottom: 8px;
-      border-bottom: 1px dashed #ffe0e6;
-      padding-bottom: 4px;
-    }
-
-    .info-list span {
-      font-weight: bold;
-      color: var(--dark-pink);
-    }
-
-    .quote-box {
-      background: #fff0f4;
-      border-left: 4px solid var(--dark-pink);
-      padding: 12px;
-      border-radius: 8px;
-      font-style: italic;
-      margin-top: 12px;
-      font-weight: 600;
-    }
-
-    /* PERSONAJES GRID */
-    .character-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
-      gap: 15px;
-    }
-
-    .char-card {
-      background: #fff8fa;
-      border: 3px solid var(--main-pink);
-      border-radius: 16px;
-      padding: 12px;
-      text-align: center;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      box-shadow: 0 4px 0px var(--main-pink);
-    }
-
-    .char-card:hover {
-      transform: translateY(-4px);
-      background: #ffebee;
-      border-color: var(--dark-pink);
-      box-shadow: 0 6px 0px var(--dark-pink);
-    }
-
-    .char-avatar-ring {
-      width: 55px;
-      height: 55px;
-      background: white;
-      border: 2px solid var(--dark-pink);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.8rem;
-      margin: 0 auto 8px auto;
-    }
-
-    .char-btn-label {
-      font-family: var(--font-subtitle);
-      font-weight: 700;
-      font-size: 0.9rem;
-      color: var(--chocolate);
-    }
-
-    /* GALERÍA CON MARCOS ROSADOS Y MOÑOS */
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 25px;
-      margin-top: 15px;
-    }
-
-    .art-frame {
-      background: #ffffff;
-      border: 4px solid var(--dark-pink);
-      border-radius: 20px;
-      padding: 12px;
-      box-shadow: 0 8px 18px var(--shadow-pink);
-      position: relative;
-      transition: all 0.3s ease;
-    }
-
-    .art-frame:hover {
-      transform: translateY(-6px) rotate(1deg);
-      border-color: var(--bright-pink);
-    }
-
-    .art-frame::before {
-      content: '🎀';
-      position: absolute;
-      top: -14px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 1.4rem;
-      background: white;
-      padding: 0 6px;
-      border-radius: 50%;
-    }
-
-    .frame-inner {
-      width: 100%;
-      height: 180px;
-      border: 2px dashed var(--main-pink);
-      border-radius: 12px;
-      overflow: hidden;
-      background: var(--soft-lace);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2.5rem;
-    }
-
-    .frame-caption {
-      font-family: var(--font-subtitle);
-      font-weight: 700;
-      color: var(--chocolate);
-      font-size: 0.85rem;
-      text-align: center;
-      margin-top: 10px;
-    }
-
-    /* JUKEBOX & PLAYLISTS */
-    .playlist-selector {
-      display: flex;
-      gap: 10px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-bottom: 20px;
-    }
-
-    .playlist-btn {
-      background: white;
-      border: 2px solid var(--main-pink);
-      color: var(--chocolate);
-      font-family: var(--font-subtitle);
-      font-weight: bold;
-      padding: 8px 16px;
-      border-radius: 15px;
-      cursor: pointer;
-    }
-
-    .playlist-btn.active {
-      background: var(--dark-pink);
-      color: white;
-    }
-
-    .song-item {
-      background: white;
-      border: 2px solid var(--main-pink);
-      padding: 10px 14px;
-      border-radius: 12px;
-      margin-bottom: 8px;
-      display: flex;
-      justify-content: space-between;
-      cursor: pointer;
-      font-weight: 600;
-    }
-
-    .song-item:hover {
-      background: #ffe5ec;
-    }
-
-    /* MODAL POP-UP */
-    .modal-backdrop {
-      display: none;
-      position: fixed;
-      top:0; left:0; width:100%; height:100%;
-      background: rgba(0,0,0,0.35);
-      backdrop-filter: blur(4px);
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-    }
-
-    .modal-window {
-      background: white;
-      border: 4px solid var(--dark-pink);
-      border-radius: 22px;
-      width: 90%;
-      max-width: 480px;
-      padding: 22px;
-      position: relative;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    }
-
-    .modal-close-btn {
-      position: absolute;
-      top: 12px; right: 12px;
-      background: var(--dark-pink);
-      color: white;
-      border: none;
-      width: 32px; height: 32px;
-      border-radius: 50%;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .modal-top {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      border-bottom: 2px dashed var(--main-pink);
-      padding-bottom: 12px;
-      margin-bottom: 15px;
-    }
-
-    .modal-emoji-frame {
-      width: 60px;
-      height: 60px;
-      background: var(--soft-lace);
-      border: 2px solid var(--dark-pink);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2rem;
-    }
-
-    .kawaii-footer {
-      text-align: center;
-      padding: 15px;
-      background: var(--soft-lace);
-      border-top: 2px dashed var(--main-pink);
-      font-family: var(--font-subtitle);
-      font-size: 0.85rem;
-      font-weight: 600;
-    }
-  </style>
+  <!-- VÍNCULO A ESTILOS EXTERNOS -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+  <!-- VENTANA PRINCIPAL WEBCORE -->
   <div class="webcore-window">
     
+    <!-- BARRA SUPERIOR Y2K -->
     <div class="window-bar">
-      <div class="bar-title">🎀 Neapolitan_Haven_v3.0.exe</div>
+      <div class="bar-title">🎀 Neapolitan_Haven_v3.0.exe — Amato & Shamato Archive</div>
       <div class="bar-buttons">
         <span class="win-btn">_</span>
         <span class="win-btn">□</span>
-        <span class="win-btn">×</span>
+        <span class="win-btn close">×</span>
       </div>
     </div>
 
+    <!-- MARQUESINA CORREDIZA -->
     <div class="marquee-box">
       <marquee behavior="scroll" direction="left" scrollamount="6">
         🍨 Welcome to Amato's Personal Page! ✨ Chocolate × Fresa × Vainilla 🍓 Shadow's #1 Fan 🖤 Chaos Emerald Enthusiast ⭐ "No soy feliz, solo aprendí a hacer felices a los demás" 💖
       </marquee>
     </div>
 
+    <!-- HEADER CON ENCAJE (LACE) -->
     <header class="lace-header">
       <div class="header-content">
         <div class="profile-avatar">🍨</div>
@@ -500,17 +52,19 @@
       </div>
     </header>
 
+    <!-- NAVEGACIÓN POR PESTAÑAS -->
     <nav class="kawaii-nav">
-      <button class="nav-tab active" onclick="switchTab('profile')">🍨 Profile & Lore</button>
-      <button class="nav-tab" onclick="switchTab('characters')">👥 Characters (Click!)</button>
-      <button class="nav-tab" onclick="switchTab('shamato')">🖤🍓 Shamato Archive</button>
-      <button class="nav-tab" onclick="switchTab('gallery')">🖼️ Art Gallery</button>
-      <button class="nav-tab" onclick="switchTab('music')">🎶 Jukebox & Playlists</button>
+      <button class="nav-tab active" data-tab="profile">🍨 Profile & Lore</button>
+      <button class="nav-tab" data-tab="characters">👥 Characters (Click!)</button>
+      <button class="nav-tab" data-tab="shamato">🖤🍓 Shamato Archive</button>
+      <button class="nav-tab" data-tab="gallery">🖼️ Art Gallery</button>
+      <button class="nav-tab" data-tab="music">🎶 Jukebox & Playlists</button>
     </nav>
 
+    <!-- CONTENIDO PRINCIPAL DE PESTAÑAS -->
     <main class="content-area">
 
-      <!-- PESTAÑA 1: PROFILE -->
+      <!-- PESTAÑA 1: PROFILE & LORE -->
       <section id="profile" class="tab-content active">
         <div class="layout-grid">
           <div class="coquette-card">
@@ -521,8 +75,9 @@
                 <li><span>Especie:</span> Erizo 🦔</li>
                 <li><span>Edad:</span> 17 años</li>
                 <li><span>Origen:</span> Emerald Hill</li>
+                <li><span>Altura:</span> ~101 cm | <span>Dominancia:</span> Ambidiestro</li>
                 <li><span>Ojos:</span> Rojo / Rosa intenso ❤️</li>
-                <li><span>Poderes:</span> Sensibilidad a Chaos Energy ⚡</li>
+                <li><span>Poderes:</span> Sensibilidad & Control de Chaos Energy ⚡</li>
               </ul>
             </div>
           </div>
@@ -530,7 +85,8 @@
           <div class="coquette-card">
             <div class="card-header">🍓🍫🍦 ESTÉTICA & CONCEPTO</div>
             <div class="card-body">
-              <p>Estilo <strong>Coquette + Y2K + Sonic Clásico</strong>. Basado en el helado napolitano.</p>
+              <p>Estilo <strong>Coquette + Y2K + Sonic Clásico</strong>. Basado visualmente en el helado napolitano.</p>
+              <p>Su apariencia dulce, esponjosa e inofensiva contrasta directamente con su trasfondo melancólico y culpa no resuelta.</p>
               <div class="quote-box">
                 "Dulce por fuera, lleno de culpa por dentro."
               </div>
@@ -538,11 +94,12 @@
           </div>
         </div>
 
-        <div class="coquette-card">
+        <div class="coquette-card full-width">
           <div class="card-header">🌙 LORE & LA MÁSCARA (AMATO CORE)</div>
           <div class="card-body">
-            <p>Amato desea a las estrellas que el dolor termine tras perder a sus padres. Al vivir con una culpa oculta, convierte su alegría en una máscara para ayudar a todos.</p>
-            <div class="quote-box">
+            <p>A los 12 años, tras perder a su padre y sufrir una relación difícil con su madre, Amato deseó impulsivamente a las estrellas que la pesadilla terminara. Poco después, su madre falleció.</p>
+            <p>Amato creció creyendo internamente que su deseo causó la tragedia. Con el tiempo idealizó a su madre y convirtió su alegría en una máscara: sonríe, hace bromas y ayuda a todos para que nadie sufra lo mismo.</p>
+            <div class="quote-box highlight">
               "No soy feliz. Solo aprendí a hacer felices a los demás." — Amato Core 🥀
             </div>
           </div>
@@ -551,44 +108,51 @@
 
       <!-- PESTAÑA 2: PERSONAJES INTERACTIVOS -->
       <section id="characters" class="tab-content">
-        <div class="coquette-card">
+        <div class="coquette-card full-width">
           <div class="card-header">👥 ¿QUÉ OPINA AMATO DE CADA PERSONAJE?</div>
           <div class="card-body">
-            <p style="margin-bottom:15px; color:var(--dark-pink); font-weight:bold;">✨ Haz clic en cualquier personaje para ver sus detalles:</p>
+            <p class="instruction">✨ Haz clic o toca el icono de cualquier personaje para ver sus pensamientos detallados:</p>
             
             <div class="character-grid">
-              <div class="char-card" onclick="openChar('sonic')"><div class="char-avatar-ring">💙</div><div class="char-btn-label">Sonic</div></div>
-              <div class="char-card" onclick="openChar('tails')"><div class="char-avatar-ring">🧡</div><div class="char-btn-label">Tails</div></div>
-              <div class="char-card" onclick="openChar('amy')"><div class="char-avatar-ring">🌸</div><div class="char-btn-label">Amy</div></div>
-              <div class="char-card" onclick="openChar('knuckles')"><div class="char-avatar-ring">🔥</div><div class="char-btn-label">Knuckles</div></div>
-              <div class="char-card" onclick="openChar('cream')"><div class="char-avatar-ring">🩷</div><div class="char-btn-label">Cream</div></div>
-              <div class="char-card" onclick="openChar('shadow')"><div class="char-avatar-ring">🖤</div><div class="char-btn-label">Shadow</div></div>
-              <div class="char-card" onclick="openChar('eggman')"><div class="char-avatar-ring">🥚</div><div class="char-btn-label">Dr. Eggman</div></div>
-              <div class="char-card" onclick="openChar('maria')"><div class="char-avatar-ring">🌹</div><div class="char-btn-label">Maria</div></div>
+              <div class="char-card" data-char="sonic"><div class="char-avatar-ring">💙</div><div class="char-btn-label">Sonic</div></div>
+              <div class="char-card" data-char="tails"><div class="char-avatar-ring">🧡</div><div class="char-btn-label">Tails</div></div>
+              <div class="char-card" data-char="amy"><div class="char-avatar-ring">🌸</div><div class="char-btn-label">Amy</div></div>
+              <div class="char-card" data-char="knuckles"><div class="char-avatar-ring">🔥</div><div class="char-btn-label">Knuckles</div></div>
+              <div class="char-card" data-char="cream"><div class="char-avatar-ring">🩷</div><div class="char-btn-label">Cream</div></div>
+              <div class="char-card" data-char="shadow"><div class="char-avatar-ring">🖤</div><div class="char-btn-label">Shadow</div></div>
+              <div class="char-card" data-char="eggman"><div class="char-avatar-ring">🥚</div><div class="char-btn-label">Dr. Eggman</div></div>
+              <div class="char-card" data-char="maria"><div class="char-avatar-ring">🌹</div><div class="char-btn-label">Maria</div></div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- PESTAÑA 3: SHAMATO -->
+      <!-- PESTAÑA 3: SHAMATO ARCHIVE -->
       <section id="shamato" class="tab-content">
-        <div class="coquette-card">
+        <div class="coquette-card full-width special-shamato">
           <div class="card-header">🖤🍓 SHAMATO (Shadow × Amato)</div>
           <div class="card-body">
-            <p><strong>Tropes:</strong> Grumpy × Sunshine | Tsundere × Affectionate | Chaos Emerald Partners</p>
-            <div class="quote-box" style="margin-top:15px;">
-              Shadow: "Aléjate." <br>
-              Amato: "No." <br>
-              Shadow: "..." <br>
-              Amato: ":D"
+            <p><strong>Tropes:</strong> Grumpy × Sunshine | Tsundere × Affectionate | Chaos Emerald Partners | Opposites Attract</p>
+            <br>
+            <p>Se conocieron durante los acontecimientos de <em>Sonic Adventure 2</em>. Inicialmente Amato perseguía a Shadow fascinado por su uso del Chaos Control. Con el tiempo, ambos formaron un vínculo profundo basado en entender el dolor y la soledad del otro.</p>
+
+            <div class="dialogue-box">
+              <div class="line"><strong>Shadow:</strong> "Aléjate."</div>
+              <div class="line"><strong>Amato:</strong> "No."</div>
+              <div class="line"><strong>Shadow:</strong> "..."</div>
+              <div class="line"><strong>Amato:</strong> ":D"</div>
+            </div>
+
+            <div class="quote-box">
+              Amato expresa el cariño hablando. Shadow lo expresa protegiéndolo. Amato dice "Te quiero". Shadow dice "Quédate detrás de mí".
             </div>
           </div>
         </div>
       </section>
 
-      <!-- PESTAÑA 4: GALERÍA DE DIBUJOS (MARCOS ROSADOS) -->
+      <!-- PESTAÑA 4: GALERÍA DE DIBUJOS CON MARCOS ROSADOS -->
       <section id="gallery" class="tab-content">
-        <div class="coquette-card">
+        <div class="coquette-card full-width">
           <div class="card-header">🖼️ AMATO's ART GALLERY</div>
           <div class="card-body">
             <div class="gallery-grid">
@@ -600,17 +164,17 @@
 
               <div class="art-frame">
                 <div class="frame-inner">🖤🍓</div>
-                <div class="frame-caption">Shamato Moment</div>
+                <div class="frame-caption">Shamato Moments</div>
               </div>
 
               <div class="art-frame">
                 <div class="frame-inner">⚡</div>
-                <div class="frame-caption">Chaos Control</div>
+                <div class="frame-caption">Chaos Control Practice</div>
               </div>
 
               <div class="art-frame">
                 <div class="frame-inner">🌸</div>
-                <div class="frame-caption">Emerald Hill</div>
+                <div class="frame-caption">Emerald Hill Days</div>
               </div>
 
             </div>
@@ -618,20 +182,20 @@
         </div>
       </section>
 
-      <!-- PESTAÑA 5: JUKEBOX & PLAYLISTS -->
+      <!-- PESTAÑA 5: JUKEBOX & PLAYLISTS INTERACTIVAS -->
       <section id="music" class="tab-content">
-        <div class="coquette-card">
-          <div class="card-header">🎶 JUKEBOX & PLAYLISTS</div>
+        <div class="coquette-card full-width">
+          <div class="card-header">🎶 JUKEBOX & PLAYLISTS CATEGORIZADAS</div>
           <div class="card-body">
             <div class="playlist-selector">
-              <button class="playlist-btn active" onclick="loadPlaylist('amato')">🍨 Amato Core</button>
-              <button class="playlist-btn" onclick="loadPlaylist('shamato')">🖤🍓 Shamato</button>
-              <button class="playlist-btn" onclick="loadPlaylist('friends')">🌸 Amigos</button>
+              <button class="playlist-btn active" data-vibe="amato">🍨 Amato Core</button>
+              <button class="playlist-btn" data-vibe="shamato">🖤🍓 Shamato</button>
+              <button class="playlist-btn" data-vibe="friends">🌸 Amigos</button>
             </div>
 
-            <div style="background:#fff0f4; border:2px dashed var(--dark-pink); padding:15px; border-radius:15px; margin-bottom:15px;">
+            <div class="jukebox-player">
               <h3 id="songTitle">I'm Not a Good Person</h3>
-              <p id="songArtist" style="color:var(--dark-pink); font-weight:bold;">The Reasons • Amato Core</p>
+              <p id="songArtist">The Reasons • Amato Core</p>
               <audio id="audioPlayer" controls style="width:100%; margin-top:10px;"></audio>
             </div>
 
@@ -642,21 +206,22 @@
 
     </main>
 
+    <!-- FOOTER -->
     <footer class="kawaii-footer">
       <p>🎀 Created for Amato's World • Made with Chocolate, Strawberry & Vanilla Magic 🍨</p>
     </footer>
 
   </div>
 
-  <!-- MODAL -->
+  <!-- POP-UP MODAL PARA PERSONAJES -->
   <div class="modal-backdrop" id="charModal">
     <div class="modal-window">
-      <button class="modal-close-btn" onclick="closeModal()">✕</button>
+      <button class="modal-close-btn" id="closeModalBtn">✕</button>
       <div class="modal-top">
         <div class="modal-emoji-frame" id="modalEmoji">💙</div>
         <div>
           <h2 id="modalName">Nombre</h2>
-          <span style="background:var(--main-pink); color:white; padding:2px 8px; border-radius:10px; font-size:0.8rem;" id="modalRel">Relación</span>
+          <span class="modal-tag" id="modalRel">Relación</span>
         </div>
       </div>
       <p id="modalThought" style="margin-bottom:10px;"></p>
@@ -664,78 +229,7 @@
     </div>
   </div>
 
-  <script>
-    // CAMBIO DE PESTAÑAS
-    function switchTab(tabId) {
-      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-      document.querySelectorAll('.nav-tab').forEach(el => el.classList.remove('active'));
-      
-      document.getElementById(tabId).classList.add('active');
-      event.currentTarget.classList.add('active');
-    }
-
-    // DATOS DE PERSONAJES
-    const charData = {
-      sonic: { emoji: "💙", name: "Sonic the Hedgehog", rel: "Mejores Amigos", thought: "Amato admira su libertad y optimismo.", quote: "“¡Sonic es increíble! Nunca te aburres a su lado.”" },
-      tails: { emoji: "🧡", name: "Miles 'Tails' Prower", rel: "Compañeros de Ciencia", thought: "Conversan por horas sobre las Chaos Emeralds.", quote: "“Tails entiende la ciencia detrás de la energía.”" },
-      amy: { emoji: "🌸", name: "Amy Rose", rel: "Apoyo Emocional", thought: "Sabe cuándo Amato finge estar bien.", quote: "“Amy siempre tiene el mejor abrazo listo.”" },
-      knuckles: { emoji: "🔥", name: "Knuckles the Echidna", rel: "Rivalidad Amistosa", thought: "Amato adora molestarlo.", quote: "“Se enoja rápido pero daría la vida por sus amigos.”" },
-      cream: { emoji: "🩷", name: "Cream the Rabbit", rel: "Vínculo Protector", thought: "Amato la cuida como a una hermanita.", quote: "“Cream es demasiado tierna, la protegeré siempre.”" },
-      shadow: { emoji: "🖤", name: "Shadow the Hedgehog", rel: "Enamorados (Shamato ❤️)", thought: "Se entienden a través del dolor y la soledad.", quote: "“Shadow solo necesita a alguien que decida quedarse.”" },
-      eggman: { emoji: "🥚", name: "Dr. Eggman", rel: "Rival / Enemigo", thought: "No soporta que use las Emeralds para el mal.", quote: "“Es listo, pero no tengo por qué soportarlo.”" },
-      maria: { emoji: "🌹", name: "Maria Robotnik", rel: "Respeto Profundo", thought: "La respeta por lo mucho que significó para Shadow.", quote: "“Entiendo perfectamente por qué Shadow la quería tanto.”" }
-    };
-
-    function openChar(key) {
-      const data = charData[key];
-      if(!data) return;
-      document.getElementById('modalEmoji').innerText = data.emoji;
-      document.getElementById('modalName').innerText = data.name;
-      document.getElementById('modalRel').innerText = data.rel;
-      document.getElementById('modalThought').innerText = data.thought;
-      document.getElementById('modalQuote').innerText = data.quote;
-      document.getElementById('charModal').style.display = 'flex';
-    }
-
-    function closeModal() {
-      document.getElementById('charModal').style.display = 'none';
-    }
-
-    // PLAYLISTS
-    const songData = {
-      amato: [
-        { name: "I'm Not a Good Person", artist: "The Reasons", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" },
-        { name: "Sweet But Psycho", artist: "Ava Max", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" }
-      ],
-      shamato: [
-        { name: "Risk It All", artist: "Bruno Mars", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" }
-      ],
-      friends: [
-        { name: "Live & Learn", artist: "Crush 40", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3" }
-      ]
-    };
-
-    function loadPlaylist(key) {
-      const list = songData[key];
-      const container = document.getElementById('songList');
-      container.innerHTML = "";
-      
-      list.forEach(song => {
-        const li = document.createElement('li');
-        li.className = 'song-item';
-        li.innerHTML = `<span>🎵 ${song.name}</span> <small>${song.artist}</small>`;
-        li.onclick = () => {
-          document.getElementById('songTitle').innerText = song.name;
-          document.getElementById('songArtist').innerText = song.artist;
-          const player = document.getElementById('audioPlayer');
-          player.src = song.url;
-          player.play();
-        };
-        container.appendChild(li);
-      });
-    }
-
-    loadPlaylist('amato');
-  </script>
+  <!-- VÍNCULO AL CÓDIGO JAVASCRIPT EXTERNO -->
+  <script src="script.js"></script>
 </body>
 </html>
