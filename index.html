@@ -8,6 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&family=Fredoka:wght@400;600;700&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+
+  <!-- VÍNCULO A TU CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -69,7 +71,7 @@
       </div>
     </header>
 
-    <!-- NAVEGACIÓN COMPLETA DE PESTAÑAS -->
+    <!-- NAVEGACIÓN COMPLETA -->
     <nav class="kawaii-nav">
       <div class="nav-buttons-grid">
         <button class="nav-tab active" data-tab="tab-conoce">1. Conoce a Amato</button>
@@ -108,7 +110,7 @@
 
     <main class="content-area">
 
-      <!-- PESTAÑA 1: CONOCE A AMATO -->
+      <!-- PESTAÑA 1 -->
       <section id="tab-conoce" class="tab-content active">
         <div class="coquette-card">
           <div class="card-header">🍨 ¡Hola! Soy Amato</div>
@@ -117,7 +119,7 @@
             <p>Tengo 17 años, soy un erizo y vivo en Emerald Hill.</p>
             <p>Me gustan las aventuras, investigar cosas raras y las Chaos Emeralds. Sobre todo las Chaos Emeralds. Probablemente demasiado.</p>
             
-            <div class="btn-group-vertical">
+            <div class="btn-group-vertical" style="margin-top:10px;">
               <button class="action-btn pop-btn" data-title="¿Quién eres?" data-text="Me llamo Amato. Soy un erizo. Tengo 17 años. Soy ambidiestro. Mido más o menos 100 cm. Tengo los ojos rojos, aunque a veces parecen más rosados. Y sí, mi diseño está basado en helado napolitano: Chocolate, fresa y vainilla. No, no sé quién decidió que eso era una buena idea... Bueno, sí sé." data-emoji="🍨">¿Quién eres?</button>
               <button class="action-btn pop-btn" data-title="¿Qué te gusta?" data-text="Las Chaos Emeralds. Las aventuras. Correr. Pasar tiempo con mis amigos. Aprender cosas nuevas. Las estrellas. Los dulces. Las cosas misteriosas. Preguntar demasiado. Y... bueno. Shadow. ... ¿Qué? No dije nada." data-emoji="⭐">¿Qué te gusta?</button>
               <button class="action-btn pop-btn" data-title="¿Cómo eres?" data-text="Supongo que soy bastante curioso. Me gusta saber cómo funcionan las cosas. Si algo no tiene explicación, quiero encontrarla. También hablo bastante. Mucho. Demasiado, según Shadow. Soy impulsivo. A veces hago cosas antes de pensar. También intento cuidar a las personas que quiero. Aunque a veces no sé muy bien cómo hacerlo." data-emoji="🧠">¿Cómo eres?</button>
@@ -126,7 +128,7 @@
         </div>
       </section>
 
-      <!-- PESTAÑA 2: PREGÚNTALE A AMATO -->
+      <!-- PESTAÑA 2 -->
       <section id="tab-preguntas" class="tab-content">
         <div class="coquette-card">
           <div class="card-header">❓ PREGÚNTALE ALGO A AMATO</div>
@@ -147,7 +149,7 @@
         </div>
       </section>
 
-      <!-- PESTAÑA 3: NO DEBERÍAS PREGUNTAR -->
+      <!-- PESTAÑA 3 -->
       <section id="tab-no-preguntar" class="tab-content">
         <div class="coquette-card">
           <div class="card-header">🚫 COSAS QUE NO DEBERÍAS PREGUNTAR</div>
@@ -161,7 +163,7 @@
         </div>
       </section>
 
-      <!-- PESTAÑA 4: PERSONALIDAD -->
+      <!-- PESTAÑA 4 -->
       <section id="tab-personalidad" class="tab-content">
         <div class="coquette-card">
           <div class="card-header">🧠 PERSONALIDAD DE AMATO</div>
@@ -177,7 +179,7 @@
         </div>
       </section>
 
-      <!-- PESTAÑA 5: TEST Y ESCENARIOS -->
+      <!-- PESTAÑA 5 -->
       <section id="tab-test" class="tab-content">
         <div class="coquette-card">
           <div class="card-header">📋 TEST: ¿QUÉ TAN AMATO ERES?</div>
@@ -193,20 +195,12 @@
         </div>
       </section>
 
-      <!-- PESTAÑA 6: SIMULADOR DE AMATO -->
+      <!-- PESTAÑA 6 -->
       <section id="tab-simulador" class="tab-content">
         <div class="coquette-card">
           <div class="card-header">📊 SIMULADOR DE ESTADO DE AMATO</div>
           <div class="card-body">
-            <div class="stat-meters">
-              <div class="meter-row"><span>Felicidad:</span> <div class="bar"><div class="fill" style="width:70%;"></div></div></div>
-              <div class="meter-row"><span>Energía:</span> <div class="bar"><div class="fill" style="width:90%;"></div></div></div>
-              <div class="meter-row"><span>Curiosidad:</span> <div class="bar"><div class="fill" style="width:100%;"></div></div></div>
-              <div class="meter-row"><span>Paciencia:</span> <div class="bar"><div class="fill" style="width:20%;"></div></div></div>
-              <div class="meter-row"><span>Caos:</span> <div class="bar"><div class="fill" style="width:80%;"></div></div></div>
-            </div>
-
-            <div class="btn-group-vertical" style="margin-top:12px;">
+            <div class="btn-group-vertical">
               <button class="action-btn" id="simComidaBtn">🍲 Darse Comida</button>
               <button class="action-btn" id="simAbrazoBtn">🫂 Dar Abrazo</button>
               <button class="action-btn" id="simEmeraldBtn">💎 Dar Chaos Emerald</button>
@@ -218,11 +212,11 @@
         </div>
       </section>
 
-      <!-- PESTAÑA 7: MENSAJES DE SHADOW -->
+      <!-- PESTAÑA 7 -->
       <section id="tab-mensajes-shadow" class="tab-content">
         <div class="coquette-card">
           <div class="card-header">💬 GENERADOR DE MENSAJES DE SHADOW</div>
-          <div class="card-body text-center">
+          <div class="card-body text-center btn-group-vertical">
             <button class="action-btn" id="genShadowCommon">Mensaje Común</button>
             <button class="action-btn" id="genShadowHidden">Mensaje Oculto</button>
             <button class="action-btn highlight" id="genShadowRare">Mensaje Raro 🖤</button>
@@ -231,7 +225,7 @@
         </div>
       </section>
 
-      <!-- PESTAÑA 8: ESCENAS SHAMATO -->
+      <!-- PESTAÑA 8 -->
       <section id="tab-escenas-shamato" class="tab-content">
         <div class="coquette-card">
           <div class="card-header">🎬 GENERADOR DE ESCENAS SHAMATO</div>
@@ -242,7 +236,7 @@
         </div>
       </section>
 
-      <!-- PESTAÑA 9: LABORATORIO DE TAILS -->
+      <!-- PESTAÑA 9 -->
       <section id="tab-laboratorio" class="tab-content">
         <div class="coquette-card">
           <div class="card-header">🔬 LABORATORIO DE INVESTIGACIÓN CHAOS</div>
@@ -258,7 +252,7 @@
         </div>
       </section>
 
-      <!-- PESTAÑA 10: COLECCIÓN DE CHAOS EMERALDS -->
+      <!-- PESTAÑA 10 -->
       <section id="tab-coleccion" class="tab-content">
         <div class="coquette-card text-center">
           <div class="card-header">💎 COLECCIÓN DE CHAOS EMERALDS</div>
@@ -272,10 +266,10 @@
         </div>
       </section>
 
-      <!-- PESTAÑA 11: HABITACIÓN & DIARIO -->
+      <!-- PESTAÑA 11 -->
       <section id="tab-habitacion" class="tab-content">
         <div class="coquette-card">
-          <div class="card-header">🛏️ HABITACIÓN DE AMATO</div>
+          <div class="card-header">🛏️️ HABITACIÓN DE AMATO</div>
           <div class="card-body btn-group-vertical">
             <button class="action-btn" id="roomPlushBtn">🧸 Peluche</button>
             <button class="action-btn pop-btn" data-title="Libros" data-text="Chaos Energy, Chaos Emeralds, Historia, Cosas que Tails me prestó... Este no lo termino, este tampoco." data-emoji="📚">📚 Libros</button>
@@ -286,7 +280,7 @@
         </div>
       </section>
 
-      <!-- PESTAÑA 12: MINIJUEGO -->
+      <!-- PESTAÑA 12 -->
       <section id="tab-minijuego" class="tab-content">
         <div class="coquette-card text-center">
           <div class="card-header">🎮 ATRAPA LAS CHAOS EMERALDS</div>
@@ -301,7 +295,7 @@
         </div>
       </section>
 
-      <!-- PESTAÑA 13: VISTE A AMATO -->
+      <!-- PESTAÑA 13 -->
       <section id="tab-outfits" class="tab-content">
         <div class="coquette-card text-center">
           <div class="card-header">👗 VISTE A AMATO</div>
@@ -319,7 +313,7 @@
         </div>
       </section>
 
-      <!-- PESTAÑA 14: AMATO CORE & POLAROIDS -->
+      <!-- PESTAÑA 14 -->
       <section id="tab-amato-core" class="tab-content">
         <div class="coquette-card">
           <div class="card-header">📷 POLAROIDS & RECUERDOS</div>
@@ -333,13 +327,13 @@
         </div>
       </section>
 
-      <!-- PESTAÑA 15: ARCHIVO CLASIFICADO -->
+      <!-- PESTAÑA 15 -->
       <section id="tab-clasificado" class="tab-content">
         <div class="coquette-card text-center">
           <div class="card-header">⚠️ ARCHIVO CLASIFICADO: AMATO</div>
           <div class="card-body">
             <p>ACCESO RESTRINGIDO. ¿Seguro que quieres abrirlo?</p>
-            <button class="action-btn highlight" id="openClassifiedBtn">Sí, abrir archivo</button>
+            <button class="action-btn highlight" id="openClassifiedBtn" style="margin-top:10px;">Sí, abrir archivo</button>
             <div class="quote-box" id="classifiedResult" style="display:none; text-align:left;">
               <p><strong>Miedo:</strong> Perder a alguien otra vez.</p>
               <p><strong>Inseguridad:</strong> Sentir que tiene que estar bien para que los demás estén bien.</p>
@@ -351,7 +345,7 @@
         </div>
       </section>
 
-      <!-- PESTAÑA 16: ¿CÓMO ESTÁ HOY? -->
+      <!-- PESTAÑA 16 -->
       <section id="tab-estado-hoy" class="tab-content">
         <div class="coquette-card text-center">
           <div class="card-header">💭 ¿CÓMO ESTÁ AMATO HOY?</div>
@@ -362,7 +356,7 @@
         </div>
       </section>
 
-      <!-- PESTAÑA 17: CARTAS SECRETAS -->
+      <!-- PESTAÑA 17 -->
       <section id="tab-cartas" class="tab-content">
         <div class="coquette-card">
           <div class="card-header">💌 CARTAS SECRETAS</div>
@@ -375,11 +369,11 @@
         </div>
       </section>
 
-      <!-- PESTAÑA 18: GENERADOR DE FRASES -->
+      <!-- PESTAÑA 18 -->
       <section id="tab-frases" class="tab-content">
         <div class="coquette-card text-center">
           <div class="card-header">📖 GENERADOR DE FRASES</div>
-          <div class="card-body">
+          <div class="card-body btn-group-vertical">
             <button class="action-btn" id="btnQuoteAmato2">Frase de Amato</button>
             <button class="action-btn" id="btnQuoteShadow2">Frase de Shadow</button>
             <button class="action-btn highlight" id="btnQuoteShamato2">Frase Shamato</button>
@@ -388,19 +382,19 @@
         </div>
       </section>
 
-      <!-- PESTAÑA 19: ENERGÍA SHAMATO -->
+      <!-- PESTAÑA 19 -->
       <section id="tab-energia-shamato" class="tab-content">
         <div class="coquette-card text-center">
           <div class="card-header">💗 ENERGÍA SHAMATO</div>
           <div class="card-body">
             <p id="shamatoLvlText">Nivel actual: 0 / 100</p>
-            <button class="action-btn highlight" id="btnPlusOneShamato">+1 Energía</button>
+            <button class="action-btn highlight" id="btnPlusOneShamato" style="margin-top:8px;">+1 Energía</button>
             <div class="quote-box" id="shamatoLvlMsg">Aumenta la energía...</div>
           </div>
         </div>
       </section>
 
-      <!-- PESTAÑA 20: MAPA DE RECUERDOS -->
+      <!-- PESTAÑA 20 -->
       <section id="tab-mapa-recuerdos" class="tab-content">
         <div class="coquette-card">
           <div class="card-header">⭐ MAPA DE RECUERDOS</div>
@@ -412,7 +406,7 @@
         </div>
       </section>
 
-      <!-- PESTAÑA 21: ¿Y SI...? -->
+      <!-- PESTAÑA 21 -->
       <section id="tab-y-si" class="tab-content">
         <div class="coquette-card">
           <div class="card-header">❓ ESCENARIOS "¿Y SI...?"</div>
@@ -423,7 +417,7 @@
         </div>
       </section>
 
-      <!-- PESTAÑA 22: ESCRÍBELE A AMATO -->
+      <!-- PESTAÑA 22 -->
       <section id="tab-carta-amato" class="tab-content">
         <div class="coquette-card text-center">
           <div class="card-header">✉️ ESCRÍBELE UNA CARTA A AMATO</div>
@@ -435,7 +429,7 @@
         </div>
       </section>
 
-      <!-- PESTAÑA 23: DESEO A LAS ESTRELLAS -->
+      <!-- PESTAÑA 23 -->
       <section id="tab-deseo-estrellas" class="tab-content">
         <div class="coquette-card text-center">
           <div class="card-header">🌟 PIDE UN DESEO A LAS ESTRELLAS</div>
@@ -447,7 +441,7 @@
         </div>
       </section>
 
-      <!-- PESTAÑA 24: CAJA DE REGALOS -->
+      <!-- PESTAÑA 24 -->
       <section id="tab-regalos" class="tab-content">
         <div class="coquette-card text-center">
           <div class="card-header">🎁 CAJA DE REGALOS</div>
@@ -458,7 +452,7 @@
         </div>
       </section>
 
-      <!-- PESTAÑA 25: LOGROS & SECRETOS -->
+      <!-- PESTAÑA 25 -->
       <section id="tab-logros" class="tab-content">
         <div class="coquette-card">
           <div class="card-header">🏆 SISTEMA DE LOGROS DESBLOQUEADOS</div>
@@ -473,7 +467,7 @@
         </div>
       </section>
 
-      <!-- PESTAÑA 26: SHAMATO HUB -->
+      <!-- PESTAÑA 26 -->
       <section id="tab-shamato-hub" class="tab-content">
         <div class="coquette-card">
           <div class="card-header">🖤🍓 SHAMATO: AMATO Y SHADOW</div>
@@ -486,10 +480,10 @@
         </div>
       </section>
 
-      <!-- PESTAÑA 27: GALERÍA -->
+      <!-- PESTAÑA 27 -->
       <section id="tab-galeria" class="tab-content">
         <div class="coquette-card">
-          <div class="card-header">🖼️️ GALERÍA DE DIBUJOS Y DISEÑOS</div>
+          <div class="card-header">🖼 GALERÍA DE DIBUJOS Y DISEÑOS</div>
           <div class="card-body">
             <div class="gallery-grid">
               <div class="art-frame">
@@ -505,7 +499,7 @@
         </div>
       </section>
 
-      <!-- PESTAÑA 28: SCRAPBOOK -->
+      <!-- PESTAÑA 28 -->
       <section id="tab-scrapbook" class="tab-content">
         <div class="coquette-card">
           <div class="card-header">📓 SCRAPBOOK DE NOTAS</div>
@@ -517,12 +511,13 @@
         </div>
       </section>
 
-      <!-- PESTAÑA 29: ARCHIVO CRONOLÓGICO -->
+      <!-- PESTAÑA 29 -->
       <section id="tab-cronologico" class="tab-content">
         <div class="coquette-card">
           <div class="card-header">📜 LÍNEA DE TIEMPO CRONOLÓGICA</div>
           <div class="card-body">
             <p><strong>A los 12 años:</strong> Ocurrieron cosas que cambiaron su vida. Pidió un deseo a las estrellas y poco después su madre falleció. Carga esa culpa desde entonces.</p>
+            <br>
             <p><strong>Sonic Adventure 2:</strong> Conoció al grupo, ayudó a salvar el mundo y formó una familia elegida.</p>
           </div>
         </div>
@@ -554,6 +549,7 @@
     </div>
   </div>
 
+  <!-- VÍNCULO A TU JAVASCRIPT -->
   <script src="script.js"></script>
 </body>
 </html>
