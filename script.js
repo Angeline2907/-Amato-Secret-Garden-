@@ -33,7 +33,7 @@ document.querySelectorAll('.pop-btn').forEach(btn => {
   });
 });
 
-// PREGUNTA PROGRESIVA SHADOW (Sección 2)
+// PREGUNTA PROGRESIVA SHADOW
 let shadowProgIndex = 0;
 const shadowProgMsgs = [
   "Es complicado.",
@@ -47,7 +47,7 @@ document.getElementById('btnPreguntaShadowProg').addEventListener('click', () =>
   shadowProgIndex = (shadowProgIndex + 1) % shadowProgMsgs.length;
 });
 
-// PREGUNTA PROGRESIVA ¿SHADOW TE GUSTA? (Sección 3)
+// PREGUNTA PROGRESIVA ¿SHADOW TE GUSTA?
 let shadowGustaIndex = 0;
 const shadowGustaMsgs = ["Siguiente pregunta.", "No.", "...", "Sí."];
 document.getElementById('btnShadowGustaProg').addEventListener('click', () => {
