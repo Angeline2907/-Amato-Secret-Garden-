@@ -41,7 +41,6 @@ body {
   padding: 10px;
 }
 
-/* MODOS ESPECIALES DE PÁGINA */
 body.night-mode {
   --bg-pattern: #1a1625;
   --vainilla: #2a2438;
@@ -61,24 +60,28 @@ body.shamato-mode {
   --vainilla: #1f141a;
 }
 
-/* INTRO SCREEN */
 .intro-screen {
   position: fixed;
   top: 0; left: 0; width: 100%; height: 100%;
   background: var(--bg-pattern);
+  background-image: 
+    radial-gradient(#ffa2b6 15%, transparent 16%),
+    radial-gradient(#ffa2b6 15%, transparent 16%);
+  background-size: 24px 24px;
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 20000;
-  padding: 20px;
+  padding: 15px;
 }
 
 .intro-card {
   background: var(--vainilla);
   border: 3.5px solid var(--dark-pink);
   border-radius: 20px;
-  padding: 25px 20px;
-  max-width: 400px;
+  padding: 22px 18px;
+  width: 100%;
+  max-width: 380px;
   text-align: center;
   box-shadow: 0 10px 30px var(--shadow-pink);
 }
@@ -87,27 +90,29 @@ body.shamato-mode {
   font-family: var(--font-title);
   color: var(--chocolate);
   font-size: 2.2rem;
+  margin-top: 5px;
 }
 
 .intro-text {
   margin: 15px 0;
   font-size: 0.9rem;
   line-height: 1.5;
+  color: var(--chocolate);
 }
 
 .main-enter-btn {
   background: var(--dark-pink);
   color: white;
-  border: none;
+  border: 2px solid white;
   padding: 10px 20px;
-  border-radius: 15px;
+  border-radius: 20px;
   font-family: var(--font-subtitle);
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 0.95rem;
   cursor: pointer;
+  box-shadow: 0 4px 10px var(--shadow-pink);
 }
 
-/* VENTANA WEBCORE */
 .webcore-window {
   width: 100%;
   max-width: 850px;
