@@ -1,1776 +1,1407 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>AMATO ARCHIVE ♡</title>
-
-    <meta
-        name="description"
-        content="Amato's Archive — un rincón dedicado a Amato, Chaos Emeralds y Shamato."
-    >
-
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AMATO — El erizo napolitano</title>
+<meta name="description" content="Amato's Archive — Chaos Research, recuerdos y Shamato.">
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- =========================
-     LOADING SCREEN
-========================= -->
-
-<div id="loading-screen">
-    <div class="loading-box">
-        <div class="loading-star">☆</div>
-        <h1>AMATO ARCHIVE</h1>
-        <p>cargando recuerdos...</p>
-
-        <div class="loading-bar">
-            <div id="loading-progress"></div>
-        </div>
-    </div>
-</div>
-
-
-<!-- =========================
-     TOP NAVIGATION
-========================= -->
-
 <header class="topbar">
+<nav class="nav" id="nav">
+  <div class="brand">AMATO ♡</div>
 
-    <div class="logo">
-        <span>♡</span> AMATO ARCHIVE
-    </div>
+  <button data-section="home" class="active">INICIO</button>
+  <button data-section="lore">LORE</button>
+  <button data-section="profile">PERFIL</button>
+  <button data-section="chaos">CHAOS</button>
+  <button data-section="friends">AMIGOS</button>
+  <button data-section="room">HABITACIÓN</button>
+  <button data-section="diary">DIARIO</button>
+  <button data-section="shamato">SHAMATO</button>
+  <button data-section="generators">GENERADORES</button>
+  <button data-section="games">JUEGOS</button>
+  <button data-section="gallery">GALERÍA</button>
+  <button data-section="scrapbook">SCRAPBOOK</button>
+  <button data-section="classified">CLASIFICADO</button>
+  <button data-section="secrets">SECRETOS</button>
+  <button data-section="mail">CARTAS</button>
+  <button data-section="alt">¿Y SI...?</button>
+  <button data-section="settings">AJUSTES</button>
 
-    <nav id="main-nav">
-
-        <button data-section="home">HOME</button>
-        <button data-section="profile">PROFILE</button>
-        <button data-section="lore">LORE</button>
-        <button data-section="friends">FRIENDS</button>
-        <button data-section="shamato">SHAMATO</button>
-        <button data-section="chaos">CHAOS LAB</button>
-        <button data-section="room">ROOM</button>
-        <button data-section="diary">DIARY</button>
-        <button data-section="gallery">GALLERY</button>
-        <button data-section="archive">ARCHIVE</button>
-        <button data-section="games">GAMES</button>
-        <button data-section="secrets">SECRETS</button>
-
-    </nav>
-
+  <span class="progress" id="progress">0% explorado</span>
+</nav>
 </header>
-
-
-<!-- =========================
-     MAIN CONTENT
-========================= -->
 
 <main>
 
+<section id="home" class="section active">
 
-<!-- HOME -->
+  <div class="hero">
 
-<section id="home" class="page-section active">
+    <div class="stars"></div>
 
-    <div class="hero">
+    <span class="hidden-star" style="left:8%;top:20%" onclick="secret('star')">☆</span>
+    <span class="hidden-star" style="right:13%;top:36%" onclick="secret('star')">☆</span>
 
-        <div class="hero-stars"></div>
+    <div class="hero-content">
 
-        <div class="hero-content">
+      <div class="stamp">
+        AMATO'S NAPOLITAN HAVEN ♡
+      </div>
 
-            <p class="small-label">
-                WELCOME TO
-            </p>
+      <h1>AMATO</h1>
 
-            <h1>
-                AMATO
-            </h1>
+      <div class="subtitle">
+        el erizo napolitano · Emerald Hill · 17 años
+      </div>
 
-            <h2>
-                El erizo napolitano ♡
-            </h2>
+      <div class="hero-note tape">
 
-            <p class="hero-description">
-                Un pequeño rincón perdido en internet
-                dedicado a Amato, sus recuerdos,
-                las Chaos Emeralds y una relación
-                que empezó con dos personas que
-                jamás pensaron necesitarse.
-            </p>
+        <strong>hola.</strong><br><br>
 
-            <div class="hero-buttons">
+        bueno... supongo que ya llegaste hasta aquí.
 
-                <button class="pink-btn" onclick="showSection('profile')">
-                    conocer a Amato
-                </button>
+        No preguntes por qué hay tanta información sobre un erizo de 100 cm.
+        Simplemente disfruta.<br><br>
 
-                <button class="dark-btn" onclick="showSection('shamato')">
-                    entrar al archivo Shamato
-                </button>
+        <span class="small">
+          Hay cosas escondidas. Muchas. Probablemente demasiadas.
+        </span>
 
-            </div>
+      </div>
 
-        </div>
+      <div class="row" style="justify-content:center">
 
-        <div class="hero-card">
+        <button class="btn" onclick="showSection('lore')">
+          ENTRAR AL ARCHIVO
+        </button>
 
-            <div class="polaroid">
+        <button class="btn dark" onclick="nightMode()">
+          MODO NOCHE
+        </button>
 
-                <div class="polaroid-image">
-                    ☆
-                </div>
+        <button class="btn dark" onclick="amatoMode()">
+          AMATO MODE
+        </button>
 
-                <div class="polaroid-caption">
-                    AMATO
-                    <br>
-                    <small>
-                        “No soy feliz.
-                        Solo aprendí a hacer felices
-                        a los demás.”
-                    </small>
-                </div>
+        <button class="btn dark" onclick="shamatoMode()">
+          SHAMATO MODE
+        </button>
 
-            </div>
-
-        </div>
+      </div>
 
     </div>
 
+  </div>
 
-    <div class="home-note paper">
+  <div class="grid" style="margin-top:20px">
 
-        <span class="tape"></span>
+    <div class="card">
 
-        <h3>
-            ☆ nota encontrada
-        </h3>
+      <div class="kicker">
+        idea central
+      </div>
 
-        <p>
-            Buscó en las Chaos Emeralds una forma
-            de entender sus deseos, pero terminó
-            encontrando algo que nunca había pedido:
-            una familia.
-        </p>
+      <p class="quote">
+        “Buscó en las Chaos Emeralds una forma de entender sus deseos,
+        pero terminó encontrando algo que nunca había pedido: una familia.”
+      </p>
+
+    </div>
+
+    <div class="card">
+
+      <div class="kicker">
+        estado actual
+      </div>
+
+      <h3 id="todayState">
+        ¿CÓMO ESTÁ AMATO HOY?
+      </h3>
+
+      <p id="todayText">
+        Elige un estado desde Generadores.
+      </p>
 
     </div>
 
+    <div class="card">
 
-    <div class="quick-grid">
+      <div class="kicker">
+        exploración
+      </div>
 
-        <button onclick="showSection('profile')">
-            <span>♡</span>
-            <strong>AMATO</strong>
-            <small>perfil completo</small>
-        </button>
+      <p>
+        Hay <b id="homeEmeralds">0/7</b>
+        Chaos Emeralds encontradas y
+        <b id="homeAchievements">0</b> logros.
+      </p>
 
-        <button onclick="showSection('lore')">
-            <span>☆</span>
-            <strong>LORE</strong>
-            <small>su historia</small>
-        </button>
-
-        <button onclick="showSection('chaos')">
-            <span>◆</span>
-            <strong>CHAOS</strong>
-            <small>investigación</small>
-        </button>
-
-        <button onclick="showSection('diary')">
-            <span>✎</span>
-            <strong>DIARY</strong>
-            <small>páginas privadas</small>
-        </button>
+      <button class="btn" onclick="showSection('chaos')">
+        BUSCAR
+      </button>
 
     </div>
+
+  </div>
 
 </section>
 
 
-<!-- PROFILE -->
+<section id="lore" class="section">
 
-<section id="profile" class="page-section">
+  <div class="kicker">
+    archivo principal
+  </div>
 
-    <div class="section-title">
+  <h2>LORE ♡</h2>
 
-        <span>01 / IDENTITY</span>
+  <p class="lead">
+    Amato empezó buscando respuestas. Quería entender las Chaos Emeralds,
+    los deseos y lo que había ocurrido con su familia. El problema es que
+    algunas preguntas no desaparecen solo porque encuentres más información.
+  </p>
 
-        <h1>
-            AMATO
-        </h1>
+  <div class="grid wide">
 
-        <p>
-            el erizo napolitano
-        </p>
+    <article class="paper tape">
 
-    </div>
+      <h3>EL ERIZO NAPOLITANO</h3>
 
+      <p>
+        Amato tiene 17 años, mide aproximadamente 100 cm y vive en
+        Emerald Hill. Es ambidiestro, curioso hasta niveles peligrosos
+        y está obsesionado con la energía Chaos.
+      </p>
 
-    <div class="profile-layout">
+      <p>
+        Su diseño está inspirado en el helado napolitano:
+        chocolate, fresa y vainilla.
+      </p>
 
-        <div class="profile-card scrapbook">
+      <p>
+        Es pequeño. Eso no significa que sea débil.
+      </p>
 
-            <div class="profile-placeholder">
-                ♡
-            </div>
+      <p>
+        Es curioso. Muchísimo. Demasiado.
+      </p>
 
-            <h2>
-                Amato
-            </h2>
+    </article>
 
-            <p>
-                “Napolitano”
-            </p>
 
-            <div class="profile-tags">
-                <span>hedgehog</span>
-                <span>17 años</span>
-                <span>Emerald Hill</span>
-                <span>chaos energy</span>
-            </div>
+    <article class="paper">
 
-        </div>
+      <h3>PERSONALIDAD</h3>
 
+      <p>
+        Curioso, energético, cariñoso, impulsivo, leal, protector,
+        emocional, juguetón, aventurero, hablador, sensible y
+        un poco dramático.
+      </p>
 
-        <div class="profile-info">
+      <p>
+        Cuando está nervioso habla demasiado.
+        Cuando encuentra algo interesante hace demasiadas preguntas.
+        Cuando alguien que quiere está triste intenta ayudar inmediatamente.
+      </p>
 
-            <div class="paper">
+      <p>
+        Y cuando dice <b>“estoy bien”</b>,
+        muchas veces significa que claramente no está bien.
+      </p>
 
-                <h2>
-                    información básica
-                </h2>
+    </article>
 
-                <div class="info-grid">
 
-                    <div>
-                        <strong>Nombre</strong>
-                        <span>Amato</span>
-                    </div>
+    <article class="paper">
 
-                    <div>
-                        <strong>Apodo</strong>
-                        <span>Napolitano</span>
-                    </div>
+      <h3>LA HERIDA</h3>
 
-                    <div>
-                        <strong>Edad</strong>
-                        <span>17</span>
-                    </div>
+      <p>
+        Cuando tenía 12 años murió su padre, una persona a la que
+        quería muchísimo.
+      </p>
 
-                    <div>
-                        <strong>Especie</strong>
-                        <span>Erizo</span>
-                    </div>
+      <p>
+        Su relación con su madre era complicada y había dolor
+        que no sabía manejar.
+      </p>
 
-                    <div>
-                        <strong>Altura</strong>
-                        <span>~100 cm</span>
-                    </div>
+      <p>
+        Una noche miró las estrellas y, desesperado,
+        deseó que todo terminara.
+      </p>
 
-                    <div>
-                        <strong>Hogar</strong>
-                        <span>Emerald Hill</span>
-                    </div>
+      <p>
+        Después murió su madre.
+      </p>
 
-                    <div>
-                        <strong>Ojos</strong>
-                        <span>Rojo / rosa</span>
-                    </div>
+      <p>
+        Amato comenzó a pensar:
+      </p>
 
-                    <div>
-                        <strong>Mano dominante</strong>
-                        <span>Ambidiestro</span>
-                    </div>
+      <p class="quote">
+        “Yo lo deseé. Yo pedí que terminara.
+        Entonces fue culpa mía.”
+      </p>
 
-                </div>
+      <p>
+        No necesariamente era verdad.
+        Pero emocionalmente no podía dejar de relacionar ambas cosas.
+      </p>
 
-            </div>
+    </article>
 
 
-            <div class="paper">
+    <article class="paper">
 
-                <h2>
-                    personalidad
-                </h2>
+      <h3>SONRÍE</h3>
 
-                <p>
-                    Curioso, energético, cariñoso, impulsivo,
-                    leal, protector, emocional, juguetón,
-                    expresivo, sensible y extremadamente
-                    dramático cuando algo le importa.
-                </p>
+      <p class="quote">
+        “No soy feliz. Solo aprendí a hacer felices a los demás.”
+      </p>
 
-                <p>
-                    Tiene una curiosidad casi peligrosa
-                    por las Chaos Emeralds y la Chaos Energy.
-                </p>
+      <p>
+        Aprendió a sonreír, hacer reír a otros y actuar como si
+        todo estuviera bien.
+      </p>
 
-            </div>
+      <p>
+        Si los demás estaban felices, sentía que al menos estaba
+        haciendo algo bueno.
+      </p>
 
+      <p>
+        Su miedo principal es volver a perder a alguien.
+      </p>
 
-            <div class="stats-card">
+    </article>
 
-                <h2>
-                    AMATO STATS
-                </h2>
+  </div>
 
-                <div class="stat">
-                    <label>Curiosidad</label>
-                    <div>
-                        <span style="width:95%"></span>
-                    </div>
-                </div>
 
-                <div class="stat">
-                    <label>Energía</label>
-                    <div>
-                        <span style="width:90%"></span>
-                    </div>
-                </div>
+  <div class="card" style="margin-top:18px">
 
-                <div class="stat">
-                    <label>Drama</label>
-                    <div>
-                        <span style="width:100%"></span>
-                    </div>
-                </div>
-
-                <div class="stat">
-                    <label>Lealtad</label>
-                    <div>
-                        <span style="width:100%"></span>
-                    </div>
-                </div>
-
-                <div class="stat">
-                    <label>Chaos Energy</label>
-                    <div>
-                        <span style="width:85%"></span>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <div class="aliases paper">
-
-        <h2>
-            alias encontrados
-        </h2>
-
-        <div class="alias-list">
-
-            <span>Amato</span>
-            <span>Napolitano</span>
-            <span>Amato Core</span>
-            <span>Shamato</span>
-            <span>Chaos Research</span>
-            <span>Amato's Little Corner</span>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- LORE -->
-
-<section id="lore" class="page-section">
-
-    <div class="section-title">
-
-        <span>02 / PERSONAL FILE</span>
-
-        <h1>
-            LORE
-        </h1>
-
-        <p>
-            algunas cosas duelen más cuando se recuerdan
-        </p>
-
-    </div>
-
-
-    <div class="lore-intro paper">
-
-        <h2>
-            ☆ la historia de Amato
-        </h2>
-
-        <p>
-            Antes de convertirse en el chico energético
-            que todos conocen, Amato aprendió algo que
-            nunca debería haber tenido que aprender:
-            cómo esconder el dolor detrás de una sonrisa.
-        </p>
-
-    </div>
-
-
-    <div class="timeline">
-
-        <article class="timeline-item">
-
-            <div class="timeline-date">
-                12 AÑOS
-            </div>
-
-            <div class="timeline-content paper">
-
-                <h2>
-                    La pérdida de su padre
-                </h2>
-
-                <p>
-                    Cuando tenía doce años, Amato perdió
-                    a su padre.
-                </p>
-
-                <p>
-                    La relación con su madre tampoco era
-                    sencilla. Había cariño, pero también
-                    distancia, conflictos y cosas que nunca
-                    llegaron a decirse correctamente.
-                </p>
-
-            </div>
-
-        </article>
-
-
-        <article class="timeline-item">
-
-            <div class="timeline-date">
-                ESA NOCHE
-            </div>
-
-            <div class="timeline-content paper">
-
-                <h2>
-                    Las estrellas
-                </h2>
-
-                <p>
-                    Una noche, desesperado, Amato miró
-                    las estrellas y pidió que todo terminara.
-                </p>
-
-                <p>
-                    No pidió una muerte específica.
-                    No pensó realmente en las consecuencias.
-                    Solo quería dejar de sentir.
-                </p>
-
-            </div>
-
-        </article>
-
-
-        <article class="timeline-item">
-
-            <div class="timeline-date">
-                DESPUÉS
-            </div>
-
-            <div class="timeline-content paper">
-
-                <h2>
-                    Su madre murió
-                </h2>
-
-                <p>
-                    Después de aquella noche, su madre murió.
-                </p>
-
-                <p>
-                    Amato comenzó a creer que había sido
-                    culpa de su deseo.
-                </p>
-
-                <p class="important-text">
-                    Y esa culpa nunca desapareció realmente.
-                </p>
-
-            </div>
-
-        </article>
-
-
-        <article class="timeline-item">
-
-            <div class="timeline-date">
-                AHORA
-            </div>
-
-            <div class="timeline-content paper">
-
-                <h2>
-                    La sonrisa
-                </h2>
-
-                <p>
-                    Amato aprendió a esconder su dolor
-                    haciendo felices a los demás.
-                </p>
-
-                <p class="quote">
-                    “No soy feliz.
-                    Solo aprendí a hacer felices
-                    a los demás.”
-                </p>
-
-            </div>
-
-        </article>
-
-
-        <article class="timeline-item">
-
-            <div class="timeline-date">
-                PRESENTE
-            </div>
-
-            <div class="timeline-content paper">
-
-                <h2>
-                    La familia
-                </h2>
-
-                <p>
-                    Conoció a Sonic, Tails, Amy, Knuckles,
-                    Cream y Shadow.
-                </p>
-
-                <p>
-                    Lo que comenzó como una búsqueda
-                    de respuestas terminó convirtiéndose
-                    en algo mucho más importante.
-                </p>
-
-                <p class="important-text">
-                    Encontró una familia.
-                </p>
-
-            </div>
-
-        </article>
-
-    </div>
-
-
-    <div class="stars-message">
-
-        <div class="stars">
-            ☆ ☆ ☆ ☆ ☆
-        </div>
-
-        <p>
-            Antes miraba las estrellas porque quería
-            que todo terminara.
-        </p>
-
-        <p>
-            Ahora las mira porque ya no está solo.
-        </p>
-
-    </div>
-
-</section>
-
-
-<!-- FRIENDS -->
-
-<section id="friends" class="page-section">
-
-    <div class="section-title">
-
-        <span>03 / CONNECTIONS</span>
-
-        <h1>
-            FRIENDS
-        </h1>
-
-        <p>
-            las personas que terminaron quedándose
-        </p>
-
-    </div>
-
-
-    <div class="friends-grid">
-
-        <article class="friend-card sonic">
-
-            <div class="friend-icon">⚡</div>
-
-            <h2>Sonic</h2>
-
-            <p>
-                El primero en demostrarle que podía
-                confiar en alguien sin tener que
-                ganárselo todo el tiempo.
-            </p>
-
-            <span class="relationship">
-                amigos / caos constante
-            </span>
-
-        </article>
-
-
-        <article class="friend-card">
-
-            <div class="friend-icon">✦</div>
-
-            <h2>Tails</h2>
-
-            <p>
-                Su compañero de investigación.
-                Tails es probablemente la única persona
-                que puede escuchar una explicación de
-                Chaos Energy de tres horas.
-            </p>
-
-            <span class="relationship">
-                amigos / investigación
-            </span>
-
-        </article>
-
-
-        <article class="friend-card amy">
-
-            <div class="friend-icon">♡</div>
-
-            <h2>Amy</h2>
-
-            <p>
-                Amy entiende perfectamente su lado
-                emocional y dramático.
-            </p>
-
-            <span class="relationship">
-                mejores amigos
-            </span>
-
-        </article>
-
-
-        <article class="friend-card">
-
-            <div class="friend-icon">◆</div>
-
-            <h2>Knuckles</h2>
-
-            <p>
-                Knuckles intenta enseñarle a no tocar
-                cosas antiguas que claramente dicen
-                “NO TOCAR”.
-            </p>
-
-            <span class="relationship">
-                amistad caótica
-            </span>
-
-        </article>
-
-
-        <article class="friend-card">
-
-            <div class="friend-icon">☼</div>
-
-            <h2>Cream</h2>
-
-            <p>
-                Una de las personas con las que Amato
-                baja completamente la guardia.
-            </p>
-
-            <span class="relationship">
-                cariño / protección
-            </span>
-
-        </article>
-
-
-        <article class="friend-card shadow">
-
-            <div class="friend-icon">☾</div>
-
-            <h2>Shadow</h2>
-
-            <p>
-                Al principio eran desconocidos.
-                Después compañeros.
-                Después amigos.
-                Después mejores amigos.
-            </p>
-
-            <span class="relationship">
-                algo más...
-            </span>
-
-        </article>
-
-    </div>
-
-</section>
-
-
-<!-- SHAMATO -->
-
-<section id="shamato" class="page-section">
-
-    <div class="section-title">
-
-        <span>04 / CLASSIFIED RELATIONSHIP</span>
-
-        <h1>
-            SHAMATO
-        </h1>
-
-        <p>
-            two idiots. one chaos emerald.
-        </p>
-
-    </div>
-
-
-    <div class="shamato-intro paper">
-
-        <h2>
-            Shadow × Amato
-        </h2>
-
-        <p>
-            No fue amor a primera vista.
-        </p>
-
-        <p>
-            Fue algo mucho más lento.
-        </p>
-
-        <div class="ship-path">
-
-            <span>desconocidos</span>
-            →
-            <span>compañeros</span>
-            →
-            <span>amigos</span>
-            →
-            <span>mejores amigos</span>
-            →
-            <strong>amantes</strong>
-
-        </div>
-
-    </div>
-
-
-    <div class="trope-grid">
-
-        <div class="trope">
-            <strong>GRUMPY × SUNSHINE</strong>
-            <span>☾ × ☀</span>
-        </div>
-
-        <div class="trope">
-            <strong>TSUNDERE × AFFECTIONATE</strong>
-            <span>“...” × “SHADOW ♡”</span>
-        </div>
-
-        <div class="trope">
-            <strong>OPPOSITES</strong>
-            <span>caos × control</span>
-        </div>
-
-        <div class="trope">
-            <strong>CHAOS PARTNERS</strong>
-            <span>Chaos Energy</span>
-        </div>
-
-        <div class="trope">
-            <strong>FOUND FAMILY</strong>
-            <span>no estar solos</span>
-        </div>
-
-        <div class="trope">
-            <strong>HEALING</strong>
-            <span>juntos</span>
-        </div>
-
-    </div>
-
-
-    <div class="shamato-meter paper">
-
-        <div class="meter-header">
-
-            <h2>
-                SHAMATO ENERGY
-            </h2>
-
-            <strong>
-                <span id="shamato-energy">0</span>/100
-            </strong>
-
-        </div>
-
-        <div class="energy-bar">
-            <div id="energy-fill"></div>
-        </div>
-
-        <button onclick="increaseShamatoEnergy(5)">
-            ♡ añadir momento
-        </button>
-
-    </div>
-
-
-    <div class="shamato-quotes">
-
-        <div class="quote-card shadow-quote">
-            <span>SHADOW</span>
-            <p>
-                “Quédate.”
-            </p>
-        </div>
-
-        <div class="quote-card amato-quote">
-            <span>AMATO</span>
-            <p>
-                “¿Puedo quedarme?”
-            </p>
-        </div>
-
-        <div class="quote-card shadow-quote">
-            <span>SHADOW</span>
-            <p>
-                “No tienes que estar solo.”
-            </p>
-        </div>
-
-        <div class="quote-card shadow-quote">
-            <span>SHADOW</span>
-            <p>
-                “Estoy aquí.”
-            </p>
-        </div>
-
-    </div>
-
-
-    <div class="risk-it-all paper">
-
-        <h2>
-            ♫ RISK IT ALL
-        </h2>
-
-        <p>
-            Concepto de animatic Shamato.
-        </p>
-
-        <p>
-            Dos personas que tienen miedo de perder
-            aquello que finalmente encontraron.
-        </p>
-
-        <button onclick="showToast('♪ Risk It All — Bruno Mars')">
-            reproducir concepto
-        </button>
-
-    </div>
-
-</section>
-
-
-<!-- CHAOS LAB -->
-
-<section id="chaos" class="page-section">
-
-    <div class="section-title">
-
-        <span>05 / TAILS' RESEARCH LAB</span>
-
-        <h1>
-            CHAOS LAB
-        </h1>
-
-        <p>
-            acceso experimental
-        </p>
-
-    </div>
-
-
-    <div class="lab">
-
-        <div class="lab-table">
-
-            <div
-                class="lab-object computer"
-                onclick="labComputer()"
-                title="Computer"
-            >
-                💻
-            </div>
-
-            <div
-                class="lab-object emerald-object"
-                onclick="collectEmerald()"
-                title="Chaos Emerald"
-            >
-                ◆
-            </div>
-
-            <div
-                class="lab-object monitor"
-                onclick="labMonitor()"
-                title="Monitor"
-            >
-                ▣
-            </div>
-
-            <div
-                class="lab-object tube"
-                onclick="labTube()"
-                title="Tube"
-            >
-                🧪
-            </div>
-
-            <div
-                class="lab-object documents"
-                onclick="labDocuments()"
-                title="Documents"
-            >
-                📄
-            </div>
-
-            <button
-                class="red-button"
-                onclick="labRedButton()"
-            >
-                DO NOT PRESS
-            </button>
-
-        </div>
-
-
-        <div id="lab-screen" class="lab-screen">
-
-            <h2>
-                TAILS' CHAOS RESEARCH
-            </h2>
-
-            <p>
-                Haz clic en los objetos para investigar.
-            </p>
-
-        </div>
-
-    </div>
-
-
-    <div class="emerald-counter paper">
-
-        <h2>
-            CHAOS EMERALDS
-        </h2>
-
-        <div class="emerald-display">
-
-            <span id="emerald-count">0</span>
-            / 7
-
-        </div>
-
-        <p>
-            Algunas emeralds están escondidas
-            por el archivo.
-        </p>
-
-        <button onclick="spawnEmerald()">
-            buscar una emerald
-        </button>
-
-    </div>
-
-</section>
-
-
-<!-- ROOM -->
-
-<section id="room" class="page-section">
-
-    <div class="section-title">
-
-        <span>06 / PRIVATE SPACE</span>
-
-        <h1>
-            AMATO'S ROOM
-        </h1>
-
-        <p>
-            no tocar nada.
-        </p>
-
-    </div>
-
-
-    <div class="room-container">
-
-        <div
-            class="room-object bed"
-            onclick="roomMessage('La cama está desordenada. Muy Amato.')"
-        >
-            🛏
-        </div>
-
-        <div
-            class="room-object plush"
-            onclick="roomMessage('Un peluche que claramente debería estar aquí.')"
-        >
-            🧸
-        </div>
-
-        <div
-            class="room-object books"
-            onclick="roomMessage('Libros sobre Chaos Energy.')"
-        >
-            📚
-        </div>
-
-        <div
-            class="room-object diary"
-            onclick="showSection('diary')"
-        >
-            📓
-        </div>
-
-        <div
-            class="room-object window"
-            onclick="roomMessage('Las estrellas se ven desde aquí.')"
-        >
-            🪟
-        </div>
-
-        <div
-            class="room-object headphones"
-            onclick="roomMessage('Probablemente está escuchando música.')"
-        >
-            🎧
-        </div>
-
-        <div
-            class="room-object photos"
-            onclick="roomMessage('Fotos de Sonic, Tails, Amy, Knuckles, Cream... y Shadow.')"
-        >
-            📷
-        </div>
-
-        <div
-            class="room-object sweets"
-            onclick="roomMessage('Dulces. Muchos dulces.')"
-        >
-            🍬
-        </div>
-
-        <div
-            class="room-object backpack"
-            onclick="roomMessage('Su mochila de Chaos research.')"
-        >
-            🎒
-        </div>
-
-        <div
-            class="room-object desk"
-            onclick="roomMessage('Hay demasiadas notas aquí.')"
-        >
-            🖥
-        </div>
-
-    </div>
-
-
-    <div id="room-message" class="room-message">
-        Haz clic en algo.
-    </div>
-
-</section>
-
-
-<!-- DIARY -->
-
-<section id="diary" class="page-section">
-
-    <div class="section-title">
-
-        <span>07 / PRIVATE</span>
-
-        <h1>
-            SECRET DIARY
-        </h1>
-
-        <p>
-            probablemente no deberías leer esto.
-        </p>
-
-    </div>
-
-
-    <div class="diary-container">
-
-        <button
-            class="diary-arrow"
-            onclick="previousDiaryPage()"
-        >
-            ←
-        </button>
-
-
-        <article class="diary-page">
-
-            <div class="diary-page-number">
-                PÁGINA <span id="diary-number">1</span>
-            </div>
-
-            <h2 id="diary-title">
-                estrellas
-            </h2>
-
-            <p id="diary-text">
-                A veces miro las estrellas.
-                No sé exactamente por qué.
-            </p>
-
-        </article>
-
-
-        <button
-            class="diary-arrow"
-            onclick="nextDiaryPage()"
-        >
-            →
-        </button>
-
-    </div>
-
-</section>
-
-
-<!-- GALLERY -->
-
-<section id="gallery" class="page-section">
-
-    <div class="section-title">
-
-        <span>08 / MEMORIES</span>
-
-        <h1>
-            POLAROIDS
-        </h1>
-
-        <p>
-            momentos que alguien decidió guardar
-        </p>
-
-    </div>
-
-
-    <div class="gallery-filters">
-
-        <button onclick="filterGallery('all')">
-            todo
-        </button>
-
-        <button onclick="filterGallery('amato')">
-            amato
-        </button>
-
-        <button onclick="filterGallery('friends')">
-            friends
-        </button>
-
-        <button onclick="filterGallery('shamato')">
-            shamato
-        </button>
-
-    </div>
-
-
-    <div class="polaroid-gallery">
-
-        <article class="gallery-card" data-category="amato">
-
-            <div class="gallery-image">
-                ☆
-            </div>
-
-            <p>
-                “Encontré otra Chaos Emerald.”
-            </p>
-
-        </article>
-
-
-        <article class="gallery-card" data-category="friends">
-
-            <div class="gallery-image">
-                ⚡
-            </div>
-
-            <p>
-                Sonic dijo que no tocara eso.
-            </p>
-
-        </article>
-
-
-        <article class="gallery-card" data-category="friends">
-
-            <div class="gallery-image">
-                ✦
-            </div>
-
-            <p>
-                Tails y Amato investigando.
-            </p>
-
-        </article>
-
-
-        <article class="gallery-card" data-category="shamato">
-
-            <div class="gallery-image">
-                ☾♡
-            </div>
-
-            <p>
-                Shadow fingiendo que no está preocupado.
-            </p>
-
-        </article>
-
-
-        <article class="gallery-card" data-category="shamato">
-
-            <div class="gallery-image">
-                ☆
-            </div>
-
-            <p>
-                “Si tú te quedas, yo también.”
-            </p>
-
-        </article>
-
-    </div>
-
-</section>
-
-
-<!-- ARCHIVE -->
-
-<section id="archive" class="page-section">
-
-    <div class="section-title">
-
-        <span>09 / CLASSIFIED</span>
-
-        <h1>
-            ARCHIVE
-        </h1>
-
-        <p>
-            archivos que quizá deberían permanecer cerrados
-        </p>
-
-    </div>
-
-
-    <div class="archive-grid">
-
-        <button
-            class="classified-file"
-            onclick="openArchive('amato')"
-        >
-            <span>FILE 001</span>
-            <strong>AMATO</strong>
-            <small>CLASSIFIED</small>
-        </button>
-
-
-        <button
-            class="classified-file"
-            onclick="openArchive('shadow')"
-        >
-            <span>FILE 002</span>
-            <strong>SHADOW</strong>
-            <small>CLASSIFIED</small>
-        </button>
-
-
-        <button
-            class="classified-file"
-            onclick="openArchive('maria')"
-        >
-            <span>FILE 003</span>
-            <strong>MARIA</strong>
-            <small>LOCKED</small>
-        </button>
-
-
-        <button
-            class="classified-file"
-            onclick="openArchive('shamato')"
-        >
-            <span>FILE 004</span>
-            <strong>SHAMATO</strong>
-            <small>VERY CLASSIFIED</small>
-        </button>
-
-
-        <button
-            class="classified-file"
-            onclick="openArchive('chaos')"
-        >
-            <span>FILE 005</span>
-            <strong>CHAOS ENERGY</strong>
-            <small>RESEARCH</small>
-        </button>
-
-    </div>
-
-
-    <div id="archive-content" class="archive-content paper">
-
-        Selecciona un archivo.
-
-    </div>
-
-</section>
-
-
-<!-- GAMES -->
-
-<section id="games" class="page-section">
-
-    <div class="section-title">
-
-        <span>10 / INTERACTIVE</span>
-
-        <h1>
-            GAMES
-        </h1>
-
-        <p>
-            probablemente nada de esto era necesario
-        </p>
-
-    </div>
-
-
-    <div class="game-grid">
-
-        <article class="game-card">
-
-            <h2>
-                ¿Cómo está Amato hoy?
-            </h2>
-
-            <div class="mood-buttons">
-
-                <button onclick="setMood('feliz')">
-                    ♡ feliz
-                </button>
-
-                <button onclick="setMood('cansado')">
-                    ☆ cansado
-                </button>
-
-                <button onclick="setMood('caótico')">
-                    ◆ caótico
-                </button>
-
-                <button onclick="setMood('triste')">
-                    ☾ triste
-                </button>
-
-            </div>
-
-            <p id="mood-result">
-                selecciona un estado.
-            </p>
-
-        </article>
-
-
-        <article class="game-card">
-
-            <h2>
-                Click Amato
-            </h2>
-
-            <button
-                class="big-click"
-                onclick="clickAmato()"
-            >
-                AMATO ♡
-            </button>
-
-            <p>
-                clicks:
-                <span id="amato-clicks">0</span>
-            </p>
-
-        </article>
-
-
-        <article class="game-card">
-
-            <h2>
-                Click Shadow
-            </h2>
-
-            <button
-                class="big-click shadow-click"
-                onclick="clickShadow()"
-            >
-                SHADOW ☾
-            </button>
-
-            <p>
-                clicks:
-                <span id="shadow-clicks">0</span>
-            </p>
-
-        </article>
-
-
-        <article class="game-card">
-
-            <h2>
-                Quote Generator
-            </h2>
-
-            <div id="quote-output">
-                “...”
-            </div>
-
-            <button onclick="generateQuote()">
-                generar frase
-            </button>
-
-        </article>
-
-
-        <article class="game-card">
-
-            <h2>
-                Scene Generator
-            </h2>
-
-            <button onclick="generateScene()">
-                generar escena
-            </button>
-
-            <div id="scene-output">
-                —
-            </div>
-
-        </article>
-
-
-        <article class="game-card">
-
-            <h2>
-                Random Fact
-            </h2>
-
-            <button onclick="randomFact()">
-                dime algo
-            </button>
-
-            <div id="fact-output">
-                —
-            </div>
-
-        </article>
-
-
-        <article class="game-card">
-
-            <h2>
-                Hug Amato
-            </h2>
-
-            <button
-                class="hug-button"
-                onclick="hugAmato()"
-            >
-                ABRAZAR ♡
-            </button>
-
-            <div id="hug-output">
-                Amato está esperando.
-            </div>
-
-        </article>
-
-
-        <article class="game-card">
-
-            <h2>
-                TE QUIERO counter
-            </h2>
-
-            <button onclick="loveCounter()">
-                TE QUIERO
-            </button>
-
-            <div>
-                <span id="love-count">0</span>
-            </div>
-
-        </article>
-
-    </div>
-
-</section>
-
-
-<!-- SECRETS -->
-
-<section id="secrets" class="page-section">
-
-    <div class="section-title">
-
-        <span>??? / UNKNOWN</span>
-
-        <h1>
-            SECRETS
-        </h1>
-
-        <p>
-            no todo debería ser encontrado.
-        </p>
-
-    </div>
-
-
-    <div class="secret-box paper">
-
-        <h2>
-            ☆ ¿Y si...?
-        </h2>
-
-        <p>
-            Algunas rutas alternativas.
-        </p>
-
-        <button onclick="whatIf()">
-            abrir posibilidad
-        </button>
-
-        <div id="what-if-output"></div>
-
-    </div>
-
-
-    <div class="secret-box paper">
-
-        <h2>
-            ✉ Letter to Amato
-        </h2>
-
-        <textarea
-            id="letter-input"
-            placeholder="Escribe algo para Amato..."
-        ></textarea>
-
-        <button onclick="sendLetter()">
-            enviar carta
-        </button>
-
-        <div id="letter-response"></div>
-
-    </div>
-
-
-    <div class="secret-box paper">
-
-        <h2>
-            ☆ Wish to the Stars
-        </h2>
-
-        <input
-            id="wish-input"
-            type="text"
-            placeholder="Escribe un deseo..."
-        >
-
-        <button onclick="makeWish()">
-            pedir un deseo
-        </button>
-
-        <div id="wish-response"></div>
-
-    </div>
-
-
-    <div class="secret-box paper">
-
-        <h2>
-            🎁 Gift Box
-        </h2>
-
-        <button onclick="openGift()">
-            abrir regalo
-        </button>
-
-        <div id="gift-output"></div>
-
-    </div>
-
-
-    <div class="secret-box paper">
-
-        <h2>
-            ★ Hidden Combination
-        </h2>
-
-        <p>
-            ↑ ↑ ↓ ↓ ← → ← →
-        </p>
-
-        <p id="konami-result">
-            ...
-        </p>
-
-    </div>
-
-
-    <div class="achievements paper">
-
-        <h2>
-            ACHIEVEMENTS
-        </h2>
-
-        <div id="achievement-list">
-
-            <div class="achievement locked">
-                ☆ Encontraste tu primera emerald
-            </div>
-
-            <div class="achievement locked">
-                ☆ 10 clicks en Amato
-            </div>
-
-            <div class="achievement locked">
-                ☆ 10 clicks en Shadow
-            </div>
-
-            <div class="achievement locked">
-                ☆ 100 Shamato Energy
-            </div>
-
-            <div class="achievement locked">
-                ☆ Leíste el diario
-            </div>
-
-            <div class="achievement locked">
-                ☆ Encontraste a Maria
-            </div>
-
-            <div class="achievement locked">
-                ☆ Descubriste el final secreto
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- FINAL -->
-
-<section class="final-section">
-
-    <div class="final-stars">
-        ☆　★　☆　★　☆
-    </div>
-
-    <h1>
-        Encontré una familia...
-    </h1>
+    <h3>LAS ESTRELLAS ✦</h3>
 
     <p>
-        Esta vez no estoy solo.
+      Antes miraba al cielo y pedía que todo terminara.
+      Ahora simplemente mira.
     </p>
 
-    <div class="final-dialogue">
+    <p>
+      Ya no necesita pedir exactamente lo mismo.
+    </p>
 
-        <p>
-            <strong>Amato:</strong>
-            “¿Todavía estás aquí?”
-        </p>
+    <p class="quote">
+      “Ahora simplemente miro las estrellas.”<br>
+      “Porque ya no estoy solo.”
+    </p>
 
-        <p>
-            <strong>Shadow:</strong>
-            “Sí.”
-        </p>
+  </div>
 
-        <p>
-            <strong>Amato:</strong>
-            “¿Por qué?”
-        </p>
 
-        <p>
-            <strong>Shadow:</strong>
-            “Porque no pienso irme.”
-        </p>
+  <div class="card" style="margin-top:18px">
+
+    <h3>LA BÚSQUEDA</h3>
+
+    <p>
+      Después de encontrar una Chaos Emerald que reaccionó de forma
+      extraña con él, Amato empezó a investigar: energía Chaos,
+      deseos, destino, Chaos Control y la posibilidad de que las
+      Emeralds puedan cambiar las cosas.
+    </p>
+
+    <p>
+      Pero mientras buscaba respuestas encontró Sonic, Tails,
+      Amy, Knuckles, Cream, Shadow, aventuras y una familia.
+    </p>
+
+  </div>
+
+
+  <div class="card" style="margin-top:18px">
+
+    <h3>CRONOLOGÍA</h3>
+
+    <div class="timeline" id="timeline"></div>
+
+  </div>
+
+</section>
+
+
+<section id="profile" class="section">
+
+  <div class="kicker">ficha personal</div>
+
+  <h2>PERFIL ♡</h2>
+
+  <div class="grid wide">
+
+    <article class="paper">
+
+      <h3>IDENTIDAD</h3>
+
+      <p><b>Nombre:</b> Amato</p>
+      <p><b>Apodo:</b> Napolitano</p>
+      <p><b>Especie:</b> Erizo</p>
+      <p><b>Edad:</b> 17</p>
+      <p><b>Altura:</b> aproximadamente 100 cm</p>
+      <p><b>Hogar:</b> Emerald Hill</p>
+      <p><b>Color de ojos:</b> rojo / rosado</p>
+      <p><b>Mano dominante:</b> ambidiestro</p>
+
+    </article>
+
+
+    <article class="paper">
+
+      <h3>PALETA</h3>
+
+      <span class="sticker">🍓 FRESA</span>
+      <span class="sticker">🍫 CHOCOLATE</span>
+      <span class="sticker">🍦 VAINILLA</span>
+
+      <p>
+        La estética de Amato mezcla ternura, coquette,
+        2YK, pequeños detalles góticos y aventura.
+      </p>
+
+    </article>
+
+
+    <article class="paper">
+
+      <h3>PERSONALIDAD</h3>
+
+      <p>Curiosidad</p>
+      <div class="progressbar">
+        <span style="width:98%"></span>
+      </div>
+
+      <p>Energía</p>
+      <div class="progressbar">
+        <span style="width:91%"></span>
+      </div>
+
+      <p>Cariño</p>
+      <div class="progressbar">
+        <span style="width:95%"></span>
+      </div>
+
+      <p>Drama</p>
+      <div class="progressbar">
+        <span style="width:87%"></span>
+      </div>
+
+      <p>Curiosidad por las Chaos Emeralds</p>
+      <div class="progressbar">
+        <span style="width:100%"></span>
+      </div>
+
+    </article>
+
+  </div>
+
+
+  <div class="card" style="margin-top:18px">
+
+    <h3>FAQ DE AMATO</h3>
+
+    <p><b>¿Por qué le gustan tanto las Chaos Emeralds?</b></p>
+    <p>
+      Porque cree que pueden ayudarlo a entender los deseos,
+      el Chaos y lo que ocurrió con su vida.
+    </p>
+
+    <p><b>¿Le gusta hablar?</b></p>
+    <p>
+      Sí. Demasiado.
+    </p>
+
+    <p><b>¿Confía fácilmente?</b></p>
+    <p>
+      No tanto como parece.
+    </p>
+
+  </div>
+
+</section>
+
+
+<section id="friends" class="section">
+
+  <div class="kicker">conexiones</div>
+
+  <h2>AMIGOS ♡</h2>
+
+  <div class="grid wide">
+
+    <article class="paper">
+      <h3>💙 SONIC</h3>
+      <p>
+        Sonic fue una de las primeras personas que consiguió
+        que Amato sintiera que podía simplemente ser él mismo.
+      </p>
+    </article>
+
+    <article class="paper">
+      <h3>💛 TAILS</h3>
+      <p>
+        Su compañero de investigaciones Chaos.
+        Tails suele ser quien intenta evitar que Amato
+        toque algo que claramente dice “NO TOCAR”.
+      </p>
+    </article>
+
+    <article class="paper">
+      <h3>🌸 AMY</h3>
+      <p>
+        Amy entiende muy bien el lado emocional de Amato.
+        También disfruta muchísimo de su energía.
+      </p>
+    </article>
+
+    <article class="paper">
+      <h3>❤️ KNUCKLES</h3>
+      <p>
+        Una amistad llena de discusiones,
+        preguntas y situaciones absurdas.
+      </p>
+    </article>
+
+    <article class="paper">
+      <h3>🐰 CREAM</h3>
+      <p>
+        Amato tiene un cariño enorme por Cream
+        y siempre intenta protegerla.
+      </p>
+    </article>
+
+    <article class="paper">
+      <h3>🖤 SHADOW</h3>
+      <p>
+        Una relación que empezó lentamente.
+        Extraños → compañeros → amigos → mejores amigos → algo más.
+      </p>
+    </article>
+
+  </div>
+
+</section>
+
+
+<section id="shamato" class="section">
+
+  <div class="kicker">
+    classified relationship
+  </div>
+
+  <h2>SHAMATO 🖤♡</h2>
+
+  <div class="paper tape">
+
+    <h3>AMATO × SHADOW</h3>
+
+    <p>
+      Grumpy × ray of sunshine.
+    </p>
+
+    <p>
+      Tsundere × affectionate.
+    </p>
+
+    <p>
+      Chaos partners.
+    </p>
+
+    <p>
+      Opuestos que lentamente aprendieron a quedarse.
+    </p>
+
+    <p class="quote">
+      “No tienes que estar solo.”
+    </p>
+
+    <p class="quote">
+      “Estoy aquí.”
+    </p>
+
+    <p class="quote">
+      “No pienso irme.”
+    </p>
+
+  </div>
+
+
+  <div class="grid" style="margin-top:18px">
+
+    <div class="card">
+      <h3>ENERGÍA SHAMATO</h3>
+
+      <div class="progressbar">
+        <span id="shamatoBar" style="width:0%"></span>
+      </div>
+
+      <p>
+        <b id="shamatoEnergy">0</b>/100
+      </p>
+
+      <button class="btn" onclick="addShamatoEnergy(10)">
+        AUMENTAR ♡
+      </button>
+    </div>
+
+
+    <div class="card">
+
+      <h3>DINÁMICA</h3>
+
+      <p>
+        Shadow demuestra cariño mediante acciones.
+        Amato lo demuestra mediante absolutamente todo.
+      </p>
+
+      <p>
+        Shadow dice poco.
+        Amato dice demasiado.
+      </p>
 
     </div>
+
+  </div>
+
+
+  <div class="card" style="margin-top:18px">
+
+    <h3>LÍNEA DEL TIEMPO</h3>
+
+    <div id="shamatoTimeline"></div>
+
+  </div>
+
+</section>
+
+
+<section id="chaos" class="section">
+
+  <div class="kicker">laboratorio de Tails</div>
+
+  <h2>CHAOS LAB 💎</h2>
+
+  <div class="paper">
+
+    <h3>INVESTIGACIÓN CHAOS</h3>
+
+    <p>
+      Amato está convencido de que las Chaos Emeralds
+      tienen respuestas que todavía no comprende.
+    </p>
+
+    <p>
+      Tails está intentando evitar que convierta el laboratorio
+      en un desastre.
+    </p>
+
+  </div>
+
+
+  <div class="grid" style="margin-top:18px">
+
+    <div class="card">
+
+      <h3>CHAOS EMERALDS</h3>
+
+      <p>
+        Encontradas:
+        <b id="emeraldCount">0/7</b>
+      </p>
+
+      <button class="btn" onclick="searchEmerald()">
+        BUSCAR EMERALD
+      </button>
+
+      <div id="emeraldArea"></div>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>COMPUTADORA</h3>
+
+      <button class="btn" onclick="labComputer()">
+        ENCENDER
+      </button>
+
+      <p id="labOutput">
+        La pantalla está apagada.
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>DOCUMENTOS</h3>
+
+      <button class="btn" onclick="labDocument()">
+        ABRIR ARCHIVO
+      </button>
+
+      <p id="labDocument">
+        Archivo bloqueado.
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>BOTÓN ROJO</h3>
+
+      <button class="btn dark" onclick="redButton()">
+        NO TOCAR
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section id="room" class="section">
+
+  <div class="kicker">espacio privado</div>
+
+  <h2>HABITACIÓN DE AMATO 🧸</h2>
+
+  <div class="paper">
+
+    <h3>MI HABITACIÓN</h3>
+
+    <p>
+      Una pequeña habitación llena de cosas que Amato
+      probablemente diría que están “organizadas”.
+    </p>
+
+    <div class="row">
+
+      <button class="btn" onclick="roomAction('bed')">
+        🛏️ CAMA
+      </button>
+
+      <button class="btn" onclick="roomAction('plush')">
+        🧸 PELUCHE
+      </button>
+
+      <button class="btn" onclick="roomAction('books')">
+        📚 LIBROS
+      </button>
+
+      <button class="btn" onclick="roomAction('diary')">
+        📓 DIARIO
+      </button>
+
+      <button class="btn" onclick="roomAction('window')">
+        ✦ VENTANA
+      </button>
+
+      <button class="btn" onclick="roomAction('headphones')">
+        🎧 AURICULARES
+      </button>
+
+      <button class="btn" onclick="roomAction('photos')">
+        📷 FOTOS
+      </button>
+
+      <button class="btn" onclick="roomAction('sweets')">
+        🍓 DULCES
+      </button>
+
+      <button class="btn" onclick="roomAction('backpack')">
+        🎒 MOCHILA
+      </button>
+
+      <button class="btn" onclick="roomAction('emerald')">
+        💎 EMERALD
+      </button>
+
+    </div>
+
+    <p id="roomOutput">
+      Haz clic en algo.
+    </p>
+
+  </div>
+
+</section>
+
+
+<section id="diary" class="section">
+
+  <div class="kicker">solo para mí</div>
+
+  <h2>DIARIO DE AMATO 📓</h2>
+
+  <div class="paper">
+
+    <div id="diaryContent"></div>
+
+    <div class="row">
+
+      <button class="btn" onclick="previousDiary()">
+        ← ANTERIOR
+      </button>
+
+      <button class="btn" onclick="nextDiary()">
+        SIGUIENTE →
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section id="gallery" class="section">
+
+  <div class="kicker">recuerdos</div>
+
+  <h2>GALERÍA 📷</h2>
+
+  <div class="row">
+
+    <button class="btn" onclick="filterGallery('all')">
+      TODO
+    </button>
+
+    <button class="btn" onclick="filterGallery('amato')">
+      AMATO
+    </button>
+
+    <button class="btn" onclick="filterGallery('shamato')">
+      SHAMATO
+    </button>
+
+    <button class="btn" onclick="filterGallery('friends')">
+      AMIGOS
+    </button>
+
+  </div>
+
+  <div class="grid" id="galleryGrid" style="margin-top:18px">
+
+    <div class="paper gallery-item" data-type="amato">
+      <h3>POLAROID #001</h3>
+      <p>Amato mirando las estrellas.</p>
+      <div class="sticker">☆</div>
+    </div>
+
+    <div class="paper gallery-item" data-type="shamato">
+      <h3>POLAROID #002</h3>
+      <p>Shadow fingiendo que no está mirando.</p>
+      <div class="sticker">🖤</div>
+    </div>
+
+    <div class="paper gallery-item" data-type="friends">
+      <h3>POLAROID #003</h3>
+      <p>Una salida con la familia.</p>
+      <div class="sticker">♡</div>
+    </div>
+
+    <div class="paper gallery-item" data-type="amato">
+      <h3>POLAROID #004</h3>
+      <p>Amato haciendo algo que definitivamente no debía hacer.</p>
+      <div class="sticker">🍓</div>
+    </div>
+
+  </div>
+
+</section>
+
+
+<section id="scrapbook" class="section">
+
+  <div class="kicker">recortes</div>
+
+  <h2>SCRAPBOOK 🎀</h2>
+
+  <div class="grid wide">
+
+    <div class="paper tape">
+      <h3>NOTA #01</h3>
+      <p>
+        “Comprar fresas.”
+      </p>
+    </div>
+
+    <div class="paper">
+      <h3>NOTA #02</h3>
+      <p>
+        “Preguntarle a Tails por qué las Emeralds hacen eso.”
+      </p>
+    </div>
+
+    <div class="paper">
+      <h3>NOTA #03</h3>
+      <p>
+        “No molestar a Shadow.”
+      </p>
+      <p>
+        <b>Nota escrita debajo:</b>
+        “Lo molesté.”
+      </p>
+    </div>
+
+    <div class="paper">
+      <h3>NOTA #04</h3>
+      <p>
+        “Mirar las estrellas.”
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+
+<section id="classified" class="section">
+
+  <div class="kicker">████████</div>
+
+  <h2>ARCHIVO CLASIFICADO 🔒</h2>
+
+  <div class="grid">
+
+    <div class="paper locked">
+      <h3>ARCHIVO #001</h3>
+      <p>Acceso restringido.</p>
+      <button class="btn" onclick="unlockFile(1)">
+        INTENTAR DESBLOQUEAR
+      </button>
+    </div>
+
+    <div class="paper locked">
+      <h3>ARCHIVO #002</h3>
+      <p>Acceso restringido.</p>
+      <button class="btn" onclick="unlockFile(2)">
+        INTENTAR DESBLOQUEAR
+      </button>
+    </div>
+
+    <div class="paper locked">
+      <h3>ARCHIVO #003</h3>
+      <p>Acceso restringido.</p>
+      <button class="btn" onclick="unlockFile(3)">
+        INTENTAR DESBLOQUEAR
+      </button>
+    </div>
+
+  </div>
+
+</section>
+
+
+<section id="generators" class="section">
+
+  <div class="kicker">cosas aleatorias</div>
+
+  <h2>GENERADORES ✦</h2>
+
+  <div class="grid">
+
+    <div class="card">
+
+      <h3>¿CÓMO ESTÁ AMATO?</h3>
+
+      <button class="btn" onclick="generateMood()">
+        PREGUNTAR
+      </button>
+
+      <p id="moodOutput">
+        ...
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>FRASE DE AMATO</h3>
+
+      <button class="btn" onclick="quoteAmato()">
+        GENERAR
+      </button>
+
+      <p id="amatoQuote">
+        ...
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>FRASE DE SHADOW</h3>
+
+      <button class="btn" onclick="quoteShadow()">
+        GENERAR
+      </button>
+
+      <p id="shadowQuote">
+        ...
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>FRASE SHAMATO</h3>
+
+      <button class="btn" onclick="quoteShamato()">
+        GENERAR
+      </button>
+
+      <p id="shamatoQuote">
+        ...
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>ESCENA RANDOM</h3>
+
+      <button class="btn" onclick="generateScene()">
+        CREAR ESCENA
+      </button>
+
+      <p id="sceneOutput">
+        ...
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>RANDOM FACT</h3>
+
+      <button class="btn" onclick="randomFact()">
+        DATO
+      </button>
+
+      <p id="factOutput">
+        ...
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section id="games" class="section">
+
+  <div class="kicker">juguemos</div>
+
+  <h2>JUEGOS ♡</h2>
+
+  <div class="grid">
+
+    <div class="card">
+
+      <h3>ABRAZAR A AMATO</h3>
+
+      <button class="btn" onclick="hugAmato()">
+        ABRAZAR ♡
+      </button>
+
+      <p id="hugOutput">
+        ...
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>TE QUIERO</h3>
+
+      <button class="btn" onclick="loveCounter()">
+        TE QUIERO
+      </button>
+
+      <p>
+        Contador:
+        <b id="loveCount">0</b>
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>SIMULADOR AMATO</h3>
+
+      <button class="btn" onclick="clickAmato()">
+        HABLAR CON AMATO
+      </button>
+
+      <p id="amatoResponse">
+        ...
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>SIMULADOR SHADOW</h3>
+
+      <button class="btn" onclick="clickShadow()">
+        HABLAR CON SHADOW
+      </button>
+
+      <p id="shadowResponse">
+        ...
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>REGALO</h3>
+
+      <button class="btn" onclick="giftBox()">
+        ABRIR REGALO
+      </button>
+
+      <p id="giftOutput">
+        ...
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section id="mail" class="section">
+
+  <div class="kicker">buzón</div>
+
+  <h2>CARTAS 💌</h2>
+
+  <div class="grid wide">
+
+    <div class="paper">
+      <h3>SONIC</h3>
+      <p>
+        “Hey, Amato! Deja de preocuparte tanto.
+        Vamos a hacer algo divertido.”
+      </p>
+    </div>
+
+    <div class="paper">
+      <h3>TAILS</h3>
+      <p>
+        “Por favor no toques el experimento sin avisarme.”
+      </p>
+    </div>
+
+    <div class="paper">
+      <h3>AMY</h3>
+      <p>
+        “Nunca olvides que puedes contar conmigo.”
+      </p>
+    </div>
+
+    <div class="paper">
+      <h3>KNUCKLES</h3>
+      <p>
+        “No sé qué estás planeando.
+        Y probablemente prefiero no saberlo.”
+      </p>
+    </div>
+
+    <div class="paper">
+      <h3>CREAM</h3>
+      <p>
+        “¡Espero que estés teniendo un buen día!”
+      </p>
+    </div>
+
+    <div class="paper">
+      <h3>SHADOW</h3>
+      <p class="quote">
+        “Quédate.”
+      </p>
+    </div>
+
+  </div>
+
+
+  <div class="paper" style="margin-top:18px">
+
+    <h3>ESCRÍBELE A AMATO</h3>
+
+    <textarea
+      id="letterInput"
+      placeholder="Escribe algo..."
+    ></textarea>
+
+    <button class="btn" onclick="sendLetter()">
+      ENVIAR ♡
+    </button>
+
+    <p id="letterOutput"></p>
+
+  </div>
+
+</section>
+
+
+<section id="alt" class="section">
+
+  <div class="kicker">universos alternativos</div>
+
+  <h2>¿Y SI...? ✦</h2>
+
+  <div class="grid">
+
+    <div class="card">
+
+      <h3>¿Y SI AMATO NUNCA HUBIERA CONOCIDO A SHADOW?</h3>
+
+      <button class="btn" onclick="whatIf(1)">
+        VER
+      </button>
+
+      <p id="whatIf1"></p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>¿Y SI AMATO ENCONTRARA LAS 7 EMERALDS?</h3>
+
+      <button class="btn" onclick="whatIf(2)">
+        VER
+      </button>
+
+      <p id="whatIf2"></p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>¿Y SI AMATO PUDIERA HABLAR CON SU PADRE?</h3>
+
+      <button class="btn" onclick="whatIf(3)">
+        VER
+      </button>
+
+      <p id="whatIf3"></p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section id="secrets" class="section">
+
+  <div class="kicker">
+    probablemente no deberías estar aquí
+  </div>
+
+  <h2>SECRETOS ☆</h2>
+
+  <div class="grid">
+
+    <div class="paper secret">
+
+      <h3>⭐ LAS ESTRELLAS</h3>
+
+      <p>
+        Algunas estrellas pueden ser clickeadas.
+      </p>
+
+    </div>
+
+
+    <div class="paper secret">
+
+      <h3>🖤 MARIA</h3>
+
+      <p>
+        Existe una sección relacionada con Maria.
+      </p>
+
+      <button class="btn" onclick="secret('maria')">
+        ABRIR
+      </button>
+
+    </div>
+
+
+    <div class="paper secret">
+
+      <h3>↑ ↑ ↓ ↓ ← → ← →</h3>
+
+      <p>
+        Tal vez este código haga algo.
+      </p>
+
+    </div>
+
+
+    <div class="paper secret">
+
+      <h3>100 SHAMATO</h3>
+
+      <p>
+        Quizá alcanzar 100 de energía tenga consecuencias.
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <div class="card" style="margin-top:18px">
+
+    <h3 id="secretOutput">
+      ...
+    </h3>
+
+  </div>
+
+</section>
+
+
+<section id="settings" class="section">
+
+  <div class="kicker">configuración</div>
+
+  <h2>AJUSTES 🎀</h2>
+
+  <div class="grid">
+
+    <div class="card">
+
+      <h3>MODO NOCHE</h3>
+
+      <button class="btn" onclick="nightMode()">
+        CAMBIAR
+      </button>
+
+    </div>
+
+    <div class="card">
+
+      <h3>AMATO MODE</h3>
+
+      <button class="btn" onclick="amatoMode()">
+        ACTIVAR
+      </button>
+
+    </div>
+
+    <div class="card">
+
+      <h3>SHAMATO MODE</h3>
+
+      <button class="btn" onclick="shamatoMode()">
+        ACTIVAR
+      </button>
+
+    </div>
+
+    <div class="card">
+
+      <h3>REINICIAR PROGRESO</h3>
+
+      <button class="btn dark" onclick="resetProgress()">
+        REINICIAR
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section id="final" class="section">
+
+  <div class="hero">
+
+    <div class="hero-content">
+
+      <div class="stamp">
+        END OF THE ARCHIVE
+      </div>
+
+      <h1>♡</h1>
+
+      <p class="quote">
+        “Encontré una familia...”
+      </p>
+
+      <p class="quote">
+        “Esta vez no estoy solo.”
+      </p>
+
+      <p>
+        Las estrellas siguen ahí.
+      </p>
+
+      <p>
+        Y Amato también.
+      </p>
+
+    </div>
+
+  </div>
 
 </section>
 
 </main>
 
 
-<!-- =========================
-     TOAST
-========================= -->
-
-<div id="toast"></div>
+<div class="toast" id="toast" style="display:none"></div>
 
 
-<!-- =========================
-     FOOTER
-========================= -->
+<footer style="
+  text-align:center;
+  padding:30px 15px 50px;
+  color:#a56879;
+  font-size:.75rem;
+  font-weight:900;
+">
 
-<footer>
-
-    <div>
-        ♡ AMATO ARCHIVE ♡
-    </div>
-
-    <p>
-        fanmade archive — made with too much love
-    </p>
-
-    <p>
-        Sonic belongs to SEGA.
-        Amato belongs to me.
-    </p>
+  ♡ AMATO'S NAPOLITAN HAVEN ♡<br>
+  fanmade archive — hecho con demasiado amor<br>
+  <span>🍓 × 🍫 × 🍦 × 🖤</span>
 
 </footer>
 
@@ -1778,4 +1409,4 @@
 <script src="script.js"></script>
 
 </body>
-                      </html>
+    </html>
