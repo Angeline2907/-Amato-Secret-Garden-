@@ -4,30 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Neapolitan__Haven.exe</title>
-    <!-- Tipografía redondeada estilo adorable -->
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
 <div class="window-container">
-    <!-- Encabezado Superior -->
+    <!-- Barra superior -->
     <div class="title-bar">
-        <div class="title-text">🎀 Neapolitan__Haven.exe</div>
+        <div class="title-text">
+            <span class="folder-icon">📂</span> Neapolitan__Haven.exe
+        </div>
         <div class="window-controls">
             <div class="win-btn">-</div>
             <div class="win-btn">x</div>
         </div>
     </div>
 
-    <!-- Marquee -->
+    <!-- Marquee continuo -->
     <div class="marquee-container">
         <div class="marquee-content">
-            🍓 Fresa × 🍫 Chocolate × 🍦 Vainilla 🍓 Shadow's #1 Fan 🖤 Chaos Emerald Enthusiast 💖 &nbsp;&nbsp;&nbsp;&nbsp; 🍓 Fresa × 🍫 Chocolate × 🍦 Vainilla 🍓 Shadow's #1 Fan 🖤 Chaos Emerald Enthusiast 💖
+            🍓 Fresa × Vainilla 🍫 Shadow's #1 Fan 💖 Chaos Emerald Enthusiast 🍓 &nbsp;&nbsp;&nbsp;&nbsp; 🍓 Fresa × Vainilla 🍫 Shadow's #1 Fan 💖 Chaos Emerald Enthusiast 🍓
         </div>
     </div>
 
-    <!-- Hero / Presentación -->
+    <!-- Cabecera / Hero -->
     <div class="hero-section">
         <div class="icon-circle">🍨</div>
         <h1 class="hero-title">Amato's Pages 🎀</h1>
@@ -35,11 +36,11 @@
         <div class="flavor-tags">
             <span class="tag">🍓 Fresa</span>
             <span class="tag">🍫 Chocolate</span>
-            <span class="tag">🍦 Vanilla</span>
+            <span class="tag">🍦 Vainilla</span>
         </div>
     </div>
 
-    <!-- Navegación Principal -->
+    <!-- Botones de Navegación -->
     <div class="nav-section">
         <button class="nav-btn active" onclick="showSection('profile', this)">🍨 Perfil & Paleta</button>
         <button class="nav-btn" onclick="showSection('lore', this)">🌙 Lore & Línea Temporal</button>
@@ -50,29 +51,28 @@
         <button class="nav-btn" onclick="showSection('gallery', this)">🖼️ Galería Categorizada</button>
         <button class="nav-btn" onclick="showSection('quotes', this)">🎲 Frases & Random</button>
 
-        <!-- Botón de Música -->
         <div class="music-btn-container">
-            <button class="music-btn" id="musicBtn" onclick="toggleMusic()">🎵 Música de Fondo: OFF</button>
+            <button class="music-btn" id="musicBtn" onclick="toggleMusic()">Música de Fondo: OFF</button>
         </div>
     </div>
 
-    <!-- Secciones de Contenido -->
+    <!-- Contenedor de Secciones -->
     <div class="content-area">
 
-        <!-- Ficha Técnica & Paleta -->
+        <!-- 1. Perfil & Paleta -->
         <div id="profile" class="card active-card">
-            <div class="card-header">✨ FICHA TÉCNICA</div>
+            <div class="card-header">📌 FICHA TÉCNICA</div>
             <div class="info-row"><span class="info-label">Nombre:</span><span class="info-value">Amato (Apodo: Napolitano)</span></div>
             <div class="info-row"><span class="info-label">Especie:</span><span class="info-value">Erizo 🦔</span></div>
             <div class="info-row"><span class="info-label">Edad:</span><span class="info-value">17 años</span></div>
             <div class="info-row"><span class="info-label">Origen:</span><span class="info-value">Emerald Hill</span></div>
-            <div class="info-row"><span class="info-label">Altura:</span><span class="info-value">~101 cm | Dominancia: Ambidiestro</span></div>
-            <div class="info-row"><span class="info-label">Ojos:</span><span class="info-value">Rojo / Rosa intenso ❤️</span></div>
+            <div class="info-row"><span class="info-label">Altura:</span><span class="info-value">~101 cm | <strong>Dominancia:</strong> Ambidiestro</span></div>
+            <div class="info-row"><span class="info-label">Ojos:</span><span class="info-value">Rojo / Rosa Intenso ❤️</span></div>
             <div class="info-row"><span class="info-label">Poderes:</span><span class="info-value">Sensibilidad & Control de Chaos Energy ⚡</span></div>
 
-            <!-- Personalidad & Medidores -->
-            <div class="card-header" style="margin-top:20px;">🧠 PERSONALIDAD & MEDIDORES</div>
-            <div style="font-size:0.8rem; text-align:center; margin-bottom:8px;">Toca las palabras para ver el detalle:</div>
+            <div class="card-header" style="margin-top:25px;">🧠 PERSONALIDAD & MEDIDORES</div>
+            <p class="instruction-text">Toca las palabras para ver el detalle:</p>
+            
             <div class="traits-container">
                 <button class="trait-btn" onclick="setTrait('¡Su curiosidad por la Chaos Energy no tiene límites!')">Curioso</button>
                 <button class="trait-btn" onclick="setTrait('Lleno de vida y siempre listo para una aventura.')">Energético</button>
@@ -84,28 +84,27 @@
             <div class="trait-detail" id="traitDisplay">Haz clic en un rasgo arriba para leer más.</div>
 
             <div class="stat-bar">
-                <span class="stat-label">Curiosidad</span>
+                <span class="stat-label">Curiosidad:</span>
                 <div class="progress-bg"><div class="progress-fill" style="width: 95%;"></div></div>
             </div>
             <div class="stat-bar">
-                <span class="stat-label">Energía</span>
+                <span class="stat-label">Energía:</span>
                 <div class="progress-bg"><div class="progress-fill" style="width: 85%;"></div></div>
             </div>
             <div class="stat-bar">
-                <span class="stat-label">Cariño</span>
+                <span class="stat-label">Cariño:</span>
                 <div class="progress-bg"><div class="progress-fill" style="width: 90%;"></div></div>
             </div>
             <div class="stat-bar">
-                <span class="stat-label">Caos</span>
+                <span class="stat-label">Caos:</span>
                 <div class="progress-bg"><div class="progress-fill" style="width: 70%;"></div></div>
             </div>
             <div class="stat-bar">
-                <span class="stat-label">Paciencia</span>
+                <span class="stat-label">Paciencia:</span>
                 <div class="progress-bg"><div class="progress-fill" style="width: 40%;"></div></div>
             </div>
 
-            <!-- Paleta de Colores -->
-            <div class="card-header" style="margin-top:20px;">🍨 PALETA DE COLORES</div>
+            <div class="card-header" style="margin-top:25px;">🎨 PALETA DE COLORES</div>
             <div class="color-list">
                 <div class="color-item">
                     <div class="color-swatch" style="background:#FF9EBB;"></div>
@@ -122,15 +121,16 @@
             </div>
         </div>
 
-        <!-- Lore & Línea Temporal -->
+        <!-- 2. Lore -->
         <div id="lore" class="card">
-            <div class="card-header">🌙 LORE & LÍNEA TEMPORAL</div>
-            <p style="font-size:0.9rem; line-height:1.4;">
-                <strong>Infancia en Emerald Hill:</strong> Amato creció fascinado por la energía Chaos. A los 12 años encontró su primera Chaos Emerald, desatando una búsqueda constante de respuestas sobre sus propios deseos y recuerdos.
+            <div class="card-header">📜 LA HISTORIA DE AMATO</div>
+            <div class="sub-header-pink">🏰 [INFANCIA] (Toca para abrir)</div>
+            <p style="font-size:0.85rem; line-height:1.4; color: var(--text-chocolate);">
+                Amato creció en Emerald Hill con una perspectiva alegre y curiosa. Su vida temprana estuvo...
             </p>
         </div>
 
-        <!-- Personajes -->
+        <!-- 3. Personajes -->
         <div id="characters" class="card">
             <div class="card-header">👥 PERSONAJES</div>
             <p style="font-size:0.9rem; text-align:center;">
@@ -138,10 +138,9 @@
             </p>
         </div>
 
-        <!-- Dinámica Shamato -->
+        <!-- 4. Dinámica Shamato -->
         <div id="shamato" class="card">
-            <div class="card-header">💗 ENERGÍA SHAMATO</div>
-            <div style="font-size:0.8rem; text-align:center;">(Haz clic para sumar corazones)</div>
+            <div class="card-header">💖 ENERGÍA SHAMATO (Haz clic para sumar corazones)</div>
             <div class="hearts-grid">
                 <span class="heart-icon" onclick="addHeart()">💖</span>
                 <span class="heart-icon" onclick="addHeart()">💕</span>
@@ -150,24 +149,27 @@
                 <span class="heart-icon" onclick="addHeart()">💕</span>
             </div>
             <div class="counter-box" id="heartCounter">Nivel de Amor: 100%</div>
+
+            <div class="card-header" style="margin-top:20px;">💘 DINÁMICA DE RELACIÓN</div>
+            <div class="sub-header-pink">🌹 Gruñón × ☀️ Rayito de Sol</div>
         </div>
 
-        <!-- Scrapbook -->
+        <!-- 5. Scrapbook -->
         <div id="scrapbook" class="card">
             <div class="card-header">📓 SCRAPBOOK</div>
             <p style="font-size:0.9rem; text-align:center;">
-                Pequeñas notas, apuntes de investigación Chaos y recuerdos de aventuras.
+                Pequeñas notas, apuntes de investigación Chaos y recuerdos.
             </p>
         </div>
 
-        <!-- Cartas Secretas -->
+        <!-- 6. Cartas Secretas -->
         <div id="letters" class="card">
             <div class="card-header">💌 CARTAS SECRETAS</div>
             <div class="info-row"><span class="info-label">✉️ Sobre de Sonic</span><span class="info-value">Ver</span></div>
             <div class="info-row"><span class="info-label">✉️ Sobre de Amy</span><span class="info-value">Ver</span></div>
         </div>
 
-        <!-- Galería Categorizada -->
+        <!-- 7. Galería Categorizada -->
         <div id="gallery" class="card">
             <div class="card-header">🖼️ GALERÍA CATEGORIZADA</div>
             <div class="filter-group">
@@ -176,19 +178,19 @@
                 <button class="filter-btn" onclick="filterGallery('SHAMATO', this)">SHAMATO</button>
             </div>
             <div class="gallery-display" id="galleryBox">
-                🖤 💕 🍓<br>Mostrando todas las ilustraciones del Hub.
+                🖤 💕 🍓
             </div>
         </div>
 
-        <!-- Frases & Random & Chaos Emerald -->
+        <!-- 8. Frases & Random -->
         <div id="quotes" class="card">
             <div class="card-header">📖 FRASES & RANDOM</div>
-            <div class="filter-group">
-                <button class="filter-btn" onclick="setQuote('Amato: ¡Espera, espera! ¡Tengo una pregunta sobre la energía Chaos!')">Frase de Amato</button>
-                <button class="filter-btn" onclick="setQuote('Shadow: Quédate detrás de mí. Yo me encargo.')">Frase de Shadow</button>
-                <button class="filter-btn active" onclick="setQuote('Amato es ambidiestro.')">DATO RANDOM</button>
+            <div class="quote-btn-stack">
+                <button class="nav-btn" onclick="setQuote('Amato: ¡Espera, espera! ¡Tengo una pregunta sobre la energía Chaos!')">Frase de Amato</button>
+                <button class="nav-btn" onclick="setQuote('Shadow: Quédate detrás de mí. Yo me encargo.')">Frase de Shadow</button>
+                <button class="nav-btn active" onclick="setQuote('Amato es ambidiestro.')">DATO RANDOM</button>
             </div>
-            <div class="gallery-display" id="quoteBox" style="min-height:60px;">
+            <div class="gallery-display" id="quoteBox" style="min-height:50px; margin-top:15px;">
                 Amato es ambidiestro.
             </div>
 
@@ -201,9 +203,9 @@
 
     </div>
 
-    <!-- Footer -->
+    <!-- Pie de página -->
     <div class="footer">
-        🎀 Created for Amato's World · Made with Magic 🍨
+        💖 Created for Amato's World · Made with Magic ✨
     </div>
 </div>
 
