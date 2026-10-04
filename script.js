@@ -1,6 +1,3 @@
-/* ==========================================================================
-   ESTADO GLOBAL Y ALMACENAMIENTO
-   ========================================================================== */
 let state = {
   emeralds: [false, false, false, false, false, false, false],
   shamatoPower: 0,
@@ -63,9 +60,6 @@ function showToast(msg) {
   }
 }
 
-/* ==========================================================================
-   SISTEMA DE NAVEGACIÓN
-   ========================================================================== */
 function switchTab(tabId) {
   document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active'));
   document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
@@ -87,9 +81,6 @@ function switchTab(tabId) {
   }
 }
 
-/* ==========================================================================
-   SISTEMA DE CHAOS EMERALDS
-   ========================================================================== */
 function triggerSecretEmerald(num) {
   const index = num - 1;
   if (!state.emeralds[index]) {
@@ -108,9 +99,6 @@ function triggerSecretEmerald(num) {
   }
 }
 
-/* ==========================================================================
-   DATOS Y ACCIONES INTERACTIVAS
-   ========================================================================== */
 const facts = [
   "Amato maneja con soltura la escritura y dibujo con ambas manos.",
   "Sus colores distintivos están inspirados en la combinación napolitana.",
@@ -148,9 +136,6 @@ function clickAmato() {
   showToast(msgs[Math.floor(Math.random() * msgs.length)]);
 }
 
-/* ==========================================================================
-   SECCIÓN SHAMATO
-   ========================================================================== */
 function addShamatoEnergy() {
   if (state.shamatoPower < 100) {
     state.shamatoPower += 10;
@@ -217,9 +202,6 @@ function generateShamatoScene() {
   if (sceneElem) sceneElem.innerText = `[Registro]: Se encontraban ${p}, ${a}. Finalmente, ${o}`;
 }
 
-/* ==========================================================================
-   LABORATORIO
-   ========================================================================== */
 function interactLab(type) {
   const consoleBox = document.getElementById('lab-console');
   let text = "";
@@ -237,9 +219,6 @@ function interactLab(type) {
   }
 }
 
-/* ==========================================================================
-   SIMULADOR Y ATUENDOS
-   ========================================================================== */
 function simAction(act) {
   const out = document.getElementById('sim-output');
   if (!out) return;
@@ -267,9 +246,6 @@ function generateOutfit() {
   if (display) display.innerText = styles[Math.floor(Math.random()*styles.length)];
 }
 
-/* ==========================================================================
-   SISTEMA DE DIARIO
-   ========================================================================== */
 const diaryPages = [
   "Página 1:\n\nInicio del cuaderno de notas. Registraré aquí las observaciones sobre los cristales de energía hallados en la zona.",
   "Página 2:\n\nLos días de trabajo junto a Tails han servido para comprender mejor el comportamiento de las herramientas del taller.",
@@ -295,9 +271,6 @@ function changeDiaryPage(dir) {
   if (contentElem) contentElem.innerText = diaryPages[currentDiaryPage];
 }
 
-/* ==========================================================================
-   CARTAS Y EXTRAS
-   ========================================================================== */
 const letters = {
   sonic: "¡Hola Amato!\nSi vas a salir a correr por la zona este, avísame y recorremos el tramo juntos.",
   tails: "Amato,\nRecuerda revisar el nivel de carga de las baterías del escáner antes de la siguiente salida.",
@@ -318,7 +291,7 @@ function showLetter() {
 function openGachaBox() {
   const items = [
     "📦 [Objeto] Ración de provisiones.",
-    "🖼️️ [Objeto] Plano topográfico de Emerald Hill.",
+    "🖼 [Objeto] Plano topográfico de Emerald Hill.",
     "💎 [Objeto] Fragmento de cristal brillante.",
     "✨ [Objeto] Insignia conmemorativa."
   ];
@@ -337,9 +310,6 @@ function sendStarWish() {
   input.value = "";
 }
 
-/* ==========================================================================
-   LOGROS Y MÓDULOS DE CONTROL
-   ========================================================================== */
 const achDefs = {
   visited: "♡ Primer Ingreso (Visita al archivo)",
   firstEmerald: "💎 Coleccionista de Esferas",
@@ -385,7 +355,6 @@ function toggleShamatoMode() {
   showToast("Vista de cooperación activada.");
 }
 
-// Carga inicial al cargar el DOM
 document.addEventListener('DOMContentLoaded', function() {
   loadState();
   changeDiaryPage(0);
