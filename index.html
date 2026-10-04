@@ -8,8 +8,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&family=Fredoka:wght@400;600;700&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
-
-  <!-- VÍNCULO A TU CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -18,7 +16,7 @@
     <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
   </audio>
 
-  <!-- PANTALLA DE BIENVENIDA / ENTRADA -->
+  <!-- PANTALLA DE BIENVENIDA -->
   <div id="introScreen" class="intro-screen">
     <div class="intro-card">
       <div class="profile-avatar">🍨</div>
@@ -43,10 +41,10 @@
     
     <div class="window-bar">
       <div>🎀 Neapolitan_Haven_v5.0.exe</div>
-      <div>
-        <span class="win-btn" id="nightModeBtn">🌙</span>
-        <span class="win-btn" id="amatoModeBtn">🍨</span>
-        <span class="win-btn" id="shamatoModeBtn">🖤</span>
+      <div class="window-controls">
+        <span class="win-btn" id="nightModeBtn" title="Modo Noche">🌙</span>
+        <span class="win-btn" id="amatoModeBtn" title="Modo Amato">🍨</span>
+        <span class="win-btn" id="shamatoModeBtn" title="Modo Shamato">🖤</span>
       </div>
     </div>
 
@@ -61,7 +59,7 @@
         <div class="profile-avatar" id="amatoAvatarBtn">🍨</div>
         <div class="header-text">
           <h1>Amato's World 🎀</h1>
-          <p class="subtitle" id="subTitleText">The Napolitano Hedgehog • Personal OC & Shamato Hub</p>
+          <p class="subtitle">The Napolitano Hedgehog • Personal OC & Shamato Hub</p>
           <div class="tag-badges">
             <span class="tag">🍓 Fresa</span>
             <span class="tag">🍫 Chocolate</span>
@@ -71,46 +69,42 @@
       </div>
     </header>
 
-    <!-- NAVEGACIÓN COMPLETA -->
-    <nav class="kawaii-nav">
-      <div class="nav-buttons-grid">
-        <button class="nav-tab active" data-tab="tab-conoce">1. Conoce a Amato</button>
-        <button class="nav-tab" data-tab="tab-preguntas">2. Pregúntale a Amato</button>
-        <button class="nav-tab" data-tab="tab-no-preguntar">3. No Deberías Preguntar</button>
-        <button class="nav-tab" data-tab="tab-personalidad">4. Personalidad</button>
-        <button class="nav-tab" data-tab="tab-test">5. Test & ¿Qué Haría?</button>
-        <button class="nav-tab" data-tab="tab-simulador">6. Simulador de Amato</button>
-        <button class="nav-tab" data-tab="tab-mensajes-shadow">7. Mensajes de Shadow</button>
-        <button class="nav-tab" data-tab="tab-escenas-shamato">8. Generador Shamato</button>
-        <button class="nav-tab" data-tab="tab-laboratorio">9. Laboratorio de Tails</button>
-        <button class="nav-tab" data-tab="tab-coleccion">10. Chaos Emeralds (0/7)</button>
-        <button class="nav-tab" data-tab="tab-habitacion">11. Habitación & Diario</button>
-        <button class="nav-tab" data-tab="tab-minijuego">12. Minijuego Emeralds</button>
-        <button class="nav-tab" data-tab="tab-outfits">13. Viste a Amato</button>
-        <button class="nav-tab" data-tab="tab-amato-core">14. Amato Core & Polaroids</button>
-        <button class="nav-tab" data-tab="tab-clasificado">15. Archivo Clasificado</button>
-        <button class="nav-tab" data-tab="tab-estado-hoy">16. ¿Cómo está hoy?</button>
-        <button class="nav-tab" data-tab="tab-cartas">17. Cartas Secretas</button>
-        <button class="nav-tab" data-tab="tab-frases">18. Generador de Frases</button>
-        <button class="nav-tab" data-tab="tab-energia-shamato">19. Energía Shamato</button>
-        <button class="nav-tab" data-tab="tab-mapa-recuerdos">20. Mapa de Recuerdos</button>
-        <button class="nav-tab" data-tab="tab-y-si">21. ¿Y si...?</button>
-        <button class="nav-tab" data-tab="tab-carta-amato">22. Escríbele a Amato</button>
-        <button class="nav-tab" data-tab="tab-deseo-estrellas">23. Deseo a Estrellas</button>
-        <button class="nav-tab" data-tab="tab-regalos">24. Caja de Regalos</button>
-        <button class="nav-tab" data-tab="tab-logros">25. Logros & Secretos</button>
-        <button class="nav-tab" data-tab="tab-shamato-hub">26. SHAMATO HUB</button>
-        <button class="nav-tab" data-tab="tab-galeria">27. Galería Categorizada</button>
-        <button class="nav-tab" data-tab="tab-scrapbook">28. Scrapbook</button>
-        <button class="nav-tab" data-tab="tab-cronologico">29. Archivo Cronológico</button>
+    <!-- NAVEGACIÓN HORIZONTAL PEQUEÑA -->
+    <nav class="kawaii-nav-top">
+      <div class="nav-scroll-container">
+        <button class="nav-chip active" data-tab="tab-conoce">1. Conoce a Amato</button>
+        <button class="nav-tab nav-chip" data-tab="tab-preguntas">2. Pregúntale</button>
+        <button class="nav-tab nav-chip" data-tab="tab-no-preguntar">3. No Preguntar</button>
+        <button class="nav-tab nav-chip" data-tab="tab-personalidad">4. Personalidad</button>
+        <button class="nav-tab nav-chip" data-tab="tab-personajes">5. Amigos & Opiniones</button>
+        <button class="nav-tab nav-chip" data-tab="tab-playlist">6. Playlist & BGM</button>
+        <button class="nav-tab nav-chip" data-tab="tab-test">7. Test & Escenarios</button>
+        <button class="nav-tab nav-chip" data-tab="tab-simulador">8. Simulador</button>
+        <button class="nav-tab nav-chip" data-tab="tab-mensajes-shadow">9. Msjs Shadow</button>
+        <button class="nav-tab nav-chip" data-tab="tab-escenas-shamato">10. Generador Shamato</button>
+        <button class="nav-tab nav-chip" data-tab="tab-laboratorio">11. Lab de Tails</button>
+        <button class="nav-tab nav-chip" data-tab="tab-coleccion">12. Chaos Emeralds</button>
+        <button class="nav-tab nav-chip" data-tab="tab-habitacion">13. Habitación</button>
+        <button class="nav-tab nav-chip" data-tab="tab-diario">14. Diario Secreto</button>
+        <button class="nav-tab nav-chip" data-tab="tab-minijuego">15. Minijuego</button>
+        <button class="nav-tab nav-chip" data-tab="tab-outfits">16. Outfits</button>
+        <button class="nav-tab nav-chip" data-tab="tab-polaroids">17. Polaroids</button>
+        <button class="nav-tab nav-chip" data-tab="tab-clasificado">18. Clasificado</button>
+        <button class="nav-tab nav-chip" data-tab="tab-cartas">19. Cartas</button>
+        <button class="nav-tab nav-chip" data-tab="tab-energia-shamato">20. Energía Shamato</button>
+        <button class="nav-tab nav-chip" data-tab="tab-deseo-estrellas">21. Deseos</button>
+        <button class="nav-tab nav-chip" data-tab="tab-regalos">22. Regalos</button>
+        <button class="nav-tab nav-chip" data-tab="tab-logros">23. Logros & María</button>
+        <button class="nav-tab nav-chip" data-tab="tab-shamato-hub">24. SHAMATO HUB</button>
+        <button class="nav-tab nav-chip" data-tab="tab-galeria">25. Galería PNG</button>
+        <button class="nav-tab nav-chip" data-tab="tab-cronologico">26. Lore Completo</button>
       </div>
-
-      <button id="bgmToggleBtn" class="inline-bgm-btn">🎵 Música de Fondo: OFF</button>
+      <button id="bgmToggleBtn" class="inline-bgm-btn">🎵 Música: OFF</button>
     </nav>
 
     <main class="content-area">
 
-      <!-- PESTAÑA 1 -->
+      <!-- PESTAÑA 1: CONOCE A AMATO -->
       <section id="tab-conoce" class="tab-content active">
         <div class="coquette-card">
           <div class="card-header">🍨 ¡Hola! Soy Amato</div>
@@ -119,7 +113,7 @@
             <p>Tengo 17 años, soy un erizo y vivo en Emerald Hill.</p>
             <p>Me gustan las aventuras, investigar cosas raras y las Chaos Emeralds. Sobre todo las Chaos Emeralds. Probablemente demasiado.</p>
             
-            <div class="btn-group-vertical" style="margin-top:10px;">
+            <div class="btn-group-vertical" style="margin-top:12px;">
               <button class="action-btn pop-btn" data-title="¿Quién eres?" data-text="Me llamo Amato. Soy un erizo. Tengo 17 años. Soy ambidiestro. Mido más o menos 100 cm. Tengo los ojos rojos, aunque a veces parecen más rosados. Y sí, mi diseño está basado en helado napolitano: Chocolate, fresa y vainilla. No, no sé quién decidió que eso era una buena idea... Bueno, sí sé." data-emoji="🍨">¿Quién eres?</button>
               <button class="action-btn pop-btn" data-title="¿Qué te gusta?" data-text="Las Chaos Emeralds. Las aventuras. Correr. Pasar tiempo con mis amigos. Aprender cosas nuevas. Las estrellas. Los dulces. Las cosas misteriosas. Preguntar demasiado. Y... bueno. Shadow. ... ¿Qué? No dije nada." data-emoji="⭐">¿Qué te gusta?</button>
               <button class="action-btn pop-btn" data-title="¿Cómo eres?" data-text="Supongo que soy bastante curioso. Me gusta saber cómo funcionan las cosas. Si algo no tiene explicación, quiero encontrarla. También hablo bastante. Mucho. Demasiado, según Shadow. Soy impulsivo. A veces hago cosas antes de pensar. También intento cuidar a las personas que quiero. Aunque a veces no sé muy bien cómo hacerlo." data-emoji="🧠">¿Cómo eres?</button>
@@ -128,7 +122,7 @@
         </div>
       </section>
 
-      <!-- PESTAÑA 2 -->
+      <!-- PESTAÑA 2: PREGÚNTALE -->
       <section id="tab-preguntas" class="tab-content">
         <div class="coquette-card">
           <div class="card-header">❓ PREGÚNTALE ALGO A AMATO</div>
@@ -138,18 +132,11 @@
             <button class="action-btn pop-btn" data-title="¿Te gusta tu diseño?" data-text="Sí. Me gusta que tenga los tres colores. Aunque Sonic dijo que parezco un helado con patas. No le hables de esto." data-emoji="🍨">¿Te gusta tu diseño?</button>
             <button class="action-btn pop-btn" data-title="¿Por qué te gustan las Chaos Emeralds?" data-text="Porque son raras. Y poderosas. Y no las entiendo. Eso último probablemente sea lo que más me interesa. Quiero saber por qué reaccionan conmigo. Quiero saber qué pueden hacer. Y quiero saber si realmente pueden conceder deseos." data-emoji="💎">¿Por qué las Chaos Emeralds?</button>
             <button class="action-btn pop-btn" data-title="¿Puedes usar Chaos Control?" data-text="Más o menos. ... Bueno. A veces. Cuando funciona. Cuando no exploto nada. Cuando Shadow no tiene que corregirme. Así que sí. Más o menos." data-emoji="⚡">¿Puedes usar Chaos Control?</button>
-            <button class="action-btn pop-btn" data-title="¿Quién es tu mejor amigo?" data-text="¿Uno solo? Eso está difícil. Sonic es mi mejor amigo. Tails también. Amy. Knuckles. Cream. ... Shadow. ... Sí. Shadow también." data-emoji="🫂">¿Quién es tu mejor amigo?</button>
-            <button class="action-btn pop-btn" data-title="Opinión sobre Sonic" data-text="Es increíble. Es rápido. Es divertido. Es valiente. Y probablemente tenga cero sentido de supervivencia." data-emoji="💙">¿Qué opinas de Sonic?</button>
-            <button class="action-btn pop-btn" data-title="Opinión sobre Tails" data-text="Es demasiado inteligente. A veces me explica cosas que no entiendo. Luego me las vuelve a explicar. Luego tampoco entiendo. Y después hago otra pregunta. Creo que ya está acostumbrado." data-emoji="🧡">¿Qué opinas de Tails?</button>
-            <button class="action-btn pop-btn" data-title="Opinión sobre Amy" data-text="Amy sabe cuándo alguien necesita un abrazo. Eso es útil. Especialmente conmigo." data-emoji="🌸">¿Qué opinas de Amy?</button>
-            <button class="action-btn pop-btn" data-title="Opinión sobre Knuckles" data-text="Es buena persona. Se enoja demasiado. Muchísimo. Pero es buena persona. No le digas que dije eso." data-emoji="🔥">¿Qué opinas de Knuckles?</button>
-            <button class="action-btn pop-btn" data-title="Opinión sobre Cream" data-text="Es adorable. Fin de la respuesta. También es mucho más madura de lo que parece." data-emoji="🩷">¿Qué opinas de Cream?</button>
-            <button class="action-btn" id="btnPreguntaShadowProg">¿Qué opinas de Shadow?</button>
           </div>
         </div>
       </section>
 
-      <!-- PESTAÑA 3 -->
+      <!-- PESTAÑA 3: NO PREGUNTAR -->
       <section id="tab-no-preguntar" class="tab-content">
         <div class="coquette-card">
           <div class="card-header">🚫 COSAS QUE NO DEBERÍAS PREGUNTAR</div>
@@ -163,7 +150,7 @@
         </div>
       </section>
 
-      <!-- PESTAÑA 4 -->
+      <!-- PESTAÑA 4: PERSONALIDAD -->
       <section id="tab-personalidad" class="tab-content">
         <div class="coquette-card">
           <div class="card-header">🧠 PERSONALIDAD DE AMATO</div>
@@ -179,26 +166,53 @@
         </div>
       </section>
 
-      <!-- PESTAÑA 5 -->
-      <section id="tab-test" class="tab-content">
+      <!-- PESTAÑA 5: PERSONAJES Y OPINIONES -->
+      <section id="tab-personajes" class="tab-content">
         <div class="coquette-card">
-          <div class="card-header">📋 TEST: ¿QUÉ TAN AMATO ERES?</div>
-          <div class="card-body" id="testBox">
-            <p>vamos a comprobar algo. responde honestamente o miente, da igual.</p>
-            <br>
-            <p><strong>P1: Encuentras una Chaos Emerald.</strong></p>
-            <button class="action-btn test-opt" data-res="Buena decisión. Tails probablemente sabe qué hacer.">A. La llevo a Tails.</button>
-            <button class="action-btn test-opt" data-res="Bastante Amato.">B. La investigo.</button>
-            <button class="action-btn test-opt" data-res="... ¿Quién eres y qué hiciste con Amato?">C. No la toco.</button>
-            <button class="action-btn test-opt" data-res="No. No hagas eso... Ya lo hiciste.">D. La toco.</button>
+          <div class="card-header">👥 AMIGOS & LO QUE PIENSA AMATO</div>
+          <div class="card-body btn-group-vertical">
+            <button class="action-btn pop-btn" data-title="Opinión sobre Sonic" data-text="Es increíble. Es rápido. Es divertido. Es valiente. Y probablemente tenga cero sentido de supervivencia." data-emoji="💙">Sonic the Hedgehog</button>
+            <button class="action-btn pop-btn" data-title="Opinión sobre Tails" data-text="Es demasiado inteligente. A veces me explica cosas que no entiendo. Luego me las vuelve a explicar. Luego tampoco entiendo. Y después hago otra pregunta. Creo que ya está acostumbrado." data-emoji="🧡">Miles 'Tails' Prower</button>
+            <button class="action-btn pop-btn" data-title="Opinión sobre Amy" data-text="Amy sabe cuándo alguien necesita un abrazo. Eso es útil. Especialmente conmigo." data-emoji="🌸">Amy Rose</button>
+            <button class="action-btn pop-btn" data-title="Opinión sobre Knuckles" data-text="Es buena persona. Se enoja demasiado. Muchísimo. Pero es buena persona. No le digas que dije eso." data-emoji="🔥">Knuckles the Echidna</button>
+            <button class="action-btn pop-btn" data-title="Opinión sobre Cream" data-text="Es adorable. Fin de la respuesta. También es mucho más madura de lo que parece." data-emoji="🩷">Cream the Rabbit</button>
+            <button class="action-btn" id="btnPreguntaShadowProg">Shadow the Hedgehog 🖤</button>
           </div>
         </div>
       </section>
 
-      <!-- PESTAÑA 6 -->
+      <!-- PESTAÑA 6: PLAYLIST -->
+      <section id="tab-playlist" class="tab-content">
+        <div class="coquette-card text-center">
+          <div class="card-header">🎵 BANDA SONORA DE AMATO</div>
+          <div class="card-body">
+            <h3>RISK IT ALL — BRUNO MARS</h3>
+            <p style="margin:8px 0; font-size:0.85rem;">Esta canción representa bastante bien la relación de Amato y Shadow. Dos personas que tienen miedo de perder algo importante, no están acostumbradas a necesitar a alguien y aun así deciden arriesgarse.</p>
+            <div class="quote-box">"A veces querer a alguien también significa aceptar que ahora tienes algo que perder."</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PESTAÑA 7: TEST & ESCENARIOS -->
+      <section id="tab-test" class="tab-content">
+        <div class="coquette-card">
+          <div class="card-header">📋 TEST: ¿QUÉ TAN AMATO ERES?</div>
+          <div class="card-body" id="testBox">
+            <p><strong>P1: Encuentras una Chaos Emerald.</strong></p>
+            <div class="btn-group-vertical" style="margin-top:8px;">
+              <button class="action-btn test-opt" data-res="Buena decisión. Tails probablemente sabe qué hacer.">A. La llevo a Tails.</button>
+              <button class="action-btn test-opt" data-res="Bastante Amato.">B. La investigo.</button>
+              <button class="action-btn test-opt" data-res="... ¿Quién eres y qué hiciste con Amato?">C. No la toco.</button>
+              <button class="action-btn test-opt" data-res="No. No hagas eso... Ya lo hiciste.">D. La toco.</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PESTAÑA 8: SIMULADOR -->
       <section id="tab-simulador" class="tab-content">
         <div class="coquette-card">
-          <div class="card-header">📊 SIMULADOR DE ESTADO DE AMATO</div>
+          <div class="card-header">📊 SIMULADOR DE AMATO</div>
           <div class="card-body">
             <div class="btn-group-vertical">
               <button class="action-btn" id="simComidaBtn">🍲 Darse Comida</button>
@@ -206,17 +220,16 @@
               <button class="action-btn" id="simEmeraldBtn">💎 Dar Chaos Emerald</button>
               <button class="action-btn" id="simShadowBtn">🖤 Llamar a Shadow</button>
             </div>
-
             <div class="quote-box" id="simResultBox">Elige una acción para interactuar con Amato...</div>
           </div>
         </div>
       </section>
 
-      <!-- PESTAÑA 7 -->
+      <!-- PESTAÑA 9: MENSAJES DE SHADOW -->
       <section id="tab-mensajes-shadow" class="tab-content">
-        <div class="coquette-card">
+        <div class="coquette-card text-center">
           <div class="card-header">💬 GENERADOR DE MENSAJES DE SHADOW</div>
-          <div class="card-body text-center btn-group-vertical">
+          <div class="card-body btn-group-vertical">
             <button class="action-btn" id="genShadowCommon">Mensaje Común</button>
             <button class="action-btn" id="genShadowHidden">Mensaje Oculto</button>
             <button class="action-btn highlight" id="genShadowRare">Mensaje Raro 🖤</button>
@@ -225,68 +238,74 @@
         </div>
       </section>
 
-      <!-- PESTAÑA 8 -->
+      <!-- PESTAÑA 10: GENERADOR SHAMATO -->
       <section id="tab-escenas-shamato" class="tab-content">
-        <div class="coquette-card">
+        <div class="coquette-card text-center">
           <div class="card-header">🎬 GENERADOR DE ESCENAS SHAMATO</div>
-          <div class="card-body text-center">
+          <div class="card-body">
             <button class="action-btn highlight" id="genSceneBtn">✨ Generar Escena Aleatoria ✨</button>
             <div class="quote-box" id="sceneResultBox">Presiona el botón para crear un momento entre Amato y Shadow...</div>
           </div>
         </div>
       </section>
 
-      <!-- PESTAÑA 9 -->
+      <!-- PESTAÑA 11: LABORATORIO DE TAILS -->
       <section id="tab-laboratorio" class="tab-content">
         <div class="coquette-card">
           <div class="card-header">🔬 LABORATORIO DE INVESTIGACIÓN CHAOS</div>
-          <div class="card-body">
+          <div class="card-body btn-group-vertical">
             <p style="text-align:center; font-size:0.8rem;">Bienvenido. Por favor, no toques nada. (Amato ya tocó algo).</p>
-            <div class="btn-group-vertical" style="margin-top:10px;">
-              <button class="action-btn pop-btn" data-title="Analizar Energía" data-text="Frecuencia inestable. Anomalía detectada: La Emerald está reaccionando a Amato. Tails: 'Eso no debería pasar'. Amato: '¿Por qué?'. Tails: 'Precisamente eso estoy intentando descubrir'." data-emoji="⚡">ANALIZAR ENERGÍA</button>
-              <button class="action-btn pop-btn" data-title="Medir Frecuencia" data-text="99.9 Chaos... ¡ERROR! Demasiada energía. 'Estas Emeralds parecen responder de forma diferente cuando Amato está cerca.'" data-emoji="📊">MEDIR FRECUENCIA</button>
-              <button class="action-btn pop-btn" data-title="Activar Chaos Control" data-text="Teletransportación exitosa. Amato apareció al lado de Shadow. Shadow: 'Concéntrate'. Amato: '¡Lo estoy intentando!'" data-emoji="🌀">ACTIVAR CHAOS CONTROL</button>
-              <button class="action-btn pop-btn" data-title="Tocar la Emerald" data-text="Tails: 'No.' ... La Emerald brilla. Está reaccionando. Tails: '¿Por qué está reaccionando?'. Amato: 'No sé'. Tails: 'Ese es literalmente el problema'." data-emoji="💎">TOCAR LA EMERALD</button>
-            </div>
+            <button class="action-btn pop-btn" data-title="Analizar Energía" data-text="Frecuencia inestable. Anomalía detectada: La Emerald está reaccionando a Amato. Tails: 'Eso no debería pasar'. Amato: '¿Por qué?'. Tails: 'Precisamente eso estoy intentando descubrir'." data-emoji="⚡">ANALIZAR ENERGÍA</button>
+            <button class="action-btn pop-btn" data-title="Medir Frecuencia" data-text="99.9 Chaos... ¡ERROR! Demasiada energía. 'Estas Emeralds parecen responder de forma diferente cuando Amato está cerca.'" data-emoji="📊">MEDIR FRECUENCIA</button>
+            <button class="action-btn pop-btn" data-title="Activar Chaos Control" data-text="Teletransportación exitosa. Amato apareció al lado de Shadow. Shadow: 'Concéntrate'. Amato: '¡Lo estoy intentando!'" data-emoji="🌀">ACTIVAR CHAOS CONTROL</button>
+            <button class="action-btn pop-btn" data-title="Tocar la Emerald" data-text="Tails: 'No.' ... La Emerald brilla. Está reaccionando. Tails: '¿Por qué está reaccionando?'. Amato: 'No sé'. Tails: 'Ese es literalmente el problema'." data-emoji="💎">TOCAR LA EMERALD</button>
           </div>
         </div>
       </section>
 
-      <!-- PESTAÑA 10 -->
+      <!-- PESTAÑA 12: CHAOS EMERALDS -->
       <section id="tab-coleccion" class="tab-content">
         <div class="coquette-card text-center">
           <div class="card-header">💎 COLECCIÓN DE CHAOS EMERALDS</div>
           <div class="card-body">
             <p id="collectionProgress">Encontradas: 0 / 7</p>
-            <div class="btn-group-vertical" style="margin-top:10px;">
-              <button class="action-btn" id="findEmeraldBtn">🔍 Buscar Esmeralda</button>
-            </div>
+            <button class="action-btn highlight" id="findEmeraldBtn" style="margin-top:8px;">🔍 Buscar Esmeralda</button>
             <div class="quote-box" id="emeraldFindBox">Haz clic para buscar en el mapa...</div>
           </div>
         </div>
       </section>
 
-      <!-- PESTAÑA 11 -->
+      <!-- PESTAÑA 13: HABITACIÓN -->
       <section id="tab-habitacion" class="tab-content">
         <div class="coquette-card">
-          <div class="card-header">🛏️️ HABITACIÓN DE AMATO</div>
+          <div class="card-header">🛏️ HABITACIÓN DE AMATO</div>
           <div class="card-body btn-group-vertical">
             <button class="action-btn" id="roomPlushBtn">🧸 Peluche</button>
             <button class="action-btn pop-btn" data-title="Libros" data-text="Chaos Energy, Chaos Emeralds, Historia, Cosas que Tails me prestó... Este no lo termino, este tampoco." data-emoji="📚">📚 Libros</button>
-            <button class="action-btn" id="roomDiarioBtn">📓 Diario Secreto</button>
             <button class="action-btn pop-btn" data-title="Ventana" data-text="Me gusta mirar las estrellas desde aquí. A veces me pregunto si realmente escuchan. Quizá sí." data-emoji="🌟">🪟 Ventana</button>
             <button class="action-btn pop-btn" data-title="Mochila" data-text="Cuaderno, Lápices, Detector de Chaos Emeralds, Comida, Más comida... ¿Por qué hay una cuchara aquí?" data-emoji="🎒">🎒 Mochila</button>
           </div>
         </div>
       </section>
 
-      <!-- PESTAÑA 12 -->
+      <!-- PESTAÑA 14: DIARIO SECRETO DE 35 PÁGINAS -->
+      <section id="tab-diario" class="tab-content">
+        <div class="coquette-card">
+          <div class="card-header">📓 DIARIO SECRETO (PÁGINAS DECLARADAS)</div>
+          <div class="card-body text-center">
+            <button class="action-btn highlight" id="readDiarioPageBtn">📖 Leer Siguiente Página</button>
+            <div class="quote-box" id="diarioPageBox">Haz clic para abrir el diario...</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PESTAÑA 15: MINIJUEGO -->
       <section id="tab-minijuego" class="tab-content">
         <div class="coquette-card text-center">
           <div class="card-header">🎮 ATRAPA LAS CHAOS EMERALDS</div>
           <div class="card-body">
             <p>Tienes que encontrar las siete. ¡No las pierdas!</p>
-            <button class="action-btn highlight" id="startMinigameBtn">🎮 EMPEZAR JUEGO</button>
+            <button class="action-btn highlight" id="startMinigameBtn" style="margin-top:6px;">🎮 EMPEZAR JUEGO</button>
             <div id="gameTargetArea" class="game-target-area" style="display:none;">
               <div id="catchEmerald" class="catch-emerald">💎</div>
             </div>
@@ -295,27 +314,24 @@
         </div>
       </section>
 
-      <!-- PESTAÑA 13 -->
+      <!-- PESTAÑA 16: OUTFITS -->
       <section id="tab-outfits" class="tab-content">
         <div class="coquette-card text-center">
           <div class="card-header">👗 VISTE A AMATO</div>
-          <div class="card-body">
-            <p>Elige qué se pone hoy:</p>
-            <div class="btn-group-vertical" style="margin-top:10px;">
-              <button class="action-btn outfit-btn" data-theme="Casual 👟">Estilo Casual</button>
-              <button class="action-btn outfit-btn" data-theme="Coquette 🎀">Estilo Coquette</button>
-              <button class="action-btn outfit-btn" data-theme="Gothic 🖤">Estilo Gothic</button>
-              <button class="action-btn outfit-btn" data-theme="Napolitano 🍨">Estilo Napolitano</button>
-              <button class="action-btn highlight" id="randomOutfitBtn">🎲 Traje Aleatorio</button>
-            </div>
+          <div class="card-body btn-group-vertical">
+            <button class="action-btn outfit-btn" data-theme="Casual 👟">Estilo Casual</button>
+            <button class="action-btn outfit-btn" data-theme="Coquette 🎀">Estilo Coquette</button>
+            <button class="action-btn outfit-btn" data-theme="Gothic 🖤">Estilo Gothic</button>
+            <button class="action-btn outfit-btn" data-theme="Napolitano 🍨">Estilo Napolitano</button>
+            <button class="action-btn highlight" id="randomOutfitBtn">🎲 Traje Aleatorio</button>
             <div class="quote-box" id="outfitResultBox">Resultado del vestidor...</div>
           </div>
         </div>
       </section>
 
-      <!-- PESTAÑA 14 -->
-      <section id="tab-amato-core" class="tab-content">
-        <div class="coquette-card">
+      <!-- PESTAÑA 17: POLAROIDS -->
+      <section id="tab-polaroids" class="tab-content">
+        <div class="coquette-card btn-group-vertical">
           <div class="card-header">📷 POLAROIDS & RECUERDOS</div>
           <div class="card-body btn-group-vertical">
             <button class="action-btn pop-btn" data-title="Polaroid 1" data-text="Amato y Sonic corriendo. 'Nadie recuerda quién ganó.'" data-emoji="📷">Amato & Sonic</button>
@@ -327,13 +343,13 @@
         </div>
       </section>
 
-      <!-- PESTAÑA 15 -->
+      <!-- PESTAÑA 18: CLASIFICADO -->
       <section id="tab-clasificado" class="tab-content">
         <div class="coquette-card text-center">
           <div class="card-header">⚠️ ARCHIVO CLASIFICADO: AMATO</div>
           <div class="card-body">
             <p>ACCESO RESTRINGIDO. ¿Seguro que quieres abrirlo?</p>
-            <button class="action-btn highlight" id="openClassifiedBtn" style="margin-top:10px;">Sí, abrir archivo</button>
+            <button class="action-btn highlight" id="openClassifiedBtn" style="margin-top:8px;">Sí, abrir archivo</button>
             <div class="quote-box" id="classifiedResult" style="display:none; text-align:left;">
               <p><strong>Miedo:</strong> Perder a alguien otra vez.</p>
               <p><strong>Inseguridad:</strong> Sentir que tiene que estar bien para que los demás estén bien.</p>
@@ -345,20 +361,9 @@
         </div>
       </section>
 
-      <!-- PESTAÑA 16 -->
-      <section id="tab-estado-hoy" class="tab-content">
-        <div class="coquette-card text-center">
-          <div class="card-header">💭 ¿CÓMO ESTÁ AMATO HOY?</div>
-          <div class="card-body">
-            <button class="action-btn highlight" id="checkMoodBtn">Ver Estado Actual</button>
-            <div class="quote-box" id="moodResultBox">Haz clic para consultar su estado...</div>
-          </div>
-        </div>
-      </section>
-
-      <!-- PESTAÑA 17 -->
+      <!-- PESTAÑA 19: CARTAS -->
       <section id="tab-cartas" class="tab-content">
-        <div class="coquette-card">
+        <div class="coquette-card btn-group-vertical">
           <div class="card-header">💌 CARTAS SECRETAS</div>
           <div class="card-body btn-group-vertical">
             <button class="action-btn pop-btn" data-title="Carta de Sonic" data-text="Hey, Amato. Espero que no estés causando demasiados problemas. Nos vemos en la próxima aventura. — Sonic" data-emoji="💙">Carta de Sonic</button>
@@ -369,20 +374,7 @@
         </div>
       </section>
 
-      <!-- PESTAÑA 18 -->
-      <section id="tab-frases" class="tab-content">
-        <div class="coquette-card text-center">
-          <div class="card-header">📖 GENERADOR DE FRASES</div>
-          <div class="card-body btn-group-vertical">
-            <button class="action-btn" id="btnQuoteAmato2">Frase de Amato</button>
-            <button class="action-btn" id="btnQuoteShadow2">Frase de Shadow</button>
-            <button class="action-btn highlight" id="btnQuoteShamato2">Frase Shamato</button>
-            <div class="quote-box" id="quoteResultBox2">Presiona un botón...</div>
-          </div>
-        </div>
-      </section>
-
-      <!-- PESTAÑA 19 -->
+      <!-- PESTAÑA 20: ENERGÍA SHAMATO -->
       <section id="tab-energia-shamato" class="tab-content">
         <div class="coquette-card text-center">
           <div class="card-header">💗 ENERGÍA SHAMATO</div>
@@ -394,42 +386,7 @@
         </div>
       </section>
 
-      <!-- PESTAÑA 20 -->
-      <section id="tab-mapa-recuerdos" class="tab-content">
-        <div class="coquette-card">
-          <div class="card-header">⭐ MAPA DE RECUERDOS</div>
-          <div class="card-body btn-group-vertical">
-            <button class="action-btn pop-btn" data-title="Primera estrella" data-text="La primera Chaos Emerald. Amato todavía recuerda perfectamente cómo reaccionó." data-emoji="⭐">Primera estrella</button>
-            <button class="action-btn pop-btn" data-title="Segunda estrella" data-text="La noche en la que pidió un deseo. No habla mucho de ella." data-emoji="🌙">Segunda estrella</button>
-            <button class="action-btn pop-btn" data-title="El día que conoció a Shadow" data-text="'No sabía qué pensar de él.' Y la primera vez que Shadow volvió: 'Ahí entendí que realmente podía confiar en él.'" data-emoji="🖤">Encuentro con Shadow</button>
-          </div>
-        </div>
-      </section>
-
-      <!-- PESTAÑA 21 -->
-      <section id="tab-y-si" class="tab-content">
-        <div class="coquette-card">
-          <div class="card-header">❓ ESCENARIOS "¿Y SI...?"</div>
-          <div class="card-body btn-group-vertical">
-            <button class="action-btn pop-btn" data-title="¿Y si nunca hubiera encontrado una Chaos Emerald?" data-text="Probablemente habría encontrado otra cosa que investigar. Amato siempre encuentra algo." data-emoji="❓">¿Y si no encontraba la Emerald?</button>
-            <button class="action-btn pop-btn" data-title="¿Y si Shadow hubiese confesado primero?" data-text="Amato se habría quedado mirándolo 10 segundos y luego preguntaría: '¿En serio?'" data-emoji="🖤">¿Y si Shadow confesaba primero?</button>
-          </div>
-        </div>
-      </section>
-
-      <!-- PESTAÑA 22 -->
-      <section id="tab-carta-amato" class="tab-content">
-        <div class="coquette-card text-center">
-          <div class="card-header">✉️ ESCRÍBELE UNA CARTA A AMATO</div>
-          <div class="card-body">
-            <textarea id="userLetterText" class="kawaii-textarea" placeholder="Escribe tu mensaje para Amato aquí..."></textarea>
-            <button class="action-btn highlight" id="sendLetterBtn">Enviar Carta</button>
-            <div class="quote-box" id="letterReplyBox" style="display:none;">Amato está leyendo tu carta...</div>
-          </div>
-        </div>
-      </section>
-
-      <!-- PESTAÑA 23 -->
+      <!-- PESTAÑA 21: DESEOS -->
       <section id="tab-deseo-estrellas" class="tab-content">
         <div class="coquette-card text-center">
           <div class="card-header">🌟 PIDE UN DESEO A LAS ESTRELLAS</div>
@@ -441,7 +398,7 @@
         </div>
       </section>
 
-      <!-- PESTAÑA 24 -->
+      <!-- PESTAÑA 22: REGALOS -->
       <section id="tab-regalos" class="tab-content">
         <div class="coquette-card text-center">
           <div class="card-header">🎁 CAJA DE REGALOS</div>
@@ -452,73 +409,59 @@
         </div>
       </section>
 
-      <!-- PESTAÑA 25 -->
+      <!-- PESTAÑA 23: LOGROS & MARIA -->
       <section id="tab-logros" class="tab-content">
         <div class="coquette-card">
-          <div class="card-header">🏆 SISTEMA DE LOGROS DESBLOQUEADOS</div>
-          <div class="card-body">
-            <ul class="info-list" id="achievementsList">
-              <li><span>Primer Paso:</span> Entraste a la página ✅</li>
-              <li><span>Napolitano:</span> Leíste la información de Amato ✅</li>
-              <li id="achMaria" style="display:none; color:var(--bright-pink); font-weight:bold;">🌟 Secreto de Maria Desbloqueado!</li>
-            </ul>
-            <button class="action-btn highlight" id="triggerSecretEndingBtn" style="margin-top:10px;">✨ Ver Escena Final Secreta ✨</button>
+          <div class="card-header">🏆 SISTEMA DE LOGROS & SECRETO DE MARIA</div>
+          <div class="card-body text-center">
+            <p>Amato nunca llegó a conocer a Maria Robotnik, pero conoce su historia a través de Shadow y entiende por qué significa tanto para él.</p>
+            <div class="quote-box">"Algunas personas siguen viviendo en los recuerdos de quienes las amaron."</div>
+            <button class="action-btn highlight" id="triggerSecretEndingBtn" style="margin-top:10px;">✨ Escena Final Secreta ✨</button>
           </div>
         </div>
       </section>
 
-      <!-- PESTAÑA 26 -->
+      <!-- PESTAÑA 24: SHAMATO HUB -->
       <section id="tab-shamato-hub" class="tab-content">
         <div class="coquette-card">
-          <div class="card-header">🖤🍓 SHAMATO: AMATO Y SHADOW</div>
+          <div class="card-header">🖤🍓 SHAMATO HUB</div>
           <div class="card-body">
             <p>Se conocieron durante Sonic Adventure 2. Al principio Amato solo quería saber sobre Chaos Control y Shadow quería 5 minutos de paz. No los consiguió. Terminaron sanando juntos y convirtiéndose en el hogar del otro.</p>
             <br>
             <p><strong>Cosas que Shadow hace pero no admite:</strong></p>
-            <p>Se queda cerca • Lo protege • Se acuerda de cosas pequeñas • Nunca dice que le molesta cuando Amato se queda dormido a su lado.</p>
+            <p>Se queda cerca • Lo protege • Se acuerda de cosas pequeñas • Le deja apoyarse en él cuando se queda dormido.</p>
           </div>
         </div>
       </section>
 
-      <!-- PESTAÑA 27 -->
+      <!-- PESTAÑA 25: GALERÍA CON IMÁGENES PNG -->
       <section id="tab-galeria" class="tab-content">
         <div class="coquette-card">
-          <div class="card-header">🖼 GALERÍA DE DIBUJOS Y DISEÑOS</div>
+          <div class="card-header">🖼 GALERÍA DE IMÁGENES & PNGs</div>
           <div class="card-body">
             <div class="gallery-grid">
               <div class="art-frame">
-                <div class="frame-inner">🍨</div>
-                <div class="frame-caption">Amato Design</div>
+                <img src="https://via.placeholder.com/250x180/ffe5ec/503024?text=Amato+PNG" alt="Amato PNG" class="gallery-png">
+                <div class="frame-caption">Amato Design — Helado Napolitano</div>
               </div>
               <div class="art-frame">
-                <div class="frame-inner">🖤🍓</div>
-                <div class="frame-caption">Shamato Artwork</div>
+                <img src="https://via.placeholder.com/250x180/ffe5ec/503024?text=Shamato+PNG" alt="Shamato PNG" class="gallery-png">
+                <div class="frame-caption">Amato & Shadow — Momentos juntos</div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- PESTAÑA 28 -->
-      <section id="tab-scrapbook" class="tab-content">
-        <div class="coquette-card">
-          <div class="card-header">📓 SCRAPBOOK DE NOTAS</div>
-          <div class="card-body">
-            <div class="sticky-note">📌 Amato le preguntó a Shadow sobre Chaos Control 47 veces.</div>
-            <div class="sticky-note">📌 Shadow claramente está molesto. 💀</div>
-            <div class="sticky-note">📌 Amato encontró otra Chaos Emerald. Alguien deténgalo.</div>
-          </div>
-        </div>
-      </section>
-
-      <!-- PESTAÑA 29 -->
+      <!-- PESTAÑA 26: LORE COMPLETO -->
       <section id="tab-cronologico" class="tab-content">
         <div class="coquette-card">
-          <div class="card-header">📜 LÍNEA DE TIEMPO CRONOLÓGICA</div>
+          <div class="card-header">📜 ARCHIVO CRONOLÓGICO Y LORE EXTENDIDO</div>
           <div class="card-body">
-            <p><strong>A los 12 años:</strong> Ocurrieron cosas que cambiaron su vida. Pidió un deseo a las estrellas y poco después su madre falleció. Carga esa culpa desde entonces.</p>
-            <br>
-            <p><strong>Sonic Adventure 2:</strong> Conoció al grupo, ayudó a salvar el mundo y formó una familia elegida.</p>
+            <p><strong>A los 12 años:</strong> Ocurrieron cosas que cambiaron la vida de Amato. Su relación con su madre se volvió complicada.</p>
+            <p><strong>Una noche:</strong> Amato miró las estrellas y pedía que todo terminara. Poco después su madre falleció, cargando con una culpa que no sabía soltar.</p>
+            <p><strong>Las Chaos Emeralds:</strong> Encontró una Emerald que reaccionó con él. Empezó a investigar si podían conceder deseos.</p>
+            <p><strong>Sonic Adventure 2:</strong> Conoció a Sonic, Tails, Amy, Knuckles y Shadow. Se convirtió en parte de su familia elegida.</p>
           </div>
         </div>
       </section>
@@ -537,7 +480,7 @@
     <div class="ending-text-box" id="endingTextBox"></div>
   </div>
 
-  <!-- MODAL GENERAL POPUP -->
+  <!-- MODAL POPUP -->
   <div class="modal-backdrop" id="generalModal">
     <div class="modal-window">
       <button class="modal-close-btn" id="modalCloseBtn">✕</button>
@@ -549,7 +492,6 @@
     </div>
   </div>
 
-  <!-- VÍNCULO A TU JAVASCRIPT -->
   <script src="script.js"></script>
 </body>
 </html>
