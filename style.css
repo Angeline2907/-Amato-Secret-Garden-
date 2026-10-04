@@ -47,7 +47,7 @@ body {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: rgba(18, 11, 24, 0.92);
+  background: rgba(18, 11, 24, 0.95);
   backdrop-filter: blur(8px);
   border-bottom: 2px solid var(--fresa);
   box-shadow: 0 4px 20px rgba(0,0,0,0.5);
@@ -73,7 +73,6 @@ body {
 .nav-menu {
   display: flex;
   gap: 0.4rem;
-  list-style: none;
   align-items: center;
 }
 
