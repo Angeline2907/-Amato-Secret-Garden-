@@ -5,30 +5,438 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Neapolitan__Haven.exe</title>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        :root {
+            --bg-outer: #fde8ed;
+            --bg-container: #fff1f5;
+            --header-pink: #ff85a2;
+            --header-dark-pink: #ff4d6d;
+            --active-pink: #ff4d79;
+            --text-chocolate: #503024;
+            --card-bg: #fffbfd;
+            --border-pink: #ffb3c1;
+            --shadow-pink: #ffccd5;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Fredoka', cursive, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-outer);
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            padding: 10px 5px;
+            color: var(--text-chocolate);
+        }
+
+        .window-container {
+            width: 100%;
+            max-width: 410px;
+            background-color: var(--bg-container);
+            border: 3px solid var(--border-pink);
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(255, 133, 162, 0.25);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .title-bar {
+            background-color: var(--header-pink);
+            padding: 8px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--border-pink);
+        }
+
+        .title-text {
+            font-weight: 700;
+            color: #ffffff;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .window-controls {
+            display: flex;
+            gap: 6px;
+        }
+
+        .win-btn {
+            width: 18px;
+            height: 18px;
+            background: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 12px;
+            font-weight: bold;
+            color: var(--header-dark-pink);
+            cursor: pointer;
+        }
+
+        .marquee-container {
+            background-color: var(--text-chocolate);
+            color: #ffe4e1;
+            padding: 5px 0;
+            overflow: hidden;
+            white-space: nowrap;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 14s linear infinite;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .hero-section {
+            padding: 18px 15px;
+            text-align: center;
+            background-color: #fff7f9;
+            border-bottom: 2px dashed var(--border-pink);
+        }
+
+        .icon-circle {
+            width: 65px;
+            height: 65px;
+            background: #ffffff;
+            border: 2px solid var(--border-pink);
+            border-radius: 50%;
+            margin: 0 auto 10px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.03);
+        }
+
+        .hero-title {
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: var(--text-chocolate);
+            margin-bottom: 2px;
+        }
+
+        .hero-subtitle {
+            font-size: 0.82rem;
+            color: var(--active-pink);
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .flavor-tags {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .tag {
+            background: #ffffff;
+            border: 1px solid var(--border-pink);
+            border-radius: 12px;
+            padding: 3px 8px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .nav-section {
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .nav-btn {
+            background: #ffffff;
+            border: 2px solid var(--border-pink);
+            border-radius: 20px;
+            padding: 10px 15px;
+            color: var(--text-chocolate);
+            font-size: 0.9rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 3px 0px var(--shadow-pink);
+            transition: all 0.1s ease;
+            text-align: center;
+            outline: none;
+            width: 100%;
+        }
+
+        .nav-btn:active {
+            transform: translateY(2px);
+            box-shadow: 0 1px 0px var(--shadow-pink);
+        }
+
+        .nav-btn.active {
+            background: var(--active-pink);
+            color: #ffffff;
+            border-color: #ff2a55;
+            box-shadow: 0 3px 0px #d90429;
+        }
+
+        .music-btn-container {
+            margin-top: 4px;
+            text-align: center;
+        }
+
+        .music-btn {
+            background: var(--active-pink);
+            color: white;
+            border: none;
+            border-radius: 18px;
+            padding: 8px 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 3px 0px #d90429;
+        }
+
+        .content-area {
+            padding: 12px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 2px solid var(--border-pink);
+            border-radius: 16px;
+            padding: 14px;
+            display: none;
+        }
+
+        .card.active-card {
+            display: block;
+            animation: fadeIn 0.25s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card-header {
+            background: #ffe0e9;
+            padding: 6px 10px;
+            border-radius: 10px;
+            color: var(--active-pink);
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            border: 1px dashed var(--border-pink);
+            text-align: center;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+            border-bottom: 1px dashed #ffd6e0;
+            font-size: 0.85rem;
+        }
+
+        .info-label {
+            color: var(--active-pink);
+            font-weight: 700;
+        }
+
+        .info-value {
+            color: var(--text-chocolate);
+            font-weight: 600;
+        }
+
+        .instruction-text {
+            font-size: 0.78rem;
+            text-align: center;
+            margin-bottom: 8px;
+            color: var(--text-chocolate);
+        }
+
+        .traits-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+
+        .trait-btn {
+            background: #ffffff;
+            border: 1px solid var(--border-pink);
+            border-radius: 10px;
+            padding: 4px 8px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            color: var(--text-chocolate);
+        }
+
+        .trait-detail {
+            background: #fff0f5;
+            border-radius: 8px;
+            padding: 8px;
+            font-size: 0.8rem;
+            text-align: center;
+            margin-bottom: 12px;
+            min-height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .stat-bar {
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 2px;
+            display: block;
+        }
+
+        .progress-bg {
+            height: 10px;
+            background: #ffe0e9;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--active-pink);
+            border-radius: 5px;
+        }
+
+        .color-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .color-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #ffffff;
+            padding: 6px 10px;
+            border-radius: 8px;
+            border: 1px solid var(--border-pink);
+        }
+
+        .color-swatch {
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .hearts-grid {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            margin: 8px 0;
+        }
+
+        .heart-icon {
+            font-size: 22px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .counter-box {
+            text-align: center;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--active-pink);
+            margin-top: 8px;
+        }
+
+        .filter-group {
+            display: flex;
+            gap: 5px;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+
+        .filter-btn {
+            background: #ffffff;
+            border: 1px solid var(--border-pink);
+            border-radius: 10px;
+            padding: 5px 10px;
+            font-weight: 700;
+            font-size: 0.75rem;
+            cursor: pointer;
+        }
+
+        .filter-btn.active {
+            background: var(--active-pink);
+            color: white;
+        }
+
+        .gallery-display {
+            background: #ffffff;
+            border: 2px dashed var(--border-pink);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-chocolate);
+        }
+
+        .emerald-box {
+            text-align: center;
+            padding: 5px;
+        }
+
+        .emerald-img {
+            font-size: 45px;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .footer {
+            background-color: var(--header-pink);
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border-top: 2px solid var(--border-pink);
+            margin-top: 15px;
+        }
+    </style>
 </head>
 <body>
 
 <div class="window-container">
-    <!-- Barra superior -->
     <div class="title-bar">
-        <div class="title-text">
-            <span class="folder-icon">📂</span> Neapolitan__Haven.exe
-        </div>
+        <div class="title-text"><span class="folder-icon">📂</span> Neapolitan__Haven.exe</div>
         <div class="window-controls">
             <div class="win-btn">-</div>
             <div class="win-btn">x</div>
         </div>
     </div>
 
-    <!-- Marquee continuo -->
     <div class="marquee-container">
         <div class="marquee-content">
             🍓 Fresa × Vainilla 🍫 Shadow's #1 Fan 💖 Chaos Emerald Enthusiast 🍓 &nbsp;&nbsp;&nbsp;&nbsp; 🍓 Fresa × Vainilla 🍫 Shadow's #1 Fan 💖 Chaos Emerald Enthusiast 🍓
         </div>
     </div>
 
-    <!-- Cabecera / Hero -->
     <div class="hero-section">
         <div class="icon-circle">🍨</div>
         <h1 class="hero-title">Amato's Pages 🎀</h1>
@@ -40,7 +448,6 @@
         </div>
     </div>
 
-    <!-- Botones de Navegación -->
     <div class="nav-section">
         <button class="nav-btn active" onclick="showSection('profile', this)">🍨 Perfil & Paleta</button>
         <button class="nav-btn" onclick="showSection('lore', this)">🌙 Lore & Línea Temporal</button>
@@ -56,10 +463,7 @@
         </div>
     </div>
 
-    <!-- Contenedor de Secciones -->
     <div class="content-area">
-
-        <!-- 1. Perfil & Paleta -->
         <div id="profile" class="card active-card">
             <div class="card-header">📌 FICHA TÉCNICA</div>
             <div class="info-row"><span class="info-label">Nombre:</span><span class="info-value">Amato (Apodo: Napolitano)</span></div>
@@ -83,62 +487,30 @@
             </div>
             <div class="trait-detail" id="traitDisplay">Haz clic en un rasgo arriba para leer más.</div>
 
-            <div class="stat-bar">
-                <span class="stat-label">Curiosidad:</span>
-                <div class="progress-bg"><div class="progress-fill" style="width: 95%;"></div></div>
-            </div>
-            <div class="stat-bar">
-                <span class="stat-label">Energía:</span>
-                <div class="progress-bg"><div class="progress-fill" style="width: 85%;"></div></div>
-            </div>
-            <div class="stat-bar">
-                <span class="stat-label">Cariño:</span>
-                <div class="progress-bg"><div class="progress-fill" style="width: 90%;"></div></div>
-            </div>
-            <div class="stat-bar">
-                <span class="stat-label">Caos:</span>
-                <div class="progress-bg"><div class="progress-fill" style="width: 70%;"></div></div>
-            </div>
-            <div class="stat-bar">
-                <span class="stat-label">Paciencia:</span>
-                <div class="progress-bg"><div class="progress-fill" style="width: 40%;"></div></div>
-            </div>
+            <div class="stat-bar"><span class="stat-label">Curiosidad:</span><div class="progress-bg"><div class="progress-fill" style="width: 95%;"></div></div></div>
+            <div class="stat-bar"><span class="stat-label">Energía:</span><div class="progress-bg"><div class="progress-fill" style="width: 85%;"></div></div></div>
+            <div class="stat-bar"><span class="stat-label">Cariño:</span><div class="progress-bg"><div class="progress-fill" style="width: 90%;"></div></div></div>
+            <div class="stat-bar"><span class="stat-label">Caos:</span><div class="progress-bg"><div class="progress-fill" style="width: 70%;"></div></div></div>
+            <div class="stat-bar"><span class="stat-label">Paciencia:</span><div class="progress-bg"><div class="progress-fill" style="width: 40%;"></div></div></div>
 
             <div class="card-header" style="margin-top:25px;">🎨 PALETA DE COLORES</div>
             <div class="color-list">
-                <div class="color-item">
-                    <div class="color-swatch" style="background:#FF9EBB;"></div>
-                    <div><strong>Rosa Fresa</strong><br><small>#FF9EBB</small></div>
-                </div>
-                <div class="color-item">
-                    <div class="color-swatch" style="background:#503024;"></div>
-                    <div><strong>Marrón Chocolate</strong><br><small>#503024</small></div>
-                </div>
-                <div class="color-item">
-                    <div class="color-swatch" style="background:#FFFEF2;"></div>
-                    <div><strong>Blanco Vainilla</strong><br><small>#FFFEF2</small></div>
-                </div>
+                <div class="color-item"><div class="color-swatch" style="background:#FF9EBB;"></div><div><strong>Rosa Fresa</strong><br><small>#FF9EBB</small></div></div>
+                <div class="color-item"><div class="color-swatch" style="background:#503024;"></div><div><strong>Marrón Chocolate</strong><br><small>#503024</small></div></div>
+                <div class="color-item"><div class="color-swatch" style="background:#FFFEF2;"></div><div><strong>Blanco Vainilla</strong><br><small>#FFFEF2</small></div></div>
             </div>
         </div>
 
-        <!-- 2. Lore -->
         <div id="lore" class="card">
             <div class="card-header">📜 LA HISTORIA DE AMATO</div>
-            <div class="sub-header-pink">🏰 [INFANCIA] (Toca para abrir)</div>
-            <p style="font-size:0.85rem; line-height:1.4; color: var(--text-chocolate);">
-                Amato creció en Emerald Hill con una perspectiva alegre y curiosa. Su vida temprana estuvo...
-            </p>
+            <p style="font-size:0.85rem; line-height:1.4;">Amato creció en Emerald Hill con una perspectiva alegre y curiosa...</p>
         </div>
 
-        <!-- 3. Personajes -->
         <div id="characters" class="card">
             <div class="card-header">👥 PERSONAJES</div>
-            <p style="font-size:0.9rem; text-align:center;">
-                Amato, Shadow, Sonic, Tails, Amy, Knuckles y Cream.
-            </p>
+            <p style="font-size:0.9rem; text-align:center;">Amato, Shadow, Sonic, Tails, Amy, Knuckles y Cream.</p>
         </div>
 
-        <!-- 4. Dinámica Shamato -->
         <div id="shamato" class="card">
             <div class="card-header">💖 ENERGÍA SHAMATO (Haz clic para sumar corazones)</div>
             <div class="hearts-grid">
@@ -149,27 +521,19 @@
                 <span class="heart-icon" onclick="addHeart()">💕</span>
             </div>
             <div class="counter-box" id="heartCounter">Nivel de Amor: 100%</div>
-
-            <div class="card-header" style="margin-top:20px;">💘 DINÁMICA DE RELACIÓN</div>
-            <div class="sub-header-pink">🌹 Gruñón × ☀️ Rayito de Sol</div>
         </div>
 
-        <!-- 5. Scrapbook -->
         <div id="scrapbook" class="card">
             <div class="card-header">📓 SCRAPBOOK</div>
-            <p style="font-size:0.9rem; text-align:center;">
-                Pequeñas notas, apuntes de investigación Chaos y recuerdos.
-            </p>
+            <p style="font-size:0.9rem; text-align:center;">Notas y recuerdos de aventuras.</p>
         </div>
 
-        <!-- 6. Cartas Secretas -->
         <div id="letters" class="card">
             <div class="card-header">💌 CARTAS SECRETAS</div>
             <div class="info-row"><span class="info-label">✉️ Sobre de Sonic</span><span class="info-value">Ver</span></div>
             <div class="info-row"><span class="info-label">✉️ Sobre de Amy</span><span class="info-value">Ver</span></div>
         </div>
 
-        <!-- 7. Galería Categorizada -->
         <div id="gallery" class="card">
             <div class="card-header">🖼️ GALERÍA CATEGORIZADA</div>
             <div class="filter-group">
@@ -177,38 +541,70 @@
                 <button class="filter-btn" onclick="filterGallery('AMATO', this)">AMATO</button>
                 <button class="filter-btn" onclick="filterGallery('SHAMATO', this)">SHAMATO</button>
             </div>
-            <div class="gallery-display" id="galleryBox">
-                🖤 💕 🍓
-            </div>
+            <div class="gallery-display" id="galleryBox">🖤 💕 🍓</div>
         </div>
 
-        <!-- 8. Frases & Random -->
         <div id="quotes" class="card">
             <div class="card-header">📖 FRASES & RANDOM</div>
-            <div class="quote-btn-stack">
-                <button class="nav-btn" onclick="setQuote('Amato: ¡Espera, espera! ¡Tengo una pregunta sobre la energía Chaos!')">Frase de Amato</button>
-                <button class="nav-btn" onclick="setQuote('Shadow: Quédate detrás de mí. Yo me encargo.')">Frase de Shadow</button>
-                <button class="nav-btn active" onclick="setQuote('Amato es ambidiestro.')">DATO RANDOM</button>
-            </div>
-            <div class="gallery-display" id="quoteBox" style="min-height:50px; margin-top:15px;">
-                Amato es ambidiestro.
-            </div>
-
+            <div class="gallery-display" id="quoteBox" style="min-height:50px;">Amato es ambidiestro.</div>
             <div class="card-header" style="margin-top:20px;">⭐ SECRET CHAOS EMERALD</div>
             <div class="emerald-box">
                 <div class="emerald-img" onclick="tapEmerald()">💎</div>
                 <div class="counter-box" id="emeraldCounter">Toques: 7 / 7</div>
             </div>
         </div>
-
     </div>
 
-    <!-- Pie de página -->
-    <div class="footer">
-        💖 Created for Amato's World · Made with Magic ✨
-    </div>
+    <div class="footer">💖 Created for Amato's World · Made with Magic ✨</div>
 </div>
 
-<script src="script.js"></script>
+<script>
+    let musicOn = false;
+    let heartCount = 100;
+    let emeraldTaps = 7;
+
+    function showSection(sectionId, btnElement) {
+        document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.card').forEach(card => card.classList.remove('active-card'));
+        btnElement.classList.add('active');
+        const targetCard = document.getElementById(sectionId);
+        if (targetCard) targetCard.classList.add('active-card');
+    }
+
+    function toggleMusic() {
+        musicOn = !musicOn;
+        const musicBtn = document.getElementById('musicBtn');
+        if (musicOn) {
+            musicBtn.innerText = "Música de Fondo: ON";
+            musicBtn.style.background = "#4caf50";
+        } else {
+            musicBtn.innerText = "Música de Fondo: OFF";
+            musicBtn.style.background = "var(--active-pink)";
+        }
+    }
+
+    function setTrait(text) {
+        document.getElementById('traitDisplay').innerText = text;
+    }
+
+    function addHeart() {
+        heartCount += 5;
+        document.getElementById('heartCounter').innerText = `Nivel de Amor: ${heartCount}%`;
+    }
+
+    function filterGallery(category, btn) {
+        btn.parentElement.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const box = document.getElementById('galleryBox');
+        if (category === 'TODO') box.innerHTML = "🖤 💕 🍓";
+        else if (category === 'AMATO') box.innerHTML = "🍓 🦔 ✨";
+        else if (category === 'SHAMATO') box.innerHTML = "🖤 💖 🦔";
+    }
+
+    function tapEmerald() {
+        emeraldTaps++;
+        document.getElementById('emeraldCounter').innerText = `Toques: ${emeraldTaps} / 7`;
+    }
+</script>
 </body>
 </html>
