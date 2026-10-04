@@ -1,881 +1,1700 @@
-const $=s=>document.querySelector(s);
-const $$=s=>document.querySelectorAll(s);
+const $ = selector =>
+  document.querySelector(selector);
 
-let state={
-shamato:+localStorage.getItem("amato_shamato")||0,
-emeralds:+localStorage.getItem("amato_emeralds")||0,
-love:+localStorage.getItem("amato_love")||0,
-achievements:+localStorage.getItem("amato_achievements")||0,
-diary:+localStorage.getItem("amato_diary")||0,
-music:false
-};
+const $$ = selector =>
+  [...document.querySelectorAll(selector)];
 
 
-/* TOAST */
+/* ================= STATE ================= */
 
-function toast(text){
-let t=$("#toast");
-t.textContent=text;
-t.classList.add("show");
-clearTimeout(window.toastTimer);
-window.toastTimer=setTimeout(()=>t.classList.remove("show"),2500);
-}
+let state =
+  JSON.parse(
+    localStorage.getItem("amatoArchive") || "null"
+  ) ||
+  {
+    emeralds: [],
+    achievements: [],
+    visits: 0,
+    energy: 0,
+    amatoClicks: 0,
+    shadowClicks: 0,
+    letters: 0,
+    rel: 0,
+    secret: [],
+    night: false,
 
-
-/* LOGROS */
-
-function addAchievement(name){
-state.achievements++;
-localStorage.setItem("amato_achievements",state.achievements);
-toast("🏆 LOGRO DESBLOQUEADO: "+name);
-updateCounters();
-}
-
-
-/* CONTADORES */
-
-function updateCounters(){
-
-$("#shamatoEnergy").textContent=state.shamato+" / 100";
-$("#shamatoBar").style.width=state.shamato+"%";
-
-$("#emeraldCount").textContent=state.emeralds+"/7";
-$("#loveCount").textContent=state.love;
-$("#achievementCount").textContent=state.achievements;
-
-}
+    stats: {
+      felicidad: 60,
+      energia: 75,
+      curiosidad: 100,
+      paciencia: 31,
+      caos: 97,
+      sueño: 55
+    }
+  };
 
 
-/* ESTADO */
-
-function setMood(title,text){
-$("#moodTitle").textContent=title;
-$("#moodText").textContent=text;
-}
-
-
-/* PERSONAJES */
-
-const characters={
-
-Sonic:"Sonic fue una de las primeras personas que consiguió que Amato sintiera que podía simplemente ser él mismo. Aventuras, carreras y muchísimo caos.",
-
-Tails:"Tails es su compañero de investigaciones Chaos. Normalmente es quien intenta impedir que Amato toque cosas que dicen NO TOCAR.",
-
-Amy:"Amy entiende muy bien el lado emocional de Amato. Es una de las personas con las que puede hablar sin sentirse juzgado.",
-
-Knuckles:"Una amistad llena de discusiones, aventuras y situaciones absurdas. Knuckles ya aprendió que Amato hará preguntas sobre absolutamente todo.",
-
-Cream:"Amato tiene muchísimo cariño por Cream y siempre intenta protegerla. Ella también consigue sacarle su lado más tranquilo.",
-
-Shadow:"Shadow y Amato comenzaron como desconocidos. Después compañeros. Después amigos. Después mejores amigos. Y lentamente apareció algo más. Shadow demuestra cariño principalmente quedándose."
-
-};
-
-function characterInfo(name){
-
-$("#characterOutput").innerHTML=
-`<b>${name}</b><p>${characters[name]}</p>`;
-
-}
-
-
-/* TIMELINE */
-
-const events=[
-
-["12 años","Muere su padre."],
-
-["12 años","Su relación con su madre se vuelve cada vez más complicada."],
-
-["Una noche","Amato mira las estrellas y desea que todo termine."],
-
-["Después","Muere su madre y Amato empieza a sentirse culpable."],
-
-["Después","Aprende a esconder el dolor haciendo felices a los demás."],
-
-["17 años","Comienza su investigación sobre las Chaos Emeralds."],
-
-["Sonic Adventure 2","Conoce a Sonic, Tails, Amy, Knuckles, Cream y Shadow."],
-
-["Después","Las amistades se convierten en una familia."],
-
-["Shamato","Amato y Shadow comienzan lentamente a confiar el uno en el otro."],
-
-["Ahora","Amato mira las estrellas sin pedir que todo termine."]
-
-];
-
-function renderTimeline(){
-
-$("#timeline").innerHTML=events.map(x=>
-`<div class="timeline-item"><b>${x[0]}</b>${x[1]}</div>`
-).join("");
-
-}
-
-
-/* SHAMATO */
-
-function addShamato(n){
-
-state.shamato=Math.min(100,state.shamato+n);
+state.visits++;
 
 localStorage.setItem(
-"amato_shamato",
-state.shamato
+  "amatoArchive",
+  JSON.stringify(state)
 );
 
-updateCounters();
 
-if(state.shamato===100){
+let diaryPage = 0;
 
-addAchievement("Shamato Energy 100%");
 
-openModal(`
-<div class="section-title">🖤♡ 100/100</div>
-<p>Amato está feliz.</p>
-<p>Shadow está fingiendo que esto no le afecta.</p>
-<p><b>Shadow:</b> “Quédate.”</p>
-`);
+/* ================= DIARY ================= */
+
+const diary = [
+
+  "Encontré algo.",
+
+  "Era una Chaos Emerald.",
+
+  "Reaccionó cuando la toqué.",
+
+  "No sé por qué.",
+
+  "Quiero entenderlo.",
+
+  "Papá decía que las estrellas parecían luces lejanas.",
+
+  "Hoy pensé en pedir un deseo.",
+
+  "Desearía que todo terminara.",
+
+  "No sabía qué significaba realmente.",
+
+  "Mamá murió.",
+
+  "Yo pedí que todo terminara.",
+
+  "¿Fue mi culpa?",
+
+  "No creo que tenga sentido.",
+
+  "Pero no puedo dejar de pensarlo.",
+
+  "Encontré otra cosa sobre las Chaos Emeralds.",
+
+  "Quizá pueden conceder deseos.",
+
+  "Tengo que descubrirlo.",
+
+  "Conocí a Sonic.",
+
+  "Es imposible quedarse quieto cerca de él.",
+
+  "Tails sabe muchísimo.",
+
+  "Amy abraza demasiado.",
+
+  "Knuckles me dijo que no tocara algo.",
+
+  "Lo toqué.",
+
+  "Shadow.",
+
+  "No sé qué pensar de él.",
+
+  "Quiero aprender Chaos Control.",
+
+  "Shadow dijo que no.",
+
+  "Le pregunté otra vez.",
+
+  "Dijo que no otra vez.",
+
+  "Creo que empieza a conocerme demasiado bien.",
+
+  "A veces siento que tengo que estar bien porque los demás cuentan conmigo.",
+
+  "No encontré la respuesta que buscaba.",
+
+  "Encontré una familia.",
+
+  "Amigos.",
+
+  "Y alguien que decidió quedarse.",
+
+  "Esta vez no estoy solo."
+
+];
+
+
+/* ================= PHRASES ================= */
+
+const phrases = {
+
+  amato: [
+
+    "¡Espera, espera! ¡Tengo una pregunta!",
+
+    "¡Eso fue increíble!",
+
+    "¿Crees que una Chaos Emerald podría hacer eso?",
+
+    "No estoy haciendo nada peligroso.",
+
+    "¡Confía en mí!",
+
+    "¡Mira esto!",
+
+    "Estoy bien.",
+
+    "Tengo una idea.",
+
+    "No creo que sea tan mala.",
+
+    "No prometí eso.",
+
+    "¿Qué podría salir mal?",
+
+    "Bueno...",
+
+    "Escucha.",
+
+    "Esto es importante.",
+
+    "Creo que encontré algo.",
+
+    "Shadow.",
+
+    "Shadow.",
+
+    "Shadow.",
+
+    "¿Qué?",
+
+    "¡Nada!"
+
+  ],
+
+
+  shadow: [
+
+    "No es asunto tuyo.",
+
+    "Quédate detrás de mí.",
+
+    "No necesito ayuda.",
+
+    "Estoy bien.",
+
+    "Deja de preguntar.",
+
+    "No estoy preocupado.",
+
+    "Ven conmigo.",
+
+    "Quédate cerca.",
+
+    "Yo me encargo.",
+
+    "No tienes que hacerlo solo.",
+
+    "Descansa.",
+
+    "No quiero perderte.",
+
+    "Quédate.",
+
+    "No.",
+
+    "...",
+
+    "Amato."
+
+  ],
+
+
+  shamato: [
+
+    "No tienes que estar solo.",
+
+    "Entonces quédate.",
+
+    "No pienso irme.",
+
+    "Te encontré.",
+
+    "No tienes que fingir conmigo.",
+
+    "No necesito que me salves.",
+
+    "Lo sé.",
+
+    "Solo quiero quedarme contigo.",
+
+    "Si tú te quedas, yo también.",
+
+    "No me vas a perder.",
+
+    "Estoy aquí.",
+
+    "Puedes descansar."
+
+  ]
+
+};
+
+
+/* ================= RANDOM CONTENT ================= */
+
+const facts = [
+
+  "Amato es ambidiestro.",
+
+  "Su diseño está inspirado en el helado napolitano.",
+
+  "Está obsesionado con las Chaos Emeralds.",
+
+  "Habla mucho cuando está nervioso.",
+
+  "Quiere aprender Chaos Control.",
+
+  "Encontró una Chaos Emerald de niño.",
+
+  "Le gustan las estrellas.",
+
+  "Le gustan sus amigos.",
+
+  "Convierte investigaciones serias en problemas.",
+
+  "Sonic lo apoya.",
+
+  "Tails intenta mantenerlo lejos de cosas peligrosas.",
+
+  "Knuckles está cansado de decirle que no toque cosas.",
+
+  "Amy lo abraza.",
+
+  "Cream le da dulces.",
+
+  "Amato hace felices a los demás incluso cuando él no está feliz.",
+
+  "No siempre dice cuando está herido.",
+
+  "Es impulsivo.",
+
+  "Es protector.",
+
+  "Tiene más preguntas que respuestas.",
+
+  "Shadow finge que Amato no le parece adorable.",
+
+  "Nadie le cree."
+
+];
+
+
+const scenePlaces = [
+
+  "Emerald Hill",
+
+  "un campo",
+
+  "la playa",
+
+  "un tejado",
+
+  "el laboratorio de Tails",
+
+  "un bosque",
+
+  "una ciudad de noche",
+
+  "una zona abandonada",
+
+  "una montaña",
+
+  "un lugar después de una batalla",
+
+  "bajo las estrellas",
+
+  "un lugar desconocido"
+
+];
+
+
+const sceneSituations = [
+
+  "descansando",
+
+  "entrenando Chaos Control",
+
+  "Shadow entrenando",
+
+  "Amato encuentra una Emerald",
+
+  "Shadow está herido",
+
+  "Amato está herido",
+
+  "Amato está triste",
+
+  "Shadow está preocupado",
+
+  "mirando las estrellas",
+
+  "discutiendo",
+
+  "caminando",
+
+  "Sonic los dejó solos",
+
+  "Tails les pidió trabajar juntos",
+
+  "Amy los invitó a salir",
+
+  "Amato se quedó dormido",
+
+  "Shadow encontró a Amato dormido",
+
+  "cocinando",
+
+  "teniendo una confesión incómoda"
+
+];
+
+
+const sceneEnds = [
+
+  "se sientan juntos",
+
+  "se toman de la mano",
+
+  "Amato apoya la cabeza en Shadow",
+
+  "se abrazan",
+
+  "miran las estrellas",
+
+  "alguien dice «quédate»",
+
+  "Shadow protege a Amato",
+
+  "Amato protege a Shadow",
+
+  "ambos se ríen",
+
+  "hay un silencio cómodo",
+
+  "Shadow le da un beso en la frente",
+
+  "se quedan dormidos",
+
+  "Shadow admite que estaba preocupado",
+
+  "Amato admite que tenía miedo",
+
+  "prometen regresar juntos"
+
+];
+
+
+/* ================= SAVE ================= */
+
+function persist(){
+
+  localStorage.setItem(
+    "amatoArchive",
+    JSON.stringify(state)
+  );
 
 }
 
-}
 
+/* ================= TOAST ================= */
 
-/* SHAMATO TIMELINE */
+function toast(text){
 
-function renderShamatoTimeline(){
+  const t = $("#toast");
 
-let x=[
-"01 — Desconocidos",
-"02 — Primeras misiones",
-"03 — Compañeros",
-"04 — Amigos",
-"05 — Mejores amigos",
-"06 — Confianza",
-"07 — Miedo a perderse",
-"08 — Aprender a quedarse",
-"09 — Lovers ♡"
-];
+  if(!t) return;
 
-$("#shamatoTimeline").innerHTML=x.map(a=>
-`<div class="ship-event"><b>${a}</b></div>`
-).join("");
+  t.textContent = text;
+
+  t.classList.add("show");
+
+  clearTimeout(window.toastTimer);
+
+  window.toastTimer = setTimeout(
+    () => t.classList.remove("show"),
+    2200
+  );
 
 }
 
 
-/* RANDOM */
+/* ================= NAVIGATION ================= */
 
-const aq=[
-"¡Espera! ¿Eso era una Chaos Emerald?",
-"Tengo una teoría.",
-"¿Por qué Shadow está mirándome?",
-"¡Mira las estrellas!",
-"Estoy bien. De verdad.",
-"No estoy haciendo nada peligroso.",
-"¿Podemos comer algo?",
-"¡Tengo una idea!"
-];
+function go(id){
 
-const sq=[
-"Quédate.",
-"No tienes que estar solo.",
-"Estoy aquí.",
-"No pienso irme.",
-"Puedes descansar.",
-"No me vas a perder.",
-"Deja de preocuparte.",
-"...Tonto."
-];
+  $$(".page").forEach(
+    page => page.classList.remove("active")
+  );
 
-const facts=[
-"Amato es ambidiestro.",
-"Mide aproximadamente 100 cm.",
-"Su diseño está inspirado en helado napolitano.",
-"Le fascinan las Chaos Emeralds.",
-"Habla muchísimo cuando está nervioso.",
-"Le gustan las estrellas.",
-"Tiene miedo de perder a las personas que quiere.",
-"Shadow demuestra cariño principalmente con acciones.",
-"Amato nunca conoció a Maria.",
-"Conoce la historia de Maria a través de Shadow.",
-"Probablemente tocaría un botón que dice NO TOCAR."
-];
 
-const pick=a=>a[Math.floor(Math.random()*a.length)];
+  const target = $("#" + id);
 
-function quote(type){
+  if(target){
+    target.classList.add("active");
+  }
 
-$("#randomOutput").innerHTML=
-`<div class="dice">${type==="shadow"?"🖤":"💬"}</div>
-<p>${pick(type==="shadow"?sq:aq)}</p>`;
+
+  $$("#nav button").forEach(
+    button => button.classList.remove("active")
+  );
+
+
+  const button =
+    $(`#nav button[onclick="go('${id}')"]`);
+
+  if(button){
+    button.classList.add("active");
+  }
+
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
 
 }
+
+
+/* ================= NIGHT MODE ================= */
+
+function toggleNight(){
+
+  state.night = !state.night;
+
+  document.body.classList.toggle(
+    "night",
+    state.night
+  );
+
+  persist();
+
+  toast(
+    state.night
+      ? "Night mode."
+      : "Day mode."
+  );
+
+}
+
+
+/* ================= RANDOM PHRASES ================= */
+
+function phrase(type){
+
+  const array = phrases[type];
+
+  const element =
+    $("#" + type + "Phrase");
+
+  if(!element) return;
+
+  element.textContent =
+    array[
+      Math.floor(
+        Math.random() * array.length
+      )
+    ];
+
+}
+
+
+/* ================= SCENE ================= */
+
+function sceneGen(){
+
+  $("#sceneGen").textContent =
+
+    `En ${pick(scenePlaces)}, ` +
+
+    `están ${pick(sceneSituations)}. ` +
+
+    `Al final, ${pick(sceneEnds)}.`;
+
+}
+
+
+/* ================= PICK ================= */
+
+function pick(array){
+
+  return array[
+    Math.floor(
+      Math.random() * array.length
+    )
+  ];
+
+}
+
+
+/* ================= OUTFIT ================= */
+
+function outfit(){
+
+  $("#outfitOut").textContent =
+
+    `Tema: ${pick([
+      "casual",
+      "adventure",
+      "coquette",
+      "gothic",
+      "summer",
+      "winter",
+      "night",
+      "Chaos",
+      "Shadow",
+      "Sonic",
+      "napolitan"
+    ])}. ` +
+
+    `Cabello: ${pick([
+      "suave",
+      "despeinado",
+      "clásico",
+      "ligeramente rebelde"
+    ])}. ` +
+
+    `Chaqueta: ${pick([
+      "ninguna",
+      "corta",
+      "oversized",
+      "de aventura"
+    ])}. ` +
+
+    `Accesorio: ${pick([
+      "mochila",
+      "estrella",
+      "pin Chaos",
+      "pulsera"
+    ])}.`;
+
+}
+
+
+/* ================= FACT ================= */
 
 function randomFact(){
 
-$("#randomOutput").innerHTML=
-`<div class="dice">🎲</div><p>${pick(facts)}</p>`;
-
-}
-
-function randomScene(){
-
-let places=[
-"Emerald Hill",
-"el laboratorio de Tails",
-"la habitación de Amato",
-"una azotea de noche",
-"una cafetería"
-];
-
-let situations=[
-"Amato encontró algo extraño.",
-"Shadow está intentando tener cinco minutos de paz.",
-"Amato está haciendo demasiadas preguntas.",
-"Los dos están mirando las estrellas.",
-"Algo relacionado con Chaos apareció."
-];
-
-let endings=[
-"Terminan riéndose.",
-"Shadow se queda a su lado.",
-"Tails aparece gritando.",
-"Acaban comiendo helado.",
-"Shadow dice: “Estoy aquí.”"
-];
-
-$("#randomOutput").innerHTML=
-`<div class="dice">🍓</div>
-<p>${pick(places)} — ${pick(situations)} ${pick(endings)}</p>`;
+  $("#factOut").textContent =
+    pick(facts);
 
 }
 
 
-/* ABRAZO */
+/* ================= AMATO CLICK ================= */
 
-function hugAmato(){
+function clickAmato(){
 
-$("#randomOutput").innerHTML=
-`<div class="dice">♡</div>
-<p>Amato se queda quieto dos segundos... y después abraza de vuelta.</p>`;
+  state.amatoClicks++;
 
-if(!localStorage.getItem("amato_hug")){
-
-localStorage.setItem("amato_hug","1");
-addAchievement("Abracé a Amato");
-
-}
-
-}
+  persist();
 
 
-/* TE QUIERO */
-
-function loveAmato(){
-
-state.love++;
-
-localStorage.setItem(
-"amato_love",
-state.love
-);
-
-updateCounters();
-
-$("#randomOutput").innerHTML=
-`<div class="dice">💗</div>
-<p>Amato: “...¿eso era para mí?”</p>`;
-
-if([10,50,100].includes(state.love))
-addAchievement(state.love+" veces TE QUIERO");
-
-}
+  $("#amatoClicks").textContent =
+    state.amatoClicks + " clics";
 
 
-/* REGALO */
+  const responses = [
 
-function giftBox(){
+    "¿Eh?",
 
-let gifts=[
-"🍓 una caja de fresas",
-"🍫 chocolate",
-"🍦 helado napolitano",
-"🎀 una cinta rosa",
-"⭐ una estrella de papel",
-"🧸 un peluche",
-"💌 una carta de Shadow",
-"📓 una página del diario"
-];
+    "¿Por qué me estás tocando?",
 
-$("#randomOutput").innerHTML=
-`<div class="dice">🎁</div>
-<p>Encontraste: ${pick(gifts)}.</p>`;
+    "En serio...",
+
+    "¡Oye!",
+
+    "¿Qué quieres?",
+
+    "...",
+
+    "Está bien. Ganaste.",
+
+    "¿Quieres un abrazo o algo?",
+
+    "¿Sigues aquí?",
+
+    "Gracias."
+
+  ];
+
+
+  const index =
+    Math.min(
+      Math.floor(
+        state.amatoClicks / 2
+      ),
+      responses.length - 1
+    );
+
+
+  toast(responses[index]);
+
+
+  if(state.amatoClicks >= 25){
+
+    achievement(
+      "Esto ya es sospechoso"
+    );
+
+  }
 
 }
 
 
-/* EMERALDS */
+/* ================= SHADOW CLICK ================= */
 
-function findEmerald(){
+function clickShadow(){
 
-if(state.emeralds>=7){
+  state.shadowClicks++;
 
-toast("💎 Ya tienes las 7 Chaos Emeralds.");
-
-return;
-
-}
-
-if(Math.random()<.75){
-
-state.emeralds++;
-
-localStorage.setItem(
-"amato_emeralds",
-state.emeralds
-);
-
-$("#randomOutput").innerHTML=
-`<div class="dice">💎</div>
-<p>¡Encontraste una Chaos Emerald! ${state.emeralds}/7</p>`;
-
-if(state.emeralds===7){
-
-addAchievement("Las 7 Chaos Emeralds");
-
-openModal(`
-<div class="section-title">💎 LAS ENCONTRASTE TODAS</div>
-<p>Amato está probablemente emocionadísimo.</p>
-<p>Tails probablemente está preocupado.</p>
-`);
-
-}
-
-}else{
-
-$("#randomOutput").innerHTML=
-`<div class="dice">🔎</div>
-<p>No encontraste ninguna. Solo una nota de Tails: “NO TOCAR”.</p>`;
-
-}
-
-updateCounters();
-
-}
+  persist();
 
 
-/* LAB */
+  $("#shadowClicks").textContent =
+    state.shadowClicks + " clics";
 
-function redButton(){
 
-toast("🔴 Lo tocaste. Tails acaba de perder tres años de vida.");
+  const responses = [
 
-addAchievement("Yo sí toqué el botón rojo");
+    "...",
 
-$("#labOutput").textContent=
-"ALARMA: ¿QUIÉN TOCÓ EL BOTÓN?";
+    "¿Qué?",
 
-}
+    "¿Por qué sigues haciendo eso?",
 
-function labComputer(){
+    "Deja de molestar.",
 
-$("#labOutput").textContent=
-pick([
-"SISTEMA: energía Chaos detectada.",
-"Tails: ¿Amato? ¿Qué estás haciendo aquí?",
-"SISTEMA: actividad extraña registrada.",
-"Nota: no dejar a Amato solo con el laboratorio.",
-"Amato: “¡Mira! ¡Encontré algo!”"
-]);
+    "No voy a reaccionar.",
 
-}
+    "Amato.",
 
-function labDocument(){
+    "En serio.",
 
-openModal(`
-<div class="section-title">📄 ARCHIVO CHAOS</div>
-<p><b>SUJETO:</b> AMATO</p>
-<p>Su sensibilidad a la energía Chaos sigue siendo anómala.</p>
-<p>La respuesta parece intensificarse ante deseos,
-vínculos emocionales y contacto con las Emeralds.</p>
-<p>— Tails</p>
-`);
+    "Te estoy mirando."
+
+  ];
+
+
+  const index =
+    Math.min(
+      Math.floor(
+        state.shadowClicks / 3
+      ),
+      responses.length - 1
+    );
+
+
+  toast(responses[index]);
+
+
+  if(state.shadowClicks >= 15){
+
+    achievement(
+      "Problema de Knuckles"
+    );
+
+  }
 
 }
 
 
-/* HABITACIÓN */
+/* ================= SHAMATO ENERGY ================= */
 
-function roomAction(type){
+function addEnergy(){
 
-let messages={
-
-bed:"La cama está desordenada. Amato dice que es parte de la decoración.",
-
-plush:"El peluche tiene una pequeña cinta rosa.",
-
-books:"Libros de Chaos Energy, astronomía y cosas prestadas por Tails.",
-
-diary:"Hay una página marcada con una estrella.",
-
-window:"Desde aquí se ven las estrellas.",
-
-headphones:"Amato probablemente lleva horas escuchando la misma canción.",
-
-photos:"Hay fotos de Sonic, Tails, Amy, Knuckles, Cream... y Shadow.",
-
-sweets:"Fresas, chocolate y helado napolitano.",
-
-backpack:"Una libreta, lápices, dulces y una Emerald falsa.",
-
-emerald:"Amato: “¡NO LA TOQUES!”"
-
-};
-
-$("#roomOutput").textContent=
-messages[type];
-
-}
+  state.energy =
+    Math.min(
+      100,
+      state.energy + 1
+    );
 
 
-/* CARTAS */
+  state.rel =
+    Math.min(
+      100,
+      state.rel + 1
+    );
 
-const letters={
 
-Sonic:"Hey, Amato. Deja de preocuparte tanto. Vamos a hacer algo divertido. — Sonic",
+  persist();
 
-Tails:"Por favor, no toques ningún experimento sin avisarme. — Tails",
 
-Amy:"Nunca olvides que puedes contar conmigo. — Amy",
+  $("#energy").textContent =
+    state.energy;
 
-Knuckles:"No sé qué estás planeando. Y probablemente prefiero no saberlo. — Knuckles",
 
-Cream:"¡Espero que estés teniendo un buen día! — Cream",
+  updateRel();
 
-Shadow:"No tienes que estar solo. — Shadow"
 
-};
+  if(state.energy < 20){
 
-function openLetter(name){
+    $("#energyMsg").textContent =
+      "+1";
 
-openModal(`
-<div class="section-title">💌 ${name}</div>
-<p>${letters[name]}</p>
-`);
+  }
+
+  else if(state.energy < 60){
+
+    $("#energyMsg").textContent =
+      "Shadow lo notó.";
+
+  }
+
+  else if(state.energy < 100){
+
+    $("#energyMsg").textContent =
+      "Esto ya es sospechoso.";
+
+  }
+
+  else{
+
+    $("#energyMsg").textContent =
+      "Está bien. Están enamorados.";
+
+  }
 
 }
 
 
-/* CARTA PERSONAL */
+/* ================= RELATIONSHIP ================= */
 
-function sendLetter(){
+function updateRel(){
 
-let input=$("#letterInput");
+  const percentage =
+    state.rel;
 
-if(!input.value.trim()){
 
-$("#letterResponse").textContent=
-"Primero escribe algo ♡";
+  if($("#relBar")){
 
-return;
+    $("#relBar").style.width =
+      percentage + "%";
+
+  }
+
+
+  if($("#relPct")){
+
+    $("#relPct").textContent =
+      percentage + "%";
+
+  }
+
+
+  if($("#relLabel")){
+
+    $("#relLabel").textContent =
+
+      percentage < 20
+        ? "Se conocen."
+
+      : percentage < 40
+        ? "Compañeros."
+
+      : percentage < 60
+        ? "Amigos."
+
+      : percentage < 80
+        ? "Mejores amigos."
+
+      : percentage < 100
+        ? "¿Van a decirlo o no?"
+
+      : "Están enamorados.";
+
+  }
 
 }
 
-$("#letterResponse").textContent=
-pick([
-"Amato leyó tu carta y sonrió.",
-"Amato guardó la carta junto a las demás.",
-"Amato respondió: “Gracias. De verdad.”",
-"Amato se emocionó un poquito."
-]);
 
-input.value="";
+/* ================= EMERALDS ================= */
 
-if(!localStorage.getItem("amato_letter")){
+function renderEmeralds(){
 
-localStorage.setItem("amato_letter","1");
-addAchievement("Carta para Amato");
+  const container =
+    $("#emeralds");
+
+  if(!container) return;
+
+
+  container.innerHTML = "";
+
+
+  for(let i=0;i<7;i++){
+
+    const found =
+      state.emeralds.includes(i);
+
+
+    const button =
+      document.createElement("button");
+
+
+    button.className =
+      "emerald " +
+      (found ? "found" : "");
+
+
+    button.textContent =
+      found ? "✓" : i + 1;
+
+
+    button.onclick =
+      () => findEmerald(i);
+
+
+    container.appendChild(button);
+
+  }
+
+
+  if($("#emeraldCount")){
+
+    $("#emeraldCount").textContent =
+      state.emeralds.length + "/7";
+
+  }
 
 }
 
+
+/* ================= FIND EMERALD ================= */
+
+function findEmerald(
+  index = Math.floor(
+    Math.random() * 7
+  )
+){
+
+  if(state.emeralds.includes(index)){
+
+    toast(
+      "Ya encontraste esta Emerald."
+    );
+
+    return;
+
+  }
+
+
+  state.emeralds.push(index);
+
+  persist();
+
+  renderEmeralds();
+
+
+  if(state.emeralds.length === 7){
+
+    toast(
+      "¡LAS CONSEGUISTE TODAS!"
+    );
+
+    achievement(
+      "Chaos Control"
+    );
+
+  }
+
+  else{
+
+    toast(
+      "¡Una Chaos Emerald!"
+    );
+
+  }
+
 }
 
 
-/* GALERÍA */
+/* ================= LAB ================= */
 
-$$(".filter-bar button").forEach(button=>{
+function lab(type){
 
-button.addEventListener("click",()=>{
+  const messages = {
 
-$$(".filter-bar button")
-.forEach(x=>x.classList.remove("active"));
+    computer:
+      "Acceso autorizado. Archivo: AMATO. ¿Por qué hay un archivo llamado NO DEJAR A AMATO SOLO?",
 
-button.classList.add("active");
+    emerald:
+      "Una Chaos Emerald. Brilla un poquito. Amato está demasiado emocionado.",
 
-let filter=button.dataset.filter;
+    monitor:
+      "Frecuencia Chaos estable. Probablemente.",
 
-$$(".polaroids article").forEach(card=>{
+    tubes:
+      "Tubes. No sabes qué hay dentro. Mejor no.",
 
-card.style.display=
-filter==="all"||card.dataset.category===filter
-?"":"none";
+    docs:
+      "Documentos: Chaos Energy / Control / Deseos.",
 
-});
+    scanner:
+      "Analizando energía... Frecuencia desconocida.",
 
-});
+    red:
+      "ERROR: AMATO TOCÓ ALGO QUE NO DEBÍA.",
 
-});
+    amato:
+      "AMATO: ¿Qué hace este botón? TAILS: AMATO NO."
+
+  };
 
 
-/* DIARIO */
+  $("#labOutput").innerHTML =
+    messages[type];
 
-const diaryEntries=[
 
-"Hoy encontré otra cosa relacionada con Chaos. Tails dice que debería tener cuidado.",
+  if(type === "emerald"){
 
-"Sonic dijo que no tengo que entender todo inmediatamente.",
+    findEmerald();
 
-"Amy preguntó si estaba bien. Dije que sí. No estaba bien.",
+  }
 
-"Las estrellas se ven bonitas esta noche.",
+}
 
-"A veces pienso demasiado.",
 
-"Shadow dejó una nota. Solo decía: “Quédate.”",
-
-"No sé por qué eso me hizo sentir tan tranquilo.",
-
-"Hoy todos comimos juntos.",
-
-"Me gusta cuando estamos todos juntos.",
-
-"Tengo miedo de perderlos.",
-
-"Shadow no habla mucho.",
-
-"Pero cuando estoy triste se queda cerca.",
-
-"Creo que eso significa algo.",
-
-"No quiero preguntar.",
-
-"Bueno. Sí quiero preguntar.",
-
-"Las Emeralds siguen sin responder mi pregunta.",
-
-"Quizá la pregunta estaba equivocada.",
-
-"Quizá no necesitaba una respuesta.",
-
-"Quizá necesitaba personas.",
-
-"Hoy me reí muchísimo.",
-
-"No tuve que fingir.",
-
-"Eso se sintió extraño.",
-
-"Pero bonito.",
-
-"Miré las estrellas otra vez.",
-
-"No pedí que todo terminara.",
-
-"Solo me quedé mirando.",
-
-"Me pregunto cuánto tiempo tardará todo esto en sentirse real.",
-
-"No quiero volver a estar solo.",
-
-"Creo que ya no lo estoy.",
-
-"Tengo una familia.",
-
-"Shadow sigue aquí.",
-
-"Encontré una familia... Esta vez no estoy solo."
-
-];
+/* ================= DIARY ================= */
 
 function renderDiary(){
 
-let p=Math.min(
-state.diary,
-diaryEntries.length-1
-);
+  $("#diaryNum").textContent =
+    `Página ${diaryPage + 1} / ${diary.length}`;
 
-$("#diaryPage").textContent=
-String(p+1).padStart(2,"0")+
-" / "+
-String(diaryEntries.length).padStart(2,"0");
 
-$("#diaryText").innerHTML=
-`<h3>Querido diario...</h3>
-<p>${diaryEntries[p]}</p>`;
-
-}
-
-function nextDiary(){
-
-if(state.diary<diaryEntries.length-1){
-
-state.diary++;
-
-localStorage.setItem(
-"amato_diary",
-state.diary
-);
-
-renderDiary();
-
-}else{
-
-addAchievement("Final del diario");
-
-toast("♡ Llegaste al final.");
-
-}
-
-}
-
-function prevDiary(){
-
-if(state.diary>0){
-
-state.diary--;
-
-localStorage.setItem(
-"amato_diary",
-state.diary
-);
-
-renderDiary();
-
-}
+  $("#diaryText").textContent =
+    diary[diaryPage];
 
 }
 
 
-/* ARCHIVOS */
+function nextPage(){
 
-function unlockFile(id){
+  diaryPage =
+    (diaryPage + 1) % diary.length;
 
-let files={
-
-1:"Amato empezó a investigar Chaos Energy buscando respuestas.",
-
-2:"Shadow comenzó a quedarse cerca de Amato mucho antes de explicar por qué.",
-
-3:"La familia que Amato encontró fue algo que nunca había pedido."
-
-};
-
-$("#classifiedOutput").textContent=files[id];
-
-addAchievement("Archivo #"+id+" leído");
+  renderDiary();
 
 }
 
 
-/* MARIA */
+function prevPage(){
 
-function secretMaria(){
+  diaryPage =
+    (
+      diaryPage - 1 + diary.length
+    ) % diary.length;
 
-openModal(`
-<div class="section-title">🖤 MARIA — ARCHIVO ESPECIAL</div>
-<p>Amato nunca conoció a Maria.</p>
-<p>Solo conoce su historia a través de Shadow.</p>
-<p>Este archivo nunca debe convertirse en un encuentro que no ocurrió.</p>
-`);
-
-addAchievement("Archivo Maria");
+  renderDiary();
 
 }
 
 
-/* DESEO */
+/* ================= ROOM ================= */
 
-function makeWish(){
+function room(type){
 
-let input=$("#wishInput");
+  const messages = {
 
-if(!input.value.trim()){
+    bed:
+      "Amato debería dormir.",
 
-$("#wishOutput").textContent=
-"Escribe un deseo primero ☆";
+    plush:
+      "Este tiene nombre. No preguntes.",
 
-return;
+    books:
+      "Chaos Energy. Chaos Control. Historia de las Emeralds. Otro libro. Otro.",
 
-}
+    window:
+      "Las estrellas. Amato suele quedarse mirando aquí.",
 
-$("#wishOutput").textContent=
-`Las estrellas guardaron tu deseo:
-“${input.value}”`;
+    diary:
+      "Esto parece privado. ¿Quieres abrirlo?",
 
-input.value="";
+    photos:
+      "Recuerdos. Algunos recientes. Algunos no tanto.",
 
-if(!localStorage.getItem("amato_wish")){
+    candy:
+      "Chocolate. Siempre chocolate.",
 
-localStorage.setItem("amato_wish","1");
-addAchievement("Deseo a las estrellas");
+    emerald:
+      "No deberías tocar eso.",
 
-}
+    desk:
+      "Papeles, notas y una cantidad preocupante de investigaciones."
 
-}
+  };
 
 
-/* MODOS */
-
-function nightMode(){
-
-document.body.classList.toggle("night");
-
-toast(
-document.body.classList.contains("night")
-?"🌙 Modo noche"
-:"☀️ Modo normal"
-);
-
-}
-
-function amatoMode(){
-
-document.body.classList.remove("night");
-
-document.body.classList.toggle("amato-mode");
-
-toast("🍓 Modo Amato");
-
-}
-
-function shamatoMode(){
-
-document.body.classList.remove("night");
-
-document.body.classList.toggle("shamato-mode");
-
-toast("🖤♡ Modo Shamato");
+  $("#roomOut").textContent =
+    messages[type];
 
 }
 
 
-/* MODAL */
+/* ================= SIMULATOR ================= */
 
-function openModal(content){
+function sim(type){
 
-$("#modalContent").innerHTML=content;
+  const messages = {
 
-$("#modal").hidden=false;
+    food:
+      "Amato encontró comida. Amato está MUY feliz.",
+
+    hug:
+      "Amato se quedó quieto. ¿Puedo quedarme así?",
+
+    emerald:
+      "¡¿DÓNDE?! ¡Una Chaos Emerald! Esto es importantísimo.",
+
+    shadow:
+      "Shadow está aquí. Amato está feliz. Shadow pretende que no se dio cuenta."
+
+  };
+
+
+  $("#simOut").textContent =
+    messages[type];
+
+
+  if(type === "food"){
+
+    state.stats.felicidad =
+      Math.min(
+        100,
+        state.stats.felicidad + 8
+      );
+
+  }
+
+
+  state.stats.energia =
+    Math.max(
+      0,
+      state.stats.energia - 2
+    );
+
+
+  persist();
+
+  renderStats();
 
 }
 
-function closeModal(){
 
-$("#modal").hidden=true;
+/* ================= STATS ================= */
 
-}
+function renderStats(){
 
-$("#modal").addEventListener("click",e=>{
+  const container =
+    $("#stats");
 
-if(e.target.id==="modal")
-closeModal();
-
-});
+  if(!container) return;
 
 
-/* FINAL */
+  container.innerHTML =
+    Object.entries(
+      state.stats
+    )
+    .map(
+      ([name,value]) =>
 
-function unlockEnding(){
+        `<div class="stat">
+          <b>${value}</b>
+          ${name}
+        </div>`
 
-$("#endingOutput").innerHTML=`
-<div class="final-dialogue">
-<div>Amato: “¿Te vas a quedar?”</div>
-<div>Shadow: “Sí.”</div>
-<div>Amato: “Entonces... está bien.”</div>
-</div>
-`;
-
-addAchievement("Final secreto");
+    )
+    .join("");
 
 }
 
 
-/* MÚSICA */
+/* ================= WISH ================= */
 
-$("#musicToggle").addEventListener("click",()=>{
+function wishStar(){
 
-state.music=!state.music;
-
-$("#musicToggle").textContent=
-state.music
-?"🎵 Música de Fondo: ON"
-:"🎵 Música de Fondo: OFF";
-
-toast(
-state.music
-?"🎵 Activada — agrega tu audio aquí."
-:"🎵 Música OFF"
-);
-
-});
+  const text =
+    $("#wish").value.trim();
 
 
-/* CÓDIGO SECRETO */
+  if(!text){
 
-const secretCode=[
-"ArrowUp",
-"ArrowUp",
-"ArrowDown",
-"ArrowDown",
-"ArrowLeft",
-"ArrowRight",
-"ArrowLeft",
-"ArrowRight"
+    $("#wishResult").textContent =
+      "Primero escribe un deseo.";
+
+    return;
+
+  }
+
+
+  $("#wishResult").textContent =
+    pick([
+
+      "Las estrellas escucharon.",
+
+      "Quizá.",
+
+      "No sabemos.",
+
+      "Pero lo dijiste en voz alta.",
+
+      "Y eso también significa algo."
+
+    ]);
+
+}
+
+
+/* ================= LETTER ================= */
+
+function sendLetter(){
+
+  const text =
+    $("#letter").value.trim();
+
+
+  if(!text){
+
+    toast(
+      "Escribe algo primero."
+    );
+
+    return;
+
+  }
+
+
+  state.letters++;
+
+  persist();
+
+
+  $("#letter").value = "";
+
+
+  $("#letterResult").textContent =
+    pick([
+
+      "Gracias.",
+
+      "De verdad necesitaba escuchar eso.",
+
+      "No sé qué decir.",
+
+      "Voy a guardar esta carta.",
+
+      "¿Puedo leerla otra vez?",
+
+      "Gracias por quedarte."
+
+    ]);
+
+}
+
+
+/* ================= SECRETS ================= */
+
+function unlockSecret(type){
+
+  const messages = {
+
+    fear:
+      "Perder a alguien otra vez.",
+
+    insecurity:
+      "Sentir que tiene que estar bien para los demás.",
+
+    habit:
+      "Sonreír cuando no sabe qué más hacer.",
+
+    unspoken:
+      "Que las personas que quiere desaparezcan.",
+
+    want:
+      "Quédate.",
+
+    maria:
+      "Amato nunca conoció a Maria personalmente. Pero sabe que Maria fue importante para Shadow y respeta profundamente su memoria."
+
+  };
+
+
+  $("#secretOutput").textContent =
+    messages[type];
+
+
+  if(type === "maria"){
+
+    $("#maria").textContent =
+      messages[type];
+
+  }
+
+
+  if(
+    !state.secret.includes(type)
+  ){
+
+    state.secret.push(type);
+
+    persist();
+
+    achievement(
+      "Detective"
+    );
+
+  }
+
+}
+
+
+/* ================= ACHIEVEMENTS ================= */
+
+function achievement(name){
+
+  if(
+    state.achievements.includes(name)
+  ){
+
+    return;
+
+  }
+
+
+  state.achievements.push(name);
+
+  persist();
+
+  toast(
+    "Logro desbloqueado: " + name
+  );
+
+
+  renderAchievements();
+
+}
+
+
+function renderAchievements(){
+
+  const container =
+    $("#achievements");
+
+  if(!container) return;
+
+
+  const achievements = [
+
+    "Esto ya es sospechoso",
+
+    "Problema de Knuckles",
+
+    "Chaos Control",
+
+    "Detective",
+
+    "Shamato Enjoyer",
+
+    "Familia encontrada",
+
+    "Napolitano Supremo"
+
+  ];
+
+
+  container.innerHTML =
+    achievements
+
+      .map(
+        name =>
+
+        `<div class="achievement">
+          ${
+            state.achievements.includes(name)
+              ? "✓"
+              : "○"
+          }
+          ${name}
+        </div>`
+
+      )
+
+      .join("");
+
+}
+
+
+/* ================= GALLERY ================= */
+
+function filterGallery(category){
+
+  $$(".polaroid").forEach(
+    item => {
+
+      if(
+        category === "all" ||
+        item.dataset.cat === category
+      ){
+
+        item.style.display =
+          "block";
+
+      }
+
+      else{
+
+        item.style.display =
+          "none";
+
+      }
+
+    }
+  );
+
+}
+
+
+/* ================= WHAT IF ================= */
+
+function renderWhatIf(){
+
+  const scenarios = [
+
+    [
+      "¿Y SI AMATO NUNCA HUBIERA ENCONTRADO UNA CHAOS EMERALD?",
+      "Quizá nunca habría comenzado su búsqueda. Quizá nunca habría conocido a ciertas personas."
+    ],
+
+    [
+      "¿Y SI HUBIERA CONOCIDO A SHADOW ANTES?",
+      "Habría hecho demasiadas preguntas. Shadow probablemente habría huido."
+    ],
+
+    [
+      "¿Y SI SHADOW SE HUBIERA CONFESADO PRIMERO?",
+      "Amato probablemente se quedaría en silencio. Después sonreiría."
+    ],
+
+    [
+      "¿Y SI AMATO PUDIERA PEDIR UN DESEO?",
+      "La pregunta importante sería si todavía querría pedirlo."
+    ],
+
+    [
+      "¿Y SI NUNCA SE HUBIERAN CONOCIDO?",
+      "Amato habría continuado buscando respuestas solo."
+    ]
+
+  ];
+
+
+  $("#whatif").innerHTML =
+
+    scenarios
+
+      .map(
+        scenario =>
+
+        `<div class="faqItem">
+
+          <b>${scenario[0]}</b>
+
+          <p>
+            ${scenario[1]}
+          </p>
+
+        </div>`
+
+      )
+
+      .join("");
+
+}
+
+
+/* ================= FAQ ================= */
+
+function renderFAQ(){
+
+  const faq = [
+
+    [
+      "¿Por qué se llama Napolitano?",
+      "Porque su diseño está basado en helado napolitano."
+    ],
+
+    [
+      "¿Puede usar Chaos Control?",
+      "Está aprendiendo."
+    ],
+
+    [
+      "¿Amato le tiene miedo a Shadow?",
+      "No."
+    ],
+
+    [
+      "¿Shadow le tiene paciencia?",
+      "Depende del día."
+    ],
+
+    [
+      "¿Amato deja de tocar cosas peligrosas?",
+      "No."
+    ],
+
+    [
+      "¿Knuckles sigue diciéndole que no toque cosas?",
+      "Sí."
+    ],
+
+    [
+      "¿Está enamorado de Shadow?",
+      "Sí."
+    ],
+
+    [
+      "¿Shadow está enamorado de Amato?",
+      "Sí."
+    ],
+
+    [
+      "¿Lo admiten?",
+      "Eventualmente."
+    ]
+
+  ];
+
+
+  $("#faq").innerHTML =
+
+    faq
+
+      .map(
+        item =>
+
+        `<div class="faqItem">
+
+          <b>${item[0]}</b>
+
+          <p>
+            ${item[1]}
+          </p>
+
+        </div>`
+
+      )
+
+      .join("");
+
+}
+
+
+/* ================= KONAMI CODE ================= */
+
+const konami = [
+
+  "ArrowUp",
+
+  "ArrowUp",
+
+  "ArrowDown",
+
+  "ArrowDown",
+
+  "ArrowLeft",
+
+  "ArrowRight",
+
+  "ArrowLeft",
+
+  "ArrowRight"
+
 ];
 
-let codeIndex=0;
 
-document.addEventListener("keydown",e=>{
-
-if(e.key===secretCode[codeIndex]){
-
-codeIndex++;
-
-if(codeIndex===secretCode.length){
-
-codeIndex=0;
-
-openModal(`
-<div class="section-title">✨ SECRET ROUTE ✨</div>
-<p>Encontraste una ruta que probablemente no estaba destinada a ti.</p>
-<p>Amato: “¿Cómo hiciste eso?”</p>
-<p>Shadow: “No preguntes.”</p>
-`);
-
-addAchievement("Código secreto");
-
-}
-
-}else{
-
-codeIndex=0;
-
-}
-
-});
+let sequence = [];
 
 
-/* INICIO */
+window.addEventListener(
+  "keydown",
+  event => {
 
-window.addEventListener("load",()=>{
+    sequence.push(
+      event.key
+    );
 
-updateCounters();
-renderTimeline();
-renderShamatoTimeline();
-renderDiary();
 
-});
+    if(
+      sequence.length >
+      konami.length
+    ){
+
+      sequence.shift();
+
+    }
+
+
+    if(
+      sequence.join("|") ===
+      konami.join("|")
+    ){
+
+      $("#codeOutput").textContent =
+        "¿Encontraste esto? Amato probablemente estaría orgulloso. Shadow no.";
+
+      toast(
+        "Secreto desbloqueado."
+      );
+
+      achievement(
+        "Detective"
+      );
+
+    }
+
+  }
+);
+
+
+/* ================= CLOCK ================= */
+
+setInterval(
+
+  () => {
+
+    const clock =
+      $("#clock");
+
+    if(clock){
+
+      clock.textContent =
+        new Date().toLocaleTimeString(
+          "es",
+          {
+            hour:"2-digit",
+            minute:"2-digit"
+          }
+        );
+
+    }
+
+  },
+
+  1000
+
+);
+
+
+/* ================= LOADING ================= */
+
+document.addEventListener(
+  "DOMContentLoaded",
+  () => {
+
+    if(state.night){
+
+      document.body.classList.add(
+        "night"
+      );
+
+    }
+
+
+    renderEmeralds();
+
+    renderDiary();
+
+    renderStats();
+
+    renderAchievements();
+
+    renderWhatIf();
+
+    renderFAQ();
+
+    updateRel();
+
+
+    $("#energy").textContent =
+      state.energy;
+
+
+    $("#amatoClicks").textContent =
+      state.amatoClicks +
+      " clics";
+
+
+    $("#shadowClicks").textContent =
+      state.shadowClicks +
+      " clics";
+
+
+    const loadingMessages = [
+
+      "Esperando a Amato...",
+
+      "Amato tocó algo.",
+
+      "Eso no debería estar pasando.",
+
+      "Buscando respuestas...",
+
+      "Encontrando problemas...",
+
+      "Todo normal.",
+
+      "Probablemente."
+
+    ];
+
+
+    let index = 0;
+
+
+    const interval =
+      setInterval(
+        () => {
+
+          $("#loadText").textContent =
+            loadingMessages[
+              index++
+              %
+              loadingMessages.length
+            ];
+
+        },
+        230
+      );
+
+
+    setTimeout(
+      () => {
+
+        clearInterval(
+          interval
+        );
+
+        $("#loading")
+          .classList
+          .add(
+            "loading-hide"
+          );
+
+      },
+      1750
+    );
+
+  }
+);
