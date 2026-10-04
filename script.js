@@ -35,21 +35,32 @@ function saveState() {
 }
 
 function updateUI() {
-  document.getElementById('visit-counter').innerText = String(state.visits).padStart(6, '0');
+  const visitCounter = document.getElementById('visit-counter');
+  if (visitCounter) visitCounter.innerText = String(state.visits).padStart(6, '0');
+  
   const emeraldCount = state.emeralds.filter(Boolean).length;
-  document.getElementById('emerald-count').innerText = emeraldCount;
-  document.getElementById('shamato-power').innerText = state.shamatoPower;
-  document.getElementById('shamato-counter-val').innerText = state.shamatoPower;
-  document.getElementById('hug-count-display').innerText = state.hugCount;
+  const emeraldElem = document.getElementById('emerald-count');
+  if (emeraldElem) emeraldElem.innerText = emeraldCount;
+
+  const shamatoElem = document.getElementById('shamato-power');
+  if (shamatoElem) shamatoElem.innerText = state.shamatoPower;
+
+  const shamatoVal = document.getElementById('shamato-counter-val');
+  if (shamatoVal) shamatoVal.innerText = state.shamatoPower;
+
+  const hugElem = document.getElementById('hug-count-display');
+  if (hugElem) hugElem.innerText = state.hugCount;
 
   renderAchievements();
 }
 
 function showToast(msg) {
   const toast = document.getElementById('toast');
-  toast.innerText = msg;
-  toast.style.display = 'block';
-  setTimeout(() => { toast.style.display = 'none'; }, 3000);
+  if (toast) {
+    toast.innerText = msg;
+    toast.style.display = 'block';
+    setTimeout(() => { toast.style.display = 'none'; }, 3000);
+  }
 }
 
 /* ==========================================================================
@@ -111,7 +122,8 @@ const facts = [
 
 function generateRandomFact() {
   const random = facts[Math.floor(Math.random() * facts.length)];
-  document.getElementById('random-fact-text').innerText = random;
+  const factElem = document.getElementById('random-fact-text');
+  if (factElem) factElem.innerText = random;
 }
 
 function setMood(mood) {
@@ -123,7 +135,7 @@ function setMood(mood) {
     caotico: "Estado: Realizando pruebas de energía con alta intensidad.",
     shamato: "Estado: Entrenando maniobras defensivas junto a Shadow."
   };
-  display.innerText = moods[mood] || "Estado no determinado.";
+  if (display) display.innerText = moods[mood] || "Estado no determinado.";
 }
 
 function clickAmato() {
@@ -153,11 +165,13 @@ function addShamatoEnergy() {
     "Sincronización de energía mejorada.",
     "Coordinación de equipo incrementada."
   ];
-  document.getElementById('shamato-msg').innerText = msgs[Math.floor(Math.random() * msgs.length)];
+  const msgElem = document.getElementById('shamato-msg');
+  if (msgElem) msgElem.innerText = msgs[Math.floor(Math.random() * msgs.length)];
 
   if (state.shamatoPower >= 100) {
     unlockAchievement('shamatoFan', '♡ Vínculo Sólido');
-    document.getElementById('maria-secret-card').style.display = 'block';
+    const secretCard = document.getElementById('maria-secret-card');
+    if (secretCard) secretCard.style.display = 'block';
   }
 }
 
@@ -167,7 +181,8 @@ function getAmatoQuote() {
     "Asegurémonos de revisar el perímetro.",
     "Podemos intentar la maniobra una vez más."
   ];
-  document.getElementById('quote-output-box').innerText = "Amato: \"" + q[Math.floor(Math.random()*q.length)] + "\"";
+  const box = document.getElementById('quote-output-box');
+  if (box) box.innerText = "Amato: \"" + q[Math.floor(Math.random()*q.length)] + "\"";
 }
 
 function getShadowQuote() {
@@ -176,7 +191,8 @@ function getShadowQuote() {
     "Asegura tu posición antes de avanzar.",
     "Avanzaremos según lo planeado."
   ];
-  document.getElementById('quote-output-box').innerText = "Shadow: \"" + q[Math.floor(Math.random()*q.length)] + "\"";
+  const box = document.getElementById('quote-output-box');
+  if (box) box.innerText = "Shadow: \"" + q[Math.floor(Math.random()*q.length)] + "\"";
 }
 
 function getShamatoQuote() {
@@ -184,7 +200,8 @@ function getShamatoQuote() {
     "Amato: '¿Está lista la ruta?'\nShadow: 'Está despejada. Avancemos.'",
     "Amato: 'El sensor registra actividad.'\nShadow: 'Mantente alerta, yo cubro la retaguardia.'"
   ];
-  document.getElementById('quote-output-box').innerText = dialogs[Math.floor(Math.random()*dialogs.length)];
+  const box = document.getElementById('quote-output-box');
+  if (box) box.innerText = dialogs[Math.floor(Math.random()*dialogs.length)];
 }
 
 function generateShamatoScene() {
@@ -196,7 +213,8 @@ function generateShamatoScene() {
   const a = actions[Math.floor(Math.random()*actions.length)];
   const o = outcomes[Math.floor(Math.random()*outcomes.length)];
 
-  document.getElementById('scene-display').innerText = `[Registro]: Se encontraban ${p}, ${a}. Finalmente, ${o}`;
+  const sceneElem = document.getElementById('scene-display');
+  if (sceneElem) sceneElem.innerText = `[Registro]: Se encontraban ${p}, ${a}. Finalmente, ${o}`;
 }
 
 /* ==========================================================================
@@ -213,8 +231,10 @@ function interactLab(type) {
   }
   if (type === 'emerald-test') text = "> Frecuencia Chaos medida en niveles óptimos.";
   
-  consoleBox.innerHTML += `<br>${text}`;
-  consoleBox.scrollTop = consoleBox.scrollHeight;
+  if (consoleBox) {
+    consoleBox.innerHTML += `<br>${text}`;
+    consoleBox.scrollTop = consoleBox.scrollHeight;
+  }
 }
 
 /* ==========================================================================
@@ -222,6 +242,7 @@ function interactLab(type) {
    ========================================================================== */
 function simAction(act) {
   const out = document.getElementById('sim-output');
+  if (!out) return;
   if (act === 'comida') out.innerText = "Amato recibe la ración con agrado.";
   if (act === 'abrazo') out.innerText = "Amato responde cordialmente al saludo.";
   if (act === 'emerald') out.innerText = "Amato observa la esfera e inicia la lectura de datos.";
@@ -232,7 +253,8 @@ function giveHug() {
   state.hugCount++;
   saveState();
   updateUI();
-  document.getElementById('hug-response').innerText = "Muestra de apoyo registrada correctamente.";
+  const resp = document.getElementById('hug-response');
+  if (resp) resp.innerText = "Muestra de apoyo registrada correctamente.";
 }
 
 function generateOutfit() {
@@ -241,7 +263,8 @@ function generateOutfit() {
     "Estilo Clásico: Equipamiento deportivo simplificado para alta velocidad.",
     "Estilo Explorador: Chaleco de bolsillos múltiples para instrumentos de laboratorio."
   ];
-  document.getElementById('outfit-display').innerText = styles[Math.floor(Math.random()*styles.length)];
+  const display = document.getElementById('outfit-display');
+  if (display) display.innerText = styles[Math.floor(Math.random()*styles.length)];
 }
 
 /* ==========================================================================
@@ -251,7 +274,7 @@ const diaryPages = [
   "Página 1:\n\nInicio del cuaderno de notas. Registraré aquí las observaciones sobre los cristales de energía hallados en la zona.",
   "Página 2:\n\nLos días de trabajo junto a Tails han servido para comprender mejor el comportamiento de las herramientas del taller.",
   "Página 3:\n\nEs importante mantener un equilibrio entre las actividades diarias y los recorridos de supervisión.",
-  "Página 4:\n\nSonic offered una sesión de entrenamiento esta tarde. La resistencia es clave.",
+  "Página 4:\n\nSonic ofreció una sesión de entrenamiento esta tarde. La resistencia es clave.",
   "Página 5:\n\nKnuckles recordó las precauciones necesarias al aproximarse al altar. Mantendremos distancia respetuosa.",
   "Página 6:\n\nShadow compartió detalles útiles sobre el control de la aceleración. Sus explicaciones son precisas.",
   "Página 7:\n\nLas lecturas nocturnas están estables. La tranquilidad del área permite trabajar bien.",
@@ -265,8 +288,11 @@ function changeDiaryPage(dir) {
   if (currentDiaryPage < 0) currentDiaryPage = 0;
   if (currentDiaryPage >= diaryPages.length) currentDiaryPage = diaryPages.length - 1;
   
-  document.getElementById('diary-page-num').innerText = currentDiaryPage + 1;
-  document.getElementById('diary-content').innerText = diaryPages[currentDiaryPage];
+  const numElem = document.getElementById('diary-page-num');
+  if (numElem) numElem.innerText = currentDiaryPage + 1;
+  
+  const contentElem = document.getElementById('diary-content');
+  if (contentElem) contentElem.innerText = diaryPages[currentDiaryPage];
 }
 
 /* ==========================================================================
@@ -282,25 +308,33 @@ const letters = {
 };
 
 function showLetter() {
-  const val = document.getElementById('letter-select').value;
-  document.getElementById('letter-content').innerText = letters[val] || "Mensaje no encontrado.";
+  const select = document.getElementById('letter-select');
+  if (!select) return;
+  const val = select.value;
+  const content = document.getElementById('letter-content');
+  if (content) content.innerText = letters[val] || "Mensaje no encontrado.";
 }
 
 function openGachaBox() {
   const items = [
     "📦 [Objeto] Ración de provisiones.",
-    "🖼️ [Objeto] Plano topográfico de Emerald Hill.",
+    "🖼️️ [Objeto] Plano topográfico de Emerald Hill.",
     "💎 [Objeto] Fragmento de cristal brillante.",
     "✨ [Objeto] Insignia conmemorativa."
   ];
-  document.getElementById('gacha-result').innerText = items[Math.floor(Math.random()*items.length)];
+  const res = document.getElementById('gacha-result');
+  if (res) res.innerText = items[Math.floor(Math.random()*items.length)];
 }
 
 function sendStarWish() {
-  const val = document.getElementById('star-wish-input').value;
+  const input = document.getElementById('star-wish-input');
+  if (!input) return;
+  const val = input.value;
   if (!val.trim()) return;
-  document.getElementById('star-wish-response').innerText = "Registro guardado: \"" + val + "\".";
-  document.getElementById('star-wish-input').value = "";
+  
+  const resp = document.getElementById('star-wish-response');
+  if (resp) resp.innerText = "Registro guardado: \"" + val + "\".";
+  input.value = "";
 }
 
 /* ==========================================================================
@@ -317,6 +351,7 @@ const achDefs = {
 
 function renderAchievements() {
   const container = document.getElementById('achievements-list');
+  if (!container) return;
   container.innerHTML = "";
   for (let key in achDefs) {
     const isUnlocked = state.achievements[key];
@@ -350,9 +385,9 @@ function toggleShamatoMode() {
   showToast("Vista de cooperación activada.");
 }
 
-// Carga inicial
-window.onload = function() {
+// Carga inicial al cargar el DOM
+document.addEventListener('DOMContentLoaded', function() {
   loadState();
   changeDiaryPage(0);
   showLetter();
-};
+});
