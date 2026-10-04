@@ -1,399 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AMATO — El erizo napolitano | Amato's Archive</title>
-<style>
-  :root {
-    --bg-dark: #120b18;
-    --bg-card: #1c1326;
-    --chocolate: #4a2e2b;
-    --fresa: #ff9ebb;
-    --fresa-dark: #e06d8f;
-    --fresa-glow: rgba(255, 158, 187, 0.4);
-    --vainilla: #fff3d1;
-    --crema: #fffdf5;
-    --shadow-red: #ff3366;
-    --chaos-cyan: #00f0ff;
-    --text-main: #f0e6f5;
-    --text-muted: #a392b5;
-    --accent-gold: #ffd700;
-  }
-
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    user-select: none;
-    -webkit-user-select: none;
-  }
-
-  body {
-    background-color: var(--bg-dark);
-    color: var(--text-main);
-    font-family: 'Courier New', Courier, monospace, sans-serif;
-    min-height: 100vh;
-    overflow-x: hidden;
-    position: relative;
-    background-image: 
-      radial-gradient(circle at 15% 20%, rgba(74, 46, 43, 0.3) 0%, transparent 40%),
-      radial-gradient(circle at 85% 80%, rgba(255, 158, 187, 0.15) 0%, transparent 40%),
-      radial-gradient(circle at 50% 50%, rgba(18, 11, 24, 0.8) 0%, #0a050f 100%);
-    background-attachment: fixed;
-  }
-
-  /* TOP HORIZONTAL NAVIGATION */
-  .top-navbar {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background: rgba(18, 11, 24, 0.92);
-    backdrop-filter: blur(8px);
-    border-bottom: 2px solid var(--fresa);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.5rem 1rem;
-    overflow-x: auto;
-    white-space: nowrap;
-  }
-
-  .nav-brand {
-    font-weight: bold;
-    font-size: 1.2rem;
-    color: var(--fresa);
-    text-shadow: 0 0 8px var(--fresa-glow);
-    margin-right: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  .nav-menu {
-    display: flex;
-    gap: 0.4rem;
-    list-style: none;
-    align-items: center;
-  }
-
-  .nav-item {
-    position: relative;
-  }
-
-  .nav-btn {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255, 158, 187, 0.2);
-    color: var(--vainilla);
-    padding: 0.4rem 0.8rem;
-    font-family: inherit;
-    font-size: 0.85rem;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: all 0.2s ease;
-    display: flex;
-    align-items: center;
-    gap: 0.3rem;
-  }
-
-  .nav-btn:hover {
-    background: var(--fresa-dark);
-    color: #fff;
-    border-color: var(--fresa);
-    box-shadow: 0 0 10px var(--fresa-glow);
-    transform: translateY(-1px);
-  }
-
-  .nav-btn.active {
-    background: var(--fresa);
-    color: var(--chocolate);
-    font-weight: bold;
-  }
-
-  /* MAIN LAYOUT */
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 1.5rem 1rem;
-  }
-
-  .header-banner {
-    border: 2px dashed var(--fresa);
-    background: rgba(28, 19, 38, 0.8);
-    padding: 1.5rem;
-    border-radius: 8px;
-    margin-bottom: 1.5rem;
-    text-align: center;
-    position: relative;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-  }
-
-  .header-title {
-    font-size: 2.5rem;
-    color: var(--fresa);
-    letter-spacing: 2px;
-    text-shadow: 2px 2px var(--chocolate), 0 0 15px var(--fresa-glow);
-  }
-
-  .header-sub {
-    color: var(--vainilla);
-    font-style: italic;
-    margin-top: 0.3rem;
-    font-size: 0.95rem;
-  }
-
-  /* GRID SYSTEM */
-  .grid-layout {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 1.2rem;
-  }
-
-  .col-12 { grid-column: span 12; }
-  .col-8 { grid-column: span 8; }
-  .col-6 { grid-column: span 6; }
-  .col-4 { grid-column: span 4; }
-
-  @media (max-width: 900px) {
-    .col-8, .col-6, .col-4 { grid-column: span 12; }
-  }
-
-  /* CARD STYLING */
-  .card {
-    background: var(--bg-card);
-    border: 1px solid rgba(255, 158, 187, 0.25);
-    border-radius: 6px;
-    padding: 1.2rem;
-    position: relative;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-    transition: transform 0.2s, border-color 0.2s;
-  }
-
-  .card:hover {
-    border-color: rgba(255, 158, 187, 0.5);
-  }
-
-  .card-header {
-    border-bottom: 1px dashed rgba(255, 158, 187, 0.3);
-    padding-bottom: 0.5rem;
-    margin-bottom: 0.8rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .card-title {
-    color: var(--fresa);
-    font-size: 1.1rem;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-  }
-
-  /* TAB CONTENT PANELS */
-  .tab-panel {
-    display: none;
-  }
-  .tab-panel.active {
-    display: block;
-  }
-
-  /* INTERACTIVE ELEMENTS */
-  .btn-action {
-    background: var(--chocolate);
-    color: var(--vainilla);
-    border: 1px solid var(--fresa);
-    padding: 0.5rem 1rem;
-    font-family: inherit;
-    font-size: 0.85rem;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: all 0.2s;
-    margin: 0.2rem;
-  }
-
-  .btn-action:hover {
-    background: var(--fresa);
-    color: var(--chocolate);
-    font-weight: bold;
-    box-shadow: 0 0 8px var(--fresa-glow);
-  }
-
-  .btn-action:active {
-    transform: scale(0.96);
-  }
-
-  .stat-bar {
-    background: rgba(0,0,0,0.5);
-    border-radius: 10px;
-    height: 16px;
-    overflow: hidden;
-    margin-bottom: 0.5rem;
-    border: 1px solid rgba(255,255,255,0.1);
-  }
-
-  .stat-fill {
-    height: 100%;
-    background: linear-gradient(90deg, var(--chocolate), var(--fresa));
-    width: 50%;
-    transition: width 0.3s ease;
-  }
-
-  /* SPECIAL SECTIONS */
-  .polaroid-frame {
-    background: #fff;
-    color: #222;
-    padding: 10px 10px 25px 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-    transform: rotate(-2deg);
-    transition: transform 0.3s ease;
-    margin: 1rem auto;
-    max-width: 280px;
-  }
-
-  .polaroid-frame:hover {
-    transform: rotate(0deg) scale(1.03);
-  }
-
-  .polaroid-img {
-    width: 100%;
-    height: 180px;
-    background-color: #332233;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--vainilla);
-    font-size: 0.8rem;
-    text-align: center;
-    padding: 0.5rem;
-    border: 1px solid #ddd;
-  }
-
-  .polaroid-caption {
-    font-family: 'Comic Sans MS', 'Courier New', cursive;
-    text-align: center;
-    margin-top: 8px;
-    font-size: 0.85rem;
-    color: #444;
-  }
-
-  .quote-box {
-    border-left: 3px solid var(--fresa);
-    padding-left: 0.8rem;
-    margin: 0.8rem 0;
-    font-style: italic;
-    color: var(--vainilla);
-    background: rgba(255, 158, 187, 0.05);
-    padding: 0.6rem;
-    border-radius: 0 4px 4px 0;
-  }
-
-  .chaos-emerald-icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    background: var(--chaos-cyan);
-    clip-path: polygon(50% 0%, 100% 38%, 81% 100%, 19% 100%, 0% 38%);
-    cursor: pointer;
-    transition: filter 0.2s, transform 0.2s;
-  }
-
-  .chaos-emerald-icon:hover {
-    filter: drop-shadow(0 0 6px var(--chaos-cyan));
-    transform: scale(1.2);
-  }
-
-  .dialogue-box {
-    background: rgba(0,0,0,0.6);
-    border: 1px solid var(--fresa-dark);
-    padding: 0.8rem;
-    border-radius: 6px;
-    min-height: 60px;
-    margin-top: 0.5rem;
-    font-size: 0.9rem;
-    color: var(--crema);
-  }
-
-  /* LOG & ACHIEVEMENTS */
-  .achievement-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    background: rgba(255,215,0,0.1);
-    border: 1px solid var(--accent-gold);
-    color: var(--accent-gold);
-    padding: 0.3rem 0.6rem;
-    border-radius: 12px;
-    font-size: 0.75rem;
-    margin: 0.2rem;
-  }
-
-  .achievement-badge.locked {
-    opacity: 0.4;
-    filter: grayscale(1);
-    border-color: #666;
-    color: #aaa;
-  }
-
-  /* DIARY / SCRAPBOOK STYLES */
-  .notebook-page {
-    background: #fffdf5;
-    color: #2b222a;
-    padding: 1.2rem;
-    border-radius: 4px;
-    box-shadow: inset 0 0 10px rgba(0,0,0,0.1), 2px 2px 8px rgba(0,0,0,0.3);
-    font-family: 'Courier New', monospace;
-    line-height: 1.5;
-    border-left: 2px solid #ff9999;
-  }
-
-  /* FOOTER */
-  footer {
-    border-top: 1px dashed rgba(255, 158, 187, 0.3);
-    padding: 1.5rem;
-    margin-top: 3rem;
-    text-align: center;
-    font-size: 0.8rem;
-    color: var(--text-muted);
-  }
-
-  /* NIGHT MODE / AMATO MODE / SHAMATO MODE OVERLAYS */
-  body.night-mode {
-    --bg-dark: #050308;
-    --bg-card: #0d0814;
-    filter: brightness(0.9);
-  }
-
-  body.shamato-mode {
-    border: 2px solid var(--shadow-red);
-  }
-
-  .toast {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: var(--fresa);
-    color: var(--chocolate);
-    padding: 0.8rem 1.2rem;
-    border-radius: 6px;
-    font-weight: bold;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-    z-index: 9999;
-    display: none;
-    animation: slideUp 0.3s ease;
-  }
-
-  @keyframes slideUp {
-    from { transform: translateY(100%); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-  }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AMATO — El erizo napolitano | Amato's Archive</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <!-- TOP HORIZONTAL NAVIGATION (ALWAYS AT THE TOP) -->
+  <!-- NAVEGACIÓN PRINCIPAL -->
   <nav class="top-navbar">
     <div class="nav-brand">
       <span class="chaos-emerald-icon" style="background:var(--fresa)" onclick="triggerSecretEmerald(1)"></span>
@@ -404,30 +19,28 @@
       <li class="nav-item"><button class="nav-btn" onclick="switchTab('tab-lore')">☆ Lore & Pasado</button></li>
       <li class="nav-item"><button class="nav-btn" onclick="switchTab('tab-shamato')">♡ Shamato Zone</button></li>
       <li class="nav-item"><button class="nav-btn" onclick="switchTab('tab-lab')">☆ Lab de Tails</button></li>
-      <li class="nav-item"><button class="nav-btn" onclick="switchTab('tab-interact')">♡ Minijuegos & Sim</button></li>
+      <li class="nav-item"><button class="nav-btn" onclick="switchTab('tab-interact')">♡ Minijuegos</button></li>
       <li class="nav-item"><button class="nav-btn" onclick="switchTab('tab-diario')">☆ Diario Secreto</button></li>
-      <li class="nav-item"><button class="nav-btn" onclick="switchTab('tab-extras')">♡ Extras & Secretos</button></li>
+      <li class="nav-item"><button class="nav-btn" onclick="switchTab('tab-extras')">♡ Extras</button></li>
     </ul>
   </nav>
 
   <div class="container">
 
-    <!-- HEADER BANNER -->
+    <!-- CABECERA -->
     <header class="header-banner">
       <h1 class="header-title">AMATO — EL ERIZO NAPOLITANO</h1>
-      <p class="header-sub">~ El rincón no oficial, caótico e hiperespecífico de Amato Core & Shamato ~</p>
+      <p class="header-sub">~ El rincón interactivo de Amato Core & Shamato ~</p>
       <div style="margin-top: 0.8rem; font-size: 0.8rem; color: var(--text-muted);">
-        [ Visitas: <span id="visit-counter" style="color:var(--fresa)">000042</span> ] | 
+        [ Visitas: <span id="visit-counter" style="color:var(--fresa)">000000</span> ] | 
         [ Chaos Emeralds: <span id="emerald-count">0</span>/7 ] | 
         [ Shamato Power: <span id="shamato-power">0</span>% ]
       </div>
     </header>
 
-    <!-- ==================== TAB 1: INICIO & GENERAL ==================== -->
+    <!-- TAB 1: INICIO -->
     <main id="tab-main" class="tab-panel active">
       <div class="grid-layout">
-        
-        <!-- PROFILE CARD -->
         <section class="card col-4">
           <div class="card-header">
             <span class="card-title">♡ Ficha de Sujeto</span>
@@ -444,41 +57,37 @@
           <div style="font-size:0.85rem; line-height:1.6;">
             <p><strong>Nombre:</strong> Amato</p>
             <p><strong>Apodo:</strong> Napolitano, Amato-core</p>
-
             <p><strong>Edad:</strong> 17 años</p>
             <p><strong>Especie:</strong> Erizo</p>
             <p><strong>Altura:</strong> 100 cm</p>
             <p><strong>Mano dominante:</strong> Ambidiestro</p>
             <p><strong>Lugar de origen:</strong> Emerald Hill</p>
-            <p><strong>Estado:</strong> Investigando Chaos Energy</p>
           </div>
           <button class="btn-action" style="width:100%; margin-top:0.8rem;" onclick="clickAmato()">¡Tocar a Amato!</button>
         </section>
 
-        <!-- INTRO & TONO -->
         <section class="card col-8">
           <div class="card-header">
-            <span class="card-title">☆ "hola."</span>
+            <span class="card-title">☆ "Hola."</span>
           </div>
-          <p style="margin-bottom:0.8rem;">bueno... supongo que ya llegaste hasta aquí.</p>
-          <p style="margin-bottom:0.8rem;">no preguntes por qué hay tanta información acumulada sobre un erizo de 100 cm inspirado en helado napolitano. simplemente disfruta o explora antes de que Amato toque algo que no deba en el laboratorio.</p>
+          <p style="margin-bottom:0.8rem;">Bienvenido al archivo de registros de Amato. Un espacio interactivo donde se recopila la información, vivencias y relaciones del erizo napolitano.</p>
           
           <div class="quote-box">
             "Buscó en las Chaos Emeralds una forma de entender sus deseos, pero terminó encontrando algo que nunca había pedido: una familia."
           </div>
 
-          <h4 style="color:var(--fresa); margin:1rem 0 0.4rem 0;">Barra de Personalidad Reales (Aproximadas):</h4>
+          <h4 style="color:var(--fresa); margin:1rem 0 0.4rem 0;">Métricas de Personalidad:</h4>
           
-          <label style="font-size:0.8rem;">Curiosidad (Peligrosa): 100%</label>
+          <label style="font-size:0.8rem;">Curiosidad:</label>
           <div class="stat-bar"><div class="stat-fill" style="width:100%;"></div></div>
 
-          <label style="font-size:0.8rem;">Energía / Impulsividad: 92%</label>
+          <label style="font-size:0.8rem;">Energía e Impulsividad:</label>
           <div class="stat-bar"><div class="stat-fill" style="width:92%;"></div></div>
 
-          <label style="font-size:0.8rem;">Capacidad de escuchar "no": 12%</label>
+          <label style="font-size:0.8rem;">Atención a Advertencias:</label>
           <div class="stat-bar"><div class="stat-fill" style="width:12%; background:var(--shadow-red);"></div></div>
 
-          <label style="font-size:0.8rem;">Nivel de Cuidado hacia otros: 98%</label>
+          <label style="font-size:0.8rem;">Empatía y Cuidado:</label>
           <div class="stat-bar"><div class="stat-fill" style="width:98%;"></div></div>
 
           <div style="margin-top:1rem; display:flex; gap:0.5rem; flex-wrap:wrap;">
@@ -488,180 +97,136 @@
           </div>
         </section>
 
-        <!-- RANDOM FACTS -->
         <section class="card col-6">
           <div class="card-header">
-            <span class="card-title">♡ Datos Random Innecesarios</span>
+            <span class="card-title">♡ Registro Aleatorio</span>
           </div>
-          <p id="random-fact-text" style="font-size:0.9rem; min-height:45px;">Haz clic en el botón de abajo para obtener un dato de Amato.</p>
-          <button class="btn-action" onclick="generateRandomFact()">DATO RANDOM</button>
+          <p id="random-fact-text" style="font-size:0.9rem; min-height:45px;">Haz clic en el botón de abajo para consultar un dato de Amato.</p>
+          <button class="btn-action" onclick="generateRandomFact()">Generar Dato</button>
         </section>
 
-        <!-- ESTADO DEL DÍA -->
         <section class="card col-6">
           <div class="card-header">
-            <span class="card-title">☆ ¿Cómo está Amato hoy?</span>
+            <span class="card-title">☆ Estado Actual</span>
           </div>
           <div style="display:flex; gap:0.3rem; flex-wrap:wrap; margin-bottom:0.5rem;">
             <button class="btn-action" onclick="setMood('feliz')">Feliz</button>
             <button class="btn-action" onclick="setMood('triste')">Triste</button>
             <button class="btn-action" onclick="setMood('curioso')">Curioso</button>
             <button class="btn-action" onclick="setMood('caotico')">Caótico</button>
-            <button class="btn-action" onclick="setMood('shamato')">Día Shamato</button>
+            <button class="btn-action" onclick="setMood('shamato')">Shamato</button>
           </div>
           <div id="mood-display" class="dialogue-box">
-            Selecciona un estado para ver cómo se siente Amato hoy.
+            Selecciona un estado para evaluar la reacción de Amato.
           </div>
         </section>
-
       </div>
     </main>
 
-    <!-- ==================== TAB 2: LORE & PASADO ==================== -->
+    <!-- TAB 2: LORE -->
     <main id="tab-lore" class="tab-panel">
       <div class="grid-layout">
-        
         <section class="card col-12">
           <div class="card-header">
-            <span class="card-title">☆ El Pasado y La Herida Central (Lore)</span>
+            <span class="card-title">☆ El Pasado y La Herida Central</span>
             <span class="chaos-emerald-icon" onclick="triggerSecretEmerald(3)"></span>
           </div>
           <div style="line-height:1.7; font-size:0.95rem;">
-            <p style="margin-bottom:0.8rem;">Amato tenía 12 años cuando ocurrió el momento que cambió su vida. Su padre, a quien quería muchísimo, falleció. Al mismo tiempo, sostenía una relación muy compleja e inestable con su madre. Había dolor, gritos e incertidumbre que un niño de su edad no podía procesar.</p>
+            <p style="margin-bottom:0.8rem;">A los 12 años, Amato enfrentó la pérdida de su padre. Tras ello, atravesó un periodo de tensión y conflicto con su madre. En un momento de vulnerabilidad, pidió a las estrellas que la situación terminara. Tras el posterior fallecimiento de su madre, Amato guardó la culpa en silencio, asumiendo erróneamente que sus palabras fueron la causa.</p>
             
-            <p style="margin-bottom:0.8rem;">En un instante de absoluta desesperación, Amato miró al cielo nocturno y deseó a las estrellas que <em>"todo terminara"</em>. Poco después, su madre falleció. Desde ese día, la culpa se arraigó en su pecho: él creyó que su deseo había provocado esa tragedia.</p>
-
             <div class="quote-box">
               "No soy feliz. Solo aprendí a hacer felices a los demás."
             </div>
 
-            <p style="margin-bottom:0.8rem;">Para sobrellevar la culpa, Amato aprendió a sonreír siempre, a hacer chistes y a actuar de forma hiperactiva. Si los demás están a salvo y sonríen, siente que compensa el 'daño' que cree haber causado. Oculta su dolor tras una fachada de energía inagotable.</p>
+            <p>Para lidiar con el peso del dolor, adoptó una personalidad enérgica y alegre. Su prioridad se convirtió en proteger el bienestar de quienes lo rodean para compensar el pasado.</p>
           </div>
         </section>
 
-        <!-- MAPA DE MEMORIAS / CRONOLOGÍA -->
         <section class="card col-8">
           <div class="card-header">
-            <span class="card-title">♡ Línea Temporal de Recuerdos</span>
+            <span class="card-title">♡ Cronología de Acontecimientos</span>
           </div>
           <div style="display:flex; flex-direction:column; gap:0.5rem; font-size:0.85rem;">
             <div style="background:rgba(0,0,0,0.3); padding:0.5rem; border-left:2px solid var(--fresa);">
-              <strong>Edad 12:</strong> Muerte de su padre. El deseo a las estrellas. Muerte de su madre. La culpa comienza.
+              <strong>Edad 12:</strong> Sucesos familiares y el inicio de la culpa personal.
             </div>
             <div style="background:rgba(0,0,0,0.3); padding:0.5rem; border-left:2px solid var(--vainilla);">
-              <strong>Emerald Hill:</strong> Encuentra su primera Chaos Emerald. Reacciona de forma única con su energía.
+              <strong>Emerald Hill:</strong> Descubrimiento de su afinidad con la energía Chaos.
             </div>
             <div style="background:rgba(0,0,0,0.3); padding:0.5rem; border-left:2px solid var(--chaos-cyan);">
-              <strong>Sonic Adventure 2 (Eventos):</strong> Conoce a Sonic, Tails, Amy, Knuckles, Cream y Shadow.
+              <strong>Integración:</strong> Encuentro con Sonic, Tails, Amy, Knuckles y Shadow.
             </div>
             <div style="background:rgba(0,0,0,0.3); padding:0.5rem; border-left:2px solid var(--shadow-red);">
-              <strong>Post-SA2:</strong> Se integra al grupo. Comienza su entrenamiento con Shadow y su vinculo profundo.
+              <strong>Actualidad:</strong> Aprendizaje, apoyo mutuo y desarrollo de un vínculo cercano con Shadow.
             </div>
           </div>
         </section>
 
-        <!-- WISH TO THE STARS -->
         <section class="card col-4">
           <div class="card-header">
-            <span class="card-title">☆ Wish to the Stars</span>
+            <span class="card-title">☆ Deseo a las Estrellas</span>
           </div>
-          <p style="font-size:0.8rem; margin-bottom:0.5rem;">Escribe un deseo a las estrellas. No prometemos nada, pero expresarlo ayuda.</p>
-          <textarea id="star-wish-input" style="width:100%; height:70px; background:rgba(0,0,0,0.5); border:1px solid var(--fresa); color:#fff; padding:0.4rem; font-family:inherit; border-radius:4px;" placeholder="Escribe algo aquí..."></textarea>
-          <button class="btn-action" style="width:100%; margin-top:0.4rem;" onclick="sendStarWish()">Enviar Deseo ☆</button>
+          <p style="font-size:0.8rem; margin-bottom:0.5rem;">Escribe un pensamiento o deseo:</p>
+          <textarea id="star-wish-input" style="width:100%; height:70px; background:rgba(0,0,0,0.5); border:1px solid var(--fresa); color:#fff; padding:0.4rem; font-family:inherit; border-radius:4px;" placeholder="Escribe aquí..."></textarea>
+          <button class="btn-action" style="width:100%; margin-top:0.4rem;" onclick="sendStarWish()">Enviar</button>
           <div id="star-wish-response" style="font-size:0.8rem; color:var(--vainilla); margin-top:0.4rem; min-height:30px;"></div>
         </section>
-
       </div>
     </main>
 
-    <!-- ==================== TAB 3: SHAMATO ZONE ==================== -->
+    <!-- TAB 3: SHAMATO ZONE -->
     <main id="tab-shamato" class="tab-panel">
       <div class="grid-layout">
-        
         <section class="card col-12">
           <div class="card-header">
             <span class="card-title">♡ SHAMATO ARCHIVE (Shadow × Amato)</span>
             <span class="chaos-emerald-icon" onclick="triggerSecretEmerald(4)"></span>
           </div>
           <p style="font-size:0.9rem; line-height:1.6;">
-            La relación entre Shadow el Erizo y Amato no fue instantánea. Comenzó con un erizo hiperactivo haciendo 47 preguntas seguidas sobre el Chaos Control y un agente definitivo pretendiendo ignorarlo. Se transformó en compañerismo, protección mutua, sanación de heridas pasadas y finalmente un vínculo inquebrantable.
+            La dinámica entre Shadow el Erizo y Amato pasó del escepticismo inicial a una relación fundada en el respeto, el entrenamiento en el manejo de energía y la constante comprensión mutua.
           </p>
         </section>
 
-        <!-- SHAMATO TROPES & COUNTER -->
         <section class="card col-6">
           <div class="card-header">
-            <span class="card-title">☆ Shamato Energy Counter</span>
+            <span class="card-title">☆ Medidor de Vínculo</span>
           </div>
-          <p style="font-size:0.85rem;">Haz clic para aumentar la energía de la relación:</p>
           <div style="font-size:1.8rem; text-align:center; color:var(--fresa); margin:0.8rem 0; font-weight:bold;">
             <span id="shamato-counter-val">0</span> / 100
           </div>
-          <button class="btn-action" style="width:100%;" onclick="addShamatoEnergy()">Aumentar Cariño ♡</button>
+          <button class="btn-action" style="width:100%;" onclick="addShamatoEnergy()">Incrementar Vínculo ♡</button>
           <div id="shamato-msg" class="dialogue-box" style="margin-top:0.6rem; font-size:0.85rem;">
-            Presiona el botón para reaccionar.
+            Interactúa para ver la evolución.
           </div>
         </section>
 
-        <!-- DIME ALGO SHAMATO -->
         <section class="card col-6">
           <div class="card-header">
-            <span class="card-title">♡ Frases e Interacciones Shamato</span>
+            <span class="card-title">♡ Interacciones Directas</span>
           </div>
           <div style="display:flex; flex-direction:column; gap:0.4rem;">
-            <button class="btn-action" onclick="getAmatoQuote()">¿Qué diría Amato?</button>
-            <button class="btn-action" onclick="getShadowQuote()">¿Qué diría Shadow?</button>
-            <button class="btn-action" onclick="getShamatoQuote()">Generar Diálogo Shamato</button>
+            <button class="btn-action" onclick="getAmatoQuote()">Línea de Amato</button>
+            <button class="btn-action" onclick="getShadowQuote()">Línea de Shadow</button>
+            <button class="btn-action" onclick="getShamatoQuote()">Diálogo Conjunto</button>
           </div>
           <div id="quote-output-box" class="dialogue-box" style="margin-top:0.6rem; font-size:0.85rem; min-height:80px;">
-            Haz clic en los botones para escuchar lo que dirían...
+            Selecciona una opción para generar texto...
           </div>
         </section>
 
-        <!-- GENERADOR DE ESCENAS SHAMATO -->
         <section class="card col-12">
           <div class="card-header">
-            <span class="card-title">☆ Generador de Escenas Shamato</span>
+            <span class="card-title">☆ Generador de Escenarios</span>
           </div>
-          <p style="font-size:0.85rem; margin-bottom:0.5rem;">Genera un pequeño escenario aleatorio entre ambos:</p>
-          <button class="btn-action" onclick="generateShamatoScene()">Generar Escena Secreta</button>
+          <button class="btn-action" onclick="generateShamatoScene()">Generar Escena</button>
           <div id="scene-display" class="dialogue-box" style="margin-top:0.6rem; font-size:0.9rem; line-height:1.5;">
-            Pulsa para crear una escena en tiempo real...
+            Presiona el botón para consultar una escena aleatoria.
           </div>
         </section>
-
-        <!-- HISTORIAL DE BÚSQUEDA DE SHADOW -->
-        <section class="card col-6">
-          <div class="card-header">
-            <span class="card-title">☆ Historial Secreto de Búsqueda — Shadow</span>
-          </div>
-          <ul style="font-size:0.8rem; line-height:1.8; list-style:square; padding-left:1.2rem; color:var(--vainilla);">
-            <li>Cómo saber si alguien está triste sin preguntarle</li>
-            <li>Cómo cocinar algo rápido que no requiera Chaos Energy</li>
-            <li>Qué hacer si Amato no deja de hablar a las 3 AM</li>
-            <li>Cómo decirle a alguien que se quede sin sonar débil</li>
-            <li><em>Última búsqueda:</em> ¿Por qué Amato me mira así?</li>
-          </ul>
-        </section>
-
-        <!-- HISTORIAL DE BÚSQUEDA DE AMATO -->
-        <section class="card col-6">
-          <div class="card-header">
-            <span class="card-title">♡ Historial Secreto de Búsqueda — Amato</span>
-          </div>
-          <ul style="font-size:0.8rem; line-height:1.8; list-style:square; padding-left:1.2rem; color:var(--vainilla);">
-            <li>¿Las Chaos Emeralds conceden deseos de verdad?</li>
-            <li>¿Cómo funciona el Chaos Control en parejas?</li>
-            <li>¿Por qué Shadow siempre dice "No" pero luego lo hace?</li>
-            <li>¿Las estrellas escuchan a los erizos?</li>
-            <li><em>Última búsqueda:</em> Receta de postre napolitano para dos</li>
-          </ul>
-        </section>
-
       </div>
     </main>
 
-    <!-- ==================== TAB 4: LAB DE TAILS ==================== -->
+    <!-- TAB 4: LAB DE TAILS -->
     <main id="tab-lab" class="tab-panel">
       <div class="grid-layout">
         <section class="card col-12">
@@ -670,97 +235,89 @@
             <span class="chaos-emerald-icon" onclick="triggerSecretEmerald(5)"></span>
           </div>
           <div style="background:#0a0d14; border:1px solid #1a2a3a; padding:1rem; border-radius:4px;">
-            <p style="color:#00ffaa; font-family:monospace; font-size:0.85rem;">[AVISO DEL LABORATORIO]: Por favor, no toques nada de la mesa de pruebas.</p>
-            <p style="color:#ff5555; font-family:monospace; font-size:0.75rem; margin-top:0.2rem;">-- Nota adhesiva: Amato ya tocó 3 botones antes de leer el cartel.</p>
+            <p style="color:#00ffaa; font-family:monospace; font-size:0.85rem;">[SISTEMA]: Panel del laboratorio activado.</p>
             
             <div style="display:flex; gap:0.5rem; flex-wrap:wrap; margin-top:1rem;">
-              <button class="btn-action" onclick="interactLab('computer')">Revisar Computadora</button>
+              <button class="btn-action" onclick="interactLab('computer')">Consultar Computadora</button>
               <button class="btn-action" onclick="interactLab('scanner')">Escanear Energía</button>
-              <button class="btn-action" onclick="interactLab('red-button')">¡BOTÓN ROJO!</button>
-              <button class="btn-action" onclick="interactLab('emerald-test')">Probar Frecuencia</button>
+              <button class="btn-action" onclick="interactLab('red-button')">Botón de Prueba</button>
+              <button class="btn-action" onclick="interactLab('emerald-test')">Probar Resonancia</button>
             </div>
 
             <div id="lab-console" style="margin-top:1rem; background:#000; color:#00ff00; padding:0.8rem; font-family:monospace; font-size:0.8rem; height:100px; overflow-y:auto; border:1px solid #333;">
-              > Consola lista. Esperando interacción...
+              > Consola en espera...
             </div>
           </div>
         </section>
 
-        <!-- CHAT GRUPAL FALSO -->
         <section class="card col-12">
           <div class="card-header">
-            <span class="card-title">♡ Chat Grupal: SONIC TEAM</span>
+            <span class="card-title">♡ Registro de Comunicaciones</span>
           </div>
           <div style="background:rgba(0,0,0,0.5); padding:0.8rem; border-radius:6px; font-size:0.85rem; display:flex; flex-direction:column; gap:0.5rem;">
-            <div><strong style="color:#00aaff;">Sonic:</strong> ¿Alguien sabe dónde está Amato?</div>
-            <div><strong style="color:#ffaa00;">Tails:</strong> Dejó una nota en el laboratorio que decía "fui a buscar algo que brilla".</div>
-            <div><strong style="color:#ff3333;">Knuckles:</strong> Le dije explícitamente que NO tocara el artefacto de la cantera.</div>
-            <div><strong style="color:#ff66cc;">Amy:</strong> Tranquilos, está con Shadow. Los vi en el tejado comiendo dulces.</div>
-            <div><strong style="color:#00aaff;">Sonic:</strong> Ah, clásico.</div>
-            <div><strong style="color:var(--fresa);">Amato:</strong> ¡Hola a todos! No rompí nada (esta vez).</div>
-            <div><strong style="color:#aaa;">Shadow:</strong> ...</div>
+            <div><strong style="color:#00aaff;">Sonic:</strong> ¿Alguien ha visto a Amato?</div>
+            <div><strong style="color:#ffaa00;">Tails:</strong> Dejó una nota en el taller indicando que salió a investigar una lectura de energía.</div>
+            <div><strong style="color:#ff3333;">Knuckles:</strong> Mientras no altere las esferas de energía, todo en orden.</div>
+            <div><strong style="color:#ff66cc;">Amy:</strong> Está con Shadow cerca del mirador. Están bien.</div>
+            <div><strong style="color:var(--fresa);">Amato:</strong> ¡Hola! Todo bajo control por aquí.</div>
+            <div><strong style="color:#aaa;">Shadow:</strong> Afirmativo.</div>
           </div>
         </section>
       </div>
     </main>
 
-    <!-- ==================== TAB 5: INTERACTIVO & SIM ==================== -->
+    <!-- TAB 5: MINIJUEGOS Y SIMULADOR -->
     <main id="tab-interact" class="tab-panel">
       <div class="grid-layout">
-        
-        <!-- SIMULADOR ¿QUÉ HACE AMATO? -->
         <section class="card col-6">
           <div class="card-header">
-            <span class="card-title">☆ ¿Qué está haciendo Amato? (Simulador)</span>
+            <span class="card-title">☆ Simulador de Acción</span>
           </div>
           <div style="display:flex; flex-direction:column; gap:0.4rem;">
-            <button class="btn-action" onclick="simAction('comida')">Dar Comida Napolitana</button>
-            <button class="btn-action" onclick="simAction('abrazo')">Dar Abrazo</button>
-            <button class="btn-action" onclick="simAction('emerald')">Mostrar Chaos Emerald</button>
+            <button class="btn-action" onclick="simAction('comida')">Ofrecer Dulce Napolitano</button>
+            <button class="btn-action" onclick="simAction('abrazo')">Ofrecer Saludo</button>
+            <button class="btn-action" onclick="simAction('emerald')">Mostrar Esfera Chaos</button>
             <button class="btn-action" onclick="simAction('shadow')">Llamar a Shadow</button>
           </div>
           <div id="sim-output" class="dialogue-box" style="margin-top:0.6rem;">
-            Elige una opción para ver la reacción de Amato.
+            Selecciona una interacción.
           </div>
         </section>
 
-        <!-- BOTÓN ABRAZAR A AMATO -->
         <section class="card col-6">
           <div class="card-header">
-            <span class="card-title">♡ Contador de Abrazos & Te Quiero</span>
+            <span class="card-title">♡ Contador de Muestras de Apoyo</span>
           </div>
           <div style="text-align:center; margin-bottom:0.5rem;">
-            <span id="hug-count-display" style="font-size:1.5rem; color:var(--fresa); font-weight:bold;">0</span> Abrazos
+            <span id="hug-count-display" style="font-size:1.5rem; color:var(--fresa); font-weight:bold;">0</span> Muestras
           </div>
-          <button class="btn-action" style="width:100%;" onclick="giveHug()">¡ABRAZAR A AMATO!</button>
+          <button class="btn-action" style="width:100%;" onclick="giveHug()">Enviar Apoyo</button>
           <div id="hug-response" class="dialogue-box" style="margin-top:0.6rem; font-size:0.85rem;">
-            Dale un abrazo...
+            Presiona el botón para interactuar.
           </div>
         </section>
 
-        <!-- OUTFIT GENERATOR -->
         <section class="card col-12">
           <div class="card-header">
-            <span class="card-title">☆ Generador de Style / Outfits</span>
+            <span class="card-title">☆ Combinaciones de Estilo</span>
           </div>
           <div style="display:flex; justify-content:space-between; align-items:center;">
-            <p style="font-size:0.85rem;">Prueba combinaciones de estilos para Amato (Coquette, Gothic 2YK, Adventure):</p>
-            <button class="btn-action" onclick="generateOutfit()">Randomizar Outfit</button>
+            <p style="font-size:0.85rem;">Genera un conjunto de vestimenta o accesorios temáticos:</p>
+            <button class="btn-action" onclick="generateOutfit()">Generar Estilo</button>
           </div>
           <div id="outfit-display" class="quote-box" style="margin-top:0.8rem; font-style:normal;">
-            Haz clic para crear un look.
+            Haz clic para consultar una opción.
           </div>
         </section>
-
       </div>
     </main>
 
-    <!-- ==================== TAB 6: DIARIO SECRETO ==================== -->
+    <!-- TAB 6: DIARIO SECRETO -->
     <main id="tab-diario" class="tab-panel">
       <div class="grid-layout">
         <section class="card col-12">
           <div class="card-header">
-            <span class="card-title">☆ Diario Privado de Amato</span>
+            <span class="card-title">☆ Registros Personales de Amato</span>
             <span class="chaos-emerald-icon" onclick="triggerSecretEmerald(6)"></span>
           </div>
           <div class="notebook-page">
@@ -769,7 +326,7 @@
               <span style="font-size:0.8rem; color:#666;">- Archivo personal -</span>
             </div>
             <div id="diary-content" style="min-height:120px; font-size:0.9rem;">
-              Cargando páginas...
+              Cargando registros...
             </div>
             <div style="display:flex; justify-content:space-between; margin-top:1rem;">
               <button class="btn-action" onclick="changeDiaryPage(-1)">← Anterior</button>
@@ -780,459 +337,81 @@
       </div>
     </main>
 
-    <!-- ==================== TAB 7: EXTRAS & SECRETOS ==================== -->
+    <!-- TAB 7: EXTRAS -->
     <main id="tab-extras" class="tab-panel">
       <div class="grid-layout">
-        
-        <!-- CARTAS DE PERSONAJES -->
         <section class="card col-6">
           <div class="card-header">
-            <span class="card-title">♡ Mailbox (Cartas Recibidas)</span>
+            <span class="card-title">♡ Buzón de Mensajes</span>
           </div>
           <select id="letter-select" style="width:100%; padding:0.4rem; background:var(--bg-dark); color:#fff; border:1px solid var(--fresa); border-radius:4px; font-family:inherit;" onchange="showLetter()">
-            <option value="sonic">Carta de Sonic</option>
-            <option value="tails">Carta de Tails</option>
-            <option value="amy">Carta de Amy</option>
-            <option value="knuckles">Carta de Knuckles</option>
-            <option value="cream">Carta de Cream</option>
-            <option value="shadow">Carta de Shadow</option>
+            <option value="sonic">Nota de Sonic</option>
+            <option value="tails">Nota de Tails</option>
+            <option value="amy">Nota de Amy</option>
+            <option value="knuckles">Nota de Knuckles</option>
+            <option value="cream">Nota de Cream</option>
+            <option value="shadow">Nota de Shadow</option>
           </select>
           <div id="letter-content" class="dialogue-box" style="margin-top:0.8rem; font-size:0.85rem; line-height:1.6;">
-            Selecciona una carta para leerla.
+            Selecciona un remitente.
           </div>
         </section>
 
-        <!-- CAJA DE REGALOS -->
         <section class="card col-6">
           <div class="card-header">
-            <span class="card-title">☆ Caja Sorpresa / Regalos</span>
+            <span class="card-title">☆ Objetos Obtenidos</span>
           </div>
-          <p style="font-size:0.85rem; margin-bottom:0.5rem;">Abre la caja para obtener un objeto coleccionable:</p>
-          <button class="btn-action" style="width:100%;" onclick="openGachaBox()">¡Abrir Caja!</button>
+          <p style="font-size:0.85rem; margin-bottom:0.5rem;">Extrae un objeto del registro:</p>
+          <button class="btn-action" style="width:100%;" onclick="openGachaBox()">Obtener Objeto</button>
           <div id="gacha-result" class="dialogue-box" style="margin-top:0.6rem; text-align:center;">
-            [ Caja Cerrada ]
+            [ Estado: En espera ]
           </div>
         </section>
 
-        <!-- LOGROS / ACHIEVEMENTS -->
         <section class="card col-12">
           <div class="card-header">
-            <span class="card-title">☆ Sistema de Logros (Achievements)</span>
+            <span class="card-title">☆ Logros Desbloqueados</span>
           </div>
           <div id="achievements-list" style="display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:0.5rem;">
-            <!-- Generated dynamically -->
+            <!-- Generado dinámicamente -->
           </div>
         </section>
 
-        <!-- ARCHIVO SECRETO MARIA -->
         <section class="card col-12" id="maria-secret-card" style="display:none;">
           <div class="card-header">
-            <span class="card-title" style="color:var(--vainilla);">☆ Archivo Secreto: Registro "M"</span>
+            <span class="card-title" style="color:var(--vainilla);">☆ Archivo de Registro: Código M</span>
           </div>
           <p style="font-size:0.85rem; line-height:1.6; color:var(--vainilla);">
-            <em>Maria.</em> Amato nunca la conoció en persona. Pero conoce su nombre a través de los ojos y el silencio de Shadow. Entiende profundamente lo que significa sostener el dolor de alguien que ya no está, y por eso guarda un respeto sagrado por su memoria.
+            Registro en memoria: Amato comprende el peso del dolor ajeno y mantiene un profundo respeto por los recuerdos significativos de sus compañeros.
           </p>
         </section>
 
-        <!-- ESCENA FINAL SECRETA -->
         <section class="card col-12">
           <div class="card-header">
-            <span class="card-title">♡ Mensaje Final del Lore</span>
+            <span class="card-title">♡ Conclusión de Registro</span>
             <span class="chaos-emerald-icon" onclick="triggerSecretEmerald(7)"></span>
           </div>
           <div style="font-size:0.9rem; line-height:1.7;">
-            Amato empezó buscando una respuesta. Creía que necesitaba entender las Chaos Emeralds para comprender su doloroso pasado. Pero descubrió que algunas cosas no tienen una explicación perfecta. A veces lo realmente importante no es encontrar la respuesta, sino tener a alguien que decida quedarse a tu lado.
+            Amato comprendió que el camino recorrido no depende únicamente de resolver cada enigma del pasado, sino de valorar la compañía en el presente.
             <div class="quote-box" style="margin-top:0.8rem;">
-              "Hace mucho tiempo miré las estrellas y pedí que todo terminara. Ahora simplemente las miro... porque ya no estoy solo."
+              "El valor de continuar no siempre está en buscar respuestas, sino en las conexiones que construimos día a día."
             </div>
           </div>
         </section>
-
       </div>
     </main>
 
-    <!-- FOOTER -->
+    <!-- PIE DE PÁGINA -->
     <footer>
-      <p>Hecho con cariño para Amato — El erizo napolitano | Shamato Archive</p>
-      <p style="margin-top:0.4rem; font-size:0.75rem;">Sonic The Hedgehog y personajes relacionados son propiedad de SEGA. OC Amato pertenece a su creador original.</p>
+      <p>Archivo de Amato — El erizo napolitano | Shamato Archive</p>
+      <p style="margin-top:0.4rem; font-size:0.75rem;">Sonic The Hedgehog y personajes asociados son marca registrada de SEGA.</p>
     </footer>
 
   </div>
 
-  <!-- TOAST NOTIFICATION -->
-  <div id="toast" class="toast">¡Logro desbloqueado!</div>
+  <!-- NOTIFICACIÓN TOAST -->
+  <div id="toast" class="toast">Notificación</div>
 
-<script>
-  /* ==========================================================================
-     STATE MANAGEMENT & LOCALSTORAGE
-     ========================================================================== */
-  let state = {
-    emeralds: [false, false, false, false, false, false, false],
-    shamatoPower: 0,
-    hugCount: 0,
-    visits: 42,
-    achievements: {
-      visited: true,
-      firstEmerald: false,
-      allEmeralds: false,
-      shamatoFan: false,
-      diarioOpen: false,
-      labDestroyed: false
-    }
-  };
-
-  function loadState() {
-    const saved = localStorage.getItem('amato_archive_state');
-    if (saved) {
-      try {
-        state = JSON.parse(saved);
-      } catch(e) {}
-    }
-    state.visits = (state.visits || 0) + 1;
-    saveState();
-    updateUI();
-  }
-
-  function saveState() {
-    localStorage.setItem('amato_archive_state', JSON.stringify(state));
-  }
-
-  function updateUI() {
-    document.getElementById('visit-counter').innerText = String(state.visits).padStart(6, '0');
-    const emeraldCount = state.emeralds.filter(Boolean).length;
-    document.getElementById('emerald-count').innerText = emeraldCount;
-    document.getElementById('shamato-power').innerText = state.shamatoPower;
-    document.getElementById('shamato-counter-val').innerText = state.shamatoPower;
-    document.getElementById('hug-count-display').innerText = state.hugCount;
-
-    renderAchievements();
-  }
-
-  function showToast(msg) {
-    const toast = document.getElementById('toast');
-    toast.innerText = msg;
-    toast.style.display = 'block';
-    setTimeout(() => { toast.style.display = 'none'; }, 3000);
-  }
-
-  /* ==========================================================================
-     NAVIGATION SYSTEM
-     ========================================================================== */
-  function switchTab(tabId) {
-    document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active'));
-    document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
-    
-    document.getElementById(tabId).classList.add('active');
-    
-    // Highlight button
-    const btns = document.querySelectorAll('.nav-btn');
-    const tabs = ['tab-main', 'tab-lore', 'tab-shamato', 'tab-lab', 'tab-interact', 'tab-diario', 'tab-extras'];
-    const idx = tabs.indexOf(tabId);
-    if(idx !== -1 && btns[idx]) btns[idx].classList.add('active');
-
-    if(tabId === 'tab-diario') {
-      unlockAchievement('diarioOpen', '☆ Lector del Diario Privado');
-    }
-  }
-
-  /* ==========================================================================
-     CHAOS EMERALDS SYSTEM
-     ========================================================================== */
-  function triggerSecretEmerald(num) {
-    const index = num - 1;
-    if (!state.emeralds[index]) {
-      state.emeralds[index] = true;
-      saveState();
-      updateUI();
-      showToast(`¡Encontraste la Chaos Emerald #${num}! ✨`);
-      unlockAchievement('firstEmerald', '💎 Buscador de Chaos Emeralds');
-
-      if (state.emeralds.filter(Boolean).length === 7) {
-        unlockAchievement('allEmeralds', '🌟 El Poder de las 7 Emeralds');
-        alert("¡Has encontrado las 7 Chaos Emeralds!\n\n'Amato pensó que encontrar todas las Chaos Emeralds le daría respuestas... pero terminó encontrando una familia.'");
-      }
-    } else {
-      showToast(`Ya tienes la Chaos Emerald #${num}.`);
-    }
-  }
-
-  /* ==========================================================================
-     RANDOM FACTS & DIALOGUES
-     ========================================================================== */
-  const facts = [
-    "Amato es ambidiestro y suele cambiar de mano cuando dibuja o escribe.",
-    "Su diseño y paleta de colores están inspirados en el helado napolitano.",
-    "Tiene una extraña obsesión por intentar aprender el Chaos Control.",
-    "Cuando se pone nervioso, habla el doble de rápido.",
-    "Sonic suele llamarlo para correr incluso cuando Amato está completamente agotado.",
-    "Amy descubrió que Amato no puede resistirse a un abrazo sincero.",
-    "Knuckles tiene una lista mental de objetos que Amato no debe tocar.",
-    "Shadow finge que le molesta que Amato esté cerca, pero siempre aminora el paso para esperarlo."
-  ];
-
-  function generateRandomFact() {
-    const random = facts[Math.floor(Math.random() * facts.length)];
-    document.getElementById('random-fact-text').innerText = random;
-  }
-
-  function setMood(mood) {
-    const display = document.getElementById('mood-display');
-    const moods = {
-      feliz: "Hoy Amato está lleno de energía, dando vueltas por Emerald Hill y haciendo chistes.",
-      triste: "Hoy Amato está un poco más silencioso de lo normal. Amy le trajo un dulce.",
-      curioso: "Amato encontró un artefacto extraño. Tails está preocupado.",
-      caotico: "Amato tocó algo que no debía. Shadow tuvo que intervenir inmediatamente.",
-      shamato: "Shadow está cerca. Amato intenta disimular su felicidad sin éxito."
-    };
-    display.innerText = moods[mood] || "Estado desconocido.";
-  }
-
-  function clickAmato() {
-    const msgs = [
-      "¡Oye! ¿Qué pasa?",
-      "¡Espera, tengo una pregunta!",
-      "No estoy haciendo nada peligroso... bueno, tal vez un poco.",
-      "¡Mira esta Chaos Emerald!",
-      "¿Quieres ir a correr o comer algo?"
-    ];
-    showToast(msgs[Math.floor(Math.random() * msgs.length)]);
-  }
-
-  /* ==========================================================================
-     SHAMATO LOGIC
-     ========================================================================== */
-  function addShamatoEnergy() {
-    if (state.shamatoPower < 100) {
-      state.shamatoPower += 10;
-      if (state.shamatoPower > 100) state.shamatoPower = 100;
-      saveState();
-      updateUI();
-    }
-    
-    const msgs = [
-      "Shadow finge que no se dio cuenta.",
-      "Amato sonríe radiante.",
-      "Shadow: 'Deja de hacer eso.' (No se va).",
-      "Nivel de complicidad aumentando...",
-      "Amato: '¡Shadow, mira!'",
-      "Están oficialmente más cerca."
-    ];
-    document.getElementById('shamato-msg').innerText = msgs[Math.floor(Math.random() * msgs.length)];
-
-    if (state.shamatoPower >= 100) {
-      unlockAchievement('shamatoFan', '♡ Vínculo Shamato Inquebrantable');
-      document.getElementById('maria-secret-card').style.display = 'block';
-    }
-  }
-
-  function getAmatoQuote() {
-    const q = [
-      "¡Espera, espera! ¡Tengo una pregunta!",
-      "No estoy haciendo nada peligroso... ¡Confía en mí!",
-      "¿Crees que una Chaos Emerald podría conceder un deseo de verdad?",
-      "Shadow... ¿te vas a quedar?"
-    ];
-    document.getElementById('quote-output-box').innerText = "Amato: \"" + q[Math.floor(Math.random()*q.length)] + "\"";
-  }
-
-  function getShadowQuote() {
-    const q = [
-      "No es asunto tuyo.",
-      "Quédate detrás de mí.",
-      "No necesito ayuda... pero puedes acompañarme.",
-      "No pienso irme, Amato."
-    ];
-    document.getElementById('quote-output-box').innerText = "Shadow: \"" + q[Math.floor(Math.random()*q.length)] + "\"";
-  }
-
-  function getShamatoQuote() {
-    const dialogs = [
-      "Amato: '¿Shadow?'\nShadow: '¿Qué?'\nAmato: 'Gracias por quedarte.'\nShadow: '...No me iba a ir.'",
-      "Amato: '¡Mira esa estrella!'\nShadow: 'Es solo una estrella.'\nAmato: 'Pero la estamos mirando juntos.'\nShadow: '...Hmph.'",
-      "Amato: 'Promete que no te irás solo a la siguiente misión.'\nShadow: 'Solo si caminas más rápido.'"
-    ];
-    document.getElementById('quote-output-box').innerText = dialogs[Math.floor(Math.random()*dialogs.length)];
-  }
-
-  function generateShamatoScene() {
-    const places = ["en el tejado bajo las estrellas", "en la cantera de Emerald Hill", "en el laboratorio abandonado", "frente al océano al atardecer"];
-    const actions = ["entrenando Chaos Control", "compartiendo un postre napolitano", "descansando en silencio", "huyendo de una explosión accidental de Tails"];
-    const outcomes = ["Shadow le prestó su chaqueta a Amato.", "Amato se quedó dormido en su hombro.", "se quedaron en silencio mirando el horizonte.", "prometieron regresar juntos."];
-
-    const p = places[Math.floor(Math.random()*places.length)];
-    const a = actions[Math.floor(Math.random()*actions.length)];
-    const o = outcomes[Math.floor(Math.random()*outcomes.length)];
-
-    document.getElementById('scene-display').innerText = `[Escena]: Estaban ${p}, ${a}. Al final, ${o}`;
-  }
-
-  /* ==========================================================================
-     LAB INTERACTIONS
-     ========================================================================== */
-  function interactLab(type) {
-    const consoleBox = document.getElementById('lab-console');
-    let text = "";
-    if (type === 'computer') text = "> Acceso al archivo 'AMATO_NOTE.txt': NO DEJAR SOLO CERCA DEL ESCÁNER.";
-    if (type === 'scanner') text = "> Analizando lectura de energía... ¡Frecuencia rosada desconocida detectada!";
-    if (type === 'red-button') {
-      text = "> ¡ALERTA! Amato presionó el botón rojo. Sistema reanimado.";
-      unlockAchievement('labDestroyed', '💥 Caos en el Lab de Tails');
-    }
-    if (type === 'emerald-test') text = "> Resonancia Chaos al 98%. Amato se siente inquieto y emocionado.";
-    
-    consoleBox.innerHTML += `<br>${text}`;
-    consoleBox.scrollTop = consoleBox.scrollHeight;
-  }
-
-  /* ==========================================================================
-     SIMULATOR & HUGS
-     ========================================================================== */
-  function simAction(act) {
-    const out = document.getElementById('sim-output');
-    if (act === 'comida') out.innerText = "Amato recibió un dulce napolitano. Su energía aumentó un 200%. ¡Está guardando un trozo para Shadow!";
-    if (act === 'abrazo') out.innerText = "Amato se quedó quieto un segundo y luego correspondió el abrazo con fuerza. 'Gracias...'";
-    if (act === 'emerald') out.innerText = "Amato abrió los ojos sorprendido: '¡¿DÓNDE LA ENCONTRASTE?! ¡Déjame examinarla!'";
-    if (act === 'shadow') out.innerText = "Shadow aparece cruzado de brazos: '¿Qué ocurre aquí? Amato, no estés molestando.'";
-  }
-
-  function giveHug() {
-    state.hugCount++;
-    saveState();
-    updateUI();
-    const responses = [
-      "Amato sonríe aliviado.",
-      "¿Puedo quedarme así un poquito más?",
-      "Amato se siente reconfortado.",
-      "¡Un abrazo de helado napolitano!"
-    ];
-    document.getElementById('hug-response').innerText = responses[Math.floor(Math.random()*responses.length)];
-  }
-
-  function generateOutfit() {
-    const styles = [
-      "Estilo Coquette Cute: Chaqueta corta rosada, lazo beige y mochilita de Chaos Emerald.",
-      "Estilo 2YK Gothic: Botas pesadas marrones, chaleco oscuro y detalles de estrellas doradas.",
-      "Estilo Aventurero Sonic Classic: Bufanda deportiva, guantes reforzados y arnés para artefactos.",
-      "Estilo Noche de Verano: Suéter oversize color chocolate y pequeños broches en las púas."
-    ];
-    document.getElementById('outfit-display').innerText = styles[Math.floor(Math.random()*styles.length)];
-  }
-
-  /* ==========================================================================
-     DIARY SYSTEM
-     ========================================================================== */
-  const diaryPages = [
-    "Página 1:\n\nHoy encontré algo en Emerald Hill. Brillaba mucho entre las rocas. Tails dice que es una Chaos Emerald... pero cuando la toqué, sentí un calor extraño en las manos.",
-    "Página 2:\n\nA veces me acuerdo de mi papá. Él decía que las estrellas eran luces lejanas que escuchaban los deseos. Ojalá hubiera sabido qué pedir cuando tuve la oportunidad.",
-    "Página 3:\n\nNo me gusta estar solo cuando oscurece. Me pongo a pensar demasiado en lo que pasó cuando tenía 12 años... pero aprendí que si sonrío y ayudo a los demás, todo se siente un poco más liviano.",
-    "Página 4:\n\nSonic me invitó a correr hoy. Caí de rodillas de lo cansado que estaba, pero fue divertido. Amy me preparó un té dulce y me dijo que no tenía que fingir estar bien todo el tiempo.",
-    "Página 5:\n\nKnuckles me gritó por tocar la piedra sagrada. ¡Pero solo quería ver si vibraba a la misma frecuencia que la mía! Shadow estaba mirando desde un árbol. Creo que sonrió un milímetro.",
-    "Página 6:\n\nShadow me enseñó a concentrar la energía Chaos sin perder el equilibrio. Le pregunté por qué siempre está tan solo. No me respondió, pero se quedó sentado a mi lado hasta que salió el sol.",
-    "Página 7:\n\nYa no miro a las estrellas para pedir que todo termine. Ahora las miro porque son bonitas y porque hay gente a mi lado sosteniendo mi mano.",
-    "Página 8:\n\nBuscaba respuestas en las Chaos Emeralds para entender mi pasado. Terminé encontrando amigos, aventuras, una familia... y a alguien que decidió quedarse."
-  ];
-
-  let currentDiaryPage = 0;
-
-  function changeDiaryPage(dir) {
-    currentDiaryPage += dir;
-    if (currentDiaryPage < 0) currentDiaryPage = 0;
-    if (currentDiaryPage >= diaryPages.length) currentDiaryPage = diaryPages.length - 1;
-    
-    document.getElementById('diary-page-num').innerText = currentDiaryPage + 1;
-    document.getElementById('diary-content').innerText = diaryPages[currentDiaryPage];
-  }
-  changeDiaryPage(0);
-
-  /* ==========================================================================
-     LETTERS & EXTRAS
-     ========================================================================== */
-  const letters = {
-    sonic: "Hey Amato!\nEspero que no estés haciendo explotar el taller de Tails. Si vas a buscar otra Emerald, avísame y echamos una carrera. ¡Sigue sonriendo!",
-    tails: "Amato,\nHe recalculado las frecuencias de resonancia Chaos. Por favor ven al laboratorio cuando puedas (¡pero no toques la consola principal sin mí!).",
-    amy: "¡Amato querido!\nRecuerda que no tienes que cargar con todo tú solo. Cuando quieras hablar o simplemente comer postres, mi puerta está abierta. ♡",
-    knuckles: "Amato,\nEncontré unas inscripciones en Angel Island que mencionan una energía similar a la tuya. No toques nada cuando vengas a verlas.",
-    cream: "Hola Amato,\nCheese y yo te preparamos unos galletas con forma de estrella. ¡Espero que te gusten mucho! Descansa un poquito hoy.",
-    shadow: "Amato,\nNo te arriesgues tontamente buscando respuestas. Ya te he dicho que me avises antes de ir a zonas peligrosas. Cuídate.\n- Shadow"
-  };
-
-  function showLetter() {
-    const val = document.getElementById('letter-select').value;
-    document.getElementById('letter-content').innerText = letters[val] || "Sin mensaje.";
-  }
-  showLetter();
-
-  function openGachaBox() {
-    const items = [
-      "🍬 [Común] Un Dulce de Fresa y Chocolate.",
-      "🖼️ [Raro] Una Polaroid vieja de Emerald Hill.",
-      "💎 [MUY RARO] Un fragmento resplandeciente de Chaos Crystal.",
-      "✨ [SECRETO] Una estrella brillante tallada a mano por Shadow."
-    ];
-    document.getElementById('gacha-result').innerText = items[Math.floor(Math.random()*items.length)];
-  }
-
-  function sendStarWish() {
-    const val = document.getElementById('star-wish-input').value;
-    if(!val.trim()) return;
-    document.getElementById('star-wish-response').innerText = "Las estrellas escucharon tu deseo: \"" + val + "\". Quizás no cambie el universo al instante, pero decirlo en voz alta ya es un gran paso. ☆";
-    document.getElementById('star-wish-input').value = "";
-  }
-
-  /* ==========================================================================
-     ACHIEVEMENTS SYSTEM
-     ========================================================================== */
-  const achDefs = {
-    visited: "♡ Primer Paso (Visitaste el sitio)",
-    firstEmerald: "💎 Buscador de Chaos Emeralds",
-    allEmeralds: "🌟 El Poder de las 7 Emeralds",
-    shamatoFan: "♡ Vínculo Shamato Inquebrantable",
-    diarioOpen: "☆ Lector del Diario Privado",
-    labDestroyed: "💥 Caos en el Lab de Tails"
-  };
-
-  function renderAchievements() {
-    const container = document.getElementById('achievements-list');
-    container.innerHTML = "";
-    for (let key in achDefs) {
-      const isUnlocked = state.achievements[key];
-      const badge = document.createElement('span');
-      badge.className = `achievement-badge ${isUnlocked ? '' : 'locked'}`;
-      badge.innerText = (isUnlocked ? "✓ " : "🔒 ") + achDefs[key];
-      container.appendChild(badge);
-    }
-  }
-
-  function unlockAchievement(key, name) {
-    if (!state.achievements[key]) {
-      state.achievements[key] = true;
-      saveState();
-      updateUI();
-      showToast(`¡Logro Desbloqueado: ${name}! 🎉`);
-    }
-  }
-
-  /* ==========================================================================
-     MODES TOGGLE
-     ========================================================================== */
-  function toggleNightMode() {
-    document.body.classList.toggle('night-mode');
-    showToast("Modo Nocturno Cambiado ☆");
-  }
-
-  function toggleAmatoMode() {
-    alert("¡AMATO MODE ACTIVADO!\n\nAmato: '¡Bienvenido a mi mundo! Por favor no toques las Chaos Emeralds... bueno, tal vez solo una.'");
-  }
-
-  function toggleShamatoMode() {
-    document.body.classList.toggle('shamato-mode');
-    alert("Amato: 'Shadow...'\nShadow: '¿Qué?'\nAmato: 'Te quiero.'\nShadow: '...Lo sé.'");
-  }
-
-  // INITIALIZATION
-  window.onload = function() {
-    loadState();
-  };
-</script>
+  <script src="script.js"></script>
 </body>
 </html>
