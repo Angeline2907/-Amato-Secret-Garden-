@@ -20,16 +20,17 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Comic Sans MS', 'Chalkboard SE', 'Courier New', sans-serif;
+  font-family: 'Comic Sans MS', 'Chalkboard SE', 'Quicksand', cursive, sans-serif;
 }
 
+/* FONDO CON CUADRÍCULA ROSADA PASTEL */
 body {
-  background-color: var(--bg-pink);
+  background-color: var(--bg-pink) !important;
   background-image: 
-    linear-gradient(rgba(255, 182, 193, 0.3) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 182, 193, 0.3) 1px, transparent 1px);
-  background-size: 20px 20px;
-  color: var(--text-color);
+    linear-gradient(rgba(255, 182, 193, 0.4) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 182, 193, 0.4) 1px, transparent 1px) !important;
+  background-size: 20px 20px !important;
+  color: var(--text-color) !important;
   padding: 10px;
   display: flex;
   flex-direction: column;
@@ -37,10 +38,10 @@ body {
   min-height: 100vh;
 }
 
-/* MARCO SUPERIOR WINDOWS EXE */
+/* BARRA SUPERIOR VENTANA EXE */
 .top-window-bar {
   width: 100%;
-  max-width: 500px;
+  max-width: 480px;
   background: var(--fresa);
   color: white;
   padding: 6px 12px;
@@ -71,15 +72,15 @@ body {
   cursor: pointer;
 }
 
-/* CONTENEDOR PRINCIPAL */
+/* MARCO CONTENEDOR BLANCO ROSADO */
 .main-card {
   width: 100%;
-  max-width: 500px;
+  max-width: 480px;
   background: var(--soft-white);
   border: 3px solid var(--border-pink);
   border-radius: 0 0 24px 24px;
   padding: 16px;
-  box-shadow: 0 10px 25px rgba(255, 133, 162, 0.2);
+  box-shadow: 0 10px 25px rgba(255, 133, 162, 0.25);
 }
 
 .header {
@@ -130,7 +131,7 @@ body {
 .pill.chocolate { background: #D7C4B7; color: var(--chocolate); }
 .pill.vainilla { background: var(--vainilla); color: #8A7300; }
 
-/* NAVEGACIÓN Y BOTONES CÁPSULA */
+/* MENÚ DE BOTONES TIPO CÁPSULA CON SOMBRA SÓLIDA */
 .nav-menu {
   display: flex;
   flex-direction: column;
@@ -148,7 +149,7 @@ body {
   font-weight: bold;
   cursor: pointer;
   transition: all 0.2s ease;
-  box-shadow: 0 3px 0 var(--main-pink);
+  box-shadow: 0 4px 0 var(--main-pink);
   text-align: center;
 }
 
@@ -156,7 +157,7 @@ body {
   background: var(--main-pink);
   color: white;
   transform: translateY(2px);
-  box-shadow: 0 1px 0 var(--main-pink);
+  box-shadow: 0 2px 0 var(--main-pink);
 }
 
 .btn-music {
@@ -171,7 +172,7 @@ body {
   cursor: pointer;
 }
 
-/* PANELES Y CAJAS */
+/* CAJAS BORDADAS Y CONTENIDO */
 .tab-panel {
   display: none;
 }
@@ -199,7 +200,7 @@ body {
   gap: 6px;
 }
 
-/* ELEMENTOS DE INTERFAZ */
+/* BOTONES DE ACCIÓN */
 .btn-action {
   background: var(--fresa);
   color: white;
@@ -209,12 +210,12 @@ body {
   font-weight: bold;
   font-size: 0.8rem;
   cursor: pointer;
-  box-shadow: 0 2px 0 var(--dark-pink);
+  box-shadow: 0 3px 0 var(--dark-pink);
 }
 
 .btn-action:active {
   transform: translateY(2px);
-  box-shadow: none;
+  box-shadow: 0 1px 0 var(--dark-pink);
 }
 
 .full-width {
@@ -229,6 +230,7 @@ body {
   margin-top: 8px;
 }
 
+/* POLAROID SCRAPBOOK */
 .polaroid-frame {
   background: #fff;
   padding: 8px 8px 18px 8px;
@@ -298,6 +300,7 @@ body {
   line-height: 1.4;
 }
 
+/* BARRAS DE PROGRESO ROSADAS */
 .bar-group label {
   font-size: 0.75rem;
   font-weight: bold;
