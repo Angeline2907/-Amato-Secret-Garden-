@@ -5,526 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Amato's Pages 🎀 — Personal OC & Shamato Hub</title>
   
-  <style>
-    /* ==========================================================================
-       ESTILO EXACTO AMATO'S PAGES (Coquette / Y2K / Scrapbook Rosado)
-       ========================================================================== */
-    :root {
-      --bg-pink: #FFE8EF;
-      --main-pink: #FF85A2;
-      --light-pink: #FFD1DC;
-      --soft-white: #FFF9FB;
-      --dark-pink: #D84B75;
-      --fresa: #FF5376;
-      --chocolate: #503024;
-      --vainilla: #FFF3C4;
-      --border-pink: #FFB3C6;
-      --text-color: #4A2B35;
-      --chaos-cyan: #00F0FF;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Comic Sans MS', 'Chalkboard SE', 'Courier New', sans-serif;
-    }
-
-    body {
-      background-color: var(--bg-pink) !important;
-      background-image: 
-        linear-gradient(rgba(255, 182, 193, 0.3) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 182, 193, 0.3) 1px, transparent 1px) !important;
-      background-size: 20px 20px !important;
-      color: var(--text-color) !important;
-      padding: 10px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
-    }
-
-    /* MARCO SUPERIOR WINDOWS EXE */
-    .top-window-bar {
-      width: 100%;
-      max-width: 500px;
-      background: var(--fresa);
-      color: white;
-      padding: 6px 12px;
-      border-radius: 12px 12px 0 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.75rem;
-      font-weight: bold;
-    }
-
-    .ticker-text {
-      display: flex;
-      gap: 8px;
-      white-space: nowrap;
-      overflow: hidden;
-    }
-
-    .window-controls {
-      display: flex;
-      gap: 6px;
-    }
-
-    .win-btn {
-      background: rgba(255, 255, 255, 0.3);
-      padding: 0 5px;
-      border-radius: 3px;
-      cursor: pointer;
-    }
-
-    /* CONTENEDOR PRINCIPAL */
-    .main-card {
-      width: 100%;
-      max-width: 500px;
-      background: var(--soft-white);
-      border: 3px solid var(--border-pink);
-      border-radius: 0 0 24px 24px;
-      padding: 16px;
-      box-shadow: 0 10px 25px rgba(255, 133, 162, 0.2);
-    }
-
-    .header {
-      text-align: center;
-      margin-bottom: 16px;
-    }
-
-    .icecream-icon {
-      font-size: 2.5rem;
-    }
-
-    .title {
-      color: var(--fresa);
-      font-size: 1.8rem;
-      font-weight: 900;
-      text-shadow: 1px 1px 0px #fff;
-    }
-
-    .subtitle {
-      font-size: 0.8rem;
-      color: var(--dark-pink);
-      margin-top: 2px;
-      font-weight: 600;
-    }
-
-    .stats-counter-strip {
-      font-size: 0.75rem;
-      color: var(--dark-pink);
-      margin-top: 6px;
-      font-weight: bold;
-    }
-
-    .palette-pills {
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-      margin-top: 10px;
-    }
-
-    .pill {
-      padding: 4px 10px;
-      border-radius: 20px;
-      font-size: 0.75rem;
-      font-weight: bold;
-    }
-
-    .pill.fresa { background: #FFD1DC; color: var(--fresa); }
-    .pill.chocolate { background: #D7C4B7; color: var(--chocolate); }
-    .pill.vainilla { background: var(--vainilla); color: #8A7300; }
-
-    /* NAVEGACIÓN Y BOTONES CÁPSULA */
-    .nav-menu {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin-bottom: 20px;
-    }
-
-    .menu-btn {
-      background: var(--soft-white);
-      border: 2px solid var(--main-pink);
-      color: var(--fresa);
-      padding: 10px 16px;
-      border-radius: 25px;
-      font-size: 0.88rem;
-      font-weight: bold;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      box-shadow: 0 3px 0 var(--main-pink);
-      text-align: center;
-    }
-
-    .menu-btn:hover, .menu-btn.active {
-      background: var(--main-pink);
-      color: white;
-      transform: translateY(2px);
-      box-shadow: 0 1px 0 var(--main-pink);
-    }
-
-    .btn-music {
-      background: var(--dark-pink);
-      color: white;
-      border: none;
-      padding: 8px 14px;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: bold;
-      margin-top: 4px;
-      cursor: pointer;
-    }
-
-    /* PANELES Y CAJAS */
-    .tab-panel {
-      display: none;
-    }
-
-    .tab-panel.active {
-      display: block;
-    }
-
-    .section-box {
-      background: white;
-      border: 2px dashed var(--border-pink);
-      border-radius: 16px;
-      padding: 14px;
-      margin-bottom: 14px;
-    }
-
-    .section-title {
-      color: var(--fresa);
-      font-size: 1rem;
-      text-align: center;
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-    }
-
-    .btn-action {
-      background: var(--fresa);
-      color: white;
-      border: none;
-      padding: 8px 14px;
-      border-radius: 14px;
-      font-weight: bold;
-      font-size: 0.8rem;
-      cursor: pointer;
-      box-shadow: 0 2px 0 var(--dark-pink);
-    }
-
-    .btn-action:active {
-      transform: translateY(2px);
-      box-shadow: none;
-    }
-
-    .full-width {
-      width: 100%;
-    }
-
-    .btn-grid-row {
-      display: flex;
-      gap: 6px;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-top: 8px;
-    }
-
-    .polaroid-frame {
-      background: #fff;
-      padding: 8px 8px 18px 8px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      transform: rotate(-1deg);
-      margin: 10px auto;
-      max-width: 240px;
-      border: 1px solid #eee;
-    }
-
-    .polaroid-img {
-      background: #332233;
-      color: var(--vainilla);
-      height: 140px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      font-size: 0.75rem;
-      padding: 4px;
-    }
-
-    .polaroid-caption {
-      text-align: center;
-      font-size: 0.8rem;
-      margin-top: 6px;
-      color: #555;
-    }
-
-    .info-list p {
-      font-size: 0.83rem;
-      margin-bottom: 6px;
-      line-height: 1.4;
-    }
-
-    .instruction {
-      font-size: 0.75rem;
-      color: #888;
-      text-align: center;
-      margin-bottom: 8px;
-    }
-
-    .word-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      justify-content: center;
-    }
-
-    .tag {
-      background: var(--light-pink);
-      color: var(--fresa);
-      padding: 4px 10px;
-      border-radius: 12px;
-      font-size: 0.75rem;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .tag-details, .info-output {
-      background: var(--bg-pink);
-      padding: 10px;
-      border-radius: 10px;
-      font-size: 0.83rem;
-      text-align: center;
-      margin-top: 8px;
-      line-height: 1.4;
-    }
-
-    .bar-group label {
-      font-size: 0.75rem;
-      font-weight: bold;
-    }
-
-    .progress-bar {
-      background: #FFE0E9;
-      height: 12px;
-      border-radius: 10px;
-      overflow: hidden;
-      margin-bottom: 8px;
-      border: 1px solid var(--border-pink);
-    }
-
-    .progress-bar .fill {
-      background: var(--fresa);
-      height: 100%;
-    }
-
-    .color-swatch-list {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .swatch-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 0.85rem;
-    }
-
-    .swatch-box {
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
-    }
-
-    .quote-card {
-      border-left: 3px solid var(--fresa);
-      background: var(--bg-pink);
-      padding: 8px 12px;
-      font-style: italic;
-      font-size: 0.85rem;
-      margin: 10px 0;
-      border-radius: 0 8px 8px 0;
-    }
-
-    .timeline-list {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      font-size: 0.8rem;
-    }
-
-    .timeline-item {
-      padding: 8px;
-      border-radius: 8px;
-      background: var(--soft-white);
-      border-left: 3px solid var(--fresa);
-    }
-
-    .pink-textarea, .pink-select {
-      width: 100%;
-      padding: 8px;
-      border: 1px solid var(--border-pink);
-      border-radius: 8px;
-      font-family: inherit;
-      font-size: 0.85rem;
-      background: var(--soft-white);
-    }
-
-    .hearts-container {
-      background: var(--bg-pink);
-      padding: 12px;
-      border-radius: 12px;
-      text-align: center;
-      cursor: pointer;
-    }
-
-    .hearts-grid {
-      font-size: 1.2rem;
-      letter-spacing: 4px;
-    }
-
-    .tag-pair {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .lab-terminal {
-      background: #0d1117;
-      color: #00ffaa;
-      padding: 12px;
-      border-radius: 8px;
-      font-family: monospace;
-      font-size: 0.8rem;
-    }
-
-    .lab-console-box {
-      margin-top: 8px;
-      background: #000;
-      padding: 8px;
-      border-radius: 4px;
-      height: 70px;
-      overflow-y: auto;
-      color: #00ff00;
-    }
-
-    .chat-logs {
-      background: var(--bg-pink);
-      padding: 10px;
-      border-radius: 8px;
-      font-size: 0.8rem;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .notebook-page {
-      background: #FFFDF5;
-      border-left: 3px solid #FF9999;
-      padding: 12px;
-      border-radius: 6px;
-      box-shadow: inset 0 0 6px rgba(0,0,0,0.05);
-    }
-
-    .notebook-header {
-      display: flex;
-      justify-content: space-between;
-      border-bottom: 1px dashed #ccc;
-      padding-bottom: 6px;
-      font-size: 0.8rem;
-    }
-
-    .notebook-body {
-      min-height: 100px;
-      font-size: 0.85rem;
-      line-height: 1.5;
-      margin-top: 8px;
-      white-space: pre-line;
-    }
-
-    .notebook-controls {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 10px;
-    }
-
-    .achievements-flex {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-
-    .achievement-badge {
-      background: var(--bg-pink);
-      border: 1px solid var(--main-pink);
-      color: var(--fresa);
-      padding: 4px 8px;
-      border-radius: 12px;
-      font-size: 0.72rem;
-      font-weight: bold;
-    }
-
-    .achievement-badge.locked {
-      opacity: 0.4;
-      filter: grayscale(1);
-    }
-
-    .chaos-emerald-icon {
-      display: inline-block;
-      width: 14px;
-      height: 14px;
-      background: var(--chaos-cyan);
-      clip-path: polygon(50% 0%, 100% 38%, 81% 100%, 19% 100%, 0% 38%);
-      cursor: pointer;
-    }
-
-    .emerald-click-zone {
-      text-align: center;
-      cursor: pointer;
-    }
-
-    .emerald-icon { font-size: 2.2rem; }
-
-    .toast {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: var(--fresa);
-      color: white;
-      padding: 8px 16px;
-      border-radius: 20px;
-      font-weight: bold;
-      font-size: 0.85rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      display: none;
-      z-index: 9999;
-    }
-
-    .footer {
-      text-align: center;
-      font-size: 0.75rem;
-      color: var(--dark-pink);
-      margin-top: 10px;
-    }
-
-    .text-center { text-align: center; }
-    .text-center-box { text-align: center; font-size: 0.85rem; }
-
-    body.night-mode {
-      filter: brightness(0.85) contrast(1.1);
-    }
-
-    body.shamato-mode {
-      border: 3px solid var(--chocolate);
-    }
-  </style>
+  <!-- Letra linda (Google Fonts) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+  
+  <!-- Estilo externo CSS -->
+  <link rel="stylesheet" href="./styles.css?v=3.0">
 </head>
 <body>
 
@@ -567,7 +54,7 @@
       </div>
     </header>
 
-    <!-- MENÚ DE NAVEGACIÓN SUPERIOR -->
+    <!-- MENÚ DE NAVEGACIÓN -->
     <nav class="nav-menu">
       <button class="menu-btn active" onclick="switchTab('tab-main')">🍨 Perfil & Paleta</button>
       <button class="menu-btn" onclick="switchTab('tab-lore')">🌙 Lore & Pasado</button>
@@ -798,4 +285,48 @@
           <button class="btn-action" onclick="simAction('emerald')">Mostrar Emerald</button>
           <button class="btn-action" onclick="simAction('shadow')">Llamar a Shadow</button>
         </div>
-        <div id="sim-output" class
+        <div id="sim-output" class="info-output">Selecciona una interacción.</div>
+      </div>
+
+      <div class="section-box">
+        <h2 class="section-title">💌 MUESTRAS DE APOYO</h2>
+        <p class="text-center" style="font-size:1.2rem; font-weight:bold; color:var(--fresa);">
+          <span id="hug-count-display">0</span> Apoyos Enviados
+        </p>
+        <button class="btn-action full-width" style="margin-top:8px;" onclick="giveHug()">Enviar Muestra de Apoyo</button>
+        <div id="hug-response" class="info-output">Haz clic para apoyar a Amato.</div>
+      </div>
+
+      <div class="section-box">
+        <h2 class="section-title">👗 COMBINACIONES DE ESTILO</h2>
+        <button class="btn-action full-width" onclick="generateOutfit()">Generar Atuendo Coquette/Y2K</button>
+        <div id="outfit-display" class="info-output">Consulta un estilo temático.</div>
+      </div>
+    </main>
+
+    <!-- TAB 6: DIARIO SECRETO -->
+    <main id="tab-diario" class="tab-panel">
+      <div class="section-box">
+        <h2 class="section-title">📖 REGISTROS PERSONALES DE AMATO
+          <span class="chaos-emerald-icon" onclick="triggerSecretEmerald(5)"></span>
+        </h2>
+        <div class="notebook-page">
+          <div class="notebook-header">
+            <span><strong>Página <span id="diary-page-num">1</span> de 8</strong></span>
+            <small>- Diario Secreto -</small>
+          </div>
+          <div id="diary-content" class="notebook-body">Cargando diario...</div>
+          <div class="notebook-controls">
+            <button class="btn-action" onclick="changeDiaryPage(-1)">← Anterior</button>
+            <button class="btn-action" onclick="changeDiaryPage(1)">Siguiente →</button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- TAB 7: CARTAS, GACHA & EXTRAS -->
+    <main id="tab-extras" class="tab-panel">
+      <div class="section-box">
+        <h2 class="section-title">💌 BUZÓN DE CARTAS SECRETAS</h2>
+        <select id="letter-select" class="pink-select" onchange="showLetter()">
+          <option value="sonic">Nota de Sonic 🦔</option>
