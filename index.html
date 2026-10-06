@@ -5,8 +5,382 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AMATO — El erizo napolitano | Amato's Archive</title>
   
-  <!-- Enlace al archivo de estilos externo -->
-  <link rel="stylesheet" href="./styles.css">
+  <style>
+    /* ==========================================================================
+       ESTILOS CSS INTEGRADOS (Garantiza que cargue con colores siempre)
+       ========================================================================== */
+    :root {
+      --bg-dark: #120b18;
+      --bg-card: #1c1326;
+      --chocolate: #4a2e2b;
+      --fresa: #ff9ebb;
+      --fresa-dark: #e06d8f;
+      --fresa-glow: rgba(255, 158, 187, 0.4);
+      --vainilla: #fff3d1;
+      --crema: #fffdf5;
+      --shadow-red: #ff3366;
+      --chaos-cyan: #00f0ff;
+      --text-main: #f0e6f5;
+      --text-muted: #a392b5;
+      --accent-gold: #ffd700;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: 'Courier New', Courier, monospace, sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+      background-image: 
+        radial-gradient(circle at 15% 20%, rgba(74, 46, 43, 0.3) 0%, transparent 40%),
+        radial-gradient(circle at 85% 80%, rgba(255, 158, 187, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(18, 11, 24, 0.8) 0%, #0a050f 100%);
+      background-attachment: fixed;
+      transition: background-color 0.3s, filter 0.3s;
+    }
+
+    .top-navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(18, 11, 24, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 2px solid var(--fresa);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.5rem 1rem;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+
+    .nav-brand {
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: var(--fresa);
+      text-shadow: 0 0 8px var(--fresa-glow);
+      margin-right: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 0.4rem;
+      align-items: center;
+    }
+
+    .nav-btn {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255, 158, 187, 0.2);
+      color: var(--vainilla);
+      padding: 0.4rem 0.8rem;
+      font-family: inherit;
+      font-size: 0.85rem;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .nav-btn:hover {
+      background: var(--fresa-dark);
+      color: #fff;
+      border-color: var(--fresa);
+      box-shadow: 0 0 10px var(--fresa-glow);
+      transform: translateY(-1px);
+    }
+
+    .nav-btn.active {
+      background: var(--fresa);
+      color: var(--chocolate);
+      font-weight: bold;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.5rem 1rem;
+    }
+
+    .header-banner {
+      border: 2px dashed var(--fresa);
+      background: rgba(28, 19, 38, 0.8);
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    }
+
+    .header-title {
+      font-size: 2.2rem;
+      color: var(--fresa);
+      letter-spacing: 2px;
+      text-shadow: 2px 2px var(--chocolate), 0 0 15px var(--fresa-glow);
+    }
+
+    .header-sub {
+      color: var(--vainilla);
+      font-style: italic;
+      margin-top: 0.3rem;
+      font-size: 0.95rem;
+    }
+
+    .grid-layout {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1.2rem;
+    }
+
+    .col-12 { grid-column: span 12; }
+    .col-8 { grid-column: span 8; }
+    .col-6 { grid-column: span 6; }
+    .col-4 { grid-column: span 4; }
+
+    @media (max-width: 900px) {
+      .col-8, .col-6, .col-4 { grid-column: span 12; }
+      .header-title { font-size: 1.6rem; }
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid rgba(255, 158, 187, 0.25);
+      border-radius: 6px;
+      padding: 1.2rem;
+      position: relative;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      transition: border-color 0.2s;
+    }
+
+    .card:hover {
+      border-color: rgba(255, 158, 187, 0.5);
+    }
+
+    .card-header {
+      border-bottom: 1px dashed rgba(255, 158, 187, 0.3);
+      padding-bottom: 0.5rem;
+      margin-bottom: 0.8rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .card-title {
+      color: var(--fresa);
+      font-size: 1.1rem;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .tab-panel {
+      display: none;
+    }
+
+    .tab-panel.active {
+      display: block;
+    }
+
+    .btn-action {
+      background: var(--chocolate);
+      color: var(--vainilla);
+      border: 1px solid var(--fresa);
+      padding: 0.5rem 1rem;
+      font-family: inherit;
+      font-size: 0.85rem;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: all 0.2s;
+      margin: 0.2rem;
+    }
+
+    .btn-action:hover {
+      background: var(--fresa);
+      color: var(--chocolate);
+      font-weight: bold;
+      box-shadow: 0 0 8px var(--fresa-glow);
+    }
+
+    .btn-action:active {
+      transform: scale(0.96);
+    }
+
+    .stat-bar {
+      background: rgba(0,0,0,0.5);
+      border-radius: 10px;
+      height: 16px;
+      overflow: hidden;
+      margin-bottom: 0.5rem;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .stat-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--chocolate), var(--fresa));
+      width: 50%;
+      transition: width 0.3s ease;
+    }
+
+    .polaroid-frame {
+      background: #fff;
+      color: #222;
+      padding: 10px 10px 25px 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+      transform: rotate(-2deg);
+      transition: transform 0.3s ease;
+      margin: 1rem auto;
+      max-width: 280px;
+    }
+
+    .polaroid-frame:hover {
+      transform: rotate(0deg) scale(1.03);
+    }
+
+    .polaroid-img {
+      width: 100%;
+      height: 180px;
+      background-color: #332233;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--vainilla);
+      font-size: 0.8rem;
+      text-align: center;
+      padding: 0.5rem;
+      border: 1px solid #ddd;
+    }
+
+    .polaroid-caption {
+      font-family: 'Comic Sans MS', 'Courier New', cursive;
+      text-align: center;
+      margin-top: 8px;
+      font-size: 0.85rem;
+      color: #444;
+    }
+
+    .quote-box {
+      border-left: 3px solid var(--fresa);
+      padding: 0.6rem;
+      margin: 0.8rem 0;
+      font-style: italic;
+      color: var(--vainilla);
+      background: rgba(255, 158, 187, 0.05);
+      border-radius: 0 4px 4px 0;
+    }
+
+    .chaos-emerald-icon {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      background: var(--chaos-cyan);
+      clip-path: polygon(50% 0%, 100% 38%, 81% 100%, 19% 100%, 0% 38%);
+      cursor: pointer;
+      transition: filter 0.2s, transform 0.2s;
+    }
+
+    .chaos-emerald-icon:hover {
+      filter: drop-shadow(0 0 6px var(--chaos-cyan));
+      transform: scale(1.2);
+    }
+
+    .dialogue-box {
+      background: rgba(0,0,0,0.6);
+      border: 1px solid var(--fresa-dark);
+      padding: 0.8rem;
+      border-radius: 6px;
+      min-height: 60px;
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      color: var(--crema);
+      white-space: pre-line;
+    }
+
+    .achievement-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(255,215,0,0.1);
+      border: 1px solid var(--accent-gold);
+      color: var(--accent-gold);
+      padding: 0.3rem 0.6rem;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      margin: 0.2rem;
+    }
+
+    .achievement-badge.locked {
+      opacity: 0.4;
+      filter: grayscale(1);
+      border-color: #666;
+      color: #aaa;
+    }
+
+    .notebook-page {
+      background: #fffdf5;
+      color: #2b222a;
+      padding: 1.2rem;
+      border-radius: 4px;
+      box-shadow: inset 0 0 10px rgba(0,0,0,0.1), 2px 2px 8px rgba(0,0,0,0.3);
+      font-family: 'Courier New', monospace;
+      line-height: 1.5;
+      border-left: 2px solid #ff9999;
+    }
+
+    footer {
+      border-top: 1px dashed rgba(255, 158, 187, 0.3);
+      padding: 1.5rem;
+      margin-top: 3rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    body.night-mode {
+      --bg-dark: #050308;
+      --bg-card: #0d0814;
+      filter: brightness(0.9);
+    }
+
+    body.shamato-mode {
+      border: 2px solid var(--shadow-red);
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--fresa);
+      color: var(--chocolate);
+      padding: 0.8rem 1.2rem;
+      border-radius: 6px;
+      font-weight: bold;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+      z-index: 9999;
+      display: none;
+      animation: slideUp 0.3s ease;
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+  </style>
 </head>
 <body>
 
@@ -332,77 +706,4 @@
     </main>
 
     <main id="tab-extras" class="tab-panel">
-      <div class="grid-layout">
-        <section class="card col-6">
-          <div class="card-header">
-            <span class="card-title">♡ Buzón de Mensajes</span>
-          </div>
-          <select id="letter-select" style="width:100%; padding:0.4rem; background:var(--bg-dark); color:#fff; border:1px solid var(--fresa); border-radius:4px; font-family:inherit;" onchange="showLetter()">
-            <option value="sonic">Nota de Sonic</option>
-            <option value="tails">Nota de Tails</option>
-            <option value="amy">Nota de Amy</option>
-            <option value="knuckles">Nota de Knuckles</option>
-            <option value="cream">Nota de Cream</option>
-            <option value="shadow">Nota de Shadow</option>
-          </select>
-          <div id="letter-content" class="dialogue-box" style="margin-top:0.8rem; font-size:0.85rem; line-height:1.6;">
-            Selecciona un remitente.
-          </div>
-        </section>
-
-        <section class="card col-6">
-          <div class="card-header">
-            <span class="card-title">☆ Objetos Obtenidos</span>
-          </div>
-          <p style="font-size:0.85rem; margin-bottom:0.5rem;">Extrae un objeto del registro:</p>
-          <button class="btn-action" style="width:100%;" onclick="openGachaBox()">Obtener Objeto</button>
-          <div id="gacha-result" class="dialogue-box" style="margin-top:0.6rem; text-align:center;">
-            [ Estado: En espera ]
-          </div>
-        </section>
-
-        <section class="card col-12">
-          <div class="card-header">
-            <span class="card-title">☆ Logros Desbloqueados</span>
-          </div>
-          <div id="achievements-list" style="display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:0.5rem;">
-          </div>
-        </section>
-
-        <section class="card col-12" id="maria-secret-card" style="display:none;">
-          <div class="card-header">
-            <span class="card-title" style="color:var(--vainilla);">☆ Archivo de Registro: Código M</span>
-          </div>
-          <p style="font-size:0.85rem; line-height:1.6; color:var(--vainilla);">
-            Registro en memoria: Amato comprende el peso del dolor ajeno y mantiene un profundo respeto por los recuerdos significativos de sus compañeros.
-          </p>
-        </section>
-
-        <section class="card col-12">
-          <div class="card-header">
-            <span class="card-title">♡ Conclusión de Registro</span>
-            <span class="chaos-emerald-icon" onclick="triggerSecretEmerald(7)"></span>
-          </div>
-          <div style="font-size:0.9rem; line-height:1.7;">
-            Amato comprendió que el camino recorrido no depende únicamente de resolver cada enigma del pasado, sino de valorar la compañía en el presente.
-            <div class="quote-box" style="margin-top:0.8rem;">
-              "El valor de continuar no siempre está en buscar respuestas, sino en las conexiones que construimos día a día."
-            </div>
-          </div>
-        </section>
-      </div>
-    </main>
-
-    <footer>
-      <p>Archivo de Amato — El erizo napolitano | Shamato Archive</p>
-      <p style="margin-top:0.4rem; font-size:0.75rem;">Sonic The Hedgehog y personajes asociados son marca registrada de SEGA.</p>
-    </footer>
-
-  </div>
-
-  <div id="toast" class="toast">Notificación</div>
-
-  <!-- Enlace al archivo de script externo -->
-  <script src="./script.js"></script>
-</body>
-</html>
+      <div
