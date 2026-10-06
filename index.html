@@ -3,707 +3,372 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AMATO — El erizo napolitano | Amato's Archive</title>
-  
-  <style>
-    /* ==========================================================================
-       ESTILOS CSS INTEGRADOS (Garantiza que cargue con colores siempre)
-       ========================================================================== */
-    :root {
-      --bg-dark: #120b18;
-      --bg-card: #1c1326;
-      --chocolate: #4a2e2b;
-      --fresa: #ff9ebb;
-      --fresa-dark: #e06d8f;
-      --fresa-glow: rgba(255, 158, 187, 0.4);
-      --vainilla: #fff3d1;
-      --crema: #fffdf5;
-      --shadow-red: #ff3366;
-      --chaos-cyan: #00f0ff;
-      --text-main: #f0e6f5;
-      --text-muted: #a392b5;
-      --accent-gold: #ffd700;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      user-select: none;
-      -webkit-user-select: none;
-    }
-
-    body {
-      background-color: var(--bg-dark);
-      color: var(--text-main);
-      font-family: 'Courier New', Courier, monospace, sans-serif;
-      min-height: 100vh;
-      overflow-x: hidden;
-      position: relative;
-      background-image: 
-        radial-gradient(circle at 15% 20%, rgba(74, 46, 43, 0.3) 0%, transparent 40%),
-        radial-gradient(circle at 85% 80%, rgba(255, 158, 187, 0.15) 0%, transparent 40%),
-        radial-gradient(circle at 50% 50%, rgba(18, 11, 24, 0.8) 0%, #0a050f 100%);
-      background-attachment: fixed;
-      transition: background-color 0.3s, filter 0.3s;
-    }
-
-    .top-navbar {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(18, 11, 24, 0.95);
-      backdrop-filter: blur(8px);
-      border-bottom: 2px solid var(--fresa);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.5rem 1rem;
-      overflow-x: auto;
-      white-space: nowrap;
-    }
-
-    .nav-brand {
-      font-weight: bold;
-      font-size: 1.2rem;
-      color: var(--fresa);
-      text-shadow: 0 0 8px var(--fresa-glow);
-      margin-right: 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .nav-menu {
-      display: flex;
-      gap: 0.4rem;
-      align-items: center;
-    }
-
-    .nav-btn {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255, 158, 187, 0.2);
-      color: var(--vainilla);
-      padding: 0.4rem 0.8rem;
-      font-family: inherit;
-      font-size: 0.85rem;
-      cursor: pointer;
-      border-radius: 4px;
-      transition: all 0.2s ease;
-      display: flex;
-      align-items: center;
-      gap: 0.3rem;
-    }
-
-    .nav-btn:hover {
-      background: var(--fresa-dark);
-      color: #fff;
-      border-color: var(--fresa);
-      box-shadow: 0 0 10px var(--fresa-glow);
-      transform: translateY(-1px);
-    }
-
-    .nav-btn.active {
-      background: var(--fresa);
-      color: var(--chocolate);
-      font-weight: bold;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 1.5rem 1rem;
-    }
-
-    .header-banner {
-      border: 2px dashed var(--fresa);
-      background: rgba(28, 19, 38, 0.8);
-      padding: 1.5rem;
-      border-radius: 8px;
-      margin-bottom: 1.5rem;
-      text-align: center;
-      position: relative;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-    }
-
-    .header-title {
-      font-size: 2.2rem;
-      color: var(--fresa);
-      letter-spacing: 2px;
-      text-shadow: 2px 2px var(--chocolate), 0 0 15px var(--fresa-glow);
-    }
-
-    .header-sub {
-      color: var(--vainilla);
-      font-style: italic;
-      margin-top: 0.3rem;
-      font-size: 0.95rem;
-    }
-
-    .grid-layout {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 1.2rem;
-    }
-
-    .col-12 { grid-column: span 12; }
-    .col-8 { grid-column: span 8; }
-    .col-6 { grid-column: span 6; }
-    .col-4 { grid-column: span 4; }
-
-    @media (max-width: 900px) {
-      .col-8, .col-6, .col-4 { grid-column: span 12; }
-      .header-title { font-size: 1.6rem; }
-    }
-
-    .card {
-      background: var(--bg-card);
-      border: 1px solid rgba(255, 158, 187, 0.25);
-      border-radius: 6px;
-      padding: 1.2rem;
-      position: relative;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-      transition: border-color 0.2s;
-    }
-
-    .card:hover {
-      border-color: rgba(255, 158, 187, 0.5);
-    }
-
-    .card-header {
-      border-bottom: 1px dashed rgba(255, 158, 187, 0.3);
-      padding-bottom: 0.5rem;
-      margin-bottom: 0.8rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .card-title {
-      color: var(--fresa);
-      font-size: 1.1rem;
-      font-weight: bold;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .tab-panel {
-      display: none;
-    }
-
-    .tab-panel.active {
-      display: block;
-    }
-
-    .btn-action {
-      background: var(--chocolate);
-      color: var(--vainilla);
-      border: 1px solid var(--fresa);
-      padding: 0.5rem 1rem;
-      font-family: inherit;
-      font-size: 0.85rem;
-      cursor: pointer;
-      border-radius: 4px;
-      transition: all 0.2s;
-      margin: 0.2rem;
-    }
-
-    .btn-action:hover {
-      background: var(--fresa);
-      color: var(--chocolate);
-      font-weight: bold;
-      box-shadow: 0 0 8px var(--fresa-glow);
-    }
-
-    .btn-action:active {
-      transform: scale(0.96);
-    }
-
-    .stat-bar {
-      background: rgba(0,0,0,0.5);
-      border-radius: 10px;
-      height: 16px;
-      overflow: hidden;
-      margin-bottom: 0.5rem;
-      border: 1px solid rgba(255,255,255,0.1);
-    }
-
-    .stat-fill {
-      height: 100%;
-      background: linear-gradient(90deg, var(--chocolate), var(--fresa));
-      width: 50%;
-      transition: width 0.3s ease;
-    }
-
-    .polaroid-frame {
-      background: #fff;
-      color: #222;
-      padding: 10px 10px 25px 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-      transform: rotate(-2deg);
-      transition: transform 0.3s ease;
-      margin: 1rem auto;
-      max-width: 280px;
-    }
-
-    .polaroid-frame:hover {
-      transform: rotate(0deg) scale(1.03);
-    }
-
-    .polaroid-img {
-      width: 100%;
-      height: 180px;
-      background-color: #332233;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--vainilla);
-      font-size: 0.8rem;
-      text-align: center;
-      padding: 0.5rem;
-      border: 1px solid #ddd;
-    }
-
-    .polaroid-caption {
-      font-family: 'Comic Sans MS', 'Courier New', cursive;
-      text-align: center;
-      margin-top: 8px;
-      font-size: 0.85rem;
-      color: #444;
-    }
-
-    .quote-box {
-      border-left: 3px solid var(--fresa);
-      padding: 0.6rem;
-      margin: 0.8rem 0;
-      font-style: italic;
-      color: var(--vainilla);
-      background: rgba(255, 158, 187, 0.05);
-      border-radius: 0 4px 4px 0;
-    }
-
-    .chaos-emerald-icon {
-      display: inline-block;
-      width: 16px;
-      height: 16px;
-      background: var(--chaos-cyan);
-      clip-path: polygon(50% 0%, 100% 38%, 81% 100%, 19% 100%, 0% 38%);
-      cursor: pointer;
-      transition: filter 0.2s, transform 0.2s;
-    }
-
-    .chaos-emerald-icon:hover {
-      filter: drop-shadow(0 0 6px var(--chaos-cyan));
-      transform: scale(1.2);
-    }
-
-    .dialogue-box {
-      background: rgba(0,0,0,0.6);
-      border: 1px solid var(--fresa-dark);
-      padding: 0.8rem;
-      border-radius: 6px;
-      min-height: 60px;
-      margin-top: 0.5rem;
-      font-size: 0.9rem;
-      color: var(--crema);
-      white-space: pre-line;
-    }
-
-    .achievement-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      background: rgba(255,215,0,0.1);
-      border: 1px solid var(--accent-gold);
-      color: var(--accent-gold);
-      padding: 0.3rem 0.6rem;
-      border-radius: 12px;
-      font-size: 0.75rem;
-      margin: 0.2rem;
-    }
-
-    .achievement-badge.locked {
-      opacity: 0.4;
-      filter: grayscale(1);
-      border-color: #666;
-      color: #aaa;
-    }
-
-    .notebook-page {
-      background: #fffdf5;
-      color: #2b222a;
-      padding: 1.2rem;
-      border-radius: 4px;
-      box-shadow: inset 0 0 10px rgba(0,0,0,0.1), 2px 2px 8px rgba(0,0,0,0.3);
-      font-family: 'Courier New', monospace;
-      line-height: 1.5;
-      border-left: 2px solid #ff9999;
-    }
-
-    footer {
-      border-top: 1px dashed rgba(255, 158, 187, 0.3);
-      padding: 1.5rem;
-      margin-top: 3rem;
-      text-align: center;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-    }
-
-    body.night-mode {
-      --bg-dark: #050308;
-      --bg-card: #0d0814;
-      filter: brightness(0.9);
-    }
-
-    body.shamato-mode {
-      border: 2px solid var(--shadow-red);
-    }
-
-    .toast {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: var(--fresa);
-      color: var(--chocolate);
-      padding: 0.8rem 1.2rem;
-      border-radius: 6px;
-      font-weight: bold;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-      z-index: 9999;
-      display: none;
-      animation: slideUp 0.3s ease;
-    }
-
-    @keyframes slideUp {
-      from { transform: translateY(100%); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-  </style>
+  <title>Amato's Pages 🎀 — Personal OC & Shamato Hub</title>
+  <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
 
-  <nav class="top-navbar">
-    <div class="nav-brand">
-      <span class="chaos-emerald-icon" style="background:var(--fresa)" onclick="triggerSecretEmerald(1)"></span>
-      AMATO ARCHIVE
+  <!-- BARRA VENTANA WINDOWS EXE -->
+  <div class="top-window-bar">
+    <div class="ticker-text">
+      <span>🎀 Neapolitan_Haven.exe</span>
+      <span>•</span>
+      <span>🍓 Fresa + Vainilla</span>
+      <span>•</span>
+      <span>🖤 Shadow's #1 Fan</span>
+      <span>•</span>
+      <span>💎 Chaos Emerald Enthusiast 🎀</span>
     </div>
-    <div class="nav-menu">
-      <button class="nav-btn active" onclick="switchTab('tab-main')">♡ Inicio</button>
-      <button class="nav-btn" onclick="switchTab('tab-lore')">☆ Lore & Pasado</button>
-      <button class="nav-btn" onclick="switchTab('tab-shamato')">♡ Shamato Zone</button>
-      <button class="nav-btn" onclick="switchTab('tab-lab')">☆ Lab de Tails</button>
-      <button class="nav-btn" onclick="switchTab('tab-interact')">♡ Minijuegos</button>
-      <button class="nav-btn" onclick="switchTab('tab-diario')">☆ Diario Secreto</button>
-      <button class="nav-btn" onclick="switchTab('tab-extras')">♡ Extras</button>
+    <div class="window-controls">
+      <span class="win-btn">—</span>
+      <span class="win-btn">□</span>
+      <span class="win-btn">×</span>
     </div>
-  </nav>
+  </div>
 
-  <div class="container">
+  <div class="main-card">
+    
+    <!-- CABECERA -->
+    <header class="header">
+      <div class="icecream-icon">🍨</div>
+      <h1 class="title">Amato's Pages 🎀</h1>
+      <p class="subtitle">The Napolitano Hedgehog • Personal OC & Shamato Hub</p>
 
-    <header class="header-banner">
-      <h1 class="header-title">AMATO — EL ERIZO NAPOLITANO</h1>
-      <p class="header-sub">~ El rincón interactivo de Amato Core & Shamato ~</p>
-      <div style="margin-top: 0.8rem; font-size: 0.8rem; color: var(--text-muted);">
-        [ Visitas: <span id="visit-counter" style="color:var(--fresa)">000000</span> ] | 
-        [ Chaos Emeralds: <span id="emerald-count">0</span>/7 ] | 
+      <div class="stats-counter-strip">
+        [ Visitas: <span id="visit-counter">000000</span> ] | 
+        [ Emeralds: <span id="emerald-count">0</span>/7 ] | 
         [ Shamato Power: <span id="shamato-power">0</span>% ]
+      </div>
+
+      <div class="palette-pills">
+        <span class="pill fresa">🍓 Fresa</span>
+        <span class="pill chocolate">🍫 Chocolate</span>
+        <span class="pill vainilla">🍦 Vainilla</span>
       </div>
     </header>
 
+    <!-- MENÚ DE NAVEGACIÓN SUPERIOR / PRINCIPAL -->
+    <nav class="nav-menu">
+      <button class="menu-btn active" onclick="switchTab('tab-main')">🍨 Perfil & Paleta</button>
+      <button class="menu-btn" onclick="switchTab('tab-lore')">🌙 Lore & Pasado</button>
+      <button class="menu-btn" onclick="switchTab('tab-shamato')">🖤🍓 Dinámica Shamato</button>
+      <button class="menu-btn" onclick="switchTab('tab-lab')">🔬 Lab de Tails</button>
+      <button class="menu-btn" onclick="switchTab('tab-interact')">🎮 Minijuegos</button>
+      <button class="menu-btn" onclick="switchTab('tab-diario')">📖 Diario Secreto</button>
+      <button class="menu-btn" onclick="switchTab('tab-extras')">💌 Cartas & Extras</button>
+
+      <button class="btn-music" id="music-btn" onclick="toggleMusic()">Música de Fondo: OFF</button>
+    </nav>
+
+    <!-- TAB 1: PERFIL & PALETA -->
     <main id="tab-main" class="tab-panel active">
-      <div class="grid-layout">
-        <section class="card col-4">
-          <div class="card-header">
-            <span class="card-title">♡ Ficha de Sujeto</span>
-            <span class="chaos-emerald-icon" onclick="triggerSecretEmerald(2)"></span>
+      <div class="section-box">
+        <h2 class="section-title">✨ FICHA TÉCNICA
+          <span class="chaos-emerald-icon" onclick="triggerSecretEmerald(1)"></span>
+        </h2>
+        <div class="polaroid-frame">
+          <div class="polaroid-img">
+            [ Ilus: Amato el Erizo ]<br>
+            Colores Napolitanos<br>
+            100 cm | Ojos Rosados/Rojos
           </div>
-          <div class="polaroid-frame">
-            <div class="polaroid-img">
-              [ Ilus: Amato el Erizo ]<br>
-              Colores Napolitanos<br>
-              100 cm | Ojos Rosados/Rojos
+          <div class="polaroid-caption">Amato en Emerald Hill ♡</div>
+        </div>
+        <div class="info-list">
+          <p><strong>Nombre:</strong> Amato (Apodo: Napolitano, Amato-core)</p>
+          <p><strong>Especie:</strong> Erizo 🦔</p>
+          <p><strong>Edad:</strong> 17 años</p>
+          <p><strong>Origen:</strong> Emerald Hill</p>
+          <p><strong>Altura:</strong> 100 cm | <strong>Mano Dominante:</strong> Ambidiestro</p>
+          <p><strong>Ojos:</strong> Rosados / Rojo Intenso 💕</p>
+          <p><strong>Poderes:</strong> Sensibilidad & Control de Chaos Energy ⚡</p>
+        </div>
+        <button class="btn-action full-width" onclick="clickAmato()">¡Tocar a Amato!</button>
+      </div>
+
+      <div class="section-box">
+        <h2 class="section-title">🧠 PERSONALIDAD & MEDIDORES</h2>
+        <p class="instruction">Toca las palabras para ver el detalle:</p>
+        <div class="word-tags">
+          <span class="tag" onclick="showTagInfo('Curioso')">Curioso</span>
+          <span class="tag" onclick="showTagInfo('Energético')">Energético</span>
+          <span class="tag" onclick="showTagInfo('Cariñoso')">Cariñoso</span>
+          <span class="tag" onclick="showTagInfo('Impulsivo')">Impulsivo</span>
+          <span class="tag" onclick="showTagInfo('Leal')">Leal</span>
+          <span class="tag" onclick="showTagInfo('Juguetón')">Juguetón</span>
+        </div>
+        <div id="tag-info-box" class="tag-details">Haz clic en una característica arriba...</div>
+
+        <div class="bar-group">
+          <label>Curiosidad:</label>
+          <div class="progress-bar"><div class="fill" style="width: 100%;"></div></div>
+          <label>Energía e Impulsividad:</label>
+          <div class="progress-bar"><div class="fill" style="width: 92%;"></div></div>
+          <label>Atención a Advertencias:</label>
+          <div class="progress-bar"><div class="fill" style="width: 12%; background: var(--chocolate);"></div></div>
+          <label>Empatía y Cuidado:</label>
+          <div class="progress-bar"><div class="fill" style="width: 98%;"></div></div>
+        </div>
+
+        <div class="btn-grid-row">
+          <button class="btn-action" onclick="toggleNightMode()">Modo Nocturno ☆</button>
+          <button class="btn-action" onclick="toggleAmatoMode()">Amato Mode ♡</button>
+          <button class="btn-action" onclick="toggleShamatoMode()">Shamato Mode ♡</button>
+        </div>
+      </div>
+
+      <div class="section-box">
+        <h2 class="section-title">🎨 PALETA DE COLORES</h2>
+        <div class="color-swatch-list">
+          <div class="swatch-item">
+            <div class="swatch-box" style="background: #FF9EBB;"></div>
+            <div>
+              <strong>Rosa Fresa</strong>
+              <small>#FF9EBB</small>
             </div>
-            <div class="polaroid-caption">Amato en Emerald Hill ♡</div>
           </div>
-          <div style="font-size:0.85rem; line-height:1.6;">
-            <p><strong>Nombre:</strong> Amato</p>
-            <p><strong>Apodo:</strong> Napolitano, Amato-core</p>
-            <p><strong>Edad:</strong> 17 años</p>
-            <p><strong>Especie:</strong> Erizo</p>
-            <p><strong>Altura:</strong> 100 cm</p>
-            <p><strong>Mano dominante:</strong> Ambidiestro</p>
-            <p><strong>Lugar de origen:</strong> Emerald Hill</p>
+          <div class="swatch-item">
+            <div class="swatch-box" style="background: #503024;"></div>
+            <div>
+              <strong>Marrón Chocolate</strong>
+              <small>#503024</small>
+            </div>
           </div>
-          <button class="btn-action" style="width:100%; margin-top:0.8rem;" onclick="clickAmato()">¡Tocar a Amato!</button>
-        </section>
-
-        <section class="card col-8">
-          <div class="card-header">
-            <span class="card-title">☆ "Hola."</span>
+          <div class="swatch-item">
+            <div class="swatch-box" style="background: #FFFEF2; border: 1px solid #ddd;"></div>
+            <div>
+              <strong>Blanco Vainilla</strong>
+              <small>#FFFEF2</small>
+            </div>
           </div>
-          <p style="margin-bottom:0.8rem;">Bienvenido al archivo de registros de Amato. Un espacio interactivo donde se recopila la información, vivencias y relaciones del erizo napolitano.</p>
-          
-          <div class="quote-box">
-            "Buscó en las Chaos Emeralds una forma de entender sus deseos, pero terminó encontrando algo que nunca había pedido: una familia."
-          </div>
+        </div>
+      </div>
 
-          <h4 style="color:var(--fresa); margin:1rem 0 0.4rem 0;">Métricas de Personalidad:</h4>
-          
-          <label style="font-size:0.8rem;">Curiosidad:</label>
-          <div class="stat-bar"><div class="stat-fill" style="width:100%;"></div></div>
+      <div class="section-box">
+        <h2 class="section-title">🎲 REGISTRO Y ESTADO ALEATORIO</h2>
+        <p id="random-fact-text" class="text-center-box">Haz clic en el botón de abajo para consultar un dato de Amato.</p>
+        <button class="btn-action full-width" onclick="generateRandomFact()">Generar Dato</button>
 
-          <label style="font-size:0.8rem;">Energía e Impulsividad:</label>
-          <div class="stat-bar"><div class="stat-fill" style="width:92%;"></div></div>
-
-          <label style="font-size:0.8rem;">Atención a Advertencias:</label>
-          <div class="stat-bar"><div class="stat-fill" style="width:12%; background:var(--shadow-red);"></div></div>
-
-          <label style="font-size:0.8rem;">Empatía y Cuidado:</label>
-          <div class="stat-bar"><div class="stat-fill" style="width:98%;"></div></div>
-
-          <div style="margin-top:1rem; display:flex; gap:0.5rem; flex-wrap:wrap;">
-            <button class="btn-action" onclick="toggleNightMode()">Modo Nocturno ☆</button>
-            <button class="btn-action" onclick="toggleAmatoMode()">Amato Mode ♡</button>
-            <button class="btn-action" onclick="toggleShamatoMode()">Shamato Mode ♡</button>
-          </div>
-        </section>
-
-        <section class="card col-6">
-          <div class="card-header">
-            <span class="card-title">♡ Registro Aleatorio</span>
-          </div>
-          <p id="random-fact-text" style="font-size:0.9rem; min-height:45px;">Haz clic en el botón de abajo para consultar un dato de Amato.</p>
-          <button class="btn-action" onclick="generateRandomFact()">Generar Dato</button>
-        </section>
-
-        <section class="card col-6">
-          <div class="card-header">
-            <span class="card-title">☆ Estado Actual</span>
-          </div>
-          <div style="display:flex; gap:0.3rem; flex-wrap:wrap; margin-bottom:0.5rem;">
+        <div style="margin-top:12px;">
+          <p class="instruction">Selecciona un estado de ánimo:</p>
+          <div class="btn-grid-row">
             <button class="btn-action" onclick="setMood('feliz')">Feliz</button>
             <button class="btn-action" onclick="setMood('triste')">Triste</button>
             <button class="btn-action" onclick="setMood('curioso')">Curioso</button>
             <button class="btn-action" onclick="setMood('caotico')">Caótico</button>
             <button class="btn-action" onclick="setMood('shamato')">Shamato</button>
           </div>
-          <div id="mood-display" class="dialogue-box">
-            Selecciona un estado para evaluar la reacción de Amato.
-          </div>
-        </section>
+          <div id="mood-display" class="info-output">Selecciona un estado para evaluar la reacción.</div>
+        </div>
       </div>
     </main>
 
+    <!-- TAB 2: LORE Y PASADO -->
     <main id="tab-lore" class="tab-panel">
-      <div class="grid-layout">
-        <section class="card col-12">
-          <div class="card-header">
-            <span class="card-title">☆ El Pasado y La Herida Central</span>
-            <span class="chaos-emerald-icon" onclick="triggerSecretEmerald(3)"></span>
-          </div>
-          <div style="line-height:1.7; font-size:0.95rem;">
-            <p style="margin-bottom:0.8rem;">A los 12 años, Amato enfrentó la pérdida de su padre. Tras ello, atravesó un periodo de tensión y conflicto con su madre. En un momento de vulnerabilidad, pidió a las estrellas que la situación terminara. Tras el posterior fallecimiento de su madre, Amato guardó la culpa en silencio, asumiendo erróneamente que sus palabras fueron la causa.</p>
-            
-            <div class="quote-box">
-              "No soy feliz. Solo aprendí a hacer felices a los demás."
-            </div>
+      <div class="section-box">
+        <h2 class="section-title">🌙 EL PASADO Y LA HERIDA CENTRAL
+          <span class="chaos-emerald-icon" onclick="triggerSecretEmerald(2)"></span>
+        </h2>
+        <p style="font-size:0.85rem; line-height:1.6; margin-bottom:8px;">A los 12 años, Amato enfrentó la pérdida de su padre. Tras ello, atravesó un periodo de tensión con su madre. En un momento de vulnerabilidad, pidió a las estrellas que todo terminara. Tras el posterior fallecimiento de su madre, Amato guardó la culpa en silencio, asumiendo erróneamente que sus palabras fueron la causa.</p>
+        
+        <div class="quote-card">
+          "No soy feliz. Solo aprendí a hacer felices a los demás."
+        </div>
 
-            <p>Para lidiar con el peso del dolor, adoptó una personalidad enérgica y alegre. Su prioridad se convirtió en proteger el bienestar de quienes lo rodean para compensar el pasado.</p>
-          </div>
-        </section>
+        <p style="font-size:0.85rem; line-height:1.6;">Para lidiar con el dolor, adoptó una personalidad enérgica y alegre. Su prioridad se convirtió en proteger el bienestar de quienes lo rodean para compensar el pasado.</p>
+      </div>
 
-        <section class="card col-8">
-          <div class="card-header">
-            <span class="card-title">♡ Cronología de Acontecimientos</span>
-          </div>
-          <div style="display:flex; flex-direction:column; gap:0.5rem; font-size:0.85rem;">
-            <div style="background:rgba(0,0,0,0.3); padding:0.5rem; border-left:2px solid var(--fresa);">
-              <strong>Edad 12:</strong> Sucesos familiares y el inicio de la culpa personal.
-            </div>
-            <div style="background:rgba(0,0,0,0.3); padding:0.5rem; border-left:2px solid var(--vainilla);">
-              <strong>Emerald Hill:</strong> Descubrimiento de su afinidad con la energía Chaos.
-            </div>
-            <div style="background:rgba(0,0,0,0.3); padding:0.5rem; border-left:2px solid var(--chaos-cyan);">
-              <strong>Integración:</strong> Encuentro con Sonic, Tails, Amy, Knuckles y Shadow.
-            </div>
-            <div style="background:rgba(0,0,0,0.3); padding:0.5rem; border-left:2px solid var(--shadow-red);">
-              <strong>Actualidad:</strong> Aprendizaje, apoyo mutuo y desarrollo de un vínculo cercano con Shadow.
-            </div>
-          </div>
-        </section>
+      <div class="section-box">
+        <h2 class="section-title">📜 CRONOLOGÍA DE ACONTECIMIENTOS</h2>
+        <div class="timeline-list">
+          <div class="timeline-item fresa"><strong>Edad 12:</strong> Sucesos familiares y el inicio de la culpa personal.</div>
+          <div class="timeline-item vainilla"><strong>Emerald Hill:</strong> Descubrimiento de su afinidad con la energía Chaos.</div>
+          <div class="timeline-item chocolate"><strong>Integración:</strong> Encuentro con Sonic, Tails, Amy, Knuckles y Shadow.</div>
+          <div class="timeline-item fresa"><strong>Actualidad:</strong> Aprendizaje, apoyo mutuo y desarrollo de un vínculo cercano con Shadow.</div>
+        </div>
+      </div>
 
-        <section class="card col-4">
-          <div class="card-header">
-            <span class="card-title">☆ Deseo a las Estrellas</span>
-          </div>
-          <p style="font-size:0.8rem; margin-bottom:0.5rem;">Escribe un pensamiento o deseo:</p>
-          <textarea id="star-wish-input" style="width:100%; height:70px; background:rgba(0,0,0,0.5); border:1px solid var(--fresa); color:#fff; padding:0.4rem; font-family:inherit; border-radius:4px;" placeholder="Escribe aquí..."></textarea>
-          <button class="btn-action" style="width:100%; margin-top:0.4rem;" onclick="sendStarWish()">Enviar</button>
-          <div id="star-wish-response" style="font-size:0.8rem; color:var(--vainilla); margin-top:0.4rem; min-height:30px;"></div>
-        </section>
+      <div class="section-box">
+        <h2 class="section-title">⭐ DESEO A LAS ESTRELLAS</h2>
+        <p class="instruction">Escribe un pensamiento o deseo:</p>
+        <textarea id="star-wish-input" class="pink-textarea" placeholder="Escribe tu deseo aquí..."></textarea>
+        <button class="btn-action full-width" onclick="sendStarWish()">Enviar Deseo</button>
+        <div id="star-wish-response" class="info-output"></div>
       </div>
     </main>
 
+    <!-- TAB 3: SHAMATO ZONE -->
     <main id="tab-shamato" class="tab-panel">
-      <div class="grid-layout">
-        <section class="card col-12">
-          <div class="card-header">
-            <span class="card-title">♡ SHAMATO ARCHIVE (Shadow × Amato)</span>
-            <span class="chaos-emerald-icon" onclick="triggerSecretEmerald(4)"></span>
-          </div>
-          <p style="font-size:0.9rem; line-height:1.6;">
-            La dinámica entre Shadow el Erizo y Amato pasó del escepticismo inicial a una relación fundada en el respeto, el entrenamiento en el manejo de energía y la constante comprensión mutua.
-          </p>
-        </section>
+      <div class="section-box">
+        <h2 class="section-title">🖤🍓 SHAMATO ARCHIVE (Shadow × Amato)
+          <span class="chaos-emerald-icon" onclick="triggerSecretEmerald(3)"></span>
+        </h2>
+        <p style="font-size:0.85rem; line-height:1.6;">La dinámica entre Shadow el Erizo y Amato pasó del escepticismo inicial a una relación fundada en el respeto, el entrenamiento en el manejo de energía y la constante comprensión mutua.</p>
+        <div class="tag-pair" style="margin-top:10px;">
+          <span class="pill chocolate">🖤 Gruñón</span>
+          <span>×</span>
+          <span class="pill fresa">☀️ Rayito de Sol</span>
+        </div>
+      </div>
 
-        <section class="card col-6">
-          <div class="card-header">
-            <span class="card-title">☆ Medidor de Vínculo</span>
-          </div>
-          <div style="font-size:1.8rem; text-align:center; color:var(--fresa); margin:0.8rem 0; font-weight:bold;">
-            <span id="shamato-counter-val">0</span> / 100
-          </div>
-          <button class="btn-action" style="width:100%;" onclick="addShamatoEnergy()">Incrementar Vínculo ♡</button>
-          <div id="shamato-msg" class="dialogue-box" style="margin-top:0.6rem; font-size:0.85rem;">
-            Interactúa para ver la evolución.
-          </div>
-        </section>
+      <div class="section-box">
+        <h2 class="section-title">💖 MEDIDOR DE VÍNCULO SHAMATO</h2>
+        <div class="hearts-container" onclick="addShamatoEnergy()">
+          <div id="hearts-display" class="hearts-grid">💕 💕 💕 💕 💕</div>
+        </div>
+        <p class="text-center" style="margin-top:8px;">Vínculo: <span id="shamato-counter-val">0</span> / 100</p>
+        <div id="shamato-msg" class="info-output">Interactúa para hacer crecer la energía.</div>
+      </div>
 
-        <section class="card col-6">
-          <div class="card-header">
-            <span class="card-title">♡ Interacciones Directas</span>
-          </div>
-          <div style="display:flex; flex-direction:column; gap:0.4rem;">
-            <button class="btn-action" onclick="getAmatoQuote()">Línea de Amato</button>
-            <button class="btn-action" onclick="getShadowQuote()">Línea de Shadow</button>
-            <button class="btn-action" onclick="getShamatoQuote()">Diálogo Conjunto</button>
-          </div>
-          <div id="quote-output-box" class="dialogue-box" style="margin-top:0.6rem; font-size:0.85rem; min-height:80px;">
-            Selecciona una opción para generar texto...
-          </div>
-        </section>
+      <div class="section-box">
+        <h2 class="section-title">💬 INTERACCIONES Y LÍNEAS DIRECTAS</h2>
+        <div class="btn-grid-row">
+          <button class="btn-action" onclick="getAmatoQuote()">Línea de Amato</button>
+          <button class="btn-action" onclick="getShadowQuote()">Línea de Shadow</button>
+          <button class="btn-action" onclick="getShamatoQuote()">Diálogo Conjunto</button>
+        </div>
+        <div id="quote-output-box" class="info-output">Selecciona una opción arriba...</div>
+      </div>
 
-        <section class="card col-12">
-          <div class="card-header">
-            <span class="card-title">☆ Generador de Escenarios</span>
-          </div>
-          <button class="btn-action" onclick="generateShamatoScene()">Generar Escena</button>
-          <div id="scene-display" class="dialogue-box" style="margin-top:0.6rem; font-size:0.9rem; line-height:1.5;">
-            Presiona el botón para consultar una escena aleatoria.
-          </div>
-        </section>
+      <div class="section-box">
+        <h2 class="section-title">🎬 GENERADOR DE ESCENARIOS</h2>
+        <button class="btn-action full-width" onclick="generateShamatoScene()">Generar Escena Aleatoria</button>
+        <div id="scene-display" class="info-output">Presiona el botón para consultar una escena.</div>
       </div>
     </main>
 
+    <!-- TAB 4: LAB DE TAILS -->
     <main id="tab-lab" class="tab-panel">
-      <div class="grid-layout">
-        <section class="card col-12">
-          <div class="card-header">
-            <span class="card-title">☆ LABORATORIO DE INVESTIGACIÓN CHAOS</span>
-            <span class="chaos-emerald-icon" onclick="triggerSecretEmerald(5)"></span>
+      <div class="section-box">
+        <h2 class="section-title">🔬 LABORATORIO CHAOS DE TAILS
+          <span class="chaos-emerald-icon" onclick="triggerSecretEmerald(4)"></span>
+        </h2>
+        <div class="lab-terminal">
+          <p style="color:#00ffaa;">[SISTEMA]: Panel interactivo activado.</p>
+          <div class="btn-grid-row" style="margin-top:8px;">
+            <button class="btn-action" onclick="interactLab('computer')">Computadora</button>
+            <button class="btn-action" onclick="interactLab('scanner')">Escáner</button>
+            <button class="btn-action" onclick="interactLab('red-button')">Botón Rojo</button>
+            <button class="btn-action" onclick="interactLab('emerald-test')">Resonancia</button>
           </div>
-          <div style="background:#0a0d14; border:1px solid #1a2a3a; padding:1rem; border-radius:4px;">
-            <p style="color:#00ffaa; font-family:monospace; font-size:0.85rem;">[SISTEMA]: Panel del laboratorio activado.</p>
-            
-            <div style="display:flex; gap:0.5rem; flex-wrap:wrap; margin-top:1rem;">
-              <button class="btn-action" onclick="interactLab('computer')">Consultar Computadora</button>
-              <button class="btn-action" onclick="interactLab('scanner')">Escanear Energía</button>
-              <button class="btn-action" onclick="interactLab('red-button')">Botón de Prueba</button>
-              <button class="btn-action" onclick="interactLab('emerald-test')">Probar Resonancia</button>
-            </div>
+          <div id="lab-console" class="lab-console-box">> Consola en espera...</div>
+        </div>
+      </div>
 
-            <div id="lab-console" style="margin-top:1rem; background:#000; color:#00ff00; padding:0.8rem; font-family:monospace; font-size:0.8rem; height:100px; overflow-y:auto; border:1px solid #333;">
-              > Consola en espera...
-            </div>
-          </div>
-        </section>
-
-        <section class="card col-12">
-          <div class="card-header">
-            <span class="card-title">♡ Registro de Comunicaciones</span>
-          </div>
-          <div style="background:rgba(0,0,0,0.5); padding:0.8rem; border-radius:6px; font-size:0.85rem; display:flex; flex-direction:column; gap:0.5rem;">
-            <div><strong style="color:#00aaff;">Sonic:</strong> ¿Alguien ha visto a Amato?</div>
-            <div><strong style="color:#ffaa00;">Tails:</strong> Dejó una nota en el taller indicando que salió a investigar una lectura de energía.</div>
-            <div><strong style="color:#ff3333;">Knuckles:</strong> Mientras no altere las esferas de energía, todo en orden.</div>
-            <div><strong style="color:#ff66cc;">Amy:</strong> Está con Shadow cerca del mirador. Están bien.</div>
-            <div><strong style="color:var(--fresa);">Amato:</strong> ¡Hola! Todo bajo control por aquí.</div>
-            <div><strong style="color:#aaa;">Shadow:</strong> Afirmativo.</div>
-          </div>
-        </section>
+      <div class="section-box">
+        <h2 class="section-title">💬 CHAT DE GRUPO</h2>
+        <div class="chat-logs">
+          <div><strong style="color:#00aaff;">Sonic:</strong> ¿Alguien ha visto a Amato?</div>
+          <div><strong style="color:#ffaa00;">Tails:</strong> Dejó una nota en el taller. Fue a investigar lecturas Chaos.</div>
+          <div><strong style="color:#ff3333;">Knuckles:</strong> Mientras no toque el altar, no hay problema.</div>
+          <div><strong style="color:#ff66cc;">Amy:</strong> Está cerca del mirador con Shadow. Están bien.</div>
+          <div><strong style="color:var(--fresa);">Amato:</strong> ¡Hola! Todo bajo control por aquí. 🍨</div>
+          <div><strong style="color:#503024;">Shadow:</strong> Afirmativo.</div>
+        </div>
       </div>
     </main>
 
+    <!-- TAB 5: MINIJUEGOS & SIMULADOR -->
     <main id="tab-interact" class="tab-panel">
-      <div class="grid-layout">
-        <section class="card col-6">
-          <div class="card-header">
-            <span class="card-title">☆ Simulador de Acción</span>
-          </div>
-          <div style="display:flex; flex-direction:column; gap:0.4rem;">
-            <button class="btn-action" onclick="simAction('comida')">Ofrecer Dulce Napolitano</button>
-            <button class="btn-action" onclick="simAction('abrazo')">Ofrecer Saludo</button>
-            <button class="btn-action" onclick="simAction('emerald')">Mostrar Esfera Chaos</button>
-            <button class="btn-action" onclick="simAction('shadow')">Llamar a Shadow</button>
-          </div>
-          <div id="sim-output" class="dialogue-box" style="margin-top:0.6rem;">
-            Selecciona una interacción.
-          </div>
-        </section>
+      <div class="section-box">
+        <h2 class="section-title">🎮 SIMULADOR DE ACCIÓN</h2>
+        <div class="btn-grid-row">
+          <button class="btn-action" onclick="simAction('comida')">Ofrecer Dulce</button>
+          <button class="btn-action" onclick="simAction('abrazo')">Ofrecer Saludo</button>
+          <button class="btn-action" onclick="simAction('emerald')">Mostrar Emerald</button>
+          <button class="btn-action" onclick="simAction('shadow')">Llamar a Shadow</button>
+        </div>
+        <div id="sim-output" class="info-output">Selecciona una interacción.</div>
+      </div>
 
-        <section class="card col-6">
-          <div class="card-header">
-            <span class="card-title">♡ Contador de Muestras de Apoyo</span>
-          </div>
-          <div style="text-align:center; margin-bottom:0.5rem;">
-            <span id="hug-count-display" style="font-size:1.5rem; color:var(--fresa); font-weight:bold;">0</span> Muestras
-          </div>
-          <button class="btn-action" style="width:100%;" onclick="giveHug()">Enviar Apoyo</button>
-          <div id="hug-response" class="dialogue-box" style="margin-top:0.6rem; font-size:0.85rem;">
-            Presiona el botón para interactuar.
-          </div>
-        </section>
+      <div class="section-box">
+        <h2 class="section-title">💌 MUESTRAS DE APOYO</h2>
+        <p class="text-center" style="font-size:1.2rem; font-weight:bold; color:var(--fresa);">
+          <span id="hug-count-display">0</span> Apoyos Enviados
+        </p>
+        <button class="btn-action full-width" style="margin-top:8px;" onclick="giveHug()">Enviar Muestra de Apoyo</button>
+        <div id="hug-response" class="info-output">Haz clic para apoyar a Amato.</div>
+      </div>
 
-        <section class="card col-12">
-          <div class="card-header">
-            <span class="card-title">☆ Combinaciones de Estilo</span>
-          </div>
-          <div style="display:flex; justify-content:space-between; align-items:center;">
-            <p style="font-size:0.85rem;">Genera un conjunto de vestimenta o accesorios temáticos:</p>
-            <button class="btn-action" onclick="generateOutfit()">Generar Estilo</button>
-          </div>
-          <div id="outfit-display" class="quote-box" style="margin-top:0.8rem; font-style:normal;">
-            Haz clic para consultar una opción.
-          </div>
-        </section>
+      <div class="section-box">
+        <h2 class="section-title">👗 COMBINACIONES DE ESTILO</h2>
+        <button class="btn-action full-width" onclick="generateOutfit()">Generar Atuendo Coquette/Y2K</button>
+        <div id="outfit-display" class="info-output">Consulta un estilo temático.</div>
       </div>
     </main>
 
+    <!-- TAB 6: DIARIO SECRETO DE AMATO -->
     <main id="tab-diario" class="tab-panel">
-      <div class="grid-layout">
-        <section class="card col-12">
-          <div class="card-header">
-            <span class="card-title">☆ Registros Personales de Amato</span>
-            <span class="chaos-emerald-icon" onclick="triggerSecretEmerald(6)"></span>
+      <div class="section-box">
+        <h2 class="section-title">📖 REGISTROS PERSONALES DE AMATO
+          <span class="chaos-emerald-icon" onclick="triggerSecretEmerald(5)"></span>
+        </h2>
+        <div class="notebook-page">
+          <div class="notebook-header">
+            <span><strong>Página <span id="diary-page-num">1</span> de 8</strong></span>
+            <small>- Diario Secreto -</small>
           </div>
-          <div class="notebook-page">
-            <div style="display:flex; justify-content:space-between; border-bottom:1px solid #ddd; padding-bottom:0.4rem; margin-bottom:0.8rem;">
-              <span><strong>Página <span id="diary-page-num">1</span> de 8</strong></span>
-              <span style="font-size:0.8rem; color:#666;">- Archivo personal -</span>
-            </div>
-            <div id="diary-content" style="min-height:120px; font-size:0.9rem;">
-              Cargando registros...
-            </div>
-            <div style="display:flex; justify-content:space-between; margin-top:1rem;">
-              <button class="btn-action" onclick="changeDiaryPage(-1)">← Anterior</button>
-              <button class="btn-action" onclick="changeDiaryPage(1)">Siguiente →</button>
-            </div>
+          <div id="diary-content" class="notebook-body">Cargando diario...</div>
+          <div class="notebook-controls">
+            <button class="btn-action" onclick="changeDiaryPage(-1)">← Anterior</button>
+            <button class="btn-action" onclick="changeDiaryPage(1)">Siguiente →</button>
           </div>
-        </section>
+        </div>
       </div>
     </main>
 
+    <!-- TAB 7: CARTAS, GACHA & EXTRAS -->
     <main id="tab-extras" class="tab-panel">
-      <div
+      <div class="section-box">
+        <h2 class="section-title">💌 BUZÓN DE CARTAS SECRETAS</h2>
+        <select id="letter-select" class="pink-select" onchange="showLetter()">
+          <option value="sonic">Nota de Sonic 🦔</option>
+          <option value="tails">Nota de Tails 🦊</option>
+          <option value="amy">Nota de Amy 🎀</option>
+          <option value="knuckles">Nota de Knuckles 🥊</option>
+          <option value="cream">Nota de Cream 🐰</option>
+          <option value="shadow">Nota de Shadow 🖤</option>
+        </select>
+        <div id="letter-content" class="info-output" style="margin-top:8px;">Selecciona una carta...</div>
+      </div>
+
+      <div class="section-box">
+        <h2 class="section-title">🎁 GACHA DE REGALOS</h2>
+        <button class="btn-action full-width" onclick="openGachaBox()">Obtener Regalo / Objeto</button>
+        <div id="gacha-result" class="info-output">[ Estado: En espera ]</div>
+      </div>
+
+      <div class="section-box">
+        <h2 class="section-title">🏆 LOGROS DESBLOQUEADOS</h2>
+        <div id="achievements-list" class="achievements-flex"></div>
+      </div>
+
+      <div class="section-box" id="maria-secret-card" style="display:none;">
+        <h2 class="section-title" style="color:var(--chocolate);">⭐ REGISTRO M</h2>
+        <p style="font-size:0.85rem; line-height:1.5;">Amato comprende el peso del dolor ajeno y guarda un profundo respeto por la memoria y recuerdos de sus compañeros.</p>
+      </div>
+
+      <div class="section-box">
+        <h2 class="section-title">💎 SECRET CHAOS EMERALD
+          <span class="chaos-emerald-icon" onclick="triggerSecretEmerald(6)"></span>
+        </h2>
+        <div class="emerald-click-zone" onclick="triggerSecretEmerald(7)">
+          <div class="emerald-icon">💎</div>
+          <p>Toca la esmeralda final para desbloquear el poder Chaos.</p>
+        </div>
+      </div>
+    </main>
+
+    <!-- PIE DE PÁGINA -->
+    <footer class="footer">
+      <p>💕 Created for Amato's World • Made with Magic 🎀</p>
+      <p style="font-size:0.7rem; margin-top:4px;">Sonic The Hedgehog &© SEGA</p>
+    </footer>
+
+  </div>
+
+  <div id="toast" class="toast">Notificación</div>
+
+  <script src="./script.js"></script>
+</body>
+</html>
