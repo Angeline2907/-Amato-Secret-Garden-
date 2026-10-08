@@ -12,7 +12,7 @@
 
   <style>
     /* ==========================================================================
-       ESTILO INTEGRADO COQUETTE / SCRAPBOOK Y2K (GARANTIA DE COR)
+       ESTILO INTEGRADO COQUETTE / SCRAPBOOK Y2K CON MENÚ HORIZONTAL
        ========================================================================== */
     :root {
       --bg-pink: #FFE8EF;
@@ -49,6 +49,7 @@
       min-height: 100vh;
     }
 
+    /* BARRA SUPERIOR WINDOWS EXE */
     .top-window-bar {
       width: 100%;
       max-width: 480px;
@@ -95,6 +96,7 @@
       transform: scale(1.1);
     }
 
+    /* MARCO CONTENEDOR PRINCIPAL */
     .main-card {
       width: 100%;
       max-width: 480px;
@@ -113,7 +115,7 @@
 
     .header {
       text-align: center;
-      margin-bottom: 18px;
+      margin-bottom: 14px;
     }
 
     .icecream-icon {
@@ -157,7 +159,7 @@
       display: flex;
       justify-content: center;
       gap: 8px;
-      margin-top: 12px;
+      margin-top: 10px;
     }
 
     .pill {
@@ -177,51 +179,73 @@
     .pill.chocolate { background: #D7C4B7; color: var(--chocolate); }
     .pill.vainilla { background: var(--vainilla); color: #8A7300; }
 
+    /* NAVEGACIÓN HORIZONTAL SUPERIOR */
+    .nav-menu-horizontal-wrapper {
+      width: 100%;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      margin-bottom: 16px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--main-pink) transparent;
+    }
+
+    .nav-menu-horizontal-wrapper::-webkit-scrollbar {
+      height: 6px;
+    }
+    .nav-menu-horizontal-wrapper::-webkit-scrollbar-thumb {
+      background: var(--main-pink);
+      border-radius: 10px;
+    }
+
     .nav-menu {
       display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-bottom: 22px;
+      flex-direction: row;
+      gap: 8px;
+      white-space: nowrap;
+      min-width: max-content;
+      padding: 2px;
     }
 
     .menu-btn {
       background: var(--soft-white);
-      border: 2.5px solid var(--main-pink);
+      border: 2px solid var(--main-pink);
       color: var(--fresa);
-      padding: 11px 18px;
-      border-radius: 30px;
-      font-size: 0.92rem;
+      padding: 8px 14px;
+      border-radius: 20px;
+      font-size: 0.82rem;
       font-weight: 700;
       cursor: pointer;
       transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
-      box-shadow: 0 4px 0 var(--main-pink);
+      box-shadow: 0 3px 0 var(--main-pink);
       text-align: center;
-      position: relative;
-      overflow: hidden;
     }
 
     .menu-btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 0 var(--main-pink);
+      box-shadow: 0 5px 0 var(--main-pink);
       background: #FFF0F4;
     }
 
     .menu-btn:active, .menu-btn.active {
       background: var(--main-pink) !important;
       color: white !important;
-      transform: translateY(3px) !important;
+      transform: translateY(2px) !important;
       box-shadow: 0 1px 0 var(--main-pink) !important;
+    }
+
+    .btn-music-bar {
+      text-align: center;
+      margin-bottom: 16px;
     }
 
     .btn-music {
       background: var(--dark-pink);
       color: white;
       border: none;
-      padding: 9px 16px;
+      padding: 6px 14px;
       border-radius: 20px;
-      font-size: 0.82rem;
+      font-size: 0.78rem;
       font-weight: 700;
-      margin-top: 6px;
       cursor: pointer;
       transition: transform 0.2s ease, background 0.2s;
       box-shadow: 0 3px 8px rgba(216, 75, 117, 0.3);
@@ -232,6 +256,7 @@
       background: var(--fresa);
     }
 
+    /* PANELES Y CONTENIDO */
     .tab-panel {
       display: none;
     }
@@ -691,18 +716,22 @@
       </div>
     </header>
 
-    <!-- MENÚ DE NAVEGACIÓN PRINCIPAL -->
-    <nav class="nav-menu">
-      <button class="menu-btn active" onclick="switchTab('tab-main')">🍨 Perfil & Paleta</button>
-      <button class="menu-btn" onclick="switchTab('tab-lore')">🌙 Lore & Pasado</button>
-      <button class="menu-btn" onclick="switchTab('tab-shamato')">🖤🍓 Dinámica Shamato</button>
-      <button class="menu-btn" onclick="switchTab('tab-lab')">🔬 Lab de Tails</button>
-      <button class="menu-btn" onclick="switchTab('tab-interact')">🎮 Minijuegos</button>
-      <button class="menu-btn" onclick="switchTab('tab-diario')">📖 Diario Secreto</button>
-      <button class="menu-btn" onclick="switchTab('tab-extras')">💌 Cartas & Extras</button>
+    <!-- MENÚ DE NAVEGACIÓN HORIZONTAL EN LA PARTE SUPERIOR -->
+    <div class="nav-menu-horizontal-wrapper">
+      <nav class="nav-menu">
+        <button class="menu-btn active" onclick="switchTab('tab-main')">🍨 Perfil & Paleta</button>
+        <button class="menu-btn" onclick="switchTab('tab-lore')">🌙 Lore & Pasado</button>
+        <button class="menu-btn" onclick="switchTab('tab-shamato')">🖤🍓 Dinámica Shamato</button>
+        <button class="menu-btn" onclick="switchTab('tab-lab')">🔬 Lab de Tails</button>
+        <button class="menu-btn" onclick="switchTab('tab-interact')">🎮 Minijuegos</button>
+        <button class="menu-btn" onclick="switchTab('tab-diario')">📖 Diario Secreto</button>
+        <button class="menu-btn" onclick="switchTab('tab-extras')">💌 Cartas & Extras</button>
+      </nav>
+    </div>
 
+    <div class="btn-music-bar">
       <button class="btn-music" id="music-btn" onclick="toggleMusic()">Música de Fondo: OFF</button>
-    </nav>
+    </div>
 
     <!-- TAB 1: PERFIL & PALETA -->
     <main id="tab-main" class="tab-panel active">
