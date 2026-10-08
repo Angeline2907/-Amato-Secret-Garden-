@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="./styles.css?v=999">
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -5,17 +6,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Amato's Pages 🎀 — Personal OC & Shamato Hub</title>
   
-  <!-- Letra linda (Google Fonts) -->
+  <!-- Letra Linda (Fredoka y Quicksand) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
   
-  <!-- Estilo externo CSS -->
-  <link rel="stylesheet" href="./styles.css?v=3.0">
+  <!-- Enlace al archivo CSS con Cache Busting -->
+  <link rel="stylesheet" href="./styles.css?v=999">
 </head>
 <body>
 
-  <!-- BARRA VENTANA WINDOWS EXE -->
+  <!-- BARRA VENTANA EXE -->
   <div class="top-window-bar">
     <div class="ticker-text">
       <span>🎀 Neapolitan_Haven.exe</span>
@@ -54,15 +55,15 @@
       </div>
     </header>
 
-    <!-- MENÚ DE NAVEGACIÓN -->
+    <!-- NAV BOTONES PRINCIPALES -->
     <nav class="nav-menu">
-      <button class="menu-btn active" onclick="switchTab('tab-main')">🍨 Perfil & Paleta</button>
-      <button class="menu-btn" onclick="switchTab('tab-lore')">🌙 Lore & Pasado</button>
-      <button class="menu-btn" onclick="switchTab('tab-shamato')">🖤🍓 Dinámica Shamato</button>
-      <button class="menu-btn" onclick="switchTab('tab-lab')">🔬 Lab de Tails</button>
-      <button class="menu-btn" onclick="switchTab('tab-interact')">🎮 Minijuegos</button>
-      <button class="menu-btn" onclick="switchTab('tab-diario')">📖 Diario Secreto</button>
-      <button class="menu-btn" onclick="switchTab('tab-extras')">💌 Cartas & Extras</button>
+      <button class="menu-btn active" onclick="switchTab('tab-main', event)">🍨 Perfil & Paleta</button>
+      <button class="menu-btn" onclick="switchTab('tab-lore', event)">🌙 Lore & Pasado</button>
+      <button class="menu-btn" onclick="switchTab('tab-shamato', event)">🖤🍓 Dinámica Shamato</button>
+      <button class="menu-btn" onclick="switchTab('tab-lab', event)">🔬 Lab de Tails</button>
+      <button class="menu-btn" onclick="switchTab('tab-interact', event)">🎮 Minijuegos</button>
+      <button class="menu-btn" onclick="switchTab('tab-diario', event)">📖 Diario Secreto</button>
+      <button class="menu-btn" onclick="switchTab('tab-extras', event)">💌 Cartas & Extras</button>
 
       <button class="btn-music" id="music-btn" onclick="toggleMusic()">Música de Fondo: OFF</button>
     </nav>
@@ -82,7 +83,7 @@
           <div class="polaroid-caption">Amato en Emerald Hill ♡</div>
         </div>
         <div class="info-list">
-          <p><strong>Nombre:</strong> Amato (Apodo: Napolitano, Amato-core)</p>
+          <p><strong>Nombre:</strong> Amato (Apodo: Napolitano)</p>
           <p><strong>Especie:</strong> Erizo 🦔</p>
           <p><strong>Edad:</strong> 17 años</p>
           <p><strong>Origen:</strong> Emerald Hill</p>
@@ -199,7 +200,7 @@
         <h2 class="section-title">⭐ DESEO A LAS ESTRELLAS</h2>
         <p class="instruction">Escribe un pensamiento o deseo:</p>
         <textarea id="star-wish-input" class="pink-textarea" placeholder="Escribe tu deseo aquí..."></textarea>
-        <button class="btn-action full-width" onclick="sendStarWish()">Enviar Deseo</button>
+        <button class="btn-action full-width" style="margin-top:8px;" onclick="sendStarWish()">Enviar Deseo</button>
         <div id="star-wish-response" class="info-output"></div>
       </div>
     </main>
@@ -304,7 +305,7 @@
       </div>
     </main>
 
-    <!-- TAB 6: DIARIO SECRETO -->
+    <!-- TAB 6: DIARIO SECRETO DE AMATO -->
     <main id="tab-diario" class="tab-panel">
       <div class="section-box">
         <h2 class="section-title">📖 REGISTROS PERSONALES DE AMATO
@@ -330,3 +331,53 @@
         <h2 class="section-title">💌 BUZÓN DE CARTAS SECRETAS</h2>
         <select id="letter-select" class="pink-select" onchange="showLetter()">
           <option value="sonic">Nota de Sonic 🦔</option>
+          <option value="tails">Nota de Tails 🦊</option>
+          <option value="amy">Nota de Amy 🎀</option>
+          <option value="knuckles">Nota de Knuckles 🥊</option>
+          <option value="cream">Nota de Cream 🐰</option>
+          <option value="shadow">Nota de Shadow 🖤</option>
+        </select>
+        <div id="letter-content" class="info-output" style="margin-top:8px;">Selecciona una carta...</div>
+      </div>
+
+      <div class="section-box">
+        <h2 class="section-title">🎁 GACHA DE REGALOS</h2>
+        <button class="btn-action full-width" onclick="openGachaBox()">Obtener Regalo / Objeto</button>
+        <div id="gacha-result" class="info-output">[ Estado: En espera ]</div>
+      </div>
+
+      <div class="section-box">
+        <h2 class="section-title">🏆 LOGROS DESBLOQUEADOS</h2>
+        <div id="achievements-list" class="achievements-flex"></div>
+      </div>
+
+      <div class="section-box" id="maria-secret-card" style="display:none;">
+        <h2 class="section-title" style="color:var(--chocolate);">⭐ REGISTRO M</h2>
+        <p style="font-size:0.85rem; line-height:1.5;">Amato comprende el peso del dolor ajeno y guarda un profundo respeto por la memoria y recuerdos de sus compañeros.</p>
+      </div>
+
+      <div class="section-box">
+        <h2 class="section-title">💎 SECRET CHAOS EMERALD
+          <span class="chaos-emerald-icon" onclick="triggerSecretEmerald(6)"></span>
+        </h2>
+        <div class="emerald-click-zone" onclick="triggerSecretEmerald(7)">
+          <div class="emerald-icon">💎</div>
+          <p style="font-size:0.8rem; font-weight:bold; color:var(--fresa);">Toca la esmeralda final para desbloquear el poder Chaos.</p>
+        </div>
+      </div>
+    </main>
+
+    <!-- PIE DE PÁGINA -->
+    <footer class="footer">
+      <p>💕 Created for Amato's World • Made with Magic 🎀</p>
+      <p style="font-size:0.7rem; margin-top:4px;">Sonic The Hedgehog &© SEGA</p>
+    </footer>
+
+  </div>
+
+  <div id="toast" class="toast">Notificación</div>
+
+  <!-- Enlace a Script -->
+  <script src="./script.js"></script>
+</body>
+</html>
