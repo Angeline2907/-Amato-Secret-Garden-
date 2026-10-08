@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="./styles.css?v=999">
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -6,17 +5,654 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Amato's Pages 🎀 — Personal OC & Shamato Hub</title>
   
-  <!-- Letra Linda (Fredoka y Quicksand) -->
+  <!-- Fontes Bonitas de Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
-  
-  <!-- Enlace al archivo CSS con Cache Busting -->
-  <link rel="stylesheet" href="./styles.css?v=999">
+
+  <style>
+    /* ==========================================================================
+       ESTILO INTEGRADO COQUETTE / SCRAPBOOK Y2K (GARANTIA DE COR)
+       ========================================================================== */
+    :root {
+      --bg-pink: #FFE8EF;
+      --main-pink: #FF85A2;
+      --light-pink: #FFD1DC;
+      --soft-white: #FFF9FB;
+      --dark-pink: #D84B75;
+      --fresa: #FF5376;
+      --chocolate: #503024;
+      --vainilla: #FFF3C4;
+      --border-pink: #FFB3C6;
+      --text-color: #5A3340;
+      --chaos-cyan: #00F0FF;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Fredoka', 'Quicksand', 'Comic Sans MS', sans-serif !important;
+    }
+
+    body {
+      background-color: var(--bg-pink) !important;
+      background-image: 
+        linear-gradient(rgba(255, 182, 193, 0.45) 1.5px, transparent 1.5px),
+        linear-gradient(90deg, rgba(255, 182, 193, 0.45) 1.5px, transparent 1.5px) !important;
+      background-size: 22px 22px !important;
+      color: var(--text-color) !important;
+      padding: 12px 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .top-window-bar {
+      width: 100%;
+      max-width: 480px;
+      background: var(--fresa);
+      color: white;
+      padding: 8px 14px;
+      border-radius: 16px 16px 0 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      font-weight: 600;
+      box-shadow: 0 -2px 10px rgba(255, 133, 162, 0.3);
+    }
+
+    .ticker-text {
+      display: flex;
+      gap: 10px;
+      white-space: nowrap;
+      animation: floatTicker 12s linear infinite;
+    }
+
+    @keyframes floatTicker {
+      0% { transform: translateX(0); }
+      50% { transform: translateX(-10px); }
+      100% { transform: translateX(0); }
+    }
+
+    .window-controls {
+      display: flex;
+      gap: 6px;
+    }
+
+    .win-btn {
+      background: rgba(255, 255, 255, 0.35);
+      padding: 0 6px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: transform 0.15s ease, background 0.15s;
+    }
+
+    .win-btn:hover {
+      background: rgba(255, 255, 255, 0.6);
+      transform: scale(1.1);
+    }
+
+    .main-card {
+      width: 100%;
+      max-width: 480px;
+      background: var(--soft-white);
+      border: 3.5px solid var(--border-pink);
+      border-radius: 0 0 28px 28px;
+      padding: 18px 16px;
+      box-shadow: 0 12px 30px rgba(255, 133, 162, 0.3);
+      animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    @keyframes popIn {
+      from { opacity: 0; transform: scale(0.96) translateY(8px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 18px;
+    }
+
+    .icecream-icon {
+      font-size: 2.8rem;
+      display: inline-block;
+      animation: gentleSway 3s ease-in-out infinite;
+    }
+
+    @keyframes gentleSway {
+      0%, 100% { transform: rotate(-4deg); }
+      50% { transform: rotate(4deg); }
+    }
+
+    .title {
+      color: var(--fresa);
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-shadow: 2px 2px 0px #fff, 3px 3px 0px var(--light-pink);
+    }
+
+    .subtitle {
+      font-size: 0.82rem;
+      color: var(--dark-pink);
+      margin-top: 3px;
+      font-weight: 600;
+    }
+
+    .stats-counter-strip {
+      font-size: 0.78rem;
+      color: var(--dark-pink);
+      margin-top: 8px;
+      font-weight: 600;
+      background: var(--light-pink);
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 12px;
+    }
+
+    .palette-pills {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .pill {
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      transition: transform 0.2s ease;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    .pill:hover {
+      transform: translateY(-2px) scale(1.04);
+    }
+
+    .pill.fresa { background: #FFD1DC; color: var(--fresa); }
+    .pill.chocolate { background: #D7C4B7; color: var(--chocolate); }
+    .pill.vainilla { background: var(--vainilla); color: #8A7300; }
+
+    .nav-menu {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+
+    .menu-btn {
+      background: var(--soft-white);
+      border: 2.5px solid var(--main-pink);
+      color: var(--fresa);
+      padding: 11px 18px;
+      border-radius: 30px;
+      font-size: 0.92rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+      box-shadow: 0 4px 0 var(--main-pink);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .menu-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 0 var(--main-pink);
+      background: #FFF0F4;
+    }
+
+    .menu-btn:active, .menu-btn.active {
+      background: var(--main-pink) !important;
+      color: white !important;
+      transform: translateY(3px) !important;
+      box-shadow: 0 1px 0 var(--main-pink) !important;
+    }
+
+    .btn-music {
+      background: var(--dark-pink);
+      color: white;
+      border: none;
+      padding: 9px 16px;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-top: 6px;
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.2s;
+      box-shadow: 0 3px 8px rgba(216, 75, 117, 0.3);
+    }
+
+    .btn-music:hover {
+      transform: scale(1.03);
+      background: var(--fresa);
+    }
+
+    .tab-panel {
+      display: none;
+    }
+
+    .tab-panel.active {
+      display: block;
+      animation: fadeInTab 0.35s ease-out;
+    }
+
+    @keyframes fadeInTab {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .section-box {
+      background: white;
+      border: 2px dashed var(--border-pink);
+      border-radius: 20px;
+      padding: 16px;
+      margin-bottom: 16px;
+      transition: border-color 0.2s ease;
+    }
+
+    .section-box:hover {
+      border-color: var(--main-pink);
+    }
+
+    .section-title {
+      color: var(--fresa);
+      font-size: 1.05rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .btn-action {
+      background: var(--fresa);
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 18px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      box-shadow: 0 3px 0 var(--dark-pink);
+      transition: all 0.18s ease;
+    }
+
+    .btn-action:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 0 var(--dark-pink);
+      filter: brightness(1.03);
+    }
+
+    .btn-action:active {
+      transform: translateY(2px);
+      box-shadow: 0 1px 0 var(--dark-pink);
+    }
+
+    .full-width {
+      width: 100%;
+    }
+
+    .btn-grid-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    .polaroid-frame {
+      background: #fff;
+      padding: 10px 10px 20px 10px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+      transform: rotate(-1.5deg);
+      margin: 12px auto;
+      max-width: 250px;
+      border: 1px solid #f0f0f0;
+      border-radius: 4px;
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .polaroid-frame:hover {
+      transform: rotate(0deg) scale(1.03);
+    }
+
+    .polaroid-img {
+      background: #332233;
+      color: var(--vainilla);
+      height: 150px;
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 0.8rem;
+      padding: 6px;
+    }
+
+    .polaroid-caption {
+      text-align: center;
+      font-size: 0.85rem;
+      margin-top: 8px;
+      color: #666;
+      font-weight: 600;
+    }
+
+    .info-list p {
+      font-size: 0.88rem;
+      margin-bottom: 8px;
+      line-height: 1.45;
+    }
+
+    .instruction {
+      font-size: 0.78rem;
+      color: #888;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .word-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+    }
+
+    .tag {
+      background: var(--light-pink);
+      color: var(--fresa);
+      padding: 5px 12px;
+      border-radius: 14px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.2s;
+    }
+
+    .tag:hover {
+      transform: scale(1.08) rotate(1deg);
+      background: var(--main-pink);
+      color: white;
+    }
+
+    .tag-details, .info-output {
+      background: var(--bg-pink);
+      padding: 12px;
+      border-radius: 14px;
+      font-size: 0.88rem;
+      text-align: center;
+      margin-top: 10px;
+      line-height: 1.45;
+      border: 1px solid var(--border-pink);
+    }
+
+    .bar-group label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      display: block;
+      margin-top: 6px;
+    }
+
+    .progress-bar {
+      background: #FFE0E9;
+      height: 14px;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 8px;
+      border: 1px solid var(--border-pink);
+    }
+
+    .progress-bar .fill {
+      background: linear-gradient(90deg, var(--main-pink), var(--fresa));
+      height: 100%;
+      border-radius: 12px;
+      transition: width 0.4s ease-out;
+    }
+
+    .color-swatch-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .swatch-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.88rem;
+    }
+
+    .swatch-box {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .quote-card {
+      border-left: 4px solid var(--fresa);
+      background: var(--bg-pink);
+      padding: 10px 14px;
+      font-style: italic;
+      font-size: 0.88rem;
+      margin: 12px 0;
+      border-radius: 0 12px 12px 0;
+    }
+
+    .timeline-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 0.85rem;
+    }
+
+    .timeline-item {
+      padding: 10px;
+      border-radius: 10px;
+      background: var(--soft-white);
+      border-left: 3.5px solid var(--fresa);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    }
+
+    .pink-textarea, .pink-select {
+      width: 100%;
+      padding: 10px;
+      border: 1.5px solid var(--border-pink);
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 0.88rem;
+      background: var(--soft-white);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .pink-textarea:focus, .pink-select:focus {
+      border-color: var(--fresa);
+    }
+
+    .hearts-container {
+      background: var(--bg-pink);
+      padding: 14px;
+      border-radius: 16px;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.15s ease;
+      border: 1px dashed var(--main-pink);
+    }
+
+    .hearts-container:active {
+      transform: scale(0.98);
+    }
+
+    .hearts-grid {
+      font-size: 1.3rem;
+      letter-spacing: 5px;
+    }
+
+    .tag-pair {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .lab-terminal {
+      background: #0d1117;
+      color: #00ffaa;
+      padding: 14px;
+      border-radius: 12px;
+      font-family: monospace !important;
+      font-size: 0.82rem;
+    }
+
+    .lab-console-box {
+      margin-top: 10px;
+      background: #000;
+      padding: 10px;
+      border-radius: 6px;
+      height: 80px;
+      overflow-y: auto;
+      color: #00ff00;
+      font-family: monospace !important;
+    }
+
+    .chat-logs {
+      background: var(--bg-pink);
+      padding: 12px;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .notebook-page {
+      background: #FFFDF5;
+      border-left: 4px solid #FF9999;
+      padding: 14px;
+      border-radius: 8px;
+      box-shadow: inset 0 0 8px rgba(0,0,0,0.04);
+    }
+
+    .notebook-header {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px dashed #ddd;
+      padding-bottom: 6px;
+      font-size: 0.82rem;
+    }
+
+    .notebook-body {
+      min-height: 110px;
+      font-size: 0.88rem;
+      line-height: 1.55;
+      margin-top: 10px;
+      white-space: pre-line;
+    }
+
+    .notebook-controls {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 12px;
+    }
+
+    .achievements-flex {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .achievement-badge {
+      background: var(--bg-pink);
+      border: 1px solid var(--main-pink);
+      color: var(--fresa);
+      padding: 5px 10px;
+      border-radius: 14px;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    .achievement-badge.locked {
+      opacity: 0.45;
+      filter: grayscale(1);
+    }
+
+    .chaos-emerald-icon {
+      display: inline-block;
+      width: 15px;
+      height: 15px;
+      background: var(--chaos-cyan);
+      clip-path: polygon(50% 0%, 100% 38%, 81% 100%, 19% 100%, 0% 38%);
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .chaos-emerald-icon:hover {
+      transform: scale(1.3) rotate(10deg);
+    }
+
+    .emerald-click-zone {
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .emerald-click-zone:hover {
+      transform: scale(1.05);
+    }
+
+    .emerald-icon { font-size: 2.5rem; }
+
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 20px;
+      background: var(--fresa);
+      color: white;
+      padding: 10px 18px;
+      border-radius: 25px;
+      font-weight: 700;
+      font-size: 0.88rem;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+      display: none;
+      z-index: 9999;
+      animation: popToast 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    @keyframes popToast {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--dark-pink);
+      margin-top: 14px;
+      font-weight: 600;
+    }
+
+    .text-center { text-align: center; }
+    .text-center-box { text-align: center; font-size: 0.88rem; }
+
+    body.night-mode {
+      filter: brightness(0.85) contrast(1.1);
+    }
+
+    body.shamato-mode {
+      border: 4px solid var(--chocolate);
+    }
+  </style>
 </head>
 <body>
 
-  <!-- BARRA VENTANA EXE -->
+  <!-- BARRA VENTANA WINDOWS EXE -->
   <div class="top-window-bar">
     <div class="ticker-text">
       <span>🎀 Neapolitan_Haven.exe</span>
@@ -55,15 +691,15 @@
       </div>
     </header>
 
-    <!-- NAV BOTONES PRINCIPALES -->
+    <!-- MENÚ DE NAVEGACIÓN PRINCIPAL -->
     <nav class="nav-menu">
-      <button class="menu-btn active" onclick="switchTab('tab-main', event)">🍨 Perfil & Paleta</button>
-      <button class="menu-btn" onclick="switchTab('tab-lore', event)">🌙 Lore & Pasado</button>
-      <button class="menu-btn" onclick="switchTab('tab-shamato', event)">🖤🍓 Dinámica Shamato</button>
-      <button class="menu-btn" onclick="switchTab('tab-lab', event)">🔬 Lab de Tails</button>
-      <button class="menu-btn" onclick="switchTab('tab-interact', event)">🎮 Minijuegos</button>
-      <button class="menu-btn" onclick="switchTab('tab-diario', event)">📖 Diario Secreto</button>
-      <button class="menu-btn" onclick="switchTab('tab-extras', event)">💌 Cartas & Extras</button>
+      <button class="menu-btn active" onclick="switchTab('tab-main')">🍨 Perfil & Paleta</button>
+      <button class="menu-btn" onclick="switchTab('tab-lore')">🌙 Lore & Pasado</button>
+      <button class="menu-btn" onclick="switchTab('tab-shamato')">🖤🍓 Dinámica Shamato</button>
+      <button class="menu-btn" onclick="switchTab('tab-lab')">🔬 Lab de Tails</button>
+      <button class="menu-btn" onclick="switchTab('tab-interact')">🎮 Minijuegos</button>
+      <button class="menu-btn" onclick="switchTab('tab-diario')">📖 Diario Secreto</button>
+      <button class="menu-btn" onclick="switchTab('tab-extras')">💌 Cartas & Extras</button>
 
       <button class="btn-music" id="music-btn" onclick="toggleMusic()">Música de Fondo: OFF</button>
     </nav>
@@ -83,7 +719,7 @@
           <div class="polaroid-caption">Amato en Emerald Hill ♡</div>
         </div>
         <div class="info-list">
-          <p><strong>Nombre:</strong> Amato (Apodo: Napolitano)</p>
+          <p><strong>Nombre:</strong> Amato (Apodo: Napolitano, Amato-core)</p>
           <p><strong>Especie:</strong> Erizo 🦔</p>
           <p><strong>Edad:</strong> 17 años</p>
           <p><strong>Origen:</strong> Emerald Hill</p>
@@ -200,7 +836,7 @@
         <h2 class="section-title">⭐ DESEO A LAS ESTRELLAS</h2>
         <p class="instruction">Escribe un pensamiento o deseo:</p>
         <textarea id="star-wish-input" class="pink-textarea" placeholder="Escribe tu deseo aquí..."></textarea>
-        <button class="btn-action full-width" style="margin-top:8px;" onclick="sendStarWish()">Enviar Deseo</button>
+        <button class="btn-action full-width" onclick="sendStarWish()">Enviar Deseo</button>
         <div id="star-wish-response" class="info-output"></div>
       </div>
     </main>
@@ -362,7 +998,7 @@
         </h2>
         <div class="emerald-click-zone" onclick="triggerSecretEmerald(7)">
           <div class="emerald-icon">💎</div>
-          <p style="font-size:0.8rem; font-weight:bold; color:var(--fresa);">Toca la esmeralda final para desbloquear el poder Chaos.</p>
+          <p>Toca la esmeralda final para desbloquear el poder Chaos.</p>
         </div>
       </div>
     </main>
@@ -377,7 +1013,6 @@
 
   <div id="toast" class="toast">Notificación</div>
 
-  <!-- Enlace a Script -->
   <script src="./script.js"></script>
 </body>
 </html>
