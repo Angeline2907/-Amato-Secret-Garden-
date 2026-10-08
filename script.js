@@ -58,14 +58,19 @@ function showToast(msg) {
   }
 }
 
-function switchTab(tabId) {
+// CORRECCIÓN TOTAL DE PESTAÑAS E INTERACCIÓN
+function switchTab(tabId, evt) {
   document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active'));
   document.querySelectorAll('.menu-btn').forEach(btn => btn.classList.remove('active'));
 
   const target = document.getElementById(tabId);
-  if (target) target.classList.add('active');
+  if (target) {
+    target.classList.add('active');
+  }
 
-  event.currentTarget.classList.add('active');
+  if (evt && evt.currentTarget) {
+    evt.currentTarget.classList.add('active');
+  }
 
   if (tabId === 'tab-diario') {
     unlockAchievement('diarioOpen', '☆ Consulta del Diario');
@@ -90,7 +95,7 @@ function triggerSecretEmerald(num) {
   }
 }
 
-// FUNCIONES DE INFORMACIÓN Y PERSONALIDAD
+// PERSONALIDAD Y DATOS
 function showTagInfo(trait) {
   const box = document.getElementById('tag-info-box');
   const infos = {
@@ -178,7 +183,7 @@ function interactLab(type) {
   if (type === 'scanner') text = "> Escáner: Lectura Chaos estable.";
   if (type === 'red-button') {
     text = "> ALERTA: Prueba iniciada.";
-    unlockAchievement('labDestroyed', '💥 Diagnóstico de Lab');
+    unlockAchievement('labDestroyed', '💥 Diagnóstico Lab');
   }
   if (type === 'emerald-test') text = "> Frecuencia Chaos óptima.";
   
@@ -241,73 +246,3 @@ const letters = {
   sonic: "¡Hola Amato!\nSi vas a salir a correr por la zona este, avísame y vamos juntos.",
   tails: "Amato,\nRecuerda revisar el nivel de carga del escáner antes de salir.",
   amy: "¡Hola!\nOrganizamos una pequeña reunión en la tarde. Estás invitado. 🎀",
-  knuckles: "Amato,\nLas zonas elevadas están seguras. Reporta cualquier anomalía.",
-  cream: "¡Hola Amato!\nCheese y yo dejamos unos bocadillos en la mesa. 🐰",
-  shadow: "Amato,\nMantén la disciplina durante los recorridos. Supervisaré la ruta sur.\n- Shadow"
-};
-
-function showLetter() {
-  const val = document.getElementById('letter-select').value;
-  document.getElementById('letter-content').innerText = letters[val] || "Mensaje no encontrado.";
-}
-
-function openGachaBox() {
-  const items = ["📦 Ración de provisiones", "🖼 Plano de Emerald Hill", "💎 Fragmento brillante", "✨ Insignia conmemorativa"];
-  document.getElementById('gacha-result').innerText = items[Math.floor(Math.random()*items.length)];
-}
-
-function sendStarWish() {
-  const input = document.getElementById('star-wish-input');
-  if (input.value.trim()) {
-    document.getElementById('star-wish-response').innerText = `Deseo guardado: "${input.value}" ✨`;
-    input.value = "";
-  }
-}
-
-// LOGROS
-const achDefs = {
-  visited: "♡ Primer Ingreso",
-  firstEmerald: "💎 Coleccionista",
-  allEmeralds: "🌟 7 Emeralds",
-  shamatoFan: "♡ Vínculo Sólido",
-  diarioOpen: "📖 Consulta del Diario",
-  labDestroyed: "💥 Diagnóstico Lab"
-};
-
-function renderAchievements() {
-  const container = document.getElementById('achievements-list');
-  if (!container) return;
-  container.innerHTML = "";
-  for (let key in achDefs) {
-    const unlocked = state.achievements[key];
-    const badge = document.createElement('span');
-    badge.className = `achievement-badge ${unlocked ? '' : 'locked'}`;
-    badge.innerText = (unlocked ? "✓ " : "🔒 ") + achDefs[key];
-    container.appendChild(badge);
-  }
-}
-
-function unlockAchievement(key, name) {
-  if (!state.achievements[key]) {
-    state.achievements[key] = true;
-    saveState();
-    updateUI();
-    showToast(`¡Logro: ${name}! 🎉`);
-  }
-}
-
-let musicOn = false;
-function toggleMusic() {
-  musicOn = !musicOn;
-  document.getElementById('music-btn').innerText = `Música de Fondo: ${musicOn ? 'ON 🎶' : 'OFF'}`;
-}
-
-function toggleNightMode() { document.body.classList.toggle('night-mode'); }
-function toggleAmatoMode() { alert("AMATO MODE ACTIVADO 🍨"); }
-function toggleShamatoMode() { document.body.classList.toggle('shamato-mode'); }
-
-document.addEventListener('DOMContentLoaded', function() {
-  loadState();
-  changeDiaryPage(0);
-  showLetter();
-});
